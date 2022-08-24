@@ -12,5 +12,5 @@ CREATE TABLE garden (
     ideal_light TEXT,
     ideal_watering TEXT,
     last_water INT,
-    is_healthy BOOLEAN,
+    is_healthy BOOLEAN
 );
