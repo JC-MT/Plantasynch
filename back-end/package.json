@@ -4,6 +4,9 @@
   "description": "plant care and information api server",
   "main": "server.js",
   "scripts": {
+    "db:init": "psql -U postgres -f db/schema.sql",
+    "db:seed": "psql -U postgres -f db/seed.sql",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jan Matias",
