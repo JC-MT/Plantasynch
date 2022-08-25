@@ -1,10 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const plantController = require('./Controllers/plantController')
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/plants', plantController)
 
 app.get('/', (req, res) => {
   res.status(200).send('Grow your garden with Plantasynch API 🌿 🪴 🌻');
