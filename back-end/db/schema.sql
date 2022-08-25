@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS platasynch_db;
-CREATE DATABASE platasynch_db;
+DROP DATABASE IF EXISTS ddha7tiqbad9uo;
+CREATE DATABASE ddha7tiqbad9uo;
 
-\c platasynch_db;
+\c ddha7tiqbad9uo;
 
 CREATE TABLE garden (
     id SERIAL PRIMARY KEY,

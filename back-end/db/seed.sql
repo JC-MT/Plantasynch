@@ -1,4 +1,4 @@
-\c platasynch_db; 
+\c ddha7tiqbad9uo; 
 
 INSERT INTO garden (id, name, image, origin, category, ideal_light, ideal_watering, last_water, is_healthy) VALUES
 ( 1, 'Peace Lily', 'https://res.cloudinary.com/bloomnation/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1538035633/vendor/6762/catalog/product/2/0/20180915055413_file_5b9c9e85274ab.jpg', 'South Africa', 'Tropical', 'Indirect', 'Keep soil moist, whater when half dry', 3, true),
