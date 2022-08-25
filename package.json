@@ -4,6 +4,7 @@
   "description": "fullstack plant care and information app",
   "main": "back-end/server.js",
   "scripts": {
+    "start": "cd back-end && npm i && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
