@@ -25,14 +25,14 @@ plants.get('/:id', async (req, res) => {
   const { id } = req.params;
   const plant = await getPlant(id);
 
-  if (plant) {
-    res.status(200).json({ success: true, payload: plant });
+  if (plant[0]) {
+    res.status(200).json({ success: true, payload: plant[0] });
   } else {
     res
       .status(404)
       .json({
         success: false,
-        payload: `Plant with id: ${id} could not be found`
+        payload: `Plant with id:'${id}' could not be found`
       });
   }
 });
@@ -45,7 +45,7 @@ plants.post('/', async (req, res) => {
   } else {
     res
       .status(404)
-      .send({ success: false, payload: 'Plant could not be created' });
+      .json({ success: false, payload: 'Plant could not be created' });
   }
 });
 
@@ -59,9 +59,9 @@ plants.put('/:id', async (req, res) => {
   } else {
     res
       .status(404)
-      .send({
+      .json({
         success: false,
-        payload: `Plant with id: ${id} could not be updated`
+        payload: `Plant with id:'${id}' could not be updated`
       });
   }
 });
@@ -75,9 +75,9 @@ plants.delete('/:id', async (req, res) => {
   } else {
     res
       .status(404)
-      .send({
+      .json({
         success: false,
-        payload: `Plant with id: ${id} could not be deleted`
+        payload: `Plant with id:'${id}' could not be deleted`
       });
   }
 });

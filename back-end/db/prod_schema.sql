@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS plantasynch_db;
-CREATE DATABASE plantasynch_db;
+DROP DATABASE IF EXISTS ddha7tiqbad9uo;
+CREATE DATABASE ddha7tiqbad9uo;
 
-\c plantasynch_db;
+\c ddha7tiqbad9uo;
 
 CREATE TABLE garden (
     id SERIAL PRIMARY KEY,
