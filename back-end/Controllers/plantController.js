@@ -9,11 +9,10 @@ const {
 //INDEX
 plants.get('/', async (req, res) => {
   const allPlants = await getAllPlants()
-
+  console.log(allPlants)
   if (allPlants) {
-    res.status(200).json({ payload: allSnacks })
+    res.status(200).json({ payload: allPlants })
   } else {
-    console.log('we have errors')
     res.status(404).json({ status: 404, error: 'error' })
   }
 })
