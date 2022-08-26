@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 
 // PAGES
 import Welcome from "./Pages/Welcome";
+import CreateAccount from "./Pages/CreateAccount";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<Welcome />} />
+          <Route path="/sign-in" element={<CreateAccount />} />
         </Routes>
       </main>
     </div>
