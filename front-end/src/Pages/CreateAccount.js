@@ -10,7 +10,7 @@ export default function CreateAccount(){
             <input type='text' placeholder="Email"/>
             <input type='text' placeholder="Password"/>
             <button>Sign in</button>
-            <Link to='/'>Skip to demo site</Link>
+            <Link to='/my-plants'>Skip to demo site</Link>
         </div>
     )
 }

@@ -8,7 +8,7 @@ export default function Welcome(){
             </h1>
             <h3>Some future bio</h3>
             <Link to='/sign-in'>Sign in with email</Link>
-            <Link to='/'>Skip to demo site</Link>
+            <Link to='/my-plants'>Skip to demo site</Link>
         </div>
     )
 }

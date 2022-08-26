@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <div>
         <Link to={'/'}>Plantasynch</Link>
-      <Link to={'/'}>
+      <Link to={'/my-plants'}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
