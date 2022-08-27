@@ -8,7 +8,7 @@ export default function ExploreIndex() {
   const [garden, setGarden] = useState([])
   useEffect(() => {
     axios
-      .get(`${API}/all`)
+      .get(`${API}/plants`)
       .then((res) => {
         setGarden(res.data.payload)
       })

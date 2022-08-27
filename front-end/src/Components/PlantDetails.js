@@ -6,7 +6,7 @@ const API = process.env.REACT_APP_API_URL;
 export default function PlantDetails() {
   const [plant, setPlant] = useState([]);
   const { id } = useParams();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -19,7 +19,6 @@ export default function PlantDetails() {
       });
   }, [id, navigate]);
 
-  console.log(plant)
   return (
     <section>
         <h1 className="text-[50px] text-center mt-[50px]">

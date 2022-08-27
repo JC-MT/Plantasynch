@@ -14,8 +14,10 @@ import Edit from "./Pages/Edit";
 
 export default function App() {
   return (
-    <div className="App">
-      <Navbar/>
+    <div>
+      <nav className="flex">
+        <Navbar />
+      </nav>
       <main>
         <Routes>
           <Route path="/" element={<Welcome />} />
