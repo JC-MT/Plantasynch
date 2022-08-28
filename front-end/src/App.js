@@ -25,7 +25,7 @@ export default function App() {
           <Route path='/my-plants' element={<Home />} />
           <Route path='/my-plants/:id' element={<Show />} />
           <Route path='/my-plants/:id/edit' element={<Edit />} />
-          <Route path='/my-plants/new' element={<New />} />
+          <Route path='/new' element={<New />} />
           <Route path='/explore' element={<Explore />} />
         </Routes>
       </main>

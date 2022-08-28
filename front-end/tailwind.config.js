@@ -8,14 +8,19 @@ module.exports = {
             "0%, 100%": { transform: "rotate(-3deg)" },
             "50%": { transform: "rotate(3deg)" }
           },
-          ping: {
-            "0%": { transform: "scale(0.95)"},
-            "50%": {boxshadow: "rgba(0, 0, 0, 0.7)"}
+          pulse: {
+            '0%, 100%': {
+              opacity: 1
+            },
+            '50%': {
+              opacity: .5
             }
+          }
         },
         animation: {
-          ping: 'ping 250ms ease-out',
-          wiggle: "wiggle 200ms ease-in-out"
+          ping: 'ping 250ms ease-in-out',
+          wiggle: "wiggle 250ms ease-in-out",
+          pulse: 'pulse 250ms ease-in-out'
         }
       }
     },
