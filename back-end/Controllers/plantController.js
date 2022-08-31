@@ -1,5 +1,6 @@
 const express = require('express');
 const plants = express.Router();
+const exploreModel = require('../Models/ExplorePlants')
 
 const {
   getAllPlants,
@@ -19,6 +20,16 @@ plants.get('/', async (req, res) => {
     res.status(404).json({ status: 404, error: 'Plants could not be found' });
   }
 });
+
+//EXPLORE INDEX
+plants.get('/explore', (req, res) => {
+  if (exploreModel) {
+    res.status(200).json({ payload: exploreModel });
+  } else {
+    res.status(404).json({ status: 404, error: 'Plants could not be found' });
+  }
+});
+
 
 // SHOW
 plants.get('/:id', async (req, res) => {

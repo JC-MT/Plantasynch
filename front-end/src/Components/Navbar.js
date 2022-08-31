@@ -1,17 +1,14 @@
-import { Link, useLocation, useParams} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react'
 
 export default function Navbar() {
   const location = useLocation();
-  const params = useParams();
   const [effect, setEffect] = useState({
     home: false,
     explore: false,
     add: false,
     openTab: 'home'
   })
-console.log(params.id)
-console.log(location)
 
   return (
     <div className="fixed bottom-0 overscroll-none flex flex-row justify-evenly w-screen h-24 bg-green-200 shadow-lg">

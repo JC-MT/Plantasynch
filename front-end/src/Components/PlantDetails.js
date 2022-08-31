@@ -19,12 +19,14 @@ export default function PlantDetails() {
       });
   }, [id, navigate]);
 
+  console.log(plant)
   return (
     <section>
         <h1 className="text-[50px] text-center mt-[50px]">
           {plant.name}
         </h1>
         <img src={`${plant.image}`} alt='plant'></img>
+        
     </section>
   );
 }
