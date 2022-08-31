@@ -15,11 +15,11 @@ import ExploreDetails from "./Components/ExploreDetails";
 
 export default function App() {
   return (
-    <div>
-      <nav className="flex">
+    <div >
+      <nav>
         <Navbar />
       </nav>
-      <main>
+      <main className="mb-24">
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/sign-in" element={<CreateAccount />} />

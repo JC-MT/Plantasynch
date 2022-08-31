@@ -39,17 +39,17 @@ export default function NewPlantForm() {
   }
   return (
     <div>
-      <form onSubmit={handleSubmit} className='block ml-auto mr-auto w-[30%]'>
-        <label htmlFor='name'>Name:</label>
+      <form onSubmit={handleSubmit} className='flex flex-col place-items-center'>
+        <label className='-indent-32' htmlFor='name'>Name:</label>
         <input
           id='name'
           value={plant.name}
           type='text'
           onChange={handleTextChange}
           required
-          className='ml-[10px] w-[100%]'
+          className='input-style'
         />
-        <label htmlFor='image'>Image:</label>
+        <label className='-indent-32' htmlFor='image'>Image:</label>
         <input
           id='image'
           type='text'
@@ -57,40 +57,40 @@ export default function NewPlantForm() {
           placeholder='http://'
           value={plant.image}
           onChange={handleTextChange}
-          className='ml-[10px] w-[100%]'
+          className='input-style'
         />
-        <label htmlFor='category'>Category:</label>
+        <label className='-indent-32' htmlFor='category'>Category:</label>
         <input
           id='category'
           type='text'
           name='category'
           value={plant.category}
           onChange={handleTextChange}
-          className='ml-[10px] w-[100%]'
+          className='input-style'
         />
-        <label htmlFor='last_water'>Last Time Hydrated:</label>
+        <label className='-indent-28' htmlFor='last_water'>Last Time Hydrated:</label>
         <input
           id='last_water'
           name='last_water'
           type='number'
           value={plant.last_water}
           onChange={handleNumberChange}
-          className='ml-[10px] w-[100%]'
+          className='input-style'
         />
 
-        <label htmlFor='is_healthy'>Does your plant seem healthy:</label>
+        <label className='-indent-10' htmlFor='is_healthy'>Does your plant seem healthy:</label>
         <input
           id='is_healthy'
           name='is_healthy'
           type='check'
           value={plant.is_healthy}
           onChange={handleTextChange}
-          className='ml-[10px] w-[100%]'
+          className='input-style'
         />
 
-        <input type='submit' className='w-[50%] m-[20px] ml-[30%]'/>
+        <input type='submit' className='border w-[50%]'/>
         <Link to={`/my-plants`}>
-        <button className='w-[40%] ml-[35%]'>Back</button>
+        <button className='border w-[40%]'>Back</button>
       </Link>
       </form>
     </div>

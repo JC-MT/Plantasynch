@@ -7,13 +7,12 @@ export default function Navbar() {
     home: false,
     explore: false,
     add: false,
-    openTab: 'home'
   })
 
   return (
-    <div className="fixed bottom-0 overscroll-none flex flex-row justify-evenly w-screen h-24 bg-green-200 shadow-lg">
+    <div className="fixed bottom-0 flex flex-row justify-evenly w-screen h-24 bg-green-200 shadow-lg">
       <Link to={'/'} className='hidden'>Plantasynch</Link>
-      <Link to={'/my-plants'} className={`${location.pathname.startsWith('/my-plants') ? 'text-black' : 'text-gray-300'} ${effect.home && "animate-pulse drop-shadow-2xl"}`} onClick={() => {setEffect({...effect, home: true, openTab: 'home'});
+      <Link to={'/my-plants'} className={`${location.pathname.startsWith('/my-plants') ? 'text-black' : 'text-gray-300'} ${effect.home && "animate-pulse drop-shadow-2xl"}`} onClick={() => {setEffect({...effect, home: true});
       }} onAnimationEnd={() => setEffect({...effect, home: false})}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +24,7 @@ export default function Navbar() {
         </svg>
         <span className='text-center pr-[4px]'>Home</span>
       </Link>
-      <Link to={'/explore'} className={`${location.pathname.startsWith('/explore') ? 'text-black' : 'text-gray-300'} ${effect.explore && "animate-pulse"}`} onClick={() => {setEffect({...effect, explore: true, openTab: 'explore'});
+      <Link to={'/explore'} className={`${location.pathname.startsWith('/explore') ? 'text-black' : 'text-gray-300'} ${effect.explore && "animate-pulse"}`} onClick={() => {setEffect({...effect, explore: true });
       }} onAnimationEnd={() => setEffect({...effect, explore: false})}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +40,7 @@ export default function Navbar() {
         </svg>
         <span className='text-center pr-[2px]'>Explore</span>
       </Link>
-      <Link to={'/new'} className={`${location.pathname === '/new' ? 'text-black' : 'text-gray-300'} ${effect.add && "animate-pulse"}`} onClick={() => {setEffect({...effect, add: true, openTab: 'add'});
+      <Link to={'/new'} className={`${location.pathname === '/new' ? 'text-black' : 'text-gray-300'} ${effect.add && "animate-pulse"}`} onClick={() => {setEffect({...effect, add: true });
       }} onAnimationEnd={() => setEffect({...effect, add: false})}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
