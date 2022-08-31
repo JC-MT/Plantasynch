@@ -1,4 +1,5 @@
 const app = require('./app');
+const scheduler = require('./schedule')
 
 require('dotenv').config();
 
