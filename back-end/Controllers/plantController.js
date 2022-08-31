@@ -1,6 +1,6 @@
 const express = require('express');
 const plants = express.Router();
-const exploreModel = require('../Models/ExplorePlants')
+const explorePlants = require('../Models/ExplorePlants')
 
 const {
   getAllPlants,
@@ -23,8 +23,9 @@ plants.get('/', async (req, res) => {
 
 //EXPLORE INDEX
 plants.get('/explore', (req, res) => {
-  if (exploreModel) {
-    res.status(200).json({ payload: exploreModel });
+
+  if (explorePlants) {
+    res.status(200).json({ payload: explorePlants });
   } else {
     res.status(404).json({ status: 404, error: 'Plants could not be found' });
   }
@@ -45,6 +46,18 @@ plants.get('/:id', async (req, res) => {
         success: false,
         payload: `Plant with id:'${id}' could not be found`
       });
+  }
+});
+
+// EXPLORE SHOW
+plants.get('/explore/:id', async (req, res) => {
+  const { id } = req.params;
+  
+
+  if (explorePlants[id]) {
+    res.status(200).json({ payload: explorePlants[id] });
+  } else {
+    res.status(404).json({ status: 404, error: `Plant with id:'${id}' could not be found` });
   }
 });
 

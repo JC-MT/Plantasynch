@@ -25,7 +25,7 @@ export default function Navbar() {
         </svg>
         <span className='text-center pr-[4px]'>Home</span>
       </Link>
-      <Link to={'/explore'} className={`${location.pathname === '/explore' ? 'text-black' : 'text-gray-300'} ${effect.explore && "animate-pulse"}`} onClick={() => {setEffect({...effect, explore: true, openTab: 'explore'});
+      <Link to={'/explore'} className={`${location.pathname.startsWith('/explore') ? 'text-black' : 'text-gray-300'} ${effect.explore && "animate-pulse"}`} onClick={() => {setEffect({...effect, explore: true, openTab: 'explore'});
       }} onAnimationEnd={() => setEffect({...effect, explore: false})}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -24,13 +24,12 @@ export default function ExploreIndex() {
   }
 
   const currentDisplay = (explore, search) => {
-    const results = explore.filter(plant => plant.common[0] && plant.common[0].startsWith(search)).map((plant) => {
-      return <ExplorePlant name={plant.common[0]} latin={plant.latin} category={plant.category}/> 
+    const results = explore.filter(plant => plant.common[0] && plant.common[0].startsWith(search)).map((plant, idx) => {
+      return <ExplorePlant key={idx} id={plant.id} name={plant.common[0]} latin={plant.latin} category={plant.category}/> 
     })
     return results
   }
 
-  console.log(explore)
   return (
     <div>
         <h1>Here lives the explore index</h1>

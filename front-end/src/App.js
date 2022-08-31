@@ -11,6 +11,7 @@ import Explore from "./Pages/Explore";
 import Show from "./Pages/Show";
 import New from "./Pages/New"
 import Edit from "./Pages/Edit";
+import ExploreDetails from "./Components/ExploreDetails";
 
 export default function App() {
   return (
@@ -25,8 +26,9 @@ export default function App() {
           <Route path='/my-plants' element={<Home />} />
           <Route path='/my-plants/:id' element={<Show />} />
           <Route path='/my-plants/:id/edit' element={<Edit />} />
-          <Route path='/new' element={<New />} />
           <Route path='/explore' element={<Explore />} />
+          <Route path='/explore/:id' element={<ExploreDetails />} />
+          <Route path='/new' element={<New />} />
         </Routes>
       </main>
     </div>

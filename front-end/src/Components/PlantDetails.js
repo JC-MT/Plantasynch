@@ -18,8 +18,6 @@ export default function PlantDetails() {
         navigate('/not-found');
       });
   }, [id, navigate]);
-
-  console.log(plant)
   return (
     <section>
         <h1 className="text-[50px] text-center mt-[50px]">
