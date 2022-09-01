@@ -5,14 +5,14 @@
 @layer components {
 
     .navbar-icon {
-        @apply flex items-center 
+        @apply relative flex items-center 
         justify-center h-10 w-10 mt-5;
     }
 
     ;
 
     .input-style {
-        @apply border-2 outline-green-200 rounded-full p-1 pl-4 w-[75%];
+        @apply border-2 outline-green-200 rounded-full p-1 pl-4 w-[250px];
     }
 
     ;

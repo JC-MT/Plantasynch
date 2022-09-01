@@ -31,9 +31,8 @@ export default function ExploreIndex() {
   }
 
   return (
-    <div>
-        <h1>Here lives the explore index</h1>
-        <input type='text' placeholder='Search plant' onChange={handleTextChange}/>
+    <div className='flex flex-center'>
+        <input className='flex-center items-center justify-center border-2 outline-green-200 rounded-full p-1 pl-4 w-[250px]drop-shadow-xl' type='text' placeholder='Search plant' onChange={handleTextChange}/>
         {currentDisplay(explore, search)}
     </div>
   )

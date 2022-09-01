@@ -43,17 +43,29 @@ export default function EditPlantForm() {
       .put(`${API}/plants/${id}`, plant)
       .then((res) => {
         setPlant(res.data)
-        navigate(`/my-plants`)
+        navigate(`/my-plants/${id}`)
       })
       .catch((err) => {
         console.warn(err)
       })
-  }
-  console.log(plant)
+  };
+
+  const handleDelete = () => {
+    axios
+      .delete(`${API}/plants/${id}`)
+      .then(() => {
+        navigate('/my-plants');
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  };
+
   return (
     <div>
-      <form onSubmit={handleSubmit} className='flex flex-col place-items-center'>
-        <label className='-indent-32' htmlFor='name'>Name:</label>
+     <form onSubmit={handleSubmit} className='flex flex-col place-items-center drop-shadow-sm'>
+        <div className='flex flex-col w-fit'>
+        <label htmlFor='name'>Name:</label>
         <input
           id='name'
           value={plant.name}
@@ -62,7 +74,9 @@ export default function EditPlantForm() {
           required
           className='input-style'
         />
-        <label className='-indent-32' htmlFor='image'>Image:</label>
+        </div>
+        <div className='flex flex-col w-fit'>
+        <label htmlFor='image'>Image:</label>
         <input
           id='image'
           type='text'
@@ -72,7 +86,9 @@ export default function EditPlantForm() {
           onChange={handleTextChange}
           className='input-style'
         />
-        <label className='-indent-32' htmlFor='category'>Category:</label>
+        </div>
+        <div className='flex flex-col w-fit'>
+        <label htmlFor='category'>Category:</label>
         <input
           id='category'
           type='text'
@@ -81,7 +97,9 @@ export default function EditPlantForm() {
           onChange={handleTextChange}
           className='input-style'
         />
-        <label className='-indent-28' htmlFor='last_water'>Last Time Hydrated:</label>
+        </div>
+        <div className='flex flex-col w-fit'>
+        <label htmlFor='last_water'>Last Time Hydrated:</label>
         <input
           id='last_water'
           name='last_water'
@@ -90,21 +108,27 @@ export default function EditPlantForm() {
           onChange={handleNumberChange}
           className='input-style'
         />
-
-        <label className='-indent-10' htmlFor='is_healthy'>Does your plant seem healthy:</label>
+        </div>
+        <div className='flex flex-col w-fit'>
+        <label htmlFor='is_healthy'>Does your plant seem healthy:</label>
         <input
           id='is_healthy'
           name='is_healthy'
-          type='check'
+          type='text'
           value={plant.is_healthy}
           onChange={handleTextChange}
           className='input-style'
         />
-
-        <input type='submit' className='border w-[50%]'/>
+        </div>
+        <div className='flex flex-row gap-5'>
         <Link to={`/my-plants`}>
-        <button className='border w-[40%]'>Back</button>
-      </Link>
+          <button className='border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 drop-shadow-xl'>Back</button>
+        </Link>
+        <input type='submit' className='border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 drop-shadow-xl'/>
+        <button className='border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 drop-shadow-xl' onClick={handleDelete}>
+          Delete
+        </button>
+        </div>
       </form>
     </div>
   )

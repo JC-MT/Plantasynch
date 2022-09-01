@@ -20,7 +20,6 @@ export default function HomeIndex() {
   
   return (
     <div>
-        <h1>Here lives the index</h1>
         {garden.map((plant, idx) => {
             return <Plant id={plant.id} name={plant.name} image={plant.image} category={plant.category} key={idx} />
         })}
