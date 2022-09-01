@@ -18,7 +18,7 @@ const getPlantsToWater = async () => {
         }
       }
     }
-    return plantsToWater[0];
+    return plantsToWater;
   } catch (error) {
     return error;
   }
