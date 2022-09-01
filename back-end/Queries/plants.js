@@ -34,7 +34,7 @@ const createPlant = async (plant) => {
   } = plant;
   try {
     const newPlant = await db.one(
-      'INSERT INTO garden (name, image, origin, category, ideal_light, ideal_watering, last_water, is_healthy) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+      'INSERT INTO garden (name, image, origin, category, ideal_light, ideal_watering, last_water, is_healthy, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
       [
         name,
         image,
@@ -43,7 +43,8 @@ const createPlant = async (plant) => {
         ideal_light,
         ideal_watering,
         last_water,
-        is_healthy
+        is_healthy,
+        email
       ]
     );
     return newPlant;
@@ -63,11 +64,12 @@ const updatePlant = async (id, plant) => {
     ideal_light,
     ideal_watering,
     last_water,
-    is_healthy
+    is_healthy,
+    email
   } = plant;
   try {
     const updatePlant = await db.one(
-      'UPDATE garden SET name=$1, image=$2, origin=$3, category=$4, ideal_light=$5, ideal_watering=$6, last_water=$7, is_healthy=$8 WHERE id=$9 RETURNING *',
+      'UPDATE garden SET name=$1, image=$2, origin=$3, category=$4, ideal_light=$5, ideal_watering=$6, last_water=$7, is_healthy=$8 email=$9 WHERE id=$10 RETURNING *',
       [
         name,
         image,
@@ -77,6 +79,7 @@ const updatePlant = async (id, plant) => {
         ideal_watering,
         last_water,
         is_healthy,
+        email,
         id
       ]
     );
