@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-const getAllPlants = require('../Queries/lastWater');
 require('dotenv').config();
 
 const { EMAIL_ADDRESS, EMAIL_PASSWORD } = process.env;

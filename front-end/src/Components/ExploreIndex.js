@@ -31,8 +31,8 @@ export default function ExploreIndex() {
   }
 
   return (
-    <div className='flex flex-center'>
-        <input className='flex-center items-center justify-center border-2 outline-green-200 rounded-full p-1 pl-4 w-[250px]drop-shadow-xl' type='text' placeholder='Search plant' onChange={handleTextChange}/>
+    <div className='flex flex-col gap-2 p-4'>
+        <input className='flex flex-center sticky top-5 items-center justify-center border-2 outline-green-200 rounded-full p-1 pl-4 drop-shadow-xl' type='text' placeholder='Search plant by name' onChange={handleTextChange}/>
         {currentDisplay(explore, search)}
     </div>
   )

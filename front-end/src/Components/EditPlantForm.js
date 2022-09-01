@@ -122,10 +122,10 @@ export default function EditPlantForm() {
         </div>
         <div className='flex flex-row gap-5'>
         <Link to={`/my-plants`}>
-          <button className='border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 drop-shadow-xl'>Back</button>
+          <button className='button-style'>Back</button>
         </Link>
-        <input type='submit' className='border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 drop-shadow-xl'/>
-        <button className='border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 drop-shadow-xl' onClick={handleDelete}>
+        <input type='submit' className='button-style'/>
+        <button className='button-style' onClick={handleDelete}>
           Delete
         </button>
         </div>

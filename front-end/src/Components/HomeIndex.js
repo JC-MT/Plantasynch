@@ -19,7 +19,7 @@ export default function HomeIndex() {
   }, [])
   
   return (
-    <div>
+    <div id='home' className='flex flex-col gap-2 p-4'>
         {garden.map((plant, idx) => {
             return <Plant id={plant.id} name={plant.name} image={plant.image} category={plant.category} key={idx} />
         })}

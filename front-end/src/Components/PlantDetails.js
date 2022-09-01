@@ -31,22 +31,22 @@ export default function PlantDetails() {
   };
 
   return (
-    <section>
+    <section className='flex flex-col gap-1 animate-pulse'>
         <h1 className="text-[50px] text-center mt-[50px]">
           {plant.name}
         </h1>
-        <img src={`${plant.image}`} alt='plant'></img>
-        <div className="flex gap-[1%] justify-center">
-        <Link to={`/snacks`}>
-          <button className='w-[100px]'>Back</button>
-        </Link>{' '}
-        <Link to={`/snacks/${id}/edit`}>
-          <button className='w-[100px]'>Edit</button>
-        </Link>{' '}
-        <button className='w-[100px]' onClick={handleDelete}>
-          Delete
-        </button>
-      </div>
+        <img className='place-self-center w-[300px] h-[300px]' src={`${plant.image}`} alt='plant'></img>
+        <div className="flex flex-row gap-5 justify-center ">
+          <Link to={`/my-plants`}>
+            <button className='button-style'>Back</button>
+          </Link>{' '}
+          <Link to={`/my-plants/${id}/edit`}>
+            <button className='button-style'>Edit</button>
+          </Link>{' '}
+          <button className='button-style' onClick={handleDelete}>
+            Delete
+          </button>
+        </div>
         
     </section>
   );
