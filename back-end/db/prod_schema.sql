@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS ddha7tiqbad9uo;
-CREATE DATABASE ddha7tiqbad9uo;
+DROP DATABASE IF EXISTS d8pej33t5aqtud;
+CREATE DATABASE d8pej33t5aqtud;
 
-\c ddha7tiqbad9uo;
+\c d8pej33t5aqtud;
 
 CREATE TABLE garden (
     id SERIAL PRIMARY KEY,
@@ -11,7 +11,7 @@ CREATE TABLE garden (
     category TEXT,
     ideal_light TEXT,
     ideal_watering TEXT,
-    last_water INT,
+    last_water TEXT,
     is_healthy BOOLEAN,
     email TEXT
 );
