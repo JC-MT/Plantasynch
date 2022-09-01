@@ -11,6 +11,7 @@ CREATE TABLE garden (
     category TEXT,
     ideal_light TEXT,
     ideal_watering TEXT,
-    last_water INT,
-    is_healthy BOOLEAN
+    last_water TEXT,
+    is_healthy BOOLEAN,
+    email TEXT
 );
