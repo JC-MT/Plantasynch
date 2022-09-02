@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 
 export default function ExplorePlant({ id, name, category, latin}) {
+
+  
   return (
     <div className='flex flex-row justify-between hover:bg-slate-200'>
       <Link className='flex flex-row' to={`/explore/${id}`}>
