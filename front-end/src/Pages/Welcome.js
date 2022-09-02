@@ -9,20 +9,20 @@ export default function Welcome(){
             </h1>
             <p className='indent-8 p-2 text-center'><em className='underline'>Plantasynch</em> is a full-stack web-app that provides users general plant information and suggested plant care for all types of plants.</p>
             <div className='flex flex-col gap-1 place-items-center drop-shadow-sm'>
-                <Link className='button-style hover:pointer-events' to='/sign-in'>Sign in with email</Link>
-                <Link to='/my-plants'>Skip to demo site</Link>
+                <Link className='button-style hover:bg-green-300' to='/sign-in'>Sign in with email</Link>
+                <Link className='hover:underline'to='/my-plants'>Skip to demo site</Link>
             </div>
-            <div className='flex flex-row gap-2 justify-center drop-shadow-sm p-5'>
+            <div className='flex flex-row gap-5 justify-center drop-shadow-sm p-5'>
                 <a className='flex flex-col place-self-center'href="https://github.com/JC-MT/Plantasynch" target="_blank">
                     <img
-                    className="w-16 h-16 place-self-center"
+                    className="w-12 h-12 place-self-center hover:w-14 hover:h-14"
                     alt="GitHub"
-                    src="https://pngimg.com/uploads/github/github_PNG58.png"
+                    src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
                     />
                 </a>
                 <a className='flex flex-col place-self-center' href="https://www.linkedin.com/in/jan-matias/" target="_blank">
                     <img
-                    className="w-12 h-12 place-self-center"
+                    className="w-12 h-12 place-self-center hover:w-14 hover:h-14"
                     alt="LinkedIn"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png"
                     />

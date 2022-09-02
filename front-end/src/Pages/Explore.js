@@ -4,10 +4,13 @@ export default function Explore(){
 
     return(
         <div>
-            <h1 className="text-[50px] text-center p-[10px]">
-                Explore Plants
-            </h1>
-            <p className="text-center">Click on the arrows for more info.</p>
+            <div className="flex flex-row justify-left drop-shadow-sm p-5">
+                <img className='place-self-center w-[70px] h-[70px] p-1' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
+                <h1 className="text-[40px] text-center p-[10px]">
+                    Explore Plants
+                </h1>
+            </div>
+            <p className="text-center text-[15px] p-1">Click on plant to for details or to add to your plants.</p>
             <ExploreIndex/>
         </div>
     )
