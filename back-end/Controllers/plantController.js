@@ -106,4 +106,18 @@ plants.delete('/:id', async (req, res) => {
   }
 });
 
+//=======TODO========
+//
+// //CREATE
+// plants.post('/user', async (req, res) => {
+//   const newUser = await createUser(req.body);
+//   if (newUser) {
+//     res.status(200).json({ success: true, payload: newUser });
+//   } else {
+//     res
+//       .status(404)
+//       .json({ success: false, payload: 'User could not be created' });
+//   }
+// });
+
 module.exports = plants;

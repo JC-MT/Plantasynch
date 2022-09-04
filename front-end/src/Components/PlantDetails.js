@@ -46,8 +46,8 @@ export default function PlantDetails() {
           <button className='button-style' onClick={handleDelete}>
             Delete
           </button>
+          <img className='button-style bg-blue-300 rounded-full w-[50px] h-[50px]'src='https://cdn-icons-png.flaticon.com/512/2514/2514435.png'/>
         </div>
-        
     </section>
   );
 }
