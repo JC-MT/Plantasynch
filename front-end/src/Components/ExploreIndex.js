@@ -31,9 +31,11 @@ export default function ExploreIndex() {
   }
 
   return (
-    <div className='flex flex-col gap-2 p-4'>
-        <input className='flex flex-center sticky top-5 items-center justify-center border-2 outline-green-200 rounded-full p-1 pl-4 drop-shadow-xl' type='text' placeholder='Search plant by name' onChange={handleTextChange}/>
-        {currentDisplay(explore, search)}
+    <div className='flex flex-col gap-2 p-4 tablet:p-8'>
+        <input className='flex flex-center sticky top-5 items-center justify-center border-2 outline-green-200 rounded-full p-1 pl-4 shadow-xl tablet:mb-2 tablet:mx-16 laptop:top-32 laptop:mx-24' type='text' placeholder='Search plant by name' onChange={handleTextChange}/>
+        <div className='laptop:grid-view'>
+          {currentDisplay(explore, search)}
+        </div>
     </div>
   )
 }

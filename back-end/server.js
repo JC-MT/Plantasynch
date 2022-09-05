@@ -6,6 +6,5 @@ require('dotenv').config();
 const { PORT } = process.env;
 
 app.listen(PORT, () => {
-  console.log(scheduler)
   console.log(`Our Garden 🪴 🌻 🌿 is alive in ${PORT} 🌺 🌷 🪷 `);
 });

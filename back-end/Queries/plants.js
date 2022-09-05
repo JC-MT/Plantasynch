@@ -30,7 +30,8 @@ const createPlant = async (plant) => {
     ideal_light,
     ideal_watering,
     last_water,
-    is_healthy
+    is_healthy,
+    email
   } = plant;
   try {
     const newPlant = await db.one(
@@ -67,9 +68,10 @@ const updatePlant = async (id, plant) => {
     is_healthy,
     email
   } = plant;
+  console.log(id, plant)
   try {
     const updatePlant = await db.one(
-      'UPDATE garden SET name=$1, image=$2, origin=$3, category=$4, ideal_light=$5, ideal_watering=$6, last_water=$7, is_healthy=$8 email=$9 WHERE id=$10 RETURNING *',
+      'UPDATE garden SET name=$1, image=$2, origin=$3, category=$4, ideal_light=$5, ideal_watering=$6, last_water=$7, is_healthy=$8, email=$9 WHERE id=$10 RETURNING *',
       [
         name,
         image,
@@ -80,9 +82,9 @@ const updatePlant = async (id, plant) => {
         last_water,
         is_healthy,
         email,
-        id
+        id,
       ]
-    );
+    )
     return updatePlant;
   } catch (error) {
     console.log(error.message);

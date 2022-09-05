@@ -1,6 +1,8 @@
 const express = require('express');
 const plants = express.Router();
 const explorePlants = require('../Models/ExplorePlants')
+const {getPlantsToWater} = require('../Queries/lastWater')
+const { updateWater } = require('../Queries/updateWater')
 
 const {
   getAllPlants,
@@ -13,7 +15,6 @@ const {
 //INDEX
 plants.get('/', async (req, res) => {
   const allPlants = await getAllPlants();
-
   if (allPlants) {
     res.status(200).json({ payload: allPlants });
   } else {
@@ -23,13 +24,33 @@ plants.get('/', async (req, res) => {
 
 //EXPLORE INDEX
 plants.get('/explore', (req, res) => {
-
   if (explorePlants) {
     res.status(200).json({ payload: explorePlants });
   } else {
     res.status(404).json({ status: 404, error: 'Plants could not be found' });
   }
 });
+
+//NAVBAR ICON
+plants.get('/notification', async (req, res) => {
+ const notification = await getPlantsToWater();
+  if (notification) {
+    res.status(200).json({ payload: notification });
+  } else {
+    res.status(404).json({ status: 404, error: 'Plants could not be found' });
+  }
+});
+
+//UPDATE WATER
+plants.put('/water/:id', async (req, res) => {
+  const { id } = req.params;
+  const newDay = await updateWater(id);
+   if (newDay) {
+     res.status(200).json({ payload: newDay });
+   } else {
+     res.status(404).json({ status: 404, error: 'Date could not be updated' });
+   }
+ });
 
 
 // SHOW
@@ -52,8 +73,6 @@ plants.get('/:id', async (req, res) => {
 // EXPLORE SHOW
 plants.get('/explore/:id', async (req, res) => {
   const { id } = req.params;
-  
-
   if (explorePlants[id]) {
     res.status(200).json({ payload: explorePlants[id] });
   } else {
@@ -77,7 +96,6 @@ plants.post('/', async (req, res) => {
 plants.put('/:id', async (req, res) => {
   const { id } = req.params;
   const updatedPlant = await updatePlant(id, req.body);
-
   if (updatedPlant.id) {
     res.status(200).json({ success: true, payload: updatedPlant });
   } else {

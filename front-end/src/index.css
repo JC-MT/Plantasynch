@@ -6,21 +6,32 @@
 
     .navbar-icon {
         @apply relative flex items-center 
-        justify-center h-10 w-10 mt-5;
+        justify-center h-10 w-10 mt-5 laptop:w-fit laptop:flex-none laptop:place-self-center;
     }
 
     ;
 
     .input-style {
-        @apply border-2 outline-green-200 rounded-full p-1 pl-4 w-[250px];
+        @apply border-2 outline-green-200 rounded-full p-1 pl-4 w-[250px] tablet:w-[400px];
     }
 
     ;
 
     .button-style {
-        @apply border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 shadow-xl
+        @apply border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 shadow-xl tablet:text-[25px];
     }
 
+    .laptop-display {
+        @apply top-0 
+    }
+
+    .grid-view {
+        @apply grid grid-cols-3 gap-2
+    }
+
+    .plant-laptop {
+        @apply px-0 pb-2 pl-2
+    }
 }
 
 ;

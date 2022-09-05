@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 
-export default function ExplorePlant({ id, name, category, latin}) {
+export default function ExplorePlant({ id, name, category}) {
 
   
   return (
-    <div className='flex flex-row justify-between hover:bg-slate-200'>
+    <div className='flex flex-row justify-between hover:bg-slate-200 tablet:px-8 laptop:plant-laptop'>
       <Link className='flex flex-row' to={`/explore/${id}`}>
-        <img className=' rounded-full w-[150px] h-[150px]' src={`https://dummyimage.com/200x200/000000/ffffff.jpg&text=House+Plant`} alt='Plant' />
+        <img className=' rounded-full w-[150px] h-[150px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='Plant' />
         <p className='flex flex-col p-2'>Name: {name}
         <span>Type: {category}</span>
         </p>

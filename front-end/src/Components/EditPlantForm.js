@@ -10,12 +10,13 @@ export default function EditPlantForm() {
   const [plant, setPlant] = useState({
     name: "",
     image: "",
-    origin: '',
+    origin: "",
     category: "",
     ideal_light: "",
     ideal_watering: "",
-    last_water: 0,
-    is_healthy: false
+    last_water: '',
+    is_healthy: false,
+    email: "",
   })
 
   useEffect(() => {
@@ -33,17 +34,14 @@ export default function EditPlantForm() {
     setPlant({ ...plant, [event.target.id]: event.target.value })
   }
 
-  const handleNumberChange = (event) => {
-    setPlant({ ...plant, [event.target.id]: Number(event.target.value) })
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault()
     axios
       .put(`${API}/plants/${id}`, plant)
       .then((res) => {
+        console.log(res)
         setPlant(res.data)
-        navigate(`/my-plants/${id}`)
+        navigate(`/my-plants`)
       })
       .catch((err) => {
         console.warn(err)
@@ -61,9 +59,11 @@ export default function EditPlantForm() {
       });
   };
 
+  console.log(plant)
   return (
     <div>
-     <form onSubmit={handleSubmit} className='flex flex-col place-items-center drop-shadow-sm'>
+     <form onSubmit={handleSubmit} className='flex flex-col place-items-center shadow-sm'>
+     <img className='place-self-center rounded-full w-[100px] h-[100px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`}/>
         <div className='flex flex-col w-fit'>
         <label htmlFor='name'>Name:</label>
         <input
@@ -76,7 +76,7 @@ export default function EditPlantForm() {
         />
         </div>
         <div className='flex flex-col w-fit'>
-        <label htmlFor='image'>Image:</label>
+        <label htmlFor='image'>Image url:</label>
         <input
           id='image'
           type='text'
@@ -88,34 +88,67 @@ export default function EditPlantForm() {
         />
         </div>
         <div className='flex flex-col w-fit'>
-        <label htmlFor='category'>Category:</label>
+          <label htmlFor='category'>Category:</label>
+          <select 
+            name="category" 
+            id="category"
+            onChange={handleTextChange}
+            className='input-style'
+            value={plant.category}>
+              <option value="Tropical">Tropical</option>
+            <option value="Bromeliad">Bromeliad</option>
+            <option value="Fern">Fern</option>
+            <option value="Cactus & Succulent">Cactus & Succulent</option>
+            <option value="Aglaonema">Aglaonema</option>
+            <option value="Flower">Flower</option>
+            <option value="Foliage plant">Foliage plant</option>
+            <option value="Anthurium">Anthurium</option>
+            <option value="Palm">Palm</option>
+            <option value="Dracaena">Dracaena</option>
+            <option value="Dieffenbachia">Dieffenbachia</option>
+            <option value="Palm">Palm</option>
+            <option value="Ficus">Ficus</option>
+            <option value="Aralia">Aralia</option>
+            <option value="Philodendron">Philodendron</option>
+            <option value="Grass">Grass</option>
+            <option value="Topiairy">Topiairy</option>
+            <option value="Sansevieria">Sansevieria</option>
+            <option value="Spathiphyllum">Spathiphyllum</option>
+            <option value="Schefflera">Schefflera</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div className='flex flex-col w-fit'>
+        <label htmlFor='origin'>Origin:</label>
         <input
-          id='category'
+          id='origin'
           type='text'
-          name='category'
-          value={plant.category}
+          name='origin'
+          value={plant.origin}
           onChange={handleTextChange}
           className='input-style'
         />
         </div>
         <div className='flex flex-col w-fit'>
-        <label htmlFor='last_water'>Last Time Hydrated:</label>
+        <label htmlFor='last_water'>Last Time Watered:</label>
         <input
           id='last_water'
           name='last_water'
-          type='number'
+          type='text'
+          placeholder='YYYY/MM/DD'
           value={plant.last_water}
-          onChange={handleNumberChange}
+          onChange={handleTextChange}
           className='input-style'
         />
         </div>
         <div className='flex flex-col w-fit'>
-        <label htmlFor='is_healthy'>Does your plant seem healthy:</label>
+        <label htmlFor='email'>Email:</label>
         <input
-          id='is_healthy'
-          name='is_healthy'
+          id='email'
           type='text'
-          value={plant.is_healthy}
+          name='email'
+          placeholder='ex. email@gmail.com'
+          value={plant.email}
           onChange={handleTextChange}
           className='input-style'
         />
