@@ -40,7 +40,7 @@ export default function NewPlantForm() {
   return (
     <div>
       <form onSubmit={handleSubmit} className='flex flex-col place-items-center shadow-sm tablet:gap-2'>
-        <img className='place-self-center w-[250px] h-[150px] tablet:w-[450px] tablet:h-[350px]' src={`https://img.freepik.com/free-vector/hand-drawn-houseplant-collection_23-2148910610.jpg?w=2000`}/>
+        <img alt='plant' className='place-self-center w-[250px] h-[150px] tablet:w-[450px] tablet:h-[350px]' src={`https://img.freepik.com/free-vector/hand-drawn-houseplant-collection_23-2148910610.jpg?w=2000`}/>
         <div className='flex flex-col w-fit'>
         <label htmlFor='name'>Name:</label>
         <input

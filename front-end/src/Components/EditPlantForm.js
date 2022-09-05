@@ -63,7 +63,7 @@ export default function EditPlantForm() {
   return (
     <div>
      <form onSubmit={handleSubmit} className='flex flex-col place-items-center shadow-sm'>
-     <img className='place-self-center rounded-full w-[100px] h-[100px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`}/>
+     <img alt='plant' className='place-self-center rounded-full w-[100px] h-[100px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`}/>
         <div className='flex flex-col w-fit'>
         <label htmlFor='name'>Name:</label>
         <input

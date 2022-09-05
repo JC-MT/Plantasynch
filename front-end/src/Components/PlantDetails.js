@@ -76,7 +76,7 @@ export default function PlantDetails() {
         <img className='place-self-center rounded-full w-[300px] h-[300px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'></img>
         <p className='text-[20px] p-2'>Your <em>{plant.name}</em> was last watered on {plant.last_water}.</p>
         <p>Click below if you watered today</p>
-        <img onClick={handleUpdate} className='place-self-center hover:cursor-pointer hover:w-[60px] hover:h-[60px] hover:box-shadow-2xl button-style m-2 bg-blue-300 rounded-full w-[50px] h-[50px] tablet:w-[60px] tablet:h-[60px] tablet:hover:w-[80px] tablet:hover:h-[80px]'src='https://cdn-icons-png.flaticon.com/512/2514/2514435.png'/>
+        <img alt='water icon' onClick={handleUpdate} className='place-self-center hover:cursor-pointer hover:w-[60px] hover:h-[60px] hover:box-shadow-2xl button-style m-2 bg-blue-300 rounded-full w-[50px] h-[50px] tablet:w-[60px] tablet:h-[60px] tablet:hover:w-[80px] tablet:hover:h-[80px]'src='https://cdn-icons-png.flaticon.com/512/2514/2514435.png'/>
         <p><strong>Category:</strong> {plant.category}</p>
         <p><strong>Ideal Light:</strong> {plant.ideal_light}</p>
         <p><strong>Water Tips:</strong> {plant.ideal_watering}.</p>

@@ -94,7 +94,7 @@ export default function ExploreDetails() {
         <p><strong>Known as: </strong><em>{explore.common ? `${explore.common.join(' & ')}` : ''}</em></p>
         <div onClick={handleSubmit} className='hover:bg-green-300 hover:cursor-pointer button-style m-0 w-fit flex flex-row gap-1 justify-center place-items-center shadow-xl p-1'>
           <p>Add to</p>
-          <img className='place-self-center w-[25px] h-[25px] tablet:w-[40px] tablet:h-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
+          <img alt='plant' className='place-self-center w-[25px] h-[25px] tablet:w-[40px] tablet:h-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
         </div>
         <ToastContainer
           limit={1}

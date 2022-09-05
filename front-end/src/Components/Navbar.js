@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <div className="fixed bottom-0 flex flex-row justify-evenly w-screen h-24 bg-green-200 shadow-lg laptop:laptop-display laptop:h-28">
       <Link to={'/'} className='hidden laptop:navbar-icon'>
-        <img className='place-self-center w-[80px] h-[80px] mb-4' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
+        <img alt='logo' className='place-self-center w-[80px] h-[80px] mb-4' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
         <p className='text-[30px] mb-4'>Plantasynch</p>
       </Link>
       <Link to={'/my-plants'} className={`relative ${location.pathname.startsWith('/my-plants') ? 'text-black' : 'text-gray-300'} ${effect.home && "animate-pulse drop-shadow-2xl"}`} onClick={() => {setEffect({...effect, home: true});
