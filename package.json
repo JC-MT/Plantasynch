@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/JC-MT/Plantasynch#readme",
   "dependencies": {
-    "nodemailer": "^6.7.8"
+    "nodemailer": "^6.7.8",
+    "pg-promise": "^10.12.0"
   }
 }
