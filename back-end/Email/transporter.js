@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const { getPlantsToWater } = require('../Queries/lastWater');
 require('dotenv').config();
 
 const { EMAIL_ADDRESS, EMAIL_PASSWORD } = process.env;
@@ -13,7 +14,6 @@ const transporter = nodemailer.createTransport({
     rejectUnauthorized: false
   }
 });
-
 // Delivering mail with sendMail method
 const sendEmail = async (users) => {
   const info = await users;
@@ -37,6 +37,10 @@ const sendEmail = async (users) => {
     console.log('No reminders need to be sent.');
   }
 };
+
+//HEROKU USE
+sendEmail(getPlantsToWater()),
+
 module.exports = {
   sendEmail
 };

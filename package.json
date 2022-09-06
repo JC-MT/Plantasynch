@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/JC-MT/Plantasynch/issues"
   },
-  "homepage": "https://github.com/JC-MT/Plantasynch#readme"
+  "homepage": "https://github.com/JC-MT/Plantasynch#readme",
+  "dependencies": {
+    "nodemailer": "^6.7.8"
+  }
 }
