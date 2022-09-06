@@ -5,9 +5,9 @@ export default function Welcome(){
         <div className='flex flex-col'>
             <img alt='logo' className='place-self-center w-100px h-[100px] p-1 mt-6 tablet:w-[100px] tablet:h-[100px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
             <h1 className="text-[40px] text-center p-2 tablet:text-[75px]">
-                Welcome to Plantasynch
+                Welcome to Plantasync
             </h1>
-            <p className='indent-8 p-2 text-center tablet:text-[25px]'><em className='underline'>Plantasynch</em> is a full-stack web-app that provides users general plant information and suggested plant care for all types of plants.</p>
+            <p className='indent-8 p-2 text-center tablet:text-[25px]'><em className='underline'>Plantasync</em> is a full-stack web-app that provides users general plant information and suggested plant care for all types of plants.</p>
             <div className='flex flex-col gap-1 place-items-center drop-shadow-sm'>
                 <Link className='button-style hover:bg-green-300' to='/sign-in'>Sign in with email</Link>
                 <Link className='hover:underline' to='/my-plants'>Skip to demo site</Link>
