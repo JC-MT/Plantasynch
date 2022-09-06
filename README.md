@@ -45,13 +45,14 @@
 ## About The Project
 
 ## Welcome Page
-![Welcome Page Screen Shot](../Plantasynch/front-end/public/asset/WelcomePage.png)
+<img width="600" alt="Welcome" src="https://github.com/JC-MT/Plantasynch/blob/main/front-end/public/asset/WelcomePage.png?raw=true">
 
 ## Home Page
-![Home Page Screen Shot](../Plantasynch/front-end/public/asset/HomePage.png)
+<img width="600" alt="Home" src="https://github.com/JC-MT/Plantasynch/blob/main/front-end/public/asset/HomePage.png?raw=true">
 
 ## Explore Page
-![Explore Page Screen Shot](../Plantasynch/front-end/public/asset/ExplorePage.png)
+<img width="600" alt="Explore" src="https://github.com/JC-MT/Plantasynch/blob/main/front-end/public/asset/ExplorePage.png?raw=true">
+
 
 Plantasync is a PERN Full Stack application that performs all CRUD operations. The intended use of Plantasync is to make the plant care process as simple as just adding new plants via the Explore Page or Add Page, editing existing plants in your personal garden, and deleting old plants.
 
