@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import '../App.css'
 
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
@@ -53,6 +54,7 @@ export default function PlantDetails() {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
+    theme: 'dark'
     })
 
   return (
@@ -62,13 +64,14 @@ export default function PlantDetails() {
         </h1>
         <ToastContainer
           limit={1}
-          className={''}
+          className={'text-[#121212]'}
           position="bottom-center"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
           rtl={false}
+          theme
           pauseOnFocusLoss
           draggable
           pauseOnHover

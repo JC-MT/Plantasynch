@@ -31,7 +31,7 @@ export default function ExploreDetails() {
         return res.data.payload
       }).then((res) => {
         setNewPlant({
-          name: document.getElementById('name').textContent,
+          name: res.common[0],
           image: "https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg",
           origin: res.origin,
           category: res.category,
@@ -80,6 +80,7 @@ export default function ExploreDetails() {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
+    theme: 'dark'
     });
 
   return (
@@ -105,6 +106,7 @@ export default function ExploreDetails() {
           closeOnClick
           rtl={false}
           pauseOnFocusLoss
+          theme
           draggable
           pauseOnHover
           />
