@@ -27,7 +27,6 @@ export default function NewPlantForm() {
     axios
       .post(`${API}/plants`, plant)
       .then((res) => {
-        console.log(res)
         setPlant(res.data)
         navigate(`/my-plants`)
       })
@@ -35,12 +34,10 @@ export default function NewPlantForm() {
         console.warn(err)
       })
   }
-
-  console.log(plant)
   return (
     <div>
-      <form onSubmit={handleSubmit} className='flex flex-col place-items-center shadow-sm tablet:gap-2'>
-        <img alt='plant' className='place-self-center w-[250px] h-[150px] tablet:w-[450px] tablet:h-[350px]' src={`https://img.freepik.com/free-vector/hand-drawn-houseplant-collection_23-2148910610.jpg?w=2000`}/>
+      <form onSubmit={handleSubmit} className='flex flex-col place-items-center tablet:gap-2'>
+        <img alt='Need full link for preview' className='rounded-md shadow-md place-self-center w-[250px] h-[150px] tablet:w-[450px] tablet:h-[350px]' src={ plant.image ? plant.image : `https://img.freepik.com/free-vector/hand-drawn-houseplant-collection_23-2148910610.jpg?w=2000`}/>
         <div className='flex flex-col w-fit'>
         <label htmlFor='name'>Name:</label>
         <input
@@ -105,6 +102,40 @@ export default function NewPlantForm() {
           onChange={handleTextChange}
           className='input-style'
         />
+        </div>
+        <div className='flex flex-col w-fit'>
+          <label htmlFor='ideal_light'>Prefered Light:</label>
+          <select 
+            name="ideal_light" 
+            id="ideal_light"
+            onChange={handleTextChange}
+            className='input-style'
+            value={plant.ideal_light}>
+            <option value={plant.ideal_light}>{plant.ideal_light}</option>
+            <option value="Direct Light">Direct Light</option>
+            <option value="Bright Indirect Light">Bright Indirect Light</option>
+            <option value="Medium Light">Medium Light</option>
+            <option value="Low Light">Low Light</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div className='flex flex-col w-fit'>
+          <label htmlFor='ideal_watering'>Water Preference:</label>
+          <select 
+            name="ideal_watering" 
+            id="ideal_watering"
+            onChange={handleTextChange}
+            className='input-style'
+            value={plant.ideal_watering}>
+            <option value={plant.ideal_watering}>{plant.ideal_watering}</option>
+            <option value="Keep moist between watering. Must not be dry between watering.">
+              Keep moist between watering. Must not be dry between watering.</option>
+            <option value="Keep moist between watering. Water when soil is half dry.">
+              Keep moist between watering. Water when soil is half dry.</option>
+            <option value="Water only when the soil is dry. Must be dry between watering.">
+              Water only when the soil is dry. Must be dry between watering.</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
         <div className='flex flex-col w-fit'>
         <label htmlFor='last_water'>Last Time Watered:</label>

@@ -1,12 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState } from 'react';
 
-const API = process.env.REACT_APP_API_URL
-
-export default function Navbar() {
+export default function Navbar({notification}) {
   const location = useLocation();
-  const [notification, setNotification] = useState([])
   const [effect, setEffect] = useState({
     home: false,
     explore: false,
@@ -14,16 +10,6 @@ export default function Navbar() {
     welcome: false
   })
 
-  useEffect(() => {
-    axios
-      .get(`${API}/plants/notification`)
-      .then((res) => {
-        setNotification(res.data.payload)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
   return (
     <div className="fixed bottom-0 flex flex-row justify-evenly w-screen h-24 bg-green-200 shadow-lg laptop:laptop-display laptop:h-28">
       <Link to={'/'} className='hidden laptop:navbar-icon'>
@@ -40,7 +26,7 @@ export default function Navbar() {
           <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
           <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
         </svg>
-        <div className={`${notification[0] ? 'visible' : 'invisible'} inline-flex absolute right-0 top-3 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white dark:border-gray-900`}></div>
+        <div className={`${notification[0] ? 'visible' : 'invisible'} inline-flex absolute right-0 top-3 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white dark:border-gray-900`}>{`${notification.length}`}</div>
         <span className='text-center pr-[4px]'>Home</span>
       </Link>
       <Link to={'/explore'} className={`${location.pathname.startsWith('/explore') ? 'text-black' : 'text-gray-300'} ${effect.explore && "animate-pulse"}`} onClick={() => {setEffect({...effect, explore: true });

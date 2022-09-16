@@ -139,9 +139,9 @@ _For Cron Syntax, please refer to the [Documentation](https://nodecron.com/docs/
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Adding Alert messages to users when they are watering their plants too often. 
-- [ ] Adding User Sign-In. Users should be able to create their own database and be the only once to have access to their plants.
 - [ ] Dynamic Navbar notifications. Users should see the amount of plants that need to be watered on the _Home_ icon. This should update if anything has changed.
+- [ ] Adding Alert messages to users when they are watering their plants too often.
+- [ ] Adding User Sign-In. Users should be able to create their own database and be the only once to have access to their plants.
 
 See the [open issues](https://github.com/JC-MT/Plantasynch/issues) for a full list of proposed features (and known issues).
 

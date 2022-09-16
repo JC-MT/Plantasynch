@@ -4,9 +4,8 @@ import Plant from './Plant'
 
 const API = process.env.REACT_APP_API_URL
 
-export default function HomeIndex() {
+export default function HomeIndex({notification, reFetch}) {
   const [garden, setGarden] = useState([])
-  const [notification, setNotification] = useState([])
 
   useEffect(() => {
     axios
@@ -17,14 +16,9 @@ export default function HomeIndex() {
       .catch((err) => {
         console.log(err)
       })
-    axios
-    .get(`${API}/plants/notification`)
-    .then((res) => {
-      setNotification(res.data.payload)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+
+      reFetch()
+    // eslint-disable-next-line
   }, [])
   
   return (

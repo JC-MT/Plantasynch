@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams} from 'react-router-dom'
 import axios from 'axios'
+import useModel from '../Hooks/useModel'
 const API = process.env.REACT_APP_API_URL
 
 export default function EditPlantForm() {
@@ -39,7 +40,6 @@ export default function EditPlantForm() {
     axios
       .put(`${API}/plants/${id}`, plant)
       .then((res) => {
-        console.log(res)
         setPlant(res.data)
         navigate(`/my-plants`)
       })
@@ -59,10 +59,14 @@ export default function EditPlantForm() {
       });
   };
 
-  console.log(plant)
+  const [model, setModel, modelStructure] = useModel({handleDelete})
+
+  console.log(model)
+  console.log(setModel)
+  console.log(modelStructure)
   return (
     <div>
-     <form onSubmit={handleSubmit} className='flex flex-col place-items-center shadow-sm'>
+     <form className='flex flex-col place-items-center shadow-sm'>
      <img alt='plant' className='place-self-center rounded-full w-[100px] h-[100px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`}/>
         <div className='flex flex-col w-fit'>
         <label htmlFor='name'>Name:</label>
@@ -95,7 +99,8 @@ export default function EditPlantForm() {
             onChange={handleTextChange}
             className='input-style'
             value={plant.category}>
-              <option value="Tropical">Tropical</option>
+            <option value="">Select ⤵</option>
+            <option value="Tropical">Tropical</option>
             <option value="Bromeliad">Bromeliad</option>
             <option value="Fern">Fern</option>
             <option value="Cactus & Succulent">Cactus & Succulent</option>
@@ -130,6 +135,40 @@ export default function EditPlantForm() {
         />
         </div>
         <div className='flex flex-col w-fit'>
+          <label htmlFor='ideal_light'>Prefered Light:</label>
+          <select 
+            name="ideal_light" 
+            id="ideal_light"
+            onChange={handleTextChange}
+            className='input-style'
+            value={plant.ideal_light}>
+            <option value={plant.ideal_light}>{plant.ideal_light}</option>
+            <option value="Direct Light">Direct Light</option>
+            <option value="Bright Indirect Light">Bright Indirect Light</option>
+            <option value="Medium Light">Medium Light</option>
+            <option value="Low Light">Low Light</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div className='flex flex-col w-fit'>
+          <label htmlFor='ideal_watering'>Water Preference:</label>
+          <select 
+            name="ideal_watering" 
+            id="ideal_watering"
+            onChange={handleTextChange}
+            className='input-style'
+            value={plant.ideal_watering}>
+            <option value={plant.ideal_watering}>{plant.ideal_watering}</option>
+            <option value="Keep moist between watering. Must not be dry between watering.">
+              Keep moist between watering. Must not be dry between watering.</option>
+            <option value="Keep moist between watering. Water when soil is half dry.">
+              Keep moist between watering. Water when soil is half dry.</option>
+            <option value="Water only when the soil is dry. Must be dry between watering.">
+              Water only when the soil is dry. Must be dry between watering.</option>
+              <option value="Other">Other</option>
+          </select>
+        </div>
+        <div className='flex flex-col w-fit'>
         <label htmlFor='last_water'>Last Time Watered:</label>
         <input
           id='last_water'
@@ -153,16 +192,21 @@ export default function EditPlantForm() {
           className='input-style'
         />
         </div>
-        <div className='flex flex-row gap-5'>
+      </form>
+      <div className='flex flex-row gap-5 place-content-center shadow-sm'>
         <Link to={`/my-plants`}>
           <button className='button-style'>Back</button>
         </Link>
-        <input type='submit' className='button-style'/>
-        <button className='button-style' onClick={handleDelete}>
+        <button onClick={handleSubmit} className='button-style'>
+          Update
+        </button>
+        <button className='button-style' onClick={() => setModel(true)}>
           Delete
         </button>
         </div>
-      </form>
+      <div>
+        { model ? modelStructure : ''}
+      </div>
     </div>
   )
 }

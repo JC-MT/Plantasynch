@@ -18,7 +18,7 @@
     ;
 
     .button-style {
-        @apply border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 shadow-xl tablet:text-[25px];
+        @apply border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 shadow-xl tablet:text-[25px] cursor-pointer hover:bg-green-300;
     }
 
     .laptop-display {

@@ -26,7 +26,6 @@ export default function ExploreDetails() {
     axios
       .get(`${API}/plants/explore/${id}`)
       .then((res) => {
-        console.log(res)
         setExplore(res.data.payload);
         return res.data.payload
       }).then((res) => {
@@ -76,9 +75,9 @@ export default function ExploreDetails() {
     position: "bottom-center",
     autoClose: 3000,
     hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
     progress: undefined,
     theme: 'dark'
     });
@@ -90,11 +89,11 @@ export default function ExploreDetails() {
         </h1>
         <img className='place-self-center p-2 rounded-full w-[300px] h-[300px] tablet:w-[400px] tablet:h-[400px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='plant'></img>
         <p><strong>Latin name: </strong>{explore.latin}, from the {explore.family} Family</p>
-        <p><strong>Water Tips: </strong>{explore.watering}.</p>
+        <p><strong>Water Tips: </strong>{explore.watering}</p>
         <p ><strong>Ideal Light: </strong>{explore.ideallight}</p>
         <p><strong>Known as: </strong><em>{explore.common ? `${explore.common.join(' & ')}` : ''}</em></p>
         <div onClick={handleSubmit} className='hover:bg-green-300 hover:cursor-pointer button-style m-0 w-fit flex flex-row gap-1 justify-center place-items-center shadow-xl p-1'>
-          <p>Add to</p>
+          <p>Add to Garden</p>
           <img alt='plant' className='place-self-center w-[25px] h-[25px] tablet:w-[40px] tablet:h-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
         </div>
         <ToastContainer
