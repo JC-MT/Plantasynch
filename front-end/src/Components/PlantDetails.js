@@ -54,7 +54,6 @@ export default function PlantDetails() {
     pauseOnHover: false,
     draggable: false,
     progress: undefined,
-    theme: 'dark'
     })
 
   const [model, setModel, modelStructure] = useModel({handleDelete})
@@ -83,7 +82,6 @@ export default function PlantDetails() {
           </button>
         </div>
         <ToastContainer
-        className={'text-black'}
           limit={1}
           />
       <div>
