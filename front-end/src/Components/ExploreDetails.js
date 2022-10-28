@@ -97,7 +97,6 @@ export default function ExploreDetails() {
           <img alt='plant' className='place-self-center w-[25px] h-[25px] tablet:w-[40px] tablet:h-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
         </div>
         <ToastContainer
-        className={'shadow-xl'}
           limit={1}
           />
     </section>

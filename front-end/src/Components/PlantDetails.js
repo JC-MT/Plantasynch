@@ -85,11 +85,10 @@ export default function PlantDetails() {
       <div>
         { model ? modelStructure : ''}
       </div>
-      <div className='border'>
       <ToastContainer
           limit={1}
+          toastStyle={{backgroundColor: 'black'}}
           />
-      </div>
     </section>
   );
 }
