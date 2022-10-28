@@ -9,12 +9,12 @@
 
 </div>
 
-[Plantasync](https://plantasync.netlify.app) is a web-application that provides users with general plant information and suggested plant care for all types of plants. You can easily keep track of your plants suggeted care with Plantasync.
+Plantasync is a web-application that provides users with general plant information and suggested plant care for all types of plants. You can easily keep track of your plants suggeted care with Plantasync.
 
 ## Important Links
 
 - [Deployment API Server](https://plantasynchapi.herokuapp.com)
-- [Deployment Frontend](https://plantasync.netlify.app)
+- Deployment Frontend (link is currently not available)
 - [Trello Board](https://trello.com/b/D5uD8VjO/plantasynch-trello)
 - [ERD](https://miro.com/app/board/uXjVPchihEA=/)
 - [Wireframes](https://wireframe.cc/2U5inf)
@@ -139,7 +139,7 @@ _For Cron Syntax, please refer to the [Documentation](https://nodecron.com/docs/
 <!-- ROADMAP -->
 ## Roadmap
 
-- [&check;] Dynamic Navbar notifications. Users should see the amount of plants that need to be watered on the _Home_ icon. This should update if anything has changed.
+- [x] Dynamic Navbar notifications. Users should see the amount of plants that need to be watered on the _Home_ icon. This should update if anything has changed.
 
 - [ ] Adding Alert messages to users when they are watering their plants too often.
 
