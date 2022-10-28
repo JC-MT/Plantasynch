@@ -79,7 +79,6 @@ export default function ExploreDetails() {
     pauseOnHover: false,
     draggable: false,
     progress: undefined,
-    theme: 'dark'
     });
 
   return (
@@ -98,6 +97,7 @@ export default function ExploreDetails() {
         </div>
         <ToastContainer
           limit={1}
+          toastStyle={{ color: 'white', backgroundColor: 'black'}}
           />
     </section>
   );

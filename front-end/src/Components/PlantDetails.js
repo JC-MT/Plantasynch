@@ -53,9 +53,8 @@ export default function PlantDetails() {
     closeOnClick: false,
     pauseOnHover: false,
     draggable: false,
-    progress: undefined,
-    theme: 'dark'
-    })
+    progress: undefined
+  })
 
   const [model, setModel, modelStructure] = useModel({handleDelete})
 
@@ -87,7 +86,7 @@ export default function PlantDetails() {
       </div>
       <ToastContainer
           limit={1}
-          toastStyle={{backgroundColor: 'black'}}
+          toastStyle={{color: 'white', backgroundColor: 'black'}}
           />
     </section>
   );
