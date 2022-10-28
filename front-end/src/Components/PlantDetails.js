@@ -81,12 +81,13 @@ export default function PlantDetails() {
             Delete
           </button>
         </div>
-        <ToastContainer
-          limit={1}
-          />
       <div>
         { model ? modelStructure : ''}
       </div>
+      <ToastContainer
+        toastClassName={'dark-toast'}
+          limit={1}
+          />
     </section>
   );
 }
