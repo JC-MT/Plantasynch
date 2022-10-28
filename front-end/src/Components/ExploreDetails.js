@@ -97,17 +97,8 @@ export default function ExploreDetails() {
           <img alt='plant' className='place-self-center w-[25px] h-[25px] tablet:w-[40px] tablet:h-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
         </div>
         <ToastContainer
+        className={'bg-black'}
           limit={1}
-          position="bottom-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          theme
-          draggable
-          pauseOnHover
           />
     </section>
   );

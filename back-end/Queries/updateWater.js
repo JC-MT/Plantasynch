@@ -10,7 +10,6 @@ const updateWater = async (id) => {
     month >= 9 ? month + 1 : `0${month + 1}`
   }/${date >= 9 ? date : `0${date}`}`;
 
-  console.log(formatedDay);
   try {
     const updateWater = await db.one(
       'UPDATE garden SET last_water=$1 WHERE id=$2 RETURNING *',

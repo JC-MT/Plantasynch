@@ -61,9 +61,6 @@ export default function EditPlantForm() {
 
   const [model, setModel, modelStructure] = useModel({handleDelete})
 
-  console.log(model)
-  console.log(setModel)
-  console.log(modelStructure)
   return (
     <div>
      <form className='flex flex-col place-items-center shadow-sm'>

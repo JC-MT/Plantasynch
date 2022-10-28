@@ -64,20 +64,6 @@ export default function PlantDetails() {
         <h1 className="text-[50px] text-center mt-[50px] tablet:text-[70px]">
           {plant.name}
         </h1>
-        <ToastContainer
-          limit={1}
-          className={'text-[#121212]'}
-          position="bottom-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          theme
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          />
         <img className='place-self-center rounded-full w-[300px] h-[300px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'></img>
         <p className='text-[20px] p-2'>Your <em>{plant.name}</em> { plant.last_water ? `was last watered on ${plant.last_water}` : `has never been watered. You may want to inspect this plant.`}</p>
         <p>Click below if you watered today</p>
@@ -96,6 +82,10 @@ export default function PlantDetails() {
             Delete
           </button>
         </div>
+        <ToastContainer
+        className={'text-black'}
+          limit={1}
+          />
       <div>
         { model ? modelStructure : ''}
       </div>

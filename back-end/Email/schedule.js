@@ -4,7 +4,8 @@ const { sendEmail } = require('../Email/transporter');
 
 const scheduler = cron.schedule(
   '* * * * *',
-  () => sendEmail(getPlantsToWater()),
+  () => 
+  // sendEmail(getPlantsToWater()),
   console.log('Cron is active every 1 minute interval')
 );
 
