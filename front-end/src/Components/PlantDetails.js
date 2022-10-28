@@ -54,6 +54,7 @@ export default function PlantDetails() {
     pauseOnHover: false,
     draggable: false,
     progress: undefined,
+    theme: 'dark'
     })
 
   const [model, setModel, modelStructure] = useModel({handleDelete})
@@ -84,10 +85,11 @@ export default function PlantDetails() {
       <div>
         { model ? modelStructure : ''}
       </div>
+      <div className='border'>
       <ToastContainer
-        toastClassName={'dark-toast'}
           limit={1}
           />
+      </div>
     </section>
   );
 }
