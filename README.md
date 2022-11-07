@@ -14,7 +14,7 @@ Plantasync is a web-application that provides users with general plant informati
 ## Important Links
 
 - [Deployment API Server](https://plantasynchapi.herokuapp.com)
-- Deployment Frontend (link is currently not available)
+- [Deployment Frontend](https://plantasync.netlify.app/)
 - [Trello Board](https://trello.com/b/D5uD8VjO/plantasynch-trello)
 - [ERD](https://miro.com/app/board/uXjVPchihEA=/)
 - [Wireframes](https://wireframe.cc/2U5inf)
