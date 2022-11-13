@@ -39,7 +39,7 @@ const sendEmail = async (users) => {
 };
 
 //HEROKU USE
-sendEmail(getPlantsToWater()),
+// sendEmail(getPlantsToWater()),
 
 module.exports = {
   sendEmail

@@ -6,7 +6,7 @@
 
     .navbar-icon {
         @apply relative flex items-center 
-        justify-center h-10 w-10 mt-5 laptop:w-fit laptop:flex-none laptop:place-self-center;
+        justify-center h-9 w-9 laptop:w-fit laptop:flex-none laptop:place-self-center;
     }
 
     ;
@@ -32,6 +32,4 @@
     .plant-laptop {
         @apply px-0 pb-2 pl-2
     }
-}
-
-;
+};

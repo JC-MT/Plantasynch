@@ -50,13 +50,14 @@ export default function ExploreDetails() {
   const handleSubmit = (event) => {
     event.preventDefault()
     axios
-      .post(`${API}/plants`, newplant)
+      .post(`${API}/plant`, newplant)
       .then((res) => {
-        notify()
+        notify(true)
         setNewPlant(res.data)
         setTimeout(() => navigate('/my-plants'), 4000)
       })
       .catch((err) => {
+        notify(false)
         console.warn(err)
       })
   }
@@ -71,15 +72,25 @@ export default function ExploreDetails() {
     return explore.common ? explore.common[0] : spinner
   }
 
-  const notify = () => toast.info(`We just added ${newplant.name} to your garden. Congrats! 🪴`, {
-    position: "bottom-center",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: false,
-    pauseOnHover: false,
-    draggable: false,
-    progress: undefined,
-    });
+    const notify = (result) => {
+    
+      return result ? toast.success(`We just added ${newplant.name} to your garden. Congrats! 🪴.`, {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined
+    }) : toast.error(`We were unable to add ${newplant.name} to your garden 🥲 Please check your internet and try again in a few minutes.`, {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined
+    })}
 
   return (
     <section className='flex flex-col gap-1 place-items-center p-2'>
