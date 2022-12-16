@@ -37,8 +37,14 @@ export default function NewPlantForm() {
   return (
     <div>
       <form onSubmit={handleSubmit} className='flex flex-col place-items-center tablet:gap-2'>
-        <img alt='Need full link for preview' className='rounded-md shadow-md place-self-center w-[250px] h-[150px] tablet:w-[450px] tablet:h-[350px]' src={ plant.image ? plant.image : `https://img.freepik.com/free-vector/hand-drawn-houseplant-collection_23-2148910610.jpg?w=2000`}/>
-        <div className='flex flex-col w-fit'>
+      <img alt='Need full link for preview' className='rounded-md shadow-md place-self-center w-[250px] h-[150px] tablet:w-[450px] tablet:h-[350px]' src={ plant.image ? plant.image : `https://img.freepik.com/free-vector/hand-drawn-houseplant-collection_23-2148910610.jpg?w=2000`}/>
+      <div className='flex flex-row gap-1'>
+        <Link to={`/my-plants`}>
+          <button className='button-style w-24 p-1 tablet:w-32 hover:bg-green-300'>Back</button>
+        </Link>
+        <input type='submit' className='button-style w-24 p-1 tablet:w-32 hover:bg-green-300 hover:cursor-pointer'/>
+      </div>
+      <div className='flex flex-col w-fit'>
         <label htmlFor='name'>Name:</label>
         <input
           id='name'
@@ -48,7 +54,7 @@ export default function NewPlantForm() {
           required
           className='input-style'
         />
-        </div>
+      </div>
         <div className='flex flex-col w-fit'>
         <label htmlFor='image'>Image:</label>
         <input
@@ -69,7 +75,7 @@ export default function NewPlantForm() {
             onChange={handleTextChange}
             className='input-style'
             value={plant.category}>
-              <option value="Tropical">Tropical</option>
+            <option value="Tropical">Tropical</option>
             <option value="Bromeliad">Bromeliad</option>
             <option value="Fern">Fern</option>
             <option value="Cactus & Succulent">Cactus & Succulent</option>
@@ -155,17 +161,11 @@ export default function NewPlantForm() {
           id='email'
           type='text'
           name='email'
-          placeholder='ex. email@gmail.com'
+          placeholder='email@gmail.com'
           value={plant.email}
           onChange={handleTextChange}
           className='input-style'
         />
-        </div>
-        <div className='flex flex-row gap-5'>
-        <Link to={`/my-plants`}>
-          <button className='button-style hover:bg-green-300'>Back</button>
-        </Link>
-        <input type='submit' className='button-style hover:bg-green-300 hover:cursor-pointer'/>
         </div>
       </form>
     </div>

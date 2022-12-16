@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -98,13 +98,20 @@ export default function ExploreDetails() {
         {getCommonNames()}
         </h1>
         <img className='place-self-center p-2 rounded-full w-[300px] h-[300px] tablet:w-[400px] tablet:h-[400px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='plant'></img>
-        <p><strong>Latin name: </strong>{explore.latin}, from the {explore.family} Family</p>
-        <p><strong>Water Tips: </strong>{explore.watering}</p>
-        <p ><strong>Ideal Light: </strong>{explore.ideallight}</p>
-        <p><strong>Known as: </strong><em>{explore.common ? `${explore.common.join(' & ')}` : ''}</em></p>
-        <div onClick={handleSubmit} className='hover:bg-green-300 hover:cursor-pointer button-style m-0 w-fit flex flex-row gap-1 justify-center place-items-center shadow-xl p-1'>
+        <div className='flex flex-col gap-1'>
+        <Link to={`/explore`}>
+            <button className='button-style mt-0 m-0 w-40 p-1 tablet:w-56 hover:bg-green-300'>Back</button>
+        </Link>{' '}
+        <div onClick={handleSubmit} className='hover:bg-green-300 hover:cursor-pointer button-style m-0 w-40 tablet:w-56 flex flex-row gap-1 justify-center place-items-center shadow-xl p-1'>
           <p>Add to Garden</p>
           <img alt='plant' className='place-self-center w-[25px] h-[25px] tablet:w-[40px] tablet:h-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
+        </div>
+        </div>
+        <div className='flex flex-col text-left p-2'>
+        <p><strong>Known as: </strong><em>{explore.common ? `${explore.common.join(' & ')}` : ''}</em></p>
+        <p><strong>Latin name: </strong>{explore.latin}, from the {explore.family} Family</p>
+        <p ><strong>Ideal Light: </strong>{explore.ideallight}</p>
+        <p><strong>Water Tips: </strong>{explore.watering}</p> 
         </div>
         <ToastContainer
           limit={1}

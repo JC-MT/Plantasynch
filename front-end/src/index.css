@@ -18,11 +18,11 @@
     ;
 
     .button-style {
-        @apply border border-green-900 bg-green-200 rounded-xl text-[20px] p-1 mt-5 shadow-xl tablet:text-[25px] cursor-pointer hover:bg-green-300;
+        @apply border border-green-900 bg-green-200 rounded-full text-base p-1 mt-5 shadow-xl tablet:text-[25px] cursor-pointer hover:bg-green-300;
     }
 
     .laptop-display {
-        @apply top-0 
+        @apply top-0 gap-8 place-content-around h-32
     }
 
     .grid-view {

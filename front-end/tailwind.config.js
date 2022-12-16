@@ -15,8 +15,8 @@ module.exports = {
       extend: {
         keyframes: {
           wiggle: {
-            "0%, 100%": { transform: "rotate(-3deg)" },
-            "50%": { transform: "rotate(3deg)" }
+            "0%, 100%": { transform: "rotate(-1deg)" },
+            "50%": { transform: "rotate(1deg)" }
           },
           pulse: {
             '0%, 100%': {
@@ -28,7 +28,6 @@ module.exports = {
           }
         },
         animation: {
-          ping: 'ping 250ms ease-in-out',
           wiggle: "wiggle 250ms ease-in-out",
           pulse: 'pulse 250ms ease-in-out'
         }

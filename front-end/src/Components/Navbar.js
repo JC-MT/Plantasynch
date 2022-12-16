@@ -11,10 +11,10 @@ export default function Navbar({notification}) {
   })
 
   return (
-    <div className="fixed bottom-0 flex flex-row place-content-center gap-5 w-screen h-24 bg-green-200 shadow-lg laptop:laptop-display laptop:h-28">
-      <Link to={'/'} className='hidden laptop:navbar-icon'>
-        <img alt='logo' className='place-self-center w-[80px] h-[80px] mb-4' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
-        <p className='text-[30px] mb-4'>Plantasync</p>
+    <div className="fixed bottom-0 flex flex-row place-content-center gap-6 tablet:place-content-evenly w-screen h-24 bg-green-200 shadow-lg laptop:laptop-display laptop:place-self-center">
+      <Link to={'/'} className='hidden p-2 laptop:navbar-icon laptop:basis-1/2 laptop:place-content-start'>
+        <img alt='logo' className='place-self-center w-[80px] h-[80px] hover:animate-[wiggle_2s_ease-in-out_infinite]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
+        <p className='text-[30px]'>Plantasync</p>
       </Link>
       <Link to={'/my-plants'} className={`flex flex-col place-content-center place-items-center relative ${location.pathname.startsWith('/my-plants') ? 'text-black' : 'text-gray-300'} ${effect.home && "animate-pulse drop-shadow-2xl"}`} onClick={() => {setEffect({...effect, home: true});
       }} onAnimationEnd={() => setEffect({...effect, home: false})}>
@@ -26,7 +26,7 @@ export default function Navbar({notification}) {
           <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
           <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
         </svg>
-        <div className={`${notification[0] ? 'visible' : 'invisible'} inline-flex absolute right-0 top-3 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white dark:border-gray-900`}>{`${notification.length}`}</div>
+        <div className={`${notification[0] ? 'visible' : 'invisible'} inline-flex absolute left-5 top-2 laptop:top-6 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white dark:border-gray-900`}>{`${notification.length}`}</div>
         <span className='text-sm'>Home</span>
       </Link>
       <Link to={'/explore'} className={`flex flex-col place-content-center place-items-center ${location.pathname.startsWith('/explore') ? 'text-black' : 'text-gray-300'} ${effect.explore && "animate-pulse"}`} onClick={() => {setEffect({...effect, explore: true });

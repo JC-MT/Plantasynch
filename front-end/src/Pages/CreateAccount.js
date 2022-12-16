@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function CreateAccount(){
     return(
-        <div className='flex flex-col place-items-center'>
-            <img alt='logo' className='place-self-center w-100px h-[100px] p-1 mt-6' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
+        <div className='flex flex-col place-items-center '>
+            <img alt='logo' className='place-self-center w-100px h-[100px] p-1 mt-6 laptop:mt-20' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
             <h1 className="text-[40px] text-center p-2 tablet:text-[75px]">
                 Create an account with your email
             </h1>
@@ -17,7 +17,7 @@ export default function CreateAccount(){
                 <input name='password' className='input-style' type='text' placeholder="Password"/>
             </div>
             <div className='flex flex-col gap-1 place-items-center drop-shadow-sm'>
-                <Link className='button-style mt-1 hover:bg-green-300' to='/my-plants'>Sign in</Link>
+                <Link className='button-style mt-1 text-center tablet:w-32 hover:bg-green-300' to='/my-plants'>Sign in</Link>
                 <Link className='hover:underline' to='/my-plants'>Skip to demo site</Link>
             </div>
         </div>
