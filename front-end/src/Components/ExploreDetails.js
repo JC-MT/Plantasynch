@@ -50,7 +50,7 @@ export default function ExploreDetails() {
   const handleSubmit = (event) => {
     event.preventDefault()
     axios
-      .post(`${API}/plant`, newplant)
+      .post(`${API}/plants`, newplant)
       .then((res) => {
         notify(true)
         setNewPlant(res.data)

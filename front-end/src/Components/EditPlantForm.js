@@ -62,9 +62,8 @@ export default function EditPlantForm() {
   const [model, setModel, modelStructure] = useModel({handleDelete})
 
   return (
-    <div>
-     <form className='flex flex-col place-items-center shadow-sm'>
-     <img alt='plant' className='place-self-center rounded-full w-[100px] h-[100px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`}/>
+    <div className='flex flex-col'>
+    <img alt='plant' className='place-self-center rounded-full w-[100px] h-[100px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`}/>
      <div className='flex flex-row gap-1 place-content-center shadow-sm'>
         <Link to={`/my-plants`}>
           <button className='button-style w-20 tablet:w-32'>Back</button>
@@ -75,7 +74,8 @@ export default function EditPlantForm() {
         <button className='button-style w-20 tablet:w-32' onClick={() => setModel(true)}>
           Delete
         </button>
-        </div>
+      </div>
+     <form className='flex flex-col place-items-center shadow-sm'>
         <div className='flex flex-col w-fit'>
         <label htmlFor='name'>Name:</label>
         <input
