@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ExplorePlant from './ExplorePlant';
+import useSpinner from '../Hooks/useSpinner';
 
 const API = process.env.REACT_APP_API_URL;
 
 export default function ExploreIndex() {
   const [explore, setExplore] = useState([]);
   const [search, setSearch] = useState('');
+  const [spinner, setSpinner, spinnerStructure] = useSpinner()
 
   useEffect(() => {
     axios
@@ -44,6 +46,8 @@ export default function ExploreIndex() {
     return results;
   };
 
+  const explorePlantsContainer = (<div className="p-1 laptop:grid-view">{currentDisplay(explore, search)}</div>)
+
   return (
     <div className="flex flex-col gap-2 tablet:p-8">
       <input
@@ -52,7 +56,7 @@ export default function ExploreIndex() {
         placeholder="Search plant by name"
         onChange={handleTextChange}
       />
-      <div className="p-1 laptop:grid-view">{currentDisplay(explore, search)}</div>
+      {explore[0] ? explorePlantsContainer : spinnerStructure}
     </div>
   );
 }
