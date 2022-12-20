@@ -8,7 +8,7 @@ const API = process.env.REACT_APP_API_URL;
 export default function ExploreIndex() {
   const [explore, setExplore] = useState([]);
   const [search, setSearch] = useState('');
-  const [spinner, setSpinner, spinnerStructure] = useSpinner()
+  const [ spinnerStructure ] = useSpinner()
 
   useEffect(() => {
     axios

@@ -7,7 +7,7 @@ const API = process.env.REACT_APP_API_URL
 
 export default function HomeIndex({notification, reFetch}) {
   const [garden, setGarden] = useState([])
-  const [spinner, setSpinner, spinnerStructure] = useSpinner()
+  const [ spinnerStructure ] = useSpinner()
 
   useEffect(() => {
     axios
