@@ -29,7 +29,7 @@ export default function App() {
           <Route path="/" element={<Welcome />} />
           <Route path="/sign-in" element={<CreateAccount />} />
           <Route path='/my-plants' element={<Home notification={notification} reFetch={() => reFetch()}/>} />
-          <Route path='/my-plants/:id' element={<Show />} />
+          <Route path='/my-plants/:id' element={<Show notification={notification}/>} />
           <Route path='/my-plants/:id/edit' element={<Edit />} />
           <Route path='/explore' element={<Explore />} />
           <Route path='/explore/:id' element={<ExploreDetails />} />

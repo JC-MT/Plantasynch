@@ -5,10 +5,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import useModel from '../Hooks/useModel';
 
 import 'react-toastify/dist/ReactToastify.css';
+import useWaterConfirmation from '../Hooks/useWaterConfirmation';
 const API = process.env.REACT_APP_API_URL;
 
-export default function PlantDetails() {
+export default function PlantDetails({notification}) {
   const [plant, setPlant] = useState([]);
+  const [needsWater, setNeedsWater] = useState(false)
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -17,11 +19,14 @@ export default function PlantDetails() {
       .get(`${API}/plants/${id}`)
       .then((res) => {
         setPlant(res.data.payload);
+      }).then(() => {
+        const getNotify = () => notification.find((plant) => plant.id === Number(id))
+        if(getNotify()){setNeedsWater(true)}
       })
       .catch(() => {
         navigate('/not-found');
       });
-  }, [id, navigate]);
+  }, [id, navigate, notification]);
 
   const handleUpdate = () => {
     axios
@@ -68,6 +73,11 @@ export default function PlantDetails() {
   })}
 
   const [model, setModel, modelStructure] = useModel({handleDelete})
+  const [confirmation, setConfirmation, modelConfirmation] = useWaterConfirmation({handleUpdate, plant})
+
+  function handleWatering(){
+    return needsWater || !plant.last_water ? handleUpdate() : setConfirmation(true)
+  }
 
   return (
     <section className='flex flex-col gap-1 place-items-center'>
@@ -86,12 +96,12 @@ export default function PlantDetails() {
             Delete
           </button>
         </div>
-        <div onClick={handleUpdate} className='hover:animate-[wiggle_3s_ease-in-out_infinite] flex flex-row gap-1 place-self-center place-items-center place-content-center button-style p-0 mt-1 w-[200px] h-[40px] bg-blue-300'>
+        <div onClick={() => handleWatering()} className='hover:animate-[wiggle_3s_ease-in-out_infinite] flex flex-row gap-1 place-self-center place-items-center place-content-center button-style p-0 mt-1 w-[200px] h-[40px] bg-blue-300'>
         <span className='p-1 text-base'>Water Plant</span>
           <img alt='water icon' className='place-self-center p-1 hover:cursor-pointer w-[45px] h-[45px]'src='https://cdn-icons-png.flaticon.com/512/2514/2514435.png'></img>
         </div>
         <div className='flex flex-col text-left p-2'>
-          <p><strong>Last Watered:</strong>{ plant.last_water ? ` ${plant.last_water}` : ` Has never been watered`}</p>
+          <p className={`${!plant.last_water || needsWater ? 'animate-[pulse_1s_ease-in-out_infinite] text-red-400' : ''}`}><strong>Last Watered:</strong>{ plant.last_water ? ` ${plant.last_water}` : ` Has never been watered. Please edit the date or press the water plant button to water today.`}</p>
           <p><strong>Category:</strong> {plant.category}</p>
           <p><strong>Origin:</strong> {plant.origin}</p>
           <p><strong>Ideal Light:</strong> {plant.ideal_light}</p>
@@ -99,6 +109,7 @@ export default function PlantDetails() {
         </div>
       <div>
         { model ? modelStructure : ''}
+        { confirmation ? modelConfirmation : ''}
       </div>
       <ToastContainer
           limit={1}

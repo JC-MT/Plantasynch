@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 
-export default function Plant({id, image, name, category, notification}) {
+export default function Plant({id, image, name, category, notification, last_water}) {
   const getNotify = () => notification.find((plant) => plant.id === id)
 
   return (
     <div className='flex flex-row justify-between hover:bg-slate-200 tablet:px-8 laptop:plant-laptop'>
       <Link className='flex flex-row' to={`/my-plants/${id}`}>
         <img className='rounded-full w-[150px] h-[150px]' src={`${image}`} alt='Plant' />
-        <p className={` ${getNotify() ? 'text-red-400' : 'text-green-400'} flex flex-col p-2`}>Name: {name}
+        <p className={` ${getNotify() || !last_water ? 'text-red-400' : 'text-green-400'} flex flex-col p-2`}>Name: {name}
         <span>Type: {category}</span>
         </p>
       </Link>
