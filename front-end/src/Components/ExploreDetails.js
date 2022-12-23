@@ -69,7 +69,7 @@ export default function ExploreDetails() {
   );
 
   const getCommonNames = () => {
-    return explore.common ? explore.common[0] : spinner
+    return explore.common ? explore.common[0] : ''
   }
 
     const notify = (result) => {

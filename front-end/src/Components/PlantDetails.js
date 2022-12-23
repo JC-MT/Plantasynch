@@ -75,12 +75,17 @@ export default function PlantDetails({notification}) {
   const [model, setModel, modelStructure] = useModel({handleDelete})
   const [confirmation, setConfirmation, modelConfirmation] = useWaterConfirmation({handleUpdate, plant})
 
+  const spinnerStructure = (
+    <div id="spinner" className="flex mt-[25%] justify-center p-5">
+      <div className=" flex w-20 h-20 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+    </div>)
+
   function handleWatering(){
     return needsWater || !plant.last_water ? handleUpdate() : setConfirmation(true)
   }
 
-  return (
-    <section className='flex flex-col gap-1 place-items-center'>
+  const showStructure = 
+  (    <section className='flex flex-col gap-1 place-items-center'>
         <h1 className="text-[50px] text-center mt-[25px] tablet:text-[70px]">
           {plant.name}
         </h1>
@@ -115,6 +120,7 @@ export default function PlantDetails({notification}) {
           limit={1}
           toastStyle={{color: 'white', backgroundColor: 'black'}}
           />
-    </section>
-  );
+    </section>)
+
+  return plant.name ? showStructure : spinnerStructure
 }
