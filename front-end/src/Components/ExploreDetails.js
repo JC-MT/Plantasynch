@@ -62,11 +62,10 @@ export default function ExploreDetails() {
       })
   }
 
-  const spinner = (
-    <div className="flex items-center justify-center">
-      <div className="w-10 h-10 border-b-2 border-gray-900 rounded-full animate-spin mb-6"></div>
-    </div>
-  );
+  const spinnerStructure = (
+    <div id="spinner" className="flex mt-[25%] justify-center p-5">
+      <div className=" flex w-20 h-20 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+    </div>)
 
   const getCommonNames = () => {
     return explore.common ? explore.common[0] : ''
@@ -92,7 +91,7 @@ export default function ExploreDetails() {
       progress: undefined
     })}
 
-  return (
+  const showExploreStructure = (
     <section className='flex flex-col gap-1 place-items-center p-2'>
         <h1 id='name' className="text-[50px] text-center p-2 tablet:text-[70px]">
         {getCommonNames()}
@@ -119,4 +118,5 @@ export default function ExploreDetails() {
           />
     </section>
   );
+  return explore.common ? showExploreStructure : spinnerStructure;
 }
