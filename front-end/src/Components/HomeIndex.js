@@ -1,13 +1,11 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Plant from './Plant'
-import useSpinner from '../Hooks/useSpinner'
 
 const API = process.env.REACT_APP_API_URL
 
 export default function HomeIndex({notification, reFetch}) {
   const [garden, setGarden] = useState([])
-  const [ spinnerStructure ] = useSpinner()
 
   useEffect(() => {
     axios
@@ -22,6 +20,12 @@ export default function HomeIndex({notification, reFetch}) {
       reFetch()
     // eslint-disable-next-line
   }, [])
+
+  const spinnerStructure = (
+  <div id="spinner" className="flex flex-col items-center justify-center p-5">
+    <div className="w-20 h-20 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+    <p className='w-96 italic text-center p-5'>Plantasync data is hosted on a free cloud web-service. This may cause a response delay of up to 30 seconds for the first request.</p>
+  </div>)
 
   const currentDisplay = (    
     <div className='flex flex-col gap-2 p-4 tablet:p-8 tablet:gap-4 laptop:grid-view'>

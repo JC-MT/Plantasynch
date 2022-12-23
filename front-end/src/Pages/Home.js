@@ -6,9 +6,9 @@ export default function Home({notification, reFetch}){
         <div>
             <div className="flex flex-row justify-left p-5">
                 <img alt='logo' className='place-self-center w-[70px] h-[70px] p-1 tablet:w-[100px] tablet:h-[100px] laptop:hidden' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
-                <h1 className="text-[50px] text-center p-[10px] tablet:text-[75px]">
+                <h2 className="text-[45px] text-center tablet:text-[75px]">
                     Your Garden
-                </h1>
+                </h2>
             </div>
             <p className="text-center">Feel free to discover/add new plants from the <em>"Explore"</em> page or simple add new plants from the <em>"Add"</em> page.</p>
             <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">

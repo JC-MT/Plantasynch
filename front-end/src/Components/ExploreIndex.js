@@ -1,14 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ExplorePlant from './ExplorePlant';
-import useSpinner from '../Hooks/useSpinner';
 
 const API = process.env.REACT_APP_API_URL;
 
 export default function ExploreIndex() {
   const [explore, setExplore] = useState([]);
   const [search, setSearch] = useState('');
-  const [ spinnerStructure ] = useSpinner()
 
   useEffect(() => {
     axios
@@ -48,11 +46,17 @@ export default function ExploreIndex() {
 
   const explorePlantsContainer = (<div className="p-1 laptop:grid-view">{currentDisplay(explore, search)}</div>)
 
+  const spinnerStructure = (
+    <div id="spinner" className="flex flex-col items-center justify-center p-5">
+      <div className="w-20 h-20 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+      <p className='w-96 italic text-center p-5'>Plantasync data is hosted on a free cloud web-service. This may cause a response delay of up to 30 seconds for the first request.</p>
+    </div>)
+
   return (
     <div className="flex flex-col gap-2 tablet:p-8">
       <input
         className="flex flex-center sticky top-5 items-center justify-center border-2 outline-green-200 rounded-full p-1 pl-4 shadow-xl tablet:mb-2 tablet:mx-16 laptop:top-32 laptop:mx-24"
-        type="text"
+        type="search"
         placeholder="Search plant by name"
         onChange={handleTextChange}
       />

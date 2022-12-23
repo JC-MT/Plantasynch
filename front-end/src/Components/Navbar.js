@@ -11,7 +11,7 @@ export default function Navbar({notification}) {
   })
 
   return (
-    <div className="fixed bottom-0 flex flex-row place-content-center gap-6 tablet:place-content-evenly w-screen h-24 bg-green-200 shadow-lg laptop:laptop-display laptop:place-self-center">
+    <div className="fixed bottom-0 flex flex-row place-content-evenly  tablet:place-content-evenly w-screen h-24 bg-green-200 shadow-lg laptop:laptop-display laptop:place-self-center">
       <Link to={'/'} className='hidden p-2 laptop:navbar-icon laptop:basis-1/2 laptop:place-content-start'>
         <img alt='logo' className='place-self-center w-[80px] h-[80px] hover:animate-[wiggle_2s_ease-in-out_infinite]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
         <p className='text-[30px]'>Plantasync</p>
