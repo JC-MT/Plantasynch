@@ -148,8 +148,7 @@ export default function NewPlantForm() {
         <input
           id='last_water'
           name='last_water'
-          type='text'
-          placeholder='YYYY/MM/DD'
+          type='date'
           value={plant.last_water}
           onChange={handleTextChange}
           className='input-style'

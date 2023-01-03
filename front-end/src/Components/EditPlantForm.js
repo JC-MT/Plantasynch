@@ -19,6 +19,7 @@ export default function EditPlantForm() {
     is_healthy: false,
     email: "",
   })
+  console.log(plant.last_water)
 
   useEffect(() => {
     axios
@@ -181,8 +182,7 @@ export default function EditPlantForm() {
         <input
           id='last_water'
           name='last_water'
-          type='text'
-          placeholder='YYYY/MM/DD'
+          type='date'
           value={plant.last_water}
           onChange={handleTextChange}
           className='input-style'

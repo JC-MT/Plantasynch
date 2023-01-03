@@ -29,7 +29,7 @@ module.exports = {
         },
         animation: {
           wiggle: "wiggle 250ms ease-in-out",
-          pulse: 'pulse 250ms ease-in-out'
+          pulse: "pulse 250ms ease-in-out"
         }
       }
     },

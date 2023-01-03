@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as dayjs from 'dayjs'
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -106,7 +107,7 @@ export default function PlantDetails({notification}) {
           <img alt='water icon' className='place-self-center p-1 hover:cursor-pointer w-[45px] h-[45px]'src='https://cdn-icons-png.flaticon.com/512/2514/2514435.png'></img>
         </div>
         <div className='flex flex-col text-left p-2'>
-          <p className={`${!plant.last_water || needsWater ? 'animate-[pulse_1s_ease-in-out_infinite] text-red-400' : ''}`}><strong>Last Watered:</strong>{ plant.last_water ? ` ${plant.last_water}` : ` Has never been watered. Please edit the date or press the water plant button to water today.`}</p>
+          <p className={`${!plant.last_water || needsWater ? 'animate-[pulse_1s_ease-in-out_infinite] text-red-400' : ''}`}><strong>Last Watered:</strong>{ plant.last_water ? ` ${dayjs(plant.last_water).format('dddd, MMM D, YYYY')}` : ` Has never been watered. Please edit the date or press the water plant button to water today.`}</p>
           <p><strong>Category:</strong> {plant.category}</p>
           <p><strong>Origin:</strong> {plant.origin}</p>
           <p><strong>Ideal Light:</strong> {plant.ideal_light}</p>
@@ -122,5 +123,6 @@ export default function PlantDetails({notification}) {
           />
     </section>)
 
+  console.log(dayjs(plant.last_water).format('dddd, MMM D, YYYY'))
   return plant.name ? showStructure : spinnerStructure
 }
