@@ -112,11 +112,12 @@ export default function ExploreDetails() {
         <p ><strong>Ideal Light: </strong>{explore.ideallight}</p>
         <p><strong>Water Tips: </strong>{explore.watering}</p> 
         </div>
+        <div className='z-50'>
         <ToastContainer
           limit={1}
           toastStyle={{ color: 'white', backgroundColor: 'black'}}
-          className={'z-50'}
           />
+        </div>
     </section>
   );
   return explore.common ? showExploreStructure : spinnerStructure;

@@ -117,11 +117,12 @@ export default function PlantDetails({notification}) {
         { model ? modelStructure : ''}
         { confirmation ? modelConfirmation : ''}
       </div>
+      <div className='z-50'>
       <ToastContainer
           limit={1}
           toastStyle={{color: 'white', backgroundColor: 'black'}}
-          className={'z-50'}
           />
+      </div>
     </section>)
 
   return plant.name ? showStructure : spinnerStructure
