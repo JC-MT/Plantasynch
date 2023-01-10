@@ -120,9 +120,9 @@ export default function PlantDetails({notification}) {
       <ToastContainer
           limit={1}
           toastStyle={{color: 'white', backgroundColor: 'black'}}
+          className={'z-50'}
           />
     </section>)
 
-  console.log(dayjs(plant.last_water).format('dddd, MMM D, YYYY'))
   return plant.name ? showStructure : spinnerStructure
 }

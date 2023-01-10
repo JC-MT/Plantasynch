@@ -13,5 +13,6 @@ CREATE TABLE garden (
     ideal_watering TEXT,
     last_water TEXT,
     is_healthy BOOLEAN,
-    email TEXT
+    email TEXT,
+    skip_history INTEGER[]
 );

@@ -115,6 +115,7 @@ export default function ExploreDetails() {
         <ToastContainer
           limit={1}
           toastStyle={{ color: 'white', backgroundColor: 'black'}}
+          className={'z-50'}
           />
     </section>
   );
