@@ -60,7 +60,7 @@ export default function ExploreIndex() {
         placeholder="Search plant by name"
         onChange={handleTextChange}
       />
-      {explore[0] ? explorePlantsContainer : spinnerStructure}
+      {explore.length ? explorePlantsContainer : spinnerStructure}
     </div>
   );
 }

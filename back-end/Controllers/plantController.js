@@ -1,8 +1,11 @@
 const express = require('express');
 const plants = express.Router();
 const explorePlants = require('../Models/ExplorePlants')
-const {getPlantsToWater} = require('../Queries/lastWater')
+const { getPlantsToWater } = require('../Queries/lastWater')
 const { updateWater } = require('../Queries/updateWater')
+const { updateSkipHistory } = require('../Queries/updateSkipHistory')
+const { updateSkipCount } = require('../Queries/updateSkipCount')
+const { addAction } = require('../Queries/addAction') 
 
 const {
   getAllPlants,
@@ -45,8 +48,26 @@ plants.get('/notification', async (req, res) => {
 plants.put('/water/:id', async (req, res) => {
   const { id } = req.params;
   const newDay = await updateWater(id);
+  const newSkipInfo = await updateSkipHistory(id)
+  console.log(newSkipInfo)
+  
    if (newDay) {
-     res.status(200).json({ payload: newDay });
+    const addingAction = await addAction('Watered', id);
+    res.status(200).json({ payload: newDay });
+   } else {
+     res.status(404).json({ status: 404, error: 'Date could not be updated' });
+   }
+ });
+
+ //UPDATE WATER
+plants.put('/skip/:id', async (req, res) => {
+  const { id } = req.params;
+  const newSkipCount = await updateSkipCount(req.body, id)
+  
+  console.log('this is the plants skip query',newSkipCount)
+   if (newSkipCount) {
+    const addingAction = await addAction('Skiped', id);
+     res.status(200).json({ payload: newSkipCount });
    } else {
      res.status(404).json({ status: 404, error: 'Date could not be updated' });
    }
@@ -84,6 +105,7 @@ plants.get('/explore/:id', async (req, res) => {
 plants.post('/', async (req, res) => {
   const newPlant = await createPlant(req.body);
   if (newPlant) {
+    const addingAction = await addAction('Created', newPlant.id);
     res.status(200).json({ success: true, payload: newPlant });
   } else {
     res
@@ -97,6 +119,7 @@ plants.put('/:id', async (req, res) => {
   const { id } = req.params;
   const updatedPlant = await updatePlant(id, req.body);
   if (updatedPlant.id) {
+    const addingAction = await addAction('Updated', id);
     res.status(200).json({ success: true, payload: updatedPlant });
   } else {
     res
@@ -123,19 +146,5 @@ plants.delete('/:id', async (req, res) => {
       });
   }
 });
-
-//=======TODO========
-//
-// //CREATE
-// plants.post('/user', async (req, res) => {
-//   const newUser = await createUser(req.body);
-//   if (newUser) {
-//     res.status(200).json({ success: true, payload: newUser });
-//   } else {
-//     res
-//       .status(404)
-//       .json({ success: false, payload: 'User could not be created' });
-//   }
-// });
 
 module.exports = plants;

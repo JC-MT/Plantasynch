@@ -5,32 +5,34 @@ const getPlantsToWater = async () => {
   const plantsToWater = [];
   try {
     const allPlants = await db.any(
-      'SELECT id, last_water, category FROM garden'
+      'SELECT id, last_water, category, skip_count FROM garden'
     );
     for (let plant of allPlants) {
       if (
         readyToBeWatered(plant.last_water) > 5 &&
-        plant.category !== 'Cactus & Succulent'
+        plant.category !== 'Cactus & Succulent' &&
+        plant.skip_count < 1
       ) {
         try {
-          const getPlantsToWater = await db.any(
+          const getPlant = await db.any(
             'SELECT * FROM garden WHERE id=$1',
             plant.id
           );
-          plantsToWater.push(getPlantsToWater[0]);
+          plantsToWater.push(getPlant[0]);
         } catch (error) {
           return error;
         }
       } else if (
         readyToBeWatered(plant.last_water) > 10 &&
-        plant.category === 'Cactus & Succulent'
+        plant.category === 'Cactus & Succulent' &&
+        plant.skip_count < 1
       ) {
         try {
-          const getPlantsToWater = await db.any(
+          const getPlant = await db.any(
             'SELECT * FROM garden WHERE id=$1',
             plant.id
           );
-          plantsToWater.push(getPlantsToWater[0]);
+          plantsToWater.push(getPlant[0]);
         } catch (error) {
           return error;
         }
