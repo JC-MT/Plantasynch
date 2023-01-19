@@ -15,6 +15,9 @@ const transporter = nodemailer.createTransport({
     rejectUnauthorized: false
   }
 });
+
+const plantsToWater = await getPlantsToWater();
+
 // Delivering mail with sendMail method
 const sendEmail = async (users) => {
   const info = await users;
@@ -55,7 +58,7 @@ const sendEmail = async (users) => {
 };
 
 //Render Cron Job USE
-sendEmail(getPlantsToWater()),
+sendEmail(plantsToWater),
 
 module.exports = {
   sendEmail
