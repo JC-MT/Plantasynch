@@ -20,6 +20,7 @@ const sendEmail = async (users) => {
   const info = await users;
   const allUsers = await getAllUsers();
 
+  console.log(allUsers, info, EMAIL_ADDRESS, EMAIL_PASSWORD)
   if (info) {
     for (let user of info) {
       transporter.sendMail(
