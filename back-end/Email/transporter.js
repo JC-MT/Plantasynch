@@ -16,32 +16,30 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const plantsToWater = await getPlantsToWater();
 
 // Delivering mail with sendMail method
-const sendEmail = async (users) => {
-  const info = await users;
-  const allUsers = await getAllUsers();
+const sendEmail = async () => {
+  const plantsToWater = await getPlantsToWater ();
+  // const allUsers = await getAllUsers();
 
-  console.log(allUsers, info, EMAIL_ADDRESS, EMAIL_PASSWORD)
-  if (info) {
-    for (let user of info) {
+  if (plantsToWater) {
+    for (let plant of plantsToWater) {
       transporter.sendMail(
         {
           from: EMAIL_ADDRESS,
-          to: user.email,
+          to: plant.email,
           subject: `Plantasynch Digest- Wed Jan 18`,
-          text: `We recommend you look at your ${user.name}. The last time you watered your plant friend was ${user.last_water}.`,
+          text: `We recommend you look at your ${plant.name}. The last time you watered your plant friend was ${plant.last_water}.`,
           html: `<div style="display:grid;align-content: center;place-items: center"> 
-            <h2 style="margin: 0px;">Hi there! Our database suggests your ${user.name} is ready to be watered.</h2> 
-            <h2><a href="https://plantasync.netlify.app/my-plants/${user.id}" style="margin: 0px;padding: 2px;color: #cefad0;text-decoration-thickness: 2px;text-underline-offset: 5px;">Click here to see more 🪴</a></h2>
+            <h2 style="margin: 0px;">Hi there! Our database suggests your ${plant.name} is ready to be watered.</h2> 
+            <h2><a href="https://plantasync.netlify.app/my-plants/${plant.id}" style="margin: 0px;padding: 2px;color: #cefad0;text-decoration-thickness: 2px;text-underline-offset: 5px;">Click here to see more 🪴</a></h2>
             <div style="display: flex;column-gap: 20px;">
-            <img style="border-radius: 9999px;width:150px;height:150px" src='${user.image}' />
+            <img style="border-radius: 9999px;width:150px;height:150px" src='${plant.image}' />
             <div>
             <h3 style="margin: 0px;padding: 2px;">Plant Details</h3>
-            <h4 style="margin: 0px;padding: 2px;">Name: ${user.name}</h4>
-            <p>Last Watered: ${user.last_water}</p>
-            <p>Category: ${user.category}</p>
+            <h4 style="margin: 0px;padding: 2px;">Name: ${plant.name}</h4>
+            <p>Last Watered: ${plant.last_water}</p>
+            <p>Category: ${plant.category}</p>
             </div>
             </div>
           </div>`
@@ -58,7 +56,7 @@ const sendEmail = async (users) => {
 };
 
 //Render Cron Job USE
-sendEmail(plantsToWater),
+sendEmail();
 
 module.exports = {
   sendEmail
