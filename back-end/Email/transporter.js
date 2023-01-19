@@ -19,8 +19,9 @@ const transporter = nodemailer.createTransport({
 
 // Delivering mail with sendMail method
 const sendEmail = async () => {
-  const plantsToWater = await getPlantsToWater ();
+  const plantsToWater = await getPlantsToWater();
   // const allUsers = await getAllUsers();
+  console.log(plantsToWater)
 
   if (plantsToWater) {
     for (let plant of plantsToWater) {
