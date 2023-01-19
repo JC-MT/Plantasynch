@@ -53,8 +53,8 @@ const sendEmail = async (users) => {
   }
 };
 
-//HEROKU USE
-// sendEmail(getPlantsToWater()),
+//Render Cron Job USE
+sendEmail(getPlantsToWater()),
 
 module.exports = {
   sendEmail
