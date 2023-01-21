@@ -39,9 +39,10 @@ plants.get('/explore', (req, res) => {
 //NAVBAR ICON
 plants.get('/notification', async (req, res) => {
  const notification = await getPlantsToWater();
+ let convertedNotifications = Object.values(notification).flat().map((plant) => {return {id : plant.id}})
 
-  if (notification) {
-    res.status(200).json({ payload: notification });
+  if (convertedNotifications) {
+    res.status(200).json({ payload: convertedNotifications });
   } else {
     res.status(404).json({ status: 404, error: 'Plants could not be found' });
   }
