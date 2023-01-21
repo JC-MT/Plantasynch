@@ -11,6 +11,8 @@ const updateSkipHistory = async (id) => {
     let { skip_count, skip_history } = skipInformation
     const resetSkipCount = 0
 
+    if(!skip_history) skip_history = []
+
     if(skip_count > 0){
         let newHistory = skip_history.filter((skip) => skip > 0);
 

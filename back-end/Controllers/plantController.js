@@ -18,6 +18,7 @@ const {
 //INDEX
 plants.get('/', async (req, res) => {
   const allPlants = await getAllPlants();
+
   if (allPlants) {
     res.status(200).json({ payload: allPlants });
   } else {
@@ -27,6 +28,7 @@ plants.get('/', async (req, res) => {
 
 //EXPLORE INDEX
 plants.get('/explore', (req, res) => {
+
   if (explorePlants) {
     res.status(200).json({ payload: explorePlants });
   } else {
@@ -37,6 +39,7 @@ plants.get('/explore', (req, res) => {
 //NAVBAR ICON
 plants.get('/notification', async (req, res) => {
  const notification = await getPlantsToWater();
+
   if (notification) {
     res.status(200).json({ payload: notification });
   } else {
@@ -49,7 +52,6 @@ plants.put('/water/:id', async (req, res) => {
   const { id } = req.params;
   const newDay = await updateWater(id);
   const newSkipInfo = await updateSkipHistory(id)
-  console.log(newSkipInfo)
   
    if (newDay) {
     const addingAction = await addAction('Watered', id);
@@ -59,12 +61,11 @@ plants.put('/water/:id', async (req, res) => {
    }
  });
 
- //UPDATE WATER
+ //UPDATE SKIP
 plants.put('/skip/:id', async (req, res) => {
   const { id } = req.params;
   const newSkipCount = await updateSkipCount(req.body, id)
   
-  console.log('this is the plants skip query',newSkipCount)
    if (newSkipCount) {
     const addingAction = await addAction('Skiped', id);
      res.status(200).json({ payload: newSkipCount });
@@ -94,6 +95,7 @@ plants.get('/:id', async (req, res) => {
 // EXPLORE SHOW
 plants.get('/explore/:id', async (req, res) => {
   const { id } = req.params;
+
   if (explorePlants[id]) {
     res.status(200).json({ payload: explorePlants[id] });
   } else {
@@ -104,6 +106,7 @@ plants.get('/explore/:id', async (req, res) => {
 //CREATE
 plants.post('/', async (req, res) => {
   const newPlant = await createPlant(req.body);
+
   if (newPlant) {
     const addingAction = await addAction('Created', newPlant.id);
     res.status(200).json({ success: true, payload: newPlant });
@@ -118,6 +121,7 @@ plants.post('/', async (req, res) => {
 plants.put('/:id', async (req, res) => {
   const { id } = req.params;
   const updatedPlant = await updatePlant(id, req.body);
+
   if (updatedPlant.id) {
     const addingAction = await addAction('Updated', id);
     res.status(200).json({ success: true, payload: updatedPlant });
@@ -135,6 +139,7 @@ plants.put('/:id', async (req, res) => {
 plants.delete('/:id', async (req, res) => {
   const { id } = req.params;
   const deletedPlant = await deletePlant(id);
+
   if (deletedPlant.id) {
     res.status(200).json({ success: true, payload: deletedPlant });
   } else {

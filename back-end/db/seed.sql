@@ -2,9 +2,9 @@
 
 INSERT INTO garden (id, name, image, origin, category, ideal_light, ideal_watering, last_water, is_healthy, email, user_id, demo_plant, actions, skip_count, skip_history) VALUES
 ( 1, 'Peace Lily', 'https://res.cloudinary.com/bloomnation/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1538035633/vendor/6762/catalog/product/2/0/20180915055413_file_5b9c9e85274ab.jpg', 'South Africa', 'Tropical', 'Indirect', 'Keep soil moist, water when half dry', '2022/08/25', true, 'jancarlosmatias2@gmail.com', 0, true, '[{ "action": "Watered", "date": "2022/08/25", "action_number": 1}, { "action": "Watered", "date": "2022/08/30", "action_number": 2}]', 0, ARRAY[ 1, 1, 1]),
-( 2, 'Fern', 'https://www.lifeisagarden.co.za/wp-content/uploads/2016/07/IMG_4278-200x300.jpg', 'UK', 'Tropical', 'Indirect', 'Keep soil moist, water when half dry', '2022/08/30', false, 'jancarlosmatias2@gmail.com', 0, true, '[{ "action": "Skiped", "date": "2022/08/25", "action_number": 1}, { "action": "Skiped", "date": "2022/08/30", "action_number": 2}]', 0, ARRAY[ 2, 2, 2]),
+( 2, 'Fern', 'https://www.lifeisagarden.co.za/wp-content/uploads/2016/07/IMG_4278-200x300.jpg', 'UK', 'Tropical', 'Indirect', 'Keep soil moist, water when half dry', '2022/08/30', false, 'jancarlosmatias@gmail.com', 0, true, '[{ "action": "Skiped", "date": "2022/08/25", "action_number": 1}, { "action": "Skiped", "date": "2022/08/30", "action_number": 2}]', 0, ARRAY[ 2, 2, 2]),
 ( 3, 'Snake Plant', 'https://asset.bloomnation.com/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1619841545/vendor/7797/catalog/product/2/0/20200304122155_file_5e5ef4a3ccb60_5e5ef7b7cd5fa_5f46d0e447fec_5f46d0e64c3aa.jpg', 'West Africa', 'Tropical', 'Shaded', 'Keep soil dry, water when dry', '2022/08/25', true, 'jancarlosmatias2@gmail.com', 0, true,'[{ "action": "Updated", "date": "2022/08/25", "action_number": 1}, { "action": "Updated", "date": "2022/08/30", "action_number": 2}]', 0, ARRAY[ 3, 3, 3]);
 
 INSERT INTO platasynch_users (id, name, password, email, joined_date) VALUES 
-(1, 'Jan', 'a', 'plantasynch@gmail.com', NOW()),
-(2, 'Sonnet', 'b', 'plantasynch@gmail.com', NOW());
+(1, 'Jan', 'a', 'jancarlosmatias2@gmail.com', NOW()),
+(2, 'Sonnet', 'b', 'jancarlosmatias@gmail.com', NOW());

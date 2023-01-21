@@ -23,6 +23,7 @@ users.get('/:id', async (req, res) => {
   //CREATE
 users.post('/', async (req, res) => {
     const newUser = await createUser(req.body);
+    
     if (newUser) {
       res.status(200).json({ success: true, payload: newUser });
     } else {

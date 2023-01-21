@@ -1,6 +1,5 @@
 const app = require('./app');
 const scheduler = require('./Email/schedule')
-
 require('dotenv').config();
 
 const { PORT } = process.env;
