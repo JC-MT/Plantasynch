@@ -8,7 +8,7 @@ const updateSkipHistory = async (id) => {
       [id]
     );
 
-    let { skip_count, skip_history } = skipInformation
+    let { skip_count, skip_history } = skipInformation;
     const resetSkipCount = 0
 
     if(!skip_history) skip_history = []

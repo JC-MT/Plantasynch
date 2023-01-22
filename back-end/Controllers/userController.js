@@ -8,7 +8,7 @@ users.get('/:id', async (req, res) => {
     const { id } = req.params;
     const user = await getUser(id);
   
-    if (user[0]) {
+    if (user.length) {
       res.status(200).json({ success: true, payload: user[0] });
     } else {
       res
