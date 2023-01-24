@@ -33,4 +33,12 @@
         @apply px-0 pb-2 pl-2
     }
 
+    @layer base {
+        html {
+          font-family: Proxima Nova, system-ui, sans-serif;
+          scroll-behavior: smooth;
+          background-color: #E7EDDE;
+        }
+      }
+
 };

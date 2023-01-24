@@ -26,10 +26,16 @@ module.exports = {
               opacity: .5
             }
           },
+          'reverse-spin': {
+            from: {
+              transform: 'rotate(360deg)'
+            },
+          }
         },
         animation: {
           wiggle: "wiggle 250ms ease-in-out",
           pulse: "pulse 250ms ease-in-out",
+          'reverse-spin': 'reverse-spin 1s linear infinite',
         }
       }
     },

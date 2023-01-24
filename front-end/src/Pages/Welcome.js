@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Welcome(){
     return(
-        <div className='flex flex-col laptop:mt-26'>
+        <div className='flex flex-col h-screen laptop:mt-26 bg-[#E7EDDE]'>
             <img alt='logo' className='place-self-center w-100px h-[100px] p-1 mt-6 tablet:w-[100px] tablet:h-[100px] laptop:mt-20' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
             <h1 className="text-[40px] text-center p-2 tablet:text-[75px]">
                 Welcome to Plantasync

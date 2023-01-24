@@ -113,10 +113,8 @@ export default function PlantDetails({notification}) {
           <p><strong>Ideal Light:</strong> {plant.ideal_light}</p>
           <p><strong>Water Tips:</strong> {plant.ideal_watering}</p>
         </div>
-      <div>
         { model ? modelStructure : ''}
         { confirmation ? modelConfirmation : ''}
-      </div>
       <div className='z-50'>
       <ToastContainer
           limit={1}
