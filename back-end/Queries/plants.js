@@ -43,7 +43,7 @@ const createPlant = async (plant) => {
       'INSERT INTO garden (name, image, origin, category, ideal_light, ideal_watering, last_water, is_healthy, email, user_id, demo_plant, actions, skip_count, skip_history) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12:json, $13, $14) RETURNING *',
       [
         name,
-        image,
+        image || 'https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg',
         origin,
         category,
         ideal_light,
@@ -83,20 +83,20 @@ const updatePlant = async (id, plant) => {
     skip_count,
     skip_history
   } = plant;
-  console.log(id, plant)
+
   try {
     const updatePlant = await db.one(
       'UPDATE garden SET name=$1, image=$2, origin=$3, category=$4, ideal_light=$5, ideal_watering=$6, last_water=$7, is_healthy=$8, email=$9, user_id=$10, demo_plant=$11, actions=$12:json, skip_count=$13, skip_history=$14 WHERE id=$15 RETURNING *',
       [
         name,
-        image,
+        image || 'https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg',
         origin,
         category,
         ideal_light,
         ideal_watering,
         last_water,
         is_healthy,
-        email,
+        email, 
         user_id,
         demo_plant,
         actions,

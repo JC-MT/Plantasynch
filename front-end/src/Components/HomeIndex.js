@@ -31,7 +31,7 @@ export default function HomeIndex({notification, reFetch}) {
     <div className='flex flex-col gap-2 p-4 pt-0 tablet:p-8 tablet:gap-4 laptop:grid-view'>
       {/* <p className='text-slate-400 text-right'>(Total of {garden.length} plants)</p> */}
       {garden.map((plant, idx) => {
-          return <Plant id={plant.id} name={plant.name} image={plant.image} category={plant.category} key={idx} notification={notification} last_water={plant.last_water}/>
+          return <Plant id={plant.id} name={plant.name} image={plant.image} category={plant.category} key={idx} notification={notification} last_water={plant.last_water} email={plant.email}/>
       })}
     </div>)
   

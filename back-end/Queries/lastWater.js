@@ -5,12 +5,12 @@ const getPlantsToWater = async () => {
   const plantsToWater = {};
 
   function getAverage(skip_history){
-    return skip_history ? Math.round(skip_history.reduce((a, b) => a + b) / skip_history.length) : 0;
+    return skip_history.length ? Math.round(skip_history.reduce((a, b) => a + b) / skip_history.length) : 0;
   }
 
   try {
     const allPlants = await db.any(
-      'SELECT id, last_water, category, skip_count, skip_history FROM garden'
+      'SELECT id, last_water, category, skip_count, skip_history, email FROM garden'
     );
 
     for (let plant of allPlants) {
@@ -27,7 +27,8 @@ const getPlantsToWater = async () => {
             plant.id
           );
 
-          let emailToBeSent = getPlant[0].email
+          let emailToBeSent = getPlant[0].email;
+          if(!emailToBeSent) emailToBeSent = 'plantasynch@gmail.com';
 
           if(plantsToWater[emailToBeSent]){
             plantsToWater[emailToBeSent].push(getPlant[0])
@@ -52,7 +53,7 @@ const getPlantsToWater = async () => {
             plant.id
           );
 
-          let emailToBeSent = getPlant[0].email
+          let emailToBeSent = getPlant[0].email.length || "plantasynch@gmail.com";
 
           if(plantsToWater[emailToBeSent]){
             plantsToWater[emailToBeSent].push(getPlant[0])

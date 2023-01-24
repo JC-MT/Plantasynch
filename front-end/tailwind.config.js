@@ -25,11 +25,11 @@ module.exports = {
             '50%': {
               opacity: .5
             }
-          }
+          },
         },
         animation: {
           wiggle: "wiggle 250ms ease-in-out",
-          pulse: "pulse 250ms ease-in-out"
+          pulse: "pulse 250ms ease-in-out",
         }
       }
     },

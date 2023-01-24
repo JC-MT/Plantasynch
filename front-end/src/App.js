@@ -24,7 +24,7 @@ export default function App() {
       <nav>
         <Navbar notification={notification}/>
       </nav>
-      <main className="mb-24 laptop:mb-24 laptop:mt-24">
+      <main className="laptop:mb-24 laptop:mt-24">
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/sign-in" element={<CreateAccount />} />

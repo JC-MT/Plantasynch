@@ -7,18 +7,23 @@ import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
 
 export default function ExploreDetails() {
-  const [explore, setExplore] = useState({})
+  const [explore, setExplore] = useState({});
   const [newplant, setNewPlant] = useState({
-    name: '',
+    name: "",
     image: "",
-    origin: '',
-    category: '',
+    origin: "",
+    category: "",
     ideal_light: "",
     ideal_watering: "",
     last_water: 0,
     is_healthy: false,
-    email: ''
-  })
+    email: "",
+    user_id: 0,
+    demo_plant: true,
+    actions: [],
+    skip_count: 0,
+    skip_history: []
+  });
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -36,9 +41,14 @@ export default function ExploreDetails() {
           category: res.category,
           ideal_light: res.ideallight,
           ideal_watering: res.watering,
-          last_water: '',
+          last_water: "",
           is_healthy: false,
-          email: ''
+          email: "",
+          user_id: 0,
+          demo_plant: true,
+          actions: [],
+          skip_count: 0,
+          skip_history: []
         })
       })
       .catch((err) => {

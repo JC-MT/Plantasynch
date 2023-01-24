@@ -15,11 +15,15 @@ export default function EditPlantForm() {
     category: "",
     ideal_light: "",
     ideal_watering: "",
-    last_water: '',
+    last_water: "",
     is_healthy: false,
     email: "",
+    user_id: 0,
+    demo_plant: true,
+    actions: [],
+    skip_count: 0,
+    skip_history: []
   })
-  console.log(plant.last_water)
 
   useEffect(() => {
     axios
