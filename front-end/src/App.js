@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar";
 // PAGES
 import Welcome from "./Pages/Welcome";
 import CreateAccount from "./Pages/CreateAccount";
+import LogIn from "./Pages/LogIn"
 import Home from "./Pages/Home";
 import Explore from "./Pages/Explore";
 import Show from "./Pages/Show";
@@ -27,7 +28,8 @@ export default function App() {
       <main className="pt-24 laptop:mb-24 laptop:mt-24">
         <Routes>
           <Route path="/" element={<Welcome />} />
-          <Route path="/sign-in" element={<CreateAccount />} />
+          <Route path="/sign-up" element={<CreateAccount />} />
+          <Route path="/log-in" element={<LogIn/>} />
           <Route path='/my-plants' element={<Home notification={notification} reFetch={() => reFetch()}/>} />
           <Route path='/my-plants/:id' element={<Show notification={notification}/>} />
           <Route path='/my-plants/:id/edit' element={<Edit />} />

@@ -43,11 +43,11 @@ export default function NewPlantForm() {
     <div>
       <form onSubmit={handleSubmit} className='flex flex-col place-items-center tablet:gap-2'>
       <img alt='Need full link for preview' className='rounded-md shadow-md place-self-center w-[250px] h-[150px] tablet:w-[450px] tablet:h-[350px]' src={ plant.image ? plant.image : `https://img.freepik.com/free-vector/hand-drawn-houseplant-collection_23-2148910610.jpg?w=2000`}/>
-      <div className='flex flex-row place-content-center gap-1'>
+      <div className='flex flex-row place-content-center'>
         <Link to={`/my-plants`}>
-          <button className='button-style w-24 tablet:w-32'>Back</button>
+          <button className='button-style w-28 tablet:w-32'>Back</button>
         </Link>
-        <input type='submit' className='button-style w-24 tablet:w-32'/>
+        <input value='Add Plant' type='submit' className='button-style w-26 tablet:w-32'/>
       </div>
       <div className='flex flex-col input-container'>
         <label className='input-label' htmlFor='name'>Name: *</label>

@@ -4,8 +4,8 @@ export default function Explore(){
 
     return(
         <div>
-            <div className="flex flex-row justify-left p-3 pb-0">
-                <h1 className="text-[40px] text-center p-2 tablet:text-[75px]">
+            <div className="flex flex-row p-3 justify-left pb-0">
+                <h1 className="text-[40px] text-center tablet:text-[75px]">
                     Explore Plants
                 </h1>
             </div>

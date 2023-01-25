@@ -103,7 +103,7 @@ export default function PlantDetails({notification}) {
           </button>
         </div>
         <div onClick={() => handleWatering()} 
-        className='hover:animate-[wiggle_3s_ease-in-out_infinite] flex flex-row gap-1 place-self-center place-items-center place-content-center button-style mt-0 w-72 py-1'>
+        className='hover:animate-[wiggle_3s_ease-in-out_infinite] flex flex-row gap-1 place-self-center place-items-center place-content-center button-style mt-0 w-72'>
         <span className='text-lg'>Water Plant</span>
           <img alt='water icon' className='place-self-center hover:cursor-pointer w-[45px] h-[45px]'src='https://cdn-icons-png.flaticon.com/512/2514/2514435.png'></img>
         </div>

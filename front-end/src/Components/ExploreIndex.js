@@ -5,11 +5,9 @@ import ExplorePlant from './ExplorePlant';
 const API = process.env.REACT_APP_API_URL;
 
 export default function ExploreIndex() {
-  const [explore, setExplore] = useState([]);
-  const [search, setSearch] = useState('');
+  const [ explore, setExplore ] = useState([]);
+  const [ search, setSearch ] = useState('');
   const [ animation, setAnimation ] = useState(false);
-  let currentCount = explore.length
-  console.log(currentCount)
 
   useEffect(() => {
     axios
