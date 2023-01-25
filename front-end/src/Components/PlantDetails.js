@@ -87,24 +87,25 @@ export default function PlantDetails({notification}) {
 
   const showStructure = 
   (    <section className='flex flex-col gap-1 place-items-center'>
-        <h1 className="text-[50px] text-center mt-[25px] tablet:text-[70px]">
+        <h1 className="text-[40px] text-center tablet:text-[70px]">
           {plant.name}
         </h1>
         <img className='place-self-center rounded-full w-[300px] h-[300px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'></img>
-        <div className="flex flex-row place-items-center place-content-center gap-1">
+        <div className="flex flex-row place-items-center place-content-center">
           <Link to={`/my-plants`}>
-            <button className='button-style mt-1 w-16 tablet:w-32 hover:bg-green-300'>Back</button>
+            <button className='button-style text-lg w-24 mt-1 tablet:w-32'>Back</button>
           </Link>{' '}
           <Link to={`/my-plants/${id}/edit`}>
-            <button className='button-style mt-1 w-16 tablet:w-32 hover:bg-green-300'>Edit</button>
+            <button className='button-style mt-1 w-24 text-lg tablet:w-32'>Edit</button>
           </Link>{' '}
-          <button className='button-style mt-1 w-16 tablet:w-32 hover:bg-green-300' onClick={() => setModel(true)}>
+          <button className='button-style mt-1 w-24 text-lg tablet:w-32' onClick={() => setModel(true)}>
             Delete
           </button>
         </div>
-        <div onClick={() => handleWatering()} className='hover:animate-[wiggle_3s_ease-in-out_infinite] flex flex-row gap-1 place-self-center place-items-center place-content-center button-style p-0 mt-1 w-[200px] h-[40px] bg-blue-300'>
-        <span className='p-1 text-base'>Water Plant</span>
-          <img alt='water icon' className='place-self-center p-1 hover:cursor-pointer w-[45px] h-[45px]'src='https://cdn-icons-png.flaticon.com/512/2514/2514435.png'></img>
+        <div onClick={() => handleWatering()} 
+        className='hover:animate-[wiggle_3s_ease-in-out_infinite] flex flex-row gap-1 place-self-center place-items-center place-content-center button-style mt-0 w-72 py-1'>
+        <span className='text-lg'>Water Plant</span>
+          <img alt='water icon' className='place-self-center hover:cursor-pointer w-[45px] h-[45px]'src='https://cdn-icons-png.flaticon.com/512/2514/2514435.png'></img>
         </div>
         <div className='flex flex-col text-left p-2'>
           <p className={`${!plant.last_water || needsWater ? 'animate-[pulse_1s_ease-in-out_infinite] text-red-400' : ''}`}><strong>Last Watered:</strong>{ plant.last_water ? ` ${dayjs(plant.last_water).format('dddd, MMM D, YYYY')}` : ` Has never been watered. Please edit the date or press the water plant button to water today.`}</p>

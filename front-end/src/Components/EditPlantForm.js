@@ -68,21 +68,21 @@ export default function EditPlantForm() {
 
   return (
     <div className='flex flex-col'>
-    <img alt='plant' className='place-self-center rounded-full w-[100px] h-[100px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`}/>
-     <div className='flex flex-row gap-1 place-content-center shadow-sm'>
+    <img alt='plant' className='place-self-center rounded-full w-[200px] h-[200px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`}/>
+     <div className='flex flex-row text-lg place-content-center shadow-sm'>
         <Link to={`/my-plants`}>
-          <button className='button-style w-20 tablet:w-32'>Back</button>
+          <button className='button-style w-24 tablet:w-32'>Back</button>
         </Link>
-        <button onClick={handleSubmit} className='button-style w-20 tablet:w-32'>
+        <button onClick={handleSubmit} className='button-style w-24 tablet:w-32'>
           Update
         </button>
-        <button className='button-style w-20 tablet:w-32' onClick={() => setModel(true)}>
+        <button className='button-style w-24 tablet:w-32' onClick={() => setModel(true)}>
           Delete
         </button>
       </div>
      <form className='flex flex-col place-items-center shadow-sm'>
-        <div className='flex flex-col w-fit'>
-        <label htmlFor='name'>Name:</label>
+        <div className='flex flex-col input-container'>
+        <label className='input-label' htmlFor='name'>Name:</label>
         <input
           id='name'
           value={plant.name}
@@ -92,8 +92,8 @@ export default function EditPlantForm() {
           className='input-style'
         />
         </div>
-        <div className='flex flex-col w-fit'>
-        <label htmlFor='image'>Image url:</label>
+        <div className='flex flex-col input-container'>
+        <label className='input-label' htmlFor='image'>Image url:</label>
         <input
           id='image'
           type='text'
@@ -104,8 +104,8 @@ export default function EditPlantForm() {
           className='input-style'
         />
         </div>
-        <div className='flex flex-col w-fit'>
-          <label htmlFor='category'>Category:</label>
+        <div className='flex flex-col input-container'>
+          <label className='input-label' htmlFor='category'>Category:</label>
           <select 
             name="category" 
             id="category"
@@ -136,8 +136,8 @@ export default function EditPlantForm() {
             <option value="Other">Other</option>
           </select>
         </div>
-        <div className='flex flex-col w-fit'>
-        <label htmlFor='origin'>Origin:</label>
+        <div className='flex flex-col input-container'>
+        <label className='input-label' htmlFor='origin'>Origin:</label>
         <input
           id='origin'
           type='text'
@@ -147,8 +147,8 @@ export default function EditPlantForm() {
           className='input-style'
         />
         </div>
-        <div className='flex flex-col w-fit'>
-          <label htmlFor='ideal_light'>Prefered Light:</label>
+        <div className='flex flex-col input-container'>
+          <label className='input-label' htmlFor='ideal_light'>Prefered Light:</label>
           <select 
             name="ideal_light" 
             id="ideal_light"
@@ -163,8 +163,8 @@ export default function EditPlantForm() {
             <option value="Other">Other</option>
           </select>
         </div>
-        <div className='flex flex-col w-fit'>
-          <label htmlFor='ideal_watering'>Water Preference:</label>
+        <div className='flex flex-col input-container'>
+          <label className='input-label' htmlFor='ideal_watering'>Water Preference:</label>
           <select 
             name="ideal_watering" 
             id="ideal_watering"
@@ -181,8 +181,8 @@ export default function EditPlantForm() {
               <option value="Other">Other</option>
           </select>
         </div>
-        <div className='flex flex-col w-fit'>
-        <label htmlFor='last_water'>Last Time Watered:</label>
+        <div className='flex flex-col input-container'>
+        <label className='input-label' htmlFor='last_water'>Last Time Watered:</label>
         <input
           id='last_water'
           name='last_water'
@@ -192,8 +192,8 @@ export default function EditPlantForm() {
           className='input-style'
         />
         </div>
-        <div className='flex flex-col w-fit'>
-        <label htmlFor='email'>Email:</label>
+        <div className='flex flex-col input-container'>
+        <label className='input-label' htmlFor='email'>Email:</label>
         <input
           id='email'
           type='text'

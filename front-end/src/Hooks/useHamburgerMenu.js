@@ -6,14 +6,16 @@ import '../App.css'
 export default function useHamburgerMenu({notification}) {
   const [active, setActive] = useState(false);
 
-  const handleClose = () => {
+  const handleClose = (scrollUp) => {
+
+    if(scrollUp) document.body.scrollTop = document.documentElement.scrollTop = 0 
+
     setActive(false);
   };
   
   const hamburgerMenuStructure = (
-    <div id='hamburgerMenu' className={`${active ? 'open' : 'close'} bg-white h-screen w-screen`}>
+    <div id='hamburgerMenu' className={`${active ? 'open' : 'close'} bg-white fixed top-0 left-0 h-screen w-screen`}>
       <div className='w-screen rounded-md text-left p-8 flex flex-col self-start tracking-wider font-medium uppercase'>
-
         <div className='flex flex-row place-content-between text-slate-800'>
           <Link to={'/my-plants'} onClick={handleClose} class="pt-5 text-xl mb-4 delay-150 hover:text-slate-400 hover:cursor-pointer">
               Home
@@ -23,7 +25,7 @@ export default function useHamburgerMenu({notification}) {
               src={closeIcon}
               width='30px' 
               height='30px'
-              onClick={handleClose}
+              onClick={() => handleClose(false)}
               className={`${active ? 'animate-[spin_1.2s_ease-in-out]' : 'animate-reverse-spin'} place-self-center py-4 hover:text-slate-400 hover:cursor-pointer`}
           />
         </div>    
@@ -36,7 +38,7 @@ export default function useHamburgerMenu({notification}) {
             Add
         </Link>
 
-        <Link to={''} onClick={handleClose} class="text-xl mb-4 w-min delay-150 hover:text-slate-400 hover:cursor-pointer">
+        <Link to={'/'} onClick={handleClose} class="text-xl mb-4 w-min delay-150 hover:text-slate-400 hover:cursor-pointer">
             About
         </Link>
 

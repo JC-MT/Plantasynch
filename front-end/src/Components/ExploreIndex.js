@@ -7,6 +7,9 @@ const API = process.env.REACT_APP_API_URL;
 export default function ExploreIndex() {
   const [explore, setExplore] = useState([]);
   const [search, setSearch] = useState('');
+  const [ animation, setAnimation ] = useState(false);
+  let currentCount = explore.length
+  console.log(currentCount)
 
   useEffect(() => {
     axios
@@ -54,13 +57,29 @@ export default function ExploreIndex() {
 
   return (
     <div className="flex flex-col gap-2 tablet:p-8">
+    <div onMouseLeave={() => {setAnimation(false)}} className='bg-transparent flex flex-row p-5 rounded-full h-[94px] w-[94px] fixed bottom-8 right-2 hover:cursor-n-resize'>
+      <div onClick={() => {
+        setAnimation(true)
+        document.body.scrollTop = document.documentElement.scrollTop = 0
+        setTimeout(() => setAnimation(false), 1000) 
+        }} 
+        onMouseEnter={() => { setAnimation(true) }} class={`bg-[#224722] p-2 w-14 h-14 shadow-md rounded-full flex items-center justify-center hover:cursor-n-resize ${ animation ? 'animate-bounce' : ''}`}>
+        <svg class="rotate-180 w-8 h-8 text-[#D9F8B9]" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </div>
       <input
-        className="flex flex-center sticky top-5 items-center justify-center border-2 outline-green-200 rounded-full p-1 pl-4 shadow-xl tablet:mb-2 tablet:mx-16 laptop:top-32 laptop:mx-24"
+        className="focus:outline-none bg-slate-50 flex flex-center sticky top-28 items-center justify-center border-2 rounded-full px-4 p-2 mx-4 shadow-xl tablet:mb-2 tablet:mx-16 laptop:top-32 laptop:mx-24"
         type="search"
+        id="search"
         placeholder="Search plant by name"
         onChange={handleTextChange}
       />
       {explore.length ? explorePlantsContainer : spinnerStructure}
+        <div className='p-4 text-center tracking-wide uppercase antialiased'>
+          Currently: {currentDisplay(explore, search).length} plant results
+        </div>
     </div>
   );
 }

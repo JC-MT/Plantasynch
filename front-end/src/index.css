@@ -12,13 +12,21 @@
     ;
 
     .input-style {
-        @apply border-2 outline-green-200 rounded-full p-1 pl-4 w-[250px] tablet:w-[400px];
+        @apply border-2 bg-slate-50 focus:outline-none rounded-full py-2 px-4 tablet:w-[400px];
+    }
+
+    .input-container {
+        @apply w-11/12
+    }
+
+    .input-label {
+        @apply px-1
     }
 
     ;
 
     .button-style {
-        @apply border border-green-900 bg-green-200 rounded-full text-base p-1 mt-5 shadow-xl tablet:text-[25px] cursor-pointer hover:bg-green-300;
+        @apply border font-medium hover:bg-[#1E1F1D] bg-[#224722] text-[#D9F8B9] rounded-full text-base py-2 px-6 mt-5 shadow-xl tablet:text-[25px] cursor-pointer;
     }
 
     .laptop-display {
@@ -34,11 +42,17 @@
     }
 
     @layer base {
-        html {
-          font-family: Proxima Nova, system-ui, sans-serif;
-          scroll-behavior: smooth;
-          background-color: #E7EDDE;
+        html
+        {
+            width: 100%;
+            height: 100%;
+            margin: 0%;
+            scroll-behavior: smooth;
+            background-color: #E7EDDE;
+            overflow: contain;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
       }
-
 };
