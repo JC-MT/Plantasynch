@@ -25,7 +25,6 @@ export default function ExploreDetails({loggedInUser}) {
     skip_history: []
   });
 
-  console.log(newplant)
   const { id } = useParams();
   const navigate = useNavigate();
 

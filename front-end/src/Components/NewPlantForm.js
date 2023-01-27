@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 const API = process.env.REACT_APP_API_URL
 
-export default function NewPlantForm() {
+export default function NewPlantForm({loggedInUser}) {
   const navigate = useNavigate()
 
   const [plant, setPlant] = useState({
@@ -15,8 +15,8 @@ export default function NewPlantForm() {
     ideal_watering: "",
     last_water: "",
     is_healthy: false,
-    email: "",
-    user_id: 0,
+    email: loggedInUser.email || "",
+    user_id: loggedInUser.id || 0,
     demo_plant: true,
     actions: [],
     skip_count: 0,
@@ -24,6 +24,9 @@ export default function NewPlantForm() {
   });
 
   const handleTextChange = (event) => {
+    if(loggedInUser.id){
+      plant.demo_plant = false;
+    }
     setPlant({ ...plant, [event.target.id]: event.target.value })
   }
 

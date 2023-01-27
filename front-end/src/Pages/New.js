@@ -1,6 +1,6 @@
 import NewPlantForm from '../Components/NewPlantForm'
 
-export default function New() {
+export default function New({loggedInUser}) {
   return (
     <div>
       <div className="flex flex-row justify-left p-3 laptop:justify-center">
@@ -9,7 +9,7 @@ export default function New() {
         </h2>
       </div>
       <p className=' text-center pb-[10px] text-[15px] tablet:text-[20px]'>*Plantasynch needs at least a name to add your new plant</p>
-      <NewPlantForm />
+      <NewPlantForm loggedInUser={loggedInUser}/>
     </div>
   );
 }
