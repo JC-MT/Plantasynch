@@ -62,27 +62,20 @@ export default function PlantDetails({notification}) {
         <header className='relative flex items-center justify-center'>
           <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'>
           </img>
+          <OptionsButton name={plant.name}/>
           <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[70px]">
               {plant.name}
           </h3>
         </header>
-        {/* <div className="flex flex-row place-items-center place-content-center">
-          <Link to={`/my-plants/${id}/edit`}>
-            <button className='button-style mt-1 w-24 text-lg tablet:w-32'>Edit</button>
-          </Link>{' '}
-          <button className='button-style mt-1 w-24 text-lg tablet:w-32' onClick={() => setModel(true)}>
-            Delete
-          </button>
-        </div> */}
-        <div className='flex mt-1 flex-row h-12 justify-evenly'>
+        <div className='flex mt-1 flex-row h-12 justify-center'>
           <SkipButton name={plant.name} skip_count={plant.skip_count} />
           <WaterButton needsWater={needsWater} last_water={plant.last_water} plant={plant}/>
-          <OptionsButton name={plant.name}/>
         </div>
         <Link to={`/my-plants`}>
             <button className='text-slate-500 hover:text-[#1E1F1D] text-lg w-fit mt-1 tablet:w-32'>⬅︎ Back</button>
         </Link>{' '}
-        <div className='flex flex-col place-self-center text-left p-2'>
+        <h3 className={`p-1 pb-0 h-fit place-self-start text-left font-semibold antialiased tracking-wide uppercase`} >Plant Details</h3>
+        <div className='flex flex-col text-left p-2 pt-0'>
           <p className={`${!plant.last_water || needsWater ? 'animate-[pulse_1s_ease-in-out_infinite] text-red-400' : ''}`}><strong>Last Watered:</strong>{ plant.last_water ? ` ${dayjs(plant.last_water).format('dddd, MMM D, YYYY')}` : ` Has never been watered. Please edit the date or press the water plant button to water today.`}</p>
           <p><strong>Category:</strong> {plant.category}</p>
           <p><strong>Origin:</strong> {plant.origin}</p>

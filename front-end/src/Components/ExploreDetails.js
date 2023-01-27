@@ -108,10 +108,13 @@ export default function ExploreDetails({loggedInUser}) {
 
   const showExploreStructure = (
     <section className='flex flex-col gap-1 place-items-center p-2'>
-        <h1 id='name' className="text-[50px] text-center tablet:text-[70px]">
-        {getCommonNames()}
-        </h1>
-        <img className='place-self-center rounded-full w-[300px] h-[300px] tablet:w-[400px] tablet:h-[400px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='plant'></img>
+        <header className='relative flex items-center justify-center'>
+          <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='plant'>
+          </img>
+          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[70px]">
+              {getCommonNames()}
+          </h3>
+        </header>
         <div className='flex flex-row gap-1 p-2'>
         <Link to={`/explore`}>
             <button className='button-style mt-0 m-0 w-40 tablet:w-56'>Back to List</button>
@@ -121,7 +124,8 @@ export default function ExploreDetails({loggedInUser}) {
           <img alt='plant' className='place-self-center w-[25px] h-[25px] tablet:w-[40px] tablet:h-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
         </div>
         </div>
-        <div className='flex flex-col text-left p-2'>
+        <h3 className={`p-1 pb-0 h-fit place-self-start text-left font-semibold antialiased tracking-wide uppercase`} >Plant Details</h3>
+        <div className='flex flex-col text-left p-2 pt-0'>
         <p><strong>Known as: </strong><em>{explore.common ? `${explore.common.join(' & ')}` : ''}</em></p>
         <p><strong>Latin name: </strong>{explore.latin}, from the {explore.family} Family</p>
         <p ><strong>Ideal Light: </strong>{explore.ideallight}</p>

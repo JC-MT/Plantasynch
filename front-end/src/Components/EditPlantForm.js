@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams} from 'react-router-dom'
 import axios from 'axios'
 import useModel from '../Hooks/useModel'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL
 
 export default function EditPlantForm() {
@@ -40,16 +42,37 @@ export default function EditPlantForm() {
     setPlant({ ...plant, [event.target.id]: event.target.value })
   }
 
+  const notify = (result) => {
+    
+    return result ? toast.success(`Your plant was succesfully updated. Happy Growing 🪴`, {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined
+  }) : toast.error(`We were unable to edit your plant 🥲 Please check your internet and try again in a few minutes.`, {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined
+  })}
+
   const handleSubmit = (event) => {
     event.preventDefault()
     axios
       .put(`${API}/plants/${id}`, plant)
       .then((res) => {
-        setPlant(res.data)
-        navigate(`/my-plants`)
+        notify(true)
+        setTimeout(() => navigate('/my-plants'), 4000)
       })
       .catch((err) => {
         console.warn(err)
+        notify(false)
       })
   };
 
@@ -68,15 +91,24 @@ export default function EditPlantForm() {
 
   return (
     <div className='flex flex-col'>
-    <img alt='plant' className='place-self-center rounded-full w-[200px] h-[200px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`}/>
+        <header className='relative flex items-center justify-center'>
+          <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'>
+          </img>
+          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[70px]">
+              {plant.name}
+          </h3>
+        </header>
+      <div className='p-2 text-lg'>
+        <p>When done, press Update</p>
+      </div>
      <div className='flex flex-row text-lg place-content-center shadow-sm'>
         <Link to={`/my-plants`}>
-          <button className='button-style w-24 tablet:w-32'>Back</button>
+          <button className='button-style m-0 w-28 tablet:w-32'>Back</button>
         </Link>
-        <button onClick={handleSubmit} className='button-style w-24 tablet:w-32'>
+        <button onClick={handleSubmit} className='m-0 button-style w-28 tablet:w-32'>
           Update
         </button>
-        <button className='button-style w-24 tablet:w-32' onClick={() => setModel(true)}>
+        <button className='mt-0 button-style w-28 tablet:w-32' onClick={() => setModel(true)}>
           Delete
         </button>
       </div>
@@ -208,6 +240,12 @@ export default function EditPlantForm() {
       <div>
         { model ? modelStructure : ''}
       </div>
+      <div className='z-50'>
+                <ToastContainer
+                    limit={1}
+                    toastStyle={{color: 'white', backgroundColor: 'black'}}
+                    />
+            </div>
     </div>
   )
 }

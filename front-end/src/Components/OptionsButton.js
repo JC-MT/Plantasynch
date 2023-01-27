@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import useModel from '../Hooks/useModel';
@@ -10,6 +11,7 @@ const API = process.env.REACT_APP_API_URL;
 export default function OptionsButton({name}){  
     const { id } = useParams();
     const navigate = useNavigate();
+    const [ openOptions, setOpenOptions] = useState(false)
 
     const handleDelete = () => {
         axios
@@ -47,18 +49,24 @@ export default function OptionsButton({name}){
     const [model, setModel, modelStructure] = useModel({handleDelete})
 
     return(
-        <div className={`flex place-content-center aling-content-center`} >
-            <img src={moreOptions} className={`hover:bg-[#224722] hover:border-[#D9F8B9] cursor-pointer place-self-center border-[#224722] border-2 mt-0 w-[35px] h-[40px] rounded-full text-lg tablet:w-32`} onClick={() => setModel(true)} />
-            <div className='z-50'>
+      <div className={`absolute right-0 flex place-self-start place-items-center flex-col pt-1 pr-0`}>
+        <div className='px-1 place-self-end'>
+            <img src={moreOptions} className={`${openOptions ? 'bg-[#224722]' : ''} right-0 rotate-90 hover:border-[#D9F8B9] cursor-pointer align-self-center place-self-center border-slate-800 border-2 m-0 w-[40px] h-[40px] rounded-full text-lg tablet:w-32`} 
+            onClick={() => setOpenOptions((openOptions) => setOpenOptions(!openOptions))} />
+        </div>
+          <div className={`w-32 ${openOptions ? '' : 'hidden'}`}>
+            <div className='flex flex-col text-center text-[#D9F8B9] text-lg'>
+              <Link className={'p-1 mb-[2px] bg-[#224722] border-2 border-black rounded-full'} to={`/my-plants/${id}/edit`}>Edit</Link>
+              <button onClick={() => setModel(true)}className='p-1 bg-[#224722] border-2 border-black rounded-full text-center'>Delete</button>
+            </div>
+          </div>
+          <div className='z-50'>
                 <ToastContainer
                     limit={1}
                     toastStyle={{color: 'white', backgroundColor: 'black'}}
                     />
             </div>
-            <Link to={`/my-plants/${id}/edit`}>
-            <button className=''></button>
-          </Link>{' '}
             { model ? modelStructure : ''}
-        </div>
+      </div>
     )
 }

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL
 
 export default function NewPlantForm({loggedInUser}) {
@@ -30,16 +32,37 @@ export default function NewPlantForm({loggedInUser}) {
     setPlant({ ...plant, [event.target.id]: event.target.value })
   }
 
+  const notify = (result) => {
+    
+    return result ? toast.success(`Your plant was succesfully added. Happy Growing 🪴`, {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined
+  }) : toast.error(`We were unable to add your new plant 🥲 Please check your internet and try again in a few minutes.`, {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined
+  })}
+
   const handleSubmit = (event) => {
     event.preventDefault()
     axios
       .post(`${API}/plants`, plant)
       .then((res) => {
-        setPlant(res.data)
-        navigate(`/my-plants`)
+        notify(true)
+        setTimeout(() => navigate('/my-plants'), 4000)
       })
       .catch((err) => {
         console.warn(err)
+        notify(false)
       })
   }
   return (
@@ -175,6 +198,12 @@ export default function NewPlantForm({loggedInUser}) {
         />
         </div>
       </form>
+      <div className='z-50'>
+                <ToastContainer
+                    limit={1}
+                    toastStyle={{color: 'white', backgroundColor: 'black'}}
+                    />
+            </div>
     </div>
   )
 }
