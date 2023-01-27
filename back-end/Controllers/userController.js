@@ -1,7 +1,27 @@
 const express = require('express');
 const users = express.Router();
 
-const { getUser, createUser} = require('../Queries/users')
+const { 
+  getAllUsers,
+  getUser, 
+  createUser
+} = require('../Queries/users')
+
+// INDEX
+users.get('/', async (req, res) => {
+  const allUsers = await getAllUsers();
+
+  if (allUsers.length) {
+    res.status(200).json({ success: true, payload: allUsers });
+  } else {
+    res
+      .status(404)
+      .json({
+        success: false,
+        payload: `User with id:'${id}' could not be found`
+      });
+  }
+});
 
 // SHOW
 users.get('/:id', async (req, res) => {

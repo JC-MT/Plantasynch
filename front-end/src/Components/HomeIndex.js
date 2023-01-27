@@ -1,11 +1,23 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Plant from './Plant';
+import emptyPot from '../icons/emptyPot.png'
 
 const API = process.env.REACT_APP_API_URL;
 
-export default function HomeIndex({notification, reFetch}) {
+export default function HomeIndex({loggedInUser, notification, reFetch}) {
   const [garden, setGarden] = useState([])
+
+  function filteredByLoggedInUser(garden, loggedInUser){
+
+    if(loggedInUser.id){
+
+      return garden.filter((plant) => plant.user_id === loggedInUser.id && plant.demo_plant === false);
+    } else {
+
+      return garden.filter((plant) => plant.demo_plant === true);
+    }
+  }
 
   useEffect(() => {
     axios
@@ -29,10 +41,14 @@ export default function HomeIndex({notification, reFetch}) {
 
   const currentDisplay = (    
     <div className='flex flex-col gap-2 p-4 pt-0 tablet:p-8 tablet:gap-4 laptop:grid-view'>
-      {garden.map((plant, idx) => {
+      <div className={`flex-col place-items-center p-3 ${filteredByLoggedInUser(garden, loggedInUser).length ? 'hidden' : 'flex'}`}>
+        <img width='100px' height='100px' className={`rounded-xl relative`} src={emptyPot} />
+        <h3 className='text-xl p-2'>{`It's empty :(`}</h3>
+      </div>
+      {filteredByLoggedInUser(garden, loggedInUser).map((plant, idx) => {
           return <Plant id={plant.id} name={plant.name} image={plant.image} category={plant.category} key={idx} notification={notification} last_water={plant.last_water} email={plant.email}/>
       })}
     </div>)
   
-  return garden.length ? currentDisplay : spinnerStructure;
+  return filteredByLoggedInUser(garden, loggedInUser).length ? currentDisplay : garden.length ? currentDisplay : spinnerStructure;
 }

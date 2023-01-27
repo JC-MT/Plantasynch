@@ -2,30 +2,39 @@ import axios from 'axios';
 import * as dayjs from 'dayjs'
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 import useModel from '../Hooks/useModel';
 import SkipButton from "./SkipButton"
+import PlantHistory from "./PlantHistory"
+import OptionsButton from './OptionsButton';
 
-import 'react-toastify/dist/ReactToastify.css';
 import WaterButton from './WaterButton';
 const API = process.env.REACT_APP_API_URL;
 
 export default function PlantDetails({notification}) {
+  const { id } = useParams();
+
   const [plant, setPlant] = useState([]);
   const [needsWater, setNeedsWater] = useState(false)
-  const { id } = useParams();
   const navigate = useNavigate();
+
+  function getNeedsWater(notification){
+    let foundInNotifications = notification.find((plant) => plant.id === Number(id))
+
+    if(foundInNotifications){
+      setNeedsWater(true)
+    }
+  }
 
   useEffect(() => {
     axios
       .get(`${API}/plants/${id}`)
       .then((res) => {
         setPlant(res.data.payload);
-      }).then(() => {
-        const getNotify = () => notification.find((plant) => plant.id === Number(id))
-        if(getNotify()){setNeedsWater(true)}
       })
-      .catch(() => {
+      .then(() => {
+        getNeedsWater(notification)
+      })
+      .catch((err) => {
         navigate('/not-found');
       });
   }, [id, navigate, notification]);
@@ -49,27 +58,31 @@ export default function PlantDetails({notification}) {
     </div>)
 
   const showStructure = 
-  (    <section className='flex flex-col gap-1 place-items-center'>
-        <h1 className="text-[40px] text-center tablet:text-[70px]">
-          {plant.name}
-        </h1>
-        <img className='place-self-center rounded-full w-[300px] h-[300px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'></img>
-        <div className="flex flex-row place-items-center place-content-center">
-          <Link to={`/my-plants`}>
-            <button className='button-style text-lg w-24 mt-1 tablet:w-32'>Back</button>
-          </Link>{' '}
+  (    <section className='flex flex-col gap-1'>
+        <header className='relative flex items-center justify-center'>
+          <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'>
+          </img>
+          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[70px]">
+              {plant.name}
+          </h3>
+        </header>
+        {/* <div className="flex flex-row place-items-center place-content-center">
           <Link to={`/my-plants/${id}/edit`}>
             <button className='button-style mt-1 w-24 text-lg tablet:w-32'>Edit</button>
           </Link>{' '}
           <button className='button-style mt-1 w-24 text-lg tablet:w-32' onClick={() => setModel(true)}>
             Delete
           </button>
-        </div>
-        <div className='flex flex-row place-content-center h-12'>
-          <SkipButton/>
+        </div> */}
+        <div className='flex mt-1 flex-row h-12 justify-evenly'>
+          <SkipButton name={plant.name} skip_count={plant.skip_count} />
           <WaterButton needsWater={needsWater} last_water={plant.last_water} plant={plant}/>
+          <OptionsButton name={plant.name}/>
         </div>
-        <div className='flex flex-col text-left p-2'>
+        <Link to={`/my-plants`}>
+            <button className='text-slate-500 hover:text-[#1E1F1D] text-lg w-fit mt-1 tablet:w-32'>⬅︎ Back</button>
+        </Link>{' '}
+        <div className='flex flex-col place-self-center text-left p-2'>
           <p className={`${!plant.last_water || needsWater ? 'animate-[pulse_1s_ease-in-out_infinite] text-red-400' : ''}`}><strong>Last Watered:</strong>{ plant.last_water ? ` ${dayjs(plant.last_water).format('dddd, MMM D, YYYY')}` : ` Has never been watered. Please edit the date or press the water plant button to water today.`}</p>
           <p><strong>Category:</strong> {plant.category}</p>
           <p><strong>Origin:</strong> {plant.origin}</p>
@@ -77,6 +90,7 @@ export default function PlantDetails({notification}) {
           <p><strong>Water Tips:</strong> {plant.ideal_watering}</p>
         </div>
         { model ? modelStructure : ''}
+        <PlantHistory actions={plant.actions}/>
     </section>)
 
   return plant.name ? showStructure : spinnerStructure

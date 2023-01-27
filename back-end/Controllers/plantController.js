@@ -67,8 +67,9 @@ plants.put('/skip/:id', async (req, res) => {
   const { id } = req.params;
   const newSkipCount = await updateSkipCount(req.body, id)
   
+  console.log(newSkipCount)
    if (newSkipCount) {
-    const addingAction = await addAction('Skiped', id);
+    const addingAction = await addAction('Skipped', id);
      res.status(200).json({ payload: newSkipCount });
    } else {
      res.status(404).json({ status: 404, error: 'Date could not be updated' });

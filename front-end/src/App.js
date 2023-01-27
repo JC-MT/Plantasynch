@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom"; 
+import { useState } from "react";
 
 // COMPONENTS
 import Navbar from "./Components/Navbar";
@@ -19,7 +20,9 @@ import useNotifications from "./Hooks/useNotifications";
 
 export default function App() {
   const [notification, reFetch] = useNotifications([])
+  const [ loggedInUser, setLoggedInUser ] = useState({})
 
+  console.log(loggedInUser)
   return (
     <div>
       <nav>
@@ -27,15 +30,15 @@ export default function App() {
       </nav>
       <main className="pt-24 laptop:mb-24 laptop:mt-24">
         <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/sign-up" element={<CreateAccount />} />
-          <Route path="/log-in" element={<LogIn/>} />
-          <Route path='/my-plants' element={<Home notification={notification} reFetch={() => reFetch()}/>} />
+          <Route path="/" element={<Welcome loggedInUser={loggedInUser}/>} />
+          <Route path="/sign-up" element={<CreateAccount setLoggedInUser={setLoggedInUser} />} />
+          <Route path="/log-in" element={<LogIn setLoggedInUser={setLoggedInUser} />} />
+          <Route path='/my-plants' element={<Home loggedInUser={loggedInUser} notification={notification} reFetch={() => reFetch() }/>} />
           <Route path='/my-plants/:id' element={<Show notification={notification}/>} />
           <Route path='/my-plants/:id/edit' element={<Edit />} />
           <Route path='/explore' element={<Explore />} />
-          <Route path='/explore/:id' element={<ExploreDetails />} />
-          <Route path='/new' element={<New />} />
+          <Route path='/explore/:id' element={<ExploreDetails loggedInUser={loggedInUser}/>} />
+          <Route path='/new' element={<New loggedInUser={loggedInUser}/>} />
         </Routes>
       </main>
     </div>

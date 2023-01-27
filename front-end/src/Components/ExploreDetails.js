@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
 
-export default function ExploreDetails() {
+export default function ExploreDetails({loggedInUser}) {
   const [explore, setExplore] = useState({});
   const [newplant, setNewPlant] = useState({
     name: "",
@@ -24,6 +24,8 @@ export default function ExploreDetails() {
     skip_count: 0,
     skip_history: []
   });
+
+  console.log(newplant)
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -34,6 +36,10 @@ export default function ExploreDetails() {
         setExplore(res.data.payload);
         return res.data.payload
       }).then((res) => {
+        let demoUser = true;
+        if(loggedInUser.id){
+          demoUser = false
+        }
         setNewPlant({
           name: res.common[0],
           image: "https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg",
@@ -43,9 +49,9 @@ export default function ExploreDetails() {
           ideal_watering: res.watering,
           last_water: "",
           is_healthy: false,
-          email: "",
-          user_id: 0,
-          demo_plant: true,
+          email: loggedInUser.email || "",
+          user_id: loggedInUser.id || 0,
+          demo_plant: demoUser,
           actions: [],
           skip_count: 0,
           skip_history: []
@@ -109,7 +115,7 @@ export default function ExploreDetails() {
         <img className='place-self-center rounded-full w-[300px] h-[300px] tablet:w-[400px] tablet:h-[400px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='plant'></img>
         <div className='flex flex-row gap-1 p-2'>
         <Link to={`/explore`}>
-            <button className='button-style mt-0 m-0 w-40 tablet:w-56'>Back</button>
+            <button className='button-style mt-0 m-0 w-40 tablet:w-56'>Back to List</button>
         </Link>{' '}
         <div onClick={handleSubmit} className='hover:cursor-pointer button-style m-0 w-40 tablet:w-56 flex flex-row gap-1 justify-center place-items-center shadow-xl p-1'>
           <p>Add to Garden</p>

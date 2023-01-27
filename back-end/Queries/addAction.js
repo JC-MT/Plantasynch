@@ -1,6 +1,8 @@
 const db = require('../db/dbConfig');
+const dayjs = require('dayjs')
 
 const addAction = async (action, id) => {
+    let now = dayjs().format('YYYY/MM/DD')
 
     try {
         const previousActions = await db.one(
@@ -9,7 +11,7 @@ const addAction = async (action, id) => {
         );
 
         let actions = previousActions.actions || [];
-        const newAction = { date: "2023/01/17", action: action, action_number: actions.length + 1}
+        const newAction = { date: now, action: action, action_number: actions.length + 1}
         actions.push(newAction)
     
         if(actions.includes(newAction)){

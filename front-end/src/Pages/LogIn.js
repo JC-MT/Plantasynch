@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import useModel from '../Hooks/useModel';
@@ -7,28 +7,72 @@ import useModel from '../Hooks/useModel';
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
 
-export default function LogIn(){
-    const [user, setUser] = useState({
+export default function LogIn( {setLoggedInUser} ){
+    const [userCredentials, setUserCredentials] = useState({
         name: '',
         password: '',
     });
-
+    const [ allUsers, setAllUser] = useState([])
     const navigate = useNavigate();
 
     const handleTextChange = (event) => {
-        setUser({ ...user, [event.target.name]: event.target.value })
+        setUserCredentials({ ...userCredentials, [event.target.name]: event.target.value })
       }
     
+    useEffect(() => {
+        axios
+        .get(`${API}/user`)
+        .then((res) => {
+            setAllUser(res.data.payload);
+        })
+        .catch((err) => {
+            console.warn(err)
+        });  
+    // eslint-disable-next-line
+    }, [])
+
+    const notify = (result, name) => {
+    
+        return result ? toast.success(`You are logged in, ${name}. Happy Growing 🪴`, {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined
+      }) : toast.error(`We were unable to log you in 🥲 Please check your internet or change your credentials to match our database.`, {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined
+      })}
+
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios
-        .post(`${API}/user`)
-        .then((res) => {
-        setUser(res.data.payload);
-        })
-        .catch(() => {
-        navigate('/notfound');
-        });
+        const foundUser = allUsers.filter((user) => user.name === userCredentials.name && user.password === userCredentials.password)
+
+        if(foundUser.length){
+            axios
+            .get(`${API}/user/${foundUser[0].id}`)
+            .then((res) => {
+                notify(true, res.data.payload.name)
+                setTimeout(() => { navigate('/my-plants') }, 4000)
+                setUserCredentials({name: '', password: ''})
+                return res.data.payload
+            }).then((res) => {
+                setLoggedInUser(res)
+            })
+            .catch((err) => {
+                console.warn(err)
+                notify(false)
+            });
+        } else {
+            notify(false)
+        }
     }
 
     return(
@@ -41,11 +85,11 @@ export default function LogIn(){
                 <div className='flex flex-col place-items-center'>
                     <div className='flex flex-col input-container'>
                         <label className='input-label' htmlFor='name'>User Name</label>
-                        <input onChange={handleTextChange} required name='name' className='input-style' type='text' placeholder="Your username"/>
+                        <input onChange={handleTextChange} value={userCredentials.name} required name='name' className='input-style' type='text' placeholder="Your username"/>
                     </div>
                     <div className='flex flex-col input-container'>
                         <label className='input-label' htmlFor='password'>Password</label>
-                        <input onChange={handleTextChange} required name='password' className='input-style' type='text' placeholder="Your password"/>
+                        <input onChange={handleTextChange} value={userCredentials.password} required name='password' className='input-style' type='text' placeholder="Your password"/>
                     </div>
                 </div>
                 <div className='p-2 flex flex-col place-items-center gap-1 drop-shadow-sm'>
@@ -53,6 +97,12 @@ export default function LogIn(){
                 <Link className='hover:underline' to='/my-plants'>Skip to demo site</Link>
                 </div>
             </form>
+            <div className='z-50'>
+            <ToastContainer
+                limit={1}
+                toastStyle={{color: 'white', backgroundColor: 'black'}}
+                />
+        </div>
         </div>
     )
 }

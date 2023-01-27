@@ -1,6 +1,6 @@
 import HomeIndex from "../Components/HomeIndex"
 
-export default function Home({notification, reFetch}){
+export default function Home({loggedInUser, notification, reFetch}){
 
     return(
         <div>
@@ -10,7 +10,7 @@ export default function Home({notification, reFetch}){
                 </h2>
             </div>
             <p className="text-left p-2 pt-0">Feel free to discover/add new plants from the <em>"Explore"</em> page or simple add your plants with the <em>"Add"</em> page.</p>
-            <HomeIndex notification={notification} reFetch={reFetch}/>
+            <HomeIndex loggedInUser={loggedInUser} notification={notification} reFetch={reFetch}/>
         </div>
     )
 }

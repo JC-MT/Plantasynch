@@ -1,5 +1,8 @@
 const db = require('../db/dbConfig');
 
+const { doesUserExist } = require("../Validations/UserInfo")
+
+
 //INDEX
 const getAllUsers = async () => {
   try {
