@@ -22,7 +22,6 @@ export default function App() {
   const [notification, reFetch] = useNotifications([])
   const [ loggedInUser, setLoggedInUser ] = useState({})
 
-  console.log(loggedInUser)
   return (
     <div>
       <nav>
@@ -30,7 +29,7 @@ export default function App() {
       </nav>
       <main className="pt-24 laptop:mb-24 laptop:mt-24">
         <Routes>
-          <Route path="/" element={<Welcome loggedInUser={loggedInUser}/>} />
+          <Route path="/" element={<Welcome loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>} />
           <Route path="/sign-up" element={<CreateAccount setLoggedInUser={setLoggedInUser} />} />
           <Route path="/log-in" element={<LogIn setLoggedInUser={setLoggedInUser} />} />
           <Route path='/my-plants' element={<Home loggedInUser={loggedInUser} notification={notification} reFetch={() => reFetch() }/>} />

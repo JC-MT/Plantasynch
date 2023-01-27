@@ -1,8 +1,5 @@
 const db = require('../db/dbConfig');
 
-const { doesUserExist } = require("../Validations/UserInfo")
-
-
 //INDEX
 const getAllUsers = async () => {
   try {
@@ -29,16 +26,14 @@ const getUser = async (id) => {
         name, 
         password, 
         email, 
-        joined_date
     } = user;
     try {
       const newUser = await db.one(
-        'INSERT INTO platasynch_users ( name, password, email, joined_date) VALUES ($1, $2, $3, $4) RETURNING *',
+        'INSERT INTO platasynch_users ( name, password, email) VALUES ($1, $2, $3) RETURNING *',
         [
             name, 
             password, 
             email, 
-            joined_date
         ]
       );
       return newUser;

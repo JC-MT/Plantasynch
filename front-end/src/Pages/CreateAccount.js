@@ -2,17 +2,15 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import useModel from '../Hooks/useModel';
 
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
 
-export default function CreateAccount(){
+export default function CreateAccount({setLoggedInUser}){
     const [user, setUser] = useState({
         name: '',
         password: '',
-        email: '',
-        joined_date: ''
+        email: ''
     });
 
     const navigate = useNavigate();
@@ -20,16 +18,46 @@ export default function CreateAccount(){
     const handleTextChange = (event) => {
         setUser({ ...user, [event.target.name]: event.target.value })
       }
+
+      const notify = (result) => {
+    
+        return result ? toast.success(`Great job creating your account, ${user.name}. Happy Growing 🪴`, {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined
+      }) : toast.error(`We were unable to create your acount 🥲 Please check your internet and try again in a few minutes.`, {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined
+      })}
     
     const handleSubmit = (event) => {
         event.preventDefault()
         axios
-        .post(`${API}/user`)
+        .post(`${API}/user`, user)
         .then((res) => {
-        setUser(res.data.payload);
+            notify(true)
+            setUser({            
+                name: '',
+                password: '',
+                email: ''
+            });
+            setTimeout(() => { navigate('/my-plants') }, 4000)
+            return res.data.payload
+        }).then((res) => {
+            setLoggedInUser(res)
         })
-        .catch(() => {
-        navigate('/notfound');
+        .catch((err) => {
+            console.warn(err)
+            notify(false)
         });
     }
 
@@ -43,7 +71,7 @@ export default function CreateAccount(){
                 <div className='flex flex-col place-items-center'>
                         <div className='flex flex-col input-container'>
                             <label className='input-label' htmlFor='name'>User Name</label>
-                            <input onChange={handleTextChange} value={user.name} name='name' className='input-style' type='text' placeholder="Your username"/>
+                            <input onChange={handleTextChange} required value={user.name} name='name' className='input-style' type='text' placeholder="Your username"/>
                         </div>
                         <div className='flex flex-col input-container'>
                             <label className='input-label' htmlFor='email'>Email</label>
@@ -59,6 +87,12 @@ export default function CreateAccount(){
                     <Link className='hover:underline' to='/my-plants'>Skip to demo site</Link>
                 </div>
             </form>
+            <div className='z-50'>
+            <ToastContainer
+                limit={1}
+                toastStyle={{color: 'white', backgroundColor: 'black'}}
+                />
+        </div>
         </div>
     )
 }
