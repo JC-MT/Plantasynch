@@ -67,7 +67,7 @@ export default function PlantDetails({notification}) {
               {plant.name}
           </h3>
         </header>
-        <div className='flex mt-1 flex-row h-12 justify-center'>
+        <div className='flex mt-2 flex-row h-12 justify-center'>
           <SkipButton name={plant.name} skip_count={plant.skip_count} />
           <WaterButton needsWater={needsWater} last_water={plant.last_water} plant={plant}/>
         </div>

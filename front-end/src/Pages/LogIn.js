@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import useModel from '../Hooks/useModel';
+import Footer from './Footer';
 
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
@@ -76,9 +77,10 @@ export default function LogIn( {setLoggedInUser} ){
     }
 
     return(
-        <div className='flex flex-col'>
-            <h1 className="text-[40px] text-left p-2 tablet:text-[75px]">
-                Welcome Back 🥳
+        <section>
+            <div className='flex flex-col h-screen'>
+            <h1 className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased p-2 tablet:text-[75px]">
+                Welcome Back
             </h1>
             <p className="indent-2 p-1 text-left"><strong>Note:</strong> Use the contact form below for any log-in support. Happy growing!  🌱 </p>
             <form onSubmit={handleSubmit}>
@@ -102,7 +104,9 @@ export default function LogIn( {setLoggedInUser} ){
                 limit={1}
                 toastStyle={{color: 'white', backgroundColor: 'black'}}
                 />
-        </div>
-        </div>
+            </div>
+            </div>
+        <Footer/>
+        </section>
     )
 }

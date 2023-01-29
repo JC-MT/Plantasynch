@@ -4,6 +4,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from '../Pages/Footer';
 const API = process.env.REACT_APP_API_URL;
 
 export default function ExploreDetails({loggedInUser}) {
@@ -64,6 +65,7 @@ export default function ExploreDetails({loggedInUser}) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    document.body.scrollTop = document.documentElement.scrollTop = 0
     axios
       .post(`${API}/plants`, newplant)
       .then((res) => {
@@ -107,8 +109,9 @@ export default function ExploreDetails({loggedInUser}) {
     })}
 
   const showExploreStructure = (
-    <section className='flex flex-col gap-1 place-items-center p-2'>
-        <header className='relative flex items-center justify-center'>
+    <section>
+      <div className='flex flex-col gap-1 place-items-center p-2 h-screen'>
+      <header className='relative flex items-center justify-center'>
           <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='plant'>
           </img>
           <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[70px]">
@@ -137,6 +140,8 @@ export default function ExploreDetails({loggedInUser}) {
           toastStyle={{ color: 'white', backgroundColor: 'black'}}
           />
         </div>
+      </div>
+        <Footer/>
     </section>
   );
   return explore.common ? showExploreStructure : spinnerStructure;

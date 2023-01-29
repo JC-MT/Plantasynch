@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './Footer';
 const API = process.env.REACT_APP_API_URL;
 
 export default function CreateAccount({setLoggedInUser}){
@@ -62,8 +63,9 @@ export default function CreateAccount({setLoggedInUser}){
     }
 
     return(
-        <div className='flex flex-col'>
-            <h1 className="text-[40px] text-left p-2 pb-0 tablet:text-[75px]">
+        <section>
+        <div className='flex flex-col h-screen'>
+            <h1 className="text-[32px] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start p-2 tablet:text-[75px]">
                 Create your account
             </h1>
             <p className="indent-2 p-2 text-left"><strong>Note:</strong> This email does not need to be real. The intend for this page is clear app flow and ux/ui. However, <p className='inline text-[15px] text-center tracking-wider uppercase'>Plantasynch</p> requires a valid email to send future reminders.</p>
@@ -94,5 +96,8 @@ export default function CreateAccount({setLoggedInUser}){
                 />
         </div>
         </div>
+        <Footer/>
+        </section>
+
     )
 }

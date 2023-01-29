@@ -2,14 +2,13 @@ import axios from 'axios';
 import * as dayjs from 'dayjs'
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
 
 export default function SkipButton( {skip_count, name }){  
     const { id } = useParams();
-    const navigate = useNavigate();
     const [ allowedToSkip, setAllowedToSkip] = useState(true)
     const [ skippedClicked, setSkippedClicked] = useState(false)
 
@@ -21,7 +20,6 @@ export default function SkipButton( {skip_count, name }){
           setAllowedToSkip(false)
         }
       }
-    console.log('allowedToSkip', allowedToSkip)
 
     useEffect(() => {
         axios
