@@ -68,7 +68,7 @@ export default function ExploreIndex() {
       </div>
     </div>
       <input
-        className="focus:outline-none bg-slate-50 flex flex-center sticky top-28 items-center justify-center border-2 rounded-full px-4 p-2 mx-4 shadow-xl tablet:mb-2 tablet:mx-16 laptop:top-32 laptop:mx-24"
+        className="focus:outline-none bg-slate-50 flex flex-center sticky top-28 tablet:top-40 items-center justify-center border-2 rounded-full px-4 p-2 mx-4 shadow-xl laptop:mx-24"
         type="search"
         id="search"
         placeholder="Search plant by name"

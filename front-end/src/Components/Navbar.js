@@ -1,23 +1,73 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import hamburgerMenuIcon from '../icons/hamburgerMenuIcon.png'
 import useHamburgerMenu from '../Hooks/useHamburgerMenu';
 
 export default function Navbar({notification}){
-  const  [ setActive, hamburgerMenuStructure ] = useHamburgerMenu({notification});                                  
+  const  [ setActive, hamburgerMenuStructure ] = useHamburgerMenu({notification}); 
+  const [ hover, setHover] = useState({github: false, linkedin: false})                                 
 
   return (
-    <div className="fixed py-2 px-3 z-40 flex flex-row place-content-evenly justify-items-left bg-white antialiased tablet:place-content-evenly w-screen h-[80px] shadow-sm laptop:laptop-display laptop:place-self-center">
+    <div className="fixed top-0 py-1 left-0 right-0 px-3 z-50 flex flex-row place-content-evenly justify-items-left bg-white antialiased w-screen h-[80px] shadow-sm tablet:h-[136px] tablet:px-[10%] tablet:place-content-between">
 
-      <div className={`flex flex-col place-content-center place-items-center w-[32%]`} onClick={() => {setActive(true)}}>
+      <div className={`flex flex-col place-content-center place-items-center w-[32%] tablet:hidden`} onClick={() => {setActive(true)}}>
         <img className='hover:cursor-pointer self-start ml-2' width='30px' height='30px' src={hamburgerMenuIcon} alt='hamburger-icon'/>
       </div>
 
-      <Link to={'/'} onClick={() => {document.body.scrollTop = document.documentElement.scrollTop = 0}}className='flex flex-col place-items-center place-content-center w-[32%] laptop:navbar-icon laptop:basis-1/2 laptop:place-content-start'>
-        <img alt='logo' className='place-self-center w-[30px] h-[30px] hover:animate-[wiggle_2s_ease-in-out_infinite]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
-        <p className="text-[15px] font-['brandon-grotesque'] text-center tracking-normal uppercase">Plantasynch</p>
+      <Link to={'/'} onClick={() => {document.body.scrollTop = document.documentElement.scrollTop = 0}} className='flex flex-col place-content-center w-[32%] tablet:w-[30%]'>
+        <img alt='logo' className='place-self-center w-[30px] h-[30px] hover:animate-[wiggle_2s_ease-in-out_infinite] tablet:h-[40px] tablet:w-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
+        <p className="text-[15px] font-['brandon-grotesque'] text-center tracking-wide uppercase tablet:text-[20px]">Plantasynch</p>
       </Link>
 
-      <div className='flex w-[32%]'></div>
+      <div className='hidden flex-col place-content-center w-[30%] tablet:flex'>
+      <p className="tracking-wide p-1 font-['baskerville-urw'] text-[16px] text-[#173d0a] subpixel-antialiased font-normal text-center">
+                Your one stop Plant Application
+      </p>
+      <div className="hidden p-1 uppercase font-['baskerville-urw'] tracking-wide flex-row font-md place-content-center place-items-center text-slate-800 tablet:flex">
+          <Link to={'/my-plants'} class="text-sm mx-2 py-1 delay-150 hover:text-slate-400 hover:cursor-pointer">
+              Home
+              {/* <div className={`${notification.length ? 'visible' : 'invisible'} font-['Open_Sans'] inline-flex absolute justify-center items-center w-[20px] h-[20px] text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white dark:border-gray-900 tabular-nums`}>{`${notification.length}`}</div> */}
+          </Link >
+
+        <Link to={'/explore'} class="text-sm mx-2 py-1 w-min delay-150 hover:text-slate-400 hover:cursor-pointer">
+            Explore
+        </Link>
+
+        <Link to={'/new'} class="text-sm py-1 w-min mx-2 delay-150 hover:text-slate-400 hover:cursor-pointer">
+            Add
+        </Link>
+
+        <Link to={'/'} class="text-sm py-1 w-min mx-2 delay-150 hover:text-slate-400 hover:cursor-pointer">
+            About
+        </Link>
+
+      </div>
+
+      </div>
+
+      <div className='flex place-content-end w-[32%] tablet:w-[30%]'>
+      <div className="hidden flex-row gap-2 tablet:flex">
+                <a className='place-self-center'href="https://github.com/JC-MT/Plantasynch" target="_blank" rel="noreferrer">
+                    <img
+                    onMouseEnter={() => { setHover({...hover, linkedin: true})}}
+                    onMouseLeave={() => { setHover({github: false, linkedin: false})}}
+                    className={`w-[20px] h-[20px] rounded-full delay-100 ${hover.github ? 'opacity-50' : ''}`}
+                    alt="GitHub"
+                    src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                    />
+                </a>
+                <a className='place-self-center' href="https://www.linkedin.com/in/jan-matias/" target="_blank" rel="noreferrer" >
+                    <img
+                    onMouseEnter={() => { setHover({...hover, github: true})}}
+                    onMouseLeave={() => { setHover({github: false, linkedin: false})}}
+                    className={`w-[26px] h-[26px] place-self-center delay-100 ${hover.linkedin ? 'opacity-50' : ''}`}
+                    alt="LinkedIn"
+                    src="https://www.pngmart.com/files/21/Linkedin-In-Logo-PNG-HD.png"
+                    />
+                </a>
+        </div>
+
+      </div>
 
       {hamburgerMenuStructure}
 

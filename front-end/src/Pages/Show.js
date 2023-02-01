@@ -1,10 +1,11 @@
 import PlantDetails from "../Components/PlantDetails"
 import Footer from "./Footer"
 
-export default function Show({notification, height, width}){
+export default function Show({notification}){
+
     return(
-        <div className='text-center justify-content'>
-            <PlantDetails notification={notification} height={height} width={width}/>
+        <div className='text-center'>
+            <PlantDetails notification={notification}/>
             <Footer/>
         </div>
     )

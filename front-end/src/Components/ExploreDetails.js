@@ -110,24 +110,24 @@ export default function ExploreDetails({loggedInUser}) {
 
   const showExploreStructure = (
     <section>
-      <div className='flex flex-col gap-1 place-items-center p-2 h-screen'>
+      <div className='flex flex-col gap-1 place-items-center p-2 h-screen tablet:pt-8'>
       <header className='relative flex items-center justify-center'>
           <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='plant'>
           </img>
-          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[70px]">
+          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[40px]">
               {getCommonNames()}
           </h3>
         </header>
-        <div className='flex flex-row gap-1 p-2'>
+        <div className='flex flex-row gap-1 p-2 tablet:pb-8'>
         <Link to={`/explore`}>
-            <button className='button-style mt-0 m-0 w-40 tablet:w-56'>Back to List</button>
+            <button className='button-style mt-0 m-0 w-40 tablet:w-56 tablet:h-[50px]'>Back to List</button>
         </Link>{' '}
         <div onClick={handleSubmit} className='hover:cursor-pointer button-style m-0 w-40 tablet:w-56 flex flex-row gap-1 justify-center place-items-center shadow-xl p-1'>
           <p>Add to Garden</p>
           <img alt='plant' className='place-self-center w-[25px] h-[25px] tablet:w-[40px] tablet:h-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
         </div>
         </div>
-        <h3 className={`p-1 pb-0 h-fit place-self-start text-left font-semibold antialiased tracking-wide uppercase`} >Plant Details</h3>
+        <h3 className={`p-1 pb-0 h-fit place-self-start text-left font-semibold antialiased tracking-wide uppercase tablet:ml-[400px]`} >Plant Details</h3>
         <div className='flex flex-col text-left p-2 pt-0'>
         <p><strong>Known as: </strong><em>{explore.common ? `${explore.common.join(' & ')}` : ''}</em></p>
         <p><strong>Latin name: </strong>{explore.latin}, from the {explore.family} Family</p>

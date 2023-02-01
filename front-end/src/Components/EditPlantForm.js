@@ -90,18 +90,18 @@ export default function EditPlantForm() {
   const [model, setModel, modelStructure] = useModel({handleDelete})
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col tablet:pt-8'>
         <header className='relative flex items-center justify-center'>
           <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'>
           </img>
-          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[70px]">
+          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[40px]">
               {plant.name}
           </h3>
         </header>
-      <div className='p-2 text-lg'>
+      <div className='p-2 text-lg tablet:text-center tablet:text-[20px] tablet:p-4'>
         <p>When done, press Update</p>
       </div>
-     <div className='flex flex-row text-lg place-content-center shadow-sm'>
+     <div className='flex flex-row text-lg place-content-center'>
         <Link to={`/my-plants`}>
           <button className='button-style m-0 w-28 tablet:w-32'>Back</button>
         </Link>
@@ -112,7 +112,7 @@ export default function EditPlantForm() {
           Delete
         </button>
       </div>
-     <form className='flex flex-col place-items-center shadow-sm'>
+     <form className='flex flex-col place-items-center tablet:pb-8'>
         <div className='flex flex-col input-container'>
         <label className='input-label' htmlFor='name'>Name:</label>
         <input

@@ -67,8 +67,8 @@ export default function NewPlantForm({loggedInUser}) {
   }
   return (
     <div>
-      <form onSubmit={handleSubmit} className='flex flex-col place-items-center tablet:gap-2'>
-      <img alt='Need full link for preview' className='rounded-md shadow-md place-self-center w-[250px] h-[150px] tablet:w-[450px] tablet:h-[350px]' src={ plant.image ? plant.image : `https://img.freepik.com/free-vector/hand-drawn-houseplant-collection_23-2148910610.jpg?w=2000`}/>
+      <form onSubmit={handleSubmit} className='flex flex-col place-items-center tablet:pb-8'>
+      <img alt='Need full link for preview' className='rounded-md shadow-md place-self-center w-[250px] h-[150px] tablet:w-[600px] tablet:h-[350px]' src={ plant.image ? plant.image : `https://getplanta.com/images/feature_2.webp`}/>
       <div className='flex flex-row place-content-center'>
         <Link to={`/my-plants`}>
           <button className='button-style w-28 tablet:w-32'>Back</button>

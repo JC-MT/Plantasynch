@@ -79,12 +79,12 @@ export default function LogIn( {setLoggedInUser} ){
     return(
         <section>
             <div className='flex flex-col h-screen'>
-            <h1 className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased p-2 tablet:text-[75px]">
+            <h1 className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased p-2 tablet:pt-12 tablet:text-[40px] tablet:px-4">
                 Welcome Back
             </h1>
-            <p className="indent-2 p-1 text-left"><strong>Note:</strong> Use the contact form below for any log-in support. Happy growing!  🌱 </p>
+            <p className="indent-2 p-1 text-left tablet:px-4"><strong>Note:</strong> Use the contact form below for any log-in support. Happy growing!  🌱 </p>
             <form onSubmit={handleSubmit}>
-                <div className='flex flex-col place-items-center'>
+                <div className='flex flex-col place-items-center tablet:p-2'>
                     <div className='flex flex-col input-container'>
                         <label className='input-label' htmlFor='name'>User Name</label>
                         <input onChange={handleTextChange} value={userCredentials.name} required name='name' className='input-style' type='text' placeholder="Your username"/>
@@ -95,7 +95,7 @@ export default function LogIn( {setLoggedInUser} ){
                     </div>
                 </div>
                 <div className='p-2 flex flex-col place-items-center gap-1 drop-shadow-sm'>
-                <input type='submit' className='button-style mt-1 text-lg text-center button-style w-fit tablet:w-32' value='Log In'/>
+                <input type='submit' className='button-style mt-1 text-lg text-center button-style w-fit' value='Log In'/>
                 <Link className='hover:underline' to='/my-plants'>Skip to demo site</Link>
                 </div>
             </form>

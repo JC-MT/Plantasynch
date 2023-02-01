@@ -58,12 +58,12 @@ export default function PlantDetails({notification}) {
     </div>)
 
   const showStructure = 
-  (    <section className='flex flex-col gap-1'>
-        <header className='relative flex items-center justify-center'>
-          <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'>
+    <div className='flex flex-col gap-1'>
+        <header className='flex items-center justify-center tablet:pt-8'>
+          <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[450px] tablet:h-[450px]' src={`${plant.image}`} alt='plant'>
           </img>
           <OptionsButton name={plant.name}/>
-          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[70px]">
+          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[40px]">
               {plant.name}
           </h3>
         </header>
@@ -74,8 +74,8 @@ export default function PlantDetails({notification}) {
         <Link to={`/my-plants`}>
             <button className='text-slate-500 hover:text-[#1E1F1D] text-lg w-fit mt-1 tablet:w-32'>⬅︎ Back</button>
         </Link>{' '}
-        <h3 className={`p-1 pb-0 h-fit place-self-start text-left font-semibold antialiased tracking-wide uppercase`} >Plant Details</h3>
-        <div className='flex flex-col text-left p-2 pt-0'>
+        <h3 className={`p-1 pb-0 h-fit place-self-start text-left font-semibold antialiased tracking-wide uppercase tablet:px-[35%] tablet:pt-12`} >Plant Details</h3>
+        <div className='flex flex-col text-left p-2 pt-0 tablet:px-[35%] tablet:pb-12'>
           <p className={`${!plant.last_water || needsWater ? 'animate-[pulse_1s_ease-in-out_infinite] text-red-400' : ''}`}><strong>Last Watered:</strong>{ plant.last_water ? ` ${dayjs(plant.last_water).format('dddd, MMM D, YYYY')}` : ` Has never been watered. Please edit the date or press the water plant button to water today.`}</p>
           <p><strong>Category:</strong> {plant.category}</p>
           <p><strong>Origin:</strong> {plant.origin}</p>
@@ -84,7 +84,7 @@ export default function PlantDetails({notification}) {
         </div>
         { model ? modelStructure : ''}
         <PlantHistory actions={plant.actions}/>
-    </section>)
+    </div>
 
   return plant.name ? showStructure : spinnerStructure
 }

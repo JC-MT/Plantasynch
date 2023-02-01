@@ -71,7 +71,7 @@ export default function SkipButton( {skip_count, name }){
 
     return(
         <div className={`flex ${allowedToSkip && !skippedClicked ? `` : `cursor-not-allowed`}`} >
-            <button className={`button-style mt-0 w-44 text-lg tablet:w-32 ${allowedToSkip && !skippedClicked ? `` : `pointer-events-none`}`} onClick={handleUpdate} >{`${allowedToSkip && !skippedClicked ? 'Skip Today' : 'Skipped'}`}</button>
+            <button className={`button-style mt-0 w-44 text-lg ${allowedToSkip && !skippedClicked ? `` : `pointer-events-none`}`} onClick={handleUpdate} >{`${allowedToSkip && !skippedClicked ? 'Skip Today' : 'Skipped'}`}</button>
             <div className='z-50'>
                 <ToastContainer
                     limit={1}

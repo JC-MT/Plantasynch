@@ -10,7 +10,7 @@ const getPlantsToWater = async () => {
 
   try {
     const allPlants = await db.any(
-      'SELECT id, last_water, category, skip_count, skip_history, email FROM garden'
+      'SELECT id, name, image, last_water, category, skip_count, skip_history, email FROM garden'
     );
 
     for (let plant of allPlants) {
@@ -21,51 +21,30 @@ const getPlantsToWater = async () => {
         plant.skip_count < 1
       ) {
 
-        try {
-          const getPlant = await db.any(
-            'SELECT * FROM platasynch_users JOIN garden ON platasynch_users.email = garden.email WHERE garden.id=$1',
-            plant.id
-          );
-
-          let emailToBeSent = getPlant[0].email;
-          if(!emailToBeSent) emailToBeSent = 'plantasynch@gmail.com';
+          let emailToBeSent = plant.email.length ? plant.email : 'plantasynch@gmail.com';
 
           if(plantsToWater[emailToBeSent]){
-            plantsToWater[emailToBeSent].push(getPlant[0])
+            plantsToWater[emailToBeSent].push(plant)
 
           } else {
-            plantsToWater[emailToBeSent] = getPlant;
+            plantsToWater[emailToBeSent] = [ plant ];
           }
 
-        } catch (error) {
-          return error;
-        }
-
-      } else if (
+        } else if (
         readyToBeWatered(plant.last_water) > (10 + getAverage(plant.skip_history)) &&
         plant.category === 'Cactus & Succulent' &&
         plant.skip_count < 1
       ) {
-
-        try {
-          const getPlant = await db.any(
-            'SELECT * FROM garden WHERE id=$1',
-            plant.id
-          );
-
-          let emailToBeSent = getPlant[0].email.length || "plantasynch@gmail.com";
+          let emailToBeSent = plant.email.length ? plant.email : 'plantasynch@gmail.com';
 
           if(plantsToWater[emailToBeSent]){
-            plantsToWater[emailToBeSent].push(getPlant[0])
+            plantsToWater[emailToBeSent].push(plant)
 
           } else {
-            plantsToWater[emailToBeSent] = getPlant;
+            plantsToWater[emailToBeSent] = [ plant ];
           }
-        } catch (error) {
-          return error;
         }
       }
-    }
     
     return plantsToWater;
   } catch (error) {

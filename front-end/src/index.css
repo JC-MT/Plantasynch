@@ -4,19 +4,18 @@
 
 @layer components {
 
-    .navbar-icon {
-        @apply relative flex items-center 
-        justify-center h-9 w-9 laptop:w-fit laptop:flex-none laptop:place-self-center;
+    .navbar-full {
+        @apply ;
     }
 
     ;
 
     .input-style {
-        @apply border-2 bg-slate-50 focus:outline-none rounded-full py-2 px-4 tablet:w-[400px];
+        @apply border-2 bg-slate-50 focus:outline-none rounded-full py-2 px-4;
     }
 
     .input-container {
-        @apply w-11/12
+        @apply w-11/12 tablet:w-[500px] tablet:place-self-center tablet:px-4
     }
 
     .input-label {
@@ -26,7 +25,7 @@
     ;
 
     .button-style {
-        @apply border font-medium hover:bg-[#1E1F1D] bg-[#224722] text-[#D9F8B9] rounded-full text-base py-2 px-6 mt-5 shadow-xl tablet:text-[25px] cursor-pointer;
+        @apply border font-medium hover:bg-[#1E1F1D] bg-[#224722] text-[#D9F8B9] rounded-full text-base py-2 px-6 mt-5 shadow-xl cursor-pointer;
     }
 
     .laptop-display {

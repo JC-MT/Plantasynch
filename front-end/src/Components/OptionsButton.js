@@ -49,16 +49,14 @@ export default function OptionsButton({name}){
     const [model, setModel, modelStructure] = useModel({handleDelete})
 
     return(
-      <div className={`absolute right-0 flex place-self-start place-items-center flex-col pt-1 pr-0`}>
+      <div className={`absolute h-[275px] overflow-hidden right-0 flex place-items-center flex-col pt-1 pr-0 tablet:top-[140px] tablet:right-[490px]`}>
         <div className='px-1 place-self-end'>
-            <img src={moreOptions} className={`${openOptions ? 'bg-[#224722]' : ''} right-0 rotate-90 hover:border-[#D9F8B9] cursor-pointer align-self-center place-self-center border-slate-800 border-2 m-0 w-[40px] h-[40px] rounded-full text-lg tablet:w-32`} 
+            <img src={moreOptions} className={`${openOptions ? 'opacity-20' : 'opacity-90'} right-0 rotate-90 hover:border-[#D9F8B9] cursor-pointer align-self-center place-self-center border-slate-800 border-2 m-0 w-[40px] h-[40px] rounded-full text-lg`} 
             onClick={() => setOpenOptions((openOptions) => setOpenOptions(!openOptions))} />
         </div>
-          <div className={`w-32 ${openOptions ? '' : 'hidden'}`}>
-            <div className='flex flex-col text-center text-[#D9F8B9] text-lg'>
-              <Link className={'p-1 mb-[2px] bg-[#224722] border-2 border-black rounded-full'} to={`/my-plants/${id}/edit`}>Edit</Link>
-              <button onClick={() => setModel(true)}className='p-1 bg-[#224722] border-2 border-black rounded-full text-center'>Delete</button>
-            </div>
+          <div className={`px-5 z-40 h-full tablet:pt-20 w-screen tablet:w-[450px] transition-transform duration-700 delay-200 opacity-90 flex flex-col justify-center text-center text-[#D9F8B9] translate-x-full place-items-center ${openOptions ? 'translate-x-0' : ''}`}>
+              <Link className={'w-full p-2 mb-[2px] bg-[#224722] rounded-full'} to={`/my-plants/${id}/edit`}>Edit</Link>
+              <button onClick={() => setModel(true)}className='w-full p-2 bg-[#224722] border-black rounded-full text-center'>Delete</button>
           </div>
           <div className='z-50'>
                 <ToastContainer

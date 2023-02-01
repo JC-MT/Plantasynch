@@ -65,10 +65,10 @@ export default function CreateAccount({setLoggedInUser}){
     return(
         <section>
         <div className='flex flex-col h-screen'>
-            <h1 className="text-[32px] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start p-2 tablet:text-[75px]">
+            <h1 className="text-[32px] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start p-2 tablet:text-[40px] tablet:pt-10 tablet:px-4">
                 Create your account
             </h1>
-            <p className="indent-2 p-2 text-left"><strong>Note:</strong> This email does not need to be real. The intend for this page is clear app flow and ux/ui. However, <p className='inline text-[15px] text-center tracking-wider uppercase'>Plantasynch</p> requires a valid email to send future reminders.</p>
+            <p className="indent-2 p-2 text-left tablet:px-4"><strong>Note:</strong> This email does not need to be real. The intend for this page is clear app flow and ux/ui. However, <p className='inline text-[15px] text-center tracking-wider uppercase'>Plantasynch</p> requires a valid email to send future reminders.</p>
             <form onSubmit={handleSubmit}>
                 <div className='flex flex-col place-items-center'>
                         <div className='flex flex-col input-container'>
@@ -85,7 +85,7 @@ export default function CreateAccount({setLoggedInUser}){
                         </div>
                     </div>
                 <div className='p-2 flex flex-col place-items-center gap-1 drop-shadow-sm'>
-                    <input type='submit' className='button-style mt-1 text-lg text-center button-style w-fit tablet:w-32' value='Create Account'/>
+                    <input type='submit' className='button-style mt-1 text-lg text-center w-fit' value='Create Account'/>
                     <Link className='hover:underline' to='/my-plants'>Skip to demo site</Link>
                 </div>
             </form>

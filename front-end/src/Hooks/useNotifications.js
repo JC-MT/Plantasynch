@@ -21,6 +21,7 @@ export default function useNotifications(){
         })}
         
         fetchData()
+        
     }, [reload])
 
     return [notification, reFetch]
