@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 
 // COMPONENTS
 import Navbar from "./Components/Navbar";
+import ExploreDetails from "./Components/ExploreDetails";
+import Scanner from "./Components/Scanner";
 
 // PAGES
 import Welcome from "./Pages/Welcome";
@@ -13,9 +15,6 @@ import Explore from "./Pages/Explore";
 import Show from "./Pages/Show";
 import New from "./Pages/New";
 import Edit from "./Pages/Edit";
-import ExploreDetails from "./Components/ExploreDetails";
-import UserSettings from "./Pages/UserSettings"
-import Scanner from "./Components/Scanner";
 
 // HOOK
 import useNotifications from "./Hooks/useNotifications";
@@ -55,7 +54,6 @@ export default function App() {
           <Route path='/explore/:id' element={<ExploreDetails loggedInUser={loggedInUser}/>} />
           <Route path='/new' element={<New loggedInUser={loggedInUser}/>} />
           <Route path='/scanner' element={<Scanner loggedInUser={loggedInUser}/>} />
-          <Route path='/settings' element={<UserSettings/>} />
         </Routes>
       </main>
     </div>

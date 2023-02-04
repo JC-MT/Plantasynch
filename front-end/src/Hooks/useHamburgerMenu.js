@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import closeIcon from '../icons/closeIcon.png'
-import '../App.css'
 
 export default function useHamburgerMenu({notification, loggedInUser}) {
   const [active, setActive] = useState(false);

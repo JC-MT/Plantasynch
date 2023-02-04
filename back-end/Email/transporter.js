@@ -98,7 +98,7 @@ const sendEmail = async () => {
 };
 
 //Render Cron Job USE
-sendEmail();
+// sendEmail();
 
 module.exports = {
   sendEmail
