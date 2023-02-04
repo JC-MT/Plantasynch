@@ -143,7 +143,11 @@ _For Cron Syntax, please refer to the [Documentation](https://nodecron.com/docs/
 
 - [x] Adding Alert messages to users when they are watering their plants too often.
 
-- [ ] Adding User Sign-In. Users should be able to create their own account and be the only once to have access to their plants.
+- [x] Adding User Sign-In. Users should be able to create their own account and have access to their plants.
+
+- [x] Implementing Skip logic to improve watering suggestions.
+
+- [x] Adding Plant Scan feature to identify any plant.
 
 See the [open issues](https://github.com/JC-MT/Plantasynch/issues) for a full list of proposed features (and known issues).
 

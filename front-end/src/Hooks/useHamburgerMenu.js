@@ -4,7 +4,6 @@ import closeIcon from '../icons/closeIcon.png'
 
 export default function useHamburgerMenu({notification, loggedInUser}) {
   const [active, setActive] = useState(false);
-  console.log(notification)
 
   const handleClose = (scrollUp) => {
 
