@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function ExplorePlant({ id, name, category}) {
+export default function ExplorePlant({ id, name, knownAs, category}) {
 
   
   return (
@@ -8,6 +8,7 @@ export default function ExplorePlant({ id, name, category}) {
       <Link className='flex flex-row' to={`/explore/${id}`}>
         <img className=' rounded-full w-[150px] h-[150px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='Plant' />
         <p className='flex flex-col p-2'>Name: {name}
+        <span>{ knownAs.length > 1 ? `Other Names: ${knownAs.slice(1).join(', ')}` : ''}</span>
         <span>Type: {category}</span>
         </p>
       </Link>

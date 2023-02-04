@@ -53,5 +53,22 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        body{
+            font-family: Tahoma, Verdana, Segoe, sans-serif;
+          }
+          
+          #search::-webkit-search-cancel-button{
+            position: relative;
+            right: 20px;
+          
+          }
       }
+    @layer utilities {
+
+        .scanner-clip {
+            clip-path: inset(0);
+            box-shadow: 0 0 50px 10px #224722;
+            background-color:#224722;
+        }
+    }
 };

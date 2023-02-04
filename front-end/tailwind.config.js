@@ -30,12 +30,30 @@ module.exports = {
             from: {
               transform: 'rotate(360deg)'
             },
-          }
+          },
+          'sideToSide': {
+            to: {
+              transform: 'translateX(80%)',
+              'left': '100%',
+            }
+          },
+          'shadow': {
+            '33%': {
+              'clip-path': 'inset(0 0 0 -100px)'   
+            },
+            '50%': {
+              'clip-path': 'inset(0 0 0 0)'  
+            },
+            '83%': {
+              'clip-path': 'inset(0 -100px 0 0)' 
+            }
+         }
         },
         animation: {
           wiggle: "wiggle 250ms ease-in-out",
           pulse: "pulse 250ms ease-in-out",
           'reverse-spin': 'reverse-spin 1s linear infinite',
+          'scanning': 'sideToSide 1s ease-in-out infinite alternate, shadow 2s ease-in-out infinite;',
         }
       }
     },

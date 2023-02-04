@@ -3,6 +3,7 @@ import * as dayjs from 'dayjs'
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import useSkipConfirmation from "../Hooks/useSkipConfirmation"
 
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
@@ -69,9 +70,13 @@ export default function SkipButton( {skip_count, name }){
         })
     }
 
+    const [confirmation, setConfirmation, modelConfirmation] = useSkipConfirmation({handleUpdate, name})
+
+
     return(
         <div className={`flex ${allowedToSkip && !skippedClicked ? `` : `cursor-not-allowed`}`} >
-            <button className={`button-style mt-0 w-44 text-lg ${allowedToSkip && !skippedClicked ? `` : `pointer-events-none`}`} onClick={handleUpdate} >{`${allowedToSkip && !skippedClicked ? 'Skip Today' : 'Skipped'}`}</button>
+            <button className={`button-style mt-0 w-44 text-lg ${allowedToSkip && !skippedClicked ? `` : `pointer-events-none`}`} onClick={() => {setConfirmation(true)}} >{`${allowedToSkip && !skippedClicked ? 'Skip Today' : 'Skipped'}`}</button>
+            { confirmation ? modelConfirmation : ''}
             <div className='z-50'>
                 <ToastContainer
                     limit={1}

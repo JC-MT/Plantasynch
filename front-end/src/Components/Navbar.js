@@ -3,8 +3,8 @@ import { useState } from 'react';
 import hamburgerMenuIcon from '../icons/hamburgerMenuIcon.png'
 import useHamburgerMenu from '../Hooks/useHamburgerMenu';
 
-export default function Navbar({notification}){
-  const  [ setActive, hamburgerMenuStructure ] = useHamburgerMenu({notification}); 
+export default function Navbar({notification, loggedInUser}){
+  const  [ setActive, hamburgerMenuStructure ] = useHamburgerMenu({notification, loggedInUser}); 
   const [ hover, setHover] = useState({github: false, linkedin: false})                                 
 
   return (

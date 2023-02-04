@@ -39,7 +39,7 @@ plants.get('/explore', (req, res) => {
 //NAVBAR ICON
 plants.get('/notification', async (req, res) => {
  const notification = await getPlantsToWater();
- const convertedNotifications = Object.values(notification) .flat() .map ((plant) => { return { id : plant.id } })
+ const convertedNotifications = Object.values(notification) .flat() .map ((plant) => { return { id : plant.id, user_id: plant.user_id} })
 
   if (convertedNotifications) {
     res.status(200).json({ payload: convertedNotifications });

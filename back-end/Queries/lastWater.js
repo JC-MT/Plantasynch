@@ -10,7 +10,7 @@ const getPlantsToWater = async () => {
 
   try {
     const allPlants = await db.any(
-      'SELECT id, name, image, last_water, category, skip_count, skip_history, email FROM garden'
+      'SELECT id, user_id, name, image, last_water, category, skip_count, skip_history, email FROM garden'
     );
 
     for (let plant of allPlants) {

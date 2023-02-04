@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import closeIcon from '../icons/closeIcon.png'
 import '../App.css'
 
-export default function useHamburgerMenu({notification}) {
+export default function useHamburgerMenu({notification, loggedInUser}) {
   const [active, setActive] = useState(false);
+  console.log(notification)
 
   const handleClose = (scrollUp) => {
 
@@ -14,12 +15,12 @@ export default function useHamburgerMenu({notification}) {
   };
   
   const hamburgerMenuStructure = (
-    <div id='hamburgerMenu' className={`${active ? 'open' : 'close'} bg-white fixed top-0 left-0 h-screen w-screen`}>
+    <div id='hamburgerMenu' className={`${active ? 'delay-150 overflow-hidden transition-transform translate-x-0' : 'transition-transform delay-150 -translate-x-full'} overflow-scroll z-50 bg-white fixed top-0 left-0 h-screen w-screen transition-transform ease-in-out duration-1000`}>
       <div className='w-screen rounded-md text-left p-8 flex flex-col self-start tracking-wider font-medium uppercase'>
         <div className='flex flex-row place-content-between text-slate-800'>
           <Link to={'/my-plants'} onClick={handleClose} class="pt-5 text-xl mb-4 delay-150 hover:text-slate-400 hover:cursor-pointer">
               Home
-              <div className={`${notification.length ? 'visible' : 'invisible'} font-['Open_Sans'] inline-flex absolute justify-center items-center w-[20px] h-[20px] text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white dark:border-gray-900 tabular-nums`}>{`${notification.length}`}</div>
+              <div className={`${ !loggedInUser.id && notification.length ? '' : 'hidden' } font-['Open_Sans'] inline-flex absolute justify-center items-center w-[20px] h-[20px] text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white dark:border-gray-900 tabular-nums`}>{`${ loggedInUser.id ? notification.filter((plant) => plant.user_id === loggedInUser.id).length : notification.length}`}</div>
           </Link >
           <img
               src={closeIcon}

@@ -25,11 +25,26 @@ export default function ExploreIndex() {
   };
 
   const currentDisplay = (explore, search) => {
+
     const results = explore
       .filter(
-        (plant) =>
-          plant.common[0] &&
-          plant.common[0].toLowerCase().startsWith(search.toLowerCase())
+        (plant) => {
+          let allNames = plant.common
+          for(let name of allNames){
+
+            if(name.toLowerCase().startsWith(search.toLowerCase().trim())){
+              return plant
+            }
+            if(name.split(' ').length > 1){
+
+              for(let word of name.split(' ')){
+                if(word.toLowerCase().startsWith(search.toLowerCase().trim())){
+                  return plant
+                }
+              }
+            }
+          }
+        }
       )
       .map((plant, idx) => {
         return (
@@ -37,6 +52,7 @@ export default function ExploreIndex() {
             key={idx}
             id={plant.id}
             name={plant.common[0]}
+            knownAs={plant.common}
             latin={plant.latin}
             category={plant.category}
           />

@@ -15,6 +15,7 @@ import New from "./Pages/New";
 import Edit from "./Pages/Edit";
 import ExploreDetails from "./Components/ExploreDetails";
 import UserSettings from "./Pages/UserSettings"
+import Scanner from "./Components/Scanner";
 
 // HOOK
 import useNotifications from "./Hooks/useNotifications";
@@ -37,7 +38,7 @@ export default function App() {
   return (
     <div>
       <nav>
-        <Navbar notification={notification}/>
+        <Navbar notification={notification} loggedInUser={loggedInUser}/>
       </nav>
       <main className="pt-20 tablet:pt-24">
         <div className={`z-50 fixed flex bg-white top-0 left-0 right-0 h-screen p-4 place-content-center w-screen ${loader ? '' : 'hidden'}`}>
@@ -53,6 +54,7 @@ export default function App() {
           <Route path='/explore' element={<Explore />} />
           <Route path='/explore/:id' element={<ExploreDetails loggedInUser={loggedInUser}/>} />
           <Route path='/new' element={<New loggedInUser={loggedInUser}/>} />
+          <Route path='/scanner' element={<Scanner loggedInUser={loggedInUser}/>} />
           <Route path='/settings' element={<UserSettings/>} />
         </Routes>
       </main>
