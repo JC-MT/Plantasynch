@@ -13,17 +13,16 @@ export default function New({loggedInUser}) {
           <h2 className={`font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased tablet:text-[45px] tablet:pt-8`}>
         {toggleAdd.scanView ? 'Scan my Plant' : 'Add my Plant'}
           </h2>
-          <div className='overscroll-contain place-content-center tablet:flex'>
-          <div className='flex flex-row justify-center overscroll-contain place-content-center max-w-[550px]'>
-          <div className={`w-[94%] max-w-[550px] absolute ease-in-out transition-transform duration-300 opacity-90 flex flex-col justify-center text-center text-[#D9F8B9] place-items-center ${toggleAdd.formView ? 'translate-x-2/4' : ''}`}>
-              <div className={'overscroll-contain place-self-start h-[45px] w-[50%] bg-[#224722] rounded-xl'}></div>
-          </div>
-            <div className='bg-gray-200 p-2 w-full max-w-[550px] rounded-xl flex flex-row place-content-center shadow-lg'>
-              <h1 onClick={() => {setToggleAdd({scanView: true, formView: false})}} className={`${toggleAdd.scanView ? 'text-white' : ''} tracking-wide text-center z-40 w-[50%] tablet:w-[550px] text-lg`}>Scan</h1>
-              <h1 onClick={() => {setToggleAdd({scanView: false, formView: true})}} className={`${toggleAdd.formView ? 'text-white' : ''} tracking-wide text-center z-40 w-[50%] tablet:w-[550px] text-lg`}>Form</h1>
+            <div className='flex w-full place-self-center flex-row max-w-[550px]'>
+              <div className={`max-w-[275px] w-[50%] absolute ease-in-out transition-transform duration-300 opacity-90 flex text-[#D9F8B9] ${toggleAdd.formView ? 'translate-x-[90%] tablet:translate-x-full pl-2 pr-1 tablet:pl-2 tablet:pr-0' : 'pr-2 tablet:pr-0'}`}>
+                <div className={'max-w-[275px] w-full h-[45px] bg-[#224722] rounded-xl'}></div>
+              </div>
+            
+              <div className='text-center bg-gray-200 p-2 w-full max-w-[550px] rounded-xl flex flex-row place-content-center shadow-lg'>
+                <h1 onClick={() => {setToggleAdd({scanView: true, formView: false})}} className={`${toggleAdd.scanView ? 'text-white' : ''} cursor-pointer tracking-wide text-center z-40 w-[50%] tablet:w-[550px] text-lg`}>Scan</h1>
+                <h1 onClick={() => {setToggleAdd({scanView: false, formView: true})}} className={`${toggleAdd.formView ? 'text-white' : ''} cursor-pointer tracking-wide text-center z-40 w-[50%] tablet:w-[550px] text-lg`}>Form</h1>
+              </div>
             </div>
-          </div>
-          </div>
         </div>
       </div>
       { toggleAdd.scanView ? 

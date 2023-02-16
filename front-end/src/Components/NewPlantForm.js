@@ -72,9 +72,9 @@ export default function NewPlantForm({loggedInUser}) {
       <p className='p-1 text-center text-[15px] tablet:text-[15px]'>*Plantasynch needs at least a name to add your new plant</p>
       <div className='flex flex-row place-content-center'>
         <Link to={`/my-plants`}>
-          <button className='button-style m-0 w-22 tablet:w-32'>Nevermind</button>
+          <button className='button-style m-0 w-fit'>Nevermind</button>
         </Link>
-        <input value='Add Plant' type='submit' className='m-0 button-style w-28 tablet:w-32'/>
+        <input value='Add Plant' type='submit' className='m-0 button-style w-full'/>
       </div>
       <div className='flex flex-col input-container'>
         <label className='input-label' htmlFor='name'>Name: *</label>
