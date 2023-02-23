@@ -253,7 +253,6 @@ export default function Scanner({loggedInUser}){
                 </form>
                 {result.bestMatch ? results : ''}
             </div>
-            <Footer/>
             <div className='z-50'>
                 <ToastContainer
                     limit={1}
