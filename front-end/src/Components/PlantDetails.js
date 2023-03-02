@@ -37,7 +37,7 @@ export default function PlantDetails({notification}) {
       .catch((err) => {
         navigate('/not-found');
       });
-  }, [id, navigate, notification]);
+  }, [ id, navigate, notification ]);
 
   const handleDelete = () => {
     axios

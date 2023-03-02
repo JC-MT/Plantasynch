@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as dayjs from 'dayjs'
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import useSkipConfirmation from "../Hooks/useSkipConfirmation"
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,7 @@ const API = process.env.REACT_APP_API_URL;
 
 export default function SkipButton( {skip_count, name }){  
     const { id } = useParams();
+    const navigate = useNavigate();
     const [ allowedToSkip, setAllowedToSkip] = useState(true)
     const [ skippedClicked, setSkippedClicked] = useState(false)
 
@@ -56,12 +57,12 @@ export default function SkipButton( {skip_count, name }){
         progress: undefined
       })}
     
-    const handleUpdate = (event) => {
-        event.preventDefault()
+    const handleUpdate = () => {
         axios
         .put(`${API}/plants/skip/${id}`, { skip_count: skip_count})
         .then(() => {
             setSkippedClicked(true)
+            setConfirmation(false)
             notify(true)
         })
         .catch((err) => {
