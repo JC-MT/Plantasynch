@@ -105,8 +105,8 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
                 <h1 className=' tablet:p-2 z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased'>Technologies</h1>
                 <img className='tablet:p-2 place-self-start p-1' src='https://skillicons.dev/icons?i=postgres,express,react,nodejs,tailwind'/>
                 <p className='tablet:p-2 text-left tablet:text-[20px]'>Plantasynch is using a PERN stack: Postgres, Express, React, Node, and TailwindCSS, as CSS framework. To send email reminders, our backend is using <a target="_blank" rel="noreferrer" href='https://nodemailer.com/about/' className='hover:text-[#D9F8B9]'>Nodemailer</a> and <a target="_blank" rel="noreferrer" href='https://render.com/' className='hover:text-[#D9F8B9]'>Render's</a> Cron job to dynamically send emails to users when plants need attention.</p>
-                <h1 className='tablet:p-2 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased'> About the Dev</h1>
-                <div className='flex tablet:p-4 flex-col place-content-center tablet:flex-row'>
+                <h1 className='tablet:p-2 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased tablet:px-[22%]'>About the Dev</h1>
+                <div className='flex pt-0 flex-col place-content-center tablet:flex-row'>
                 <a className='inline tablet:p-2 place-self-center' href="https://www.linkedin.com/in/jan-matias/" target="_blank" rel="noreferrer" >
                 <img className='tablet:p-2 h-[325px] w-screen tablet:h-[250px] tablet:w-[250px]' src={headshot}/>
                 </a>
