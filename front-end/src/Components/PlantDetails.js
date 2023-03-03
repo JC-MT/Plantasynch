@@ -6,13 +6,15 @@ import useModel from '../Hooks/useModel';
 import SkipButton from "./SkipButton"
 import PlantHistory from "./PlantHistory"
 import OptionsButton from './OptionsButton';
-
 import WaterButton from './WaterButton';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const API = process.env.REACT_APP_API_URL;
 
 export default function PlantDetails({notification}) {
   const { id } = useParams();
-
   const [plant, setPlant] = useState([]);
   const [needsWater, setNeedsWater] = useState(false)
   const navigate = useNavigate();
@@ -24,6 +26,26 @@ export default function PlantDetails({notification}) {
       setNeedsWater(true)
     }
   }
+
+  const notify = (result) => {
+    
+    return result ? toast.success(`${plant.name} has been successfully deleted today 👋`, {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined
+  }) : toast.error(`We were unable to delete ${plant.name} 🥲 Please check your internet and try again in a few minutes.`, {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined
+  })}
 
   useEffect(() => {
     axios
@@ -37,16 +59,18 @@ export default function PlantDetails({notification}) {
       .catch((err) => {
         navigate('/not-found');
       });
-  }, [ id, navigate, notification ]);
+  }, [id, navigate, notification]);
 
   const handleDelete = () => {
     axios
       .delete(`${API}/plants/${id}`)
       .then(() => {
-        navigate('/my-plants');
+        notify(true);
+        setTimeout(() => navigate('/my-plants'), 4000);
       })
       .catch((err) => {
         console.warn(err);
+        notify(false);
       });
   };
 
@@ -59,13 +83,11 @@ export default function PlantDetails({notification}) {
 
   const showStructure = 
     <div className='flex flex-col gap-1'>
-        <header className='flex items-center justify-center tablet:pt-8'>
-          <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[450px] tablet:h-[450px]' src={`${plant.image}`} alt='plant'>
-          </img>
-          <OptionsButton name={plant.name}/>
-          <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[40px]">
-              {plant.name}
-          </h3>
+        <header className='flex items-center justify-center tablet:pt-10'>
+          <div className='grayscale-[50%] w-[400px] h-[380px] place-self-center place-items-center'
+          style={{background: `url('${plant.image}') no-repeat center`, backgroundSize: '400px 380px'}}>
+          <OptionsButton setModel={setModel} name={plant.name}/>
+          </div>
         </header>
         <div className='flex mt-2 flex-row h-12 justify-center'>
           <SkipButton name={plant.name} skip_count={plant.skip_count} />
