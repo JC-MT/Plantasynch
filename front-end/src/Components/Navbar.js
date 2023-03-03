@@ -8,7 +8,7 @@ export default function Navbar({notification, loggedInUser}){
   const [ hover, setHover] = useState({github: false, linkedin: false})                                 
 
   return (
-    <div className="fixed top-0 py-1 left-0 right-0 px-3 z-50 flex flex-row place-content-evenly justify-items-left bg-white antialiased w-screen h-[80px] shadow-sm tablet:h-[136px] tablet:px-[10%] tablet:place-content-between">
+    <div className="fixed top-0 py-1 px-3 z-50 flex flex-row place-content-evenly justify-items-left bg-white antialiased w-screen h-[80px] shadow-sm tablet:h-[136px] tablet:px-[10%] tablet:place-content-between">
 
       <div className={`flex flex-col place-content-center place-items-center w-[32%] tablet:hidden`} onClick={() => {setActive(true)}}>
         <img className='hover:cursor-pointer self-start ml-2' width='30px' height='30px' src={hamburgerMenuIcon} alt='hamburger-icon'/>
@@ -19,14 +19,13 @@ export default function Navbar({notification, loggedInUser}){
         <p className="text-[15px] font-['brandon-grotesque'] text-center tracking-wide uppercase tablet:text-[20px]">Plantasynch</p>
       </Link>
 
-      <div className='hidden flex-col place-content-center w-[30%] tablet:flex'>
-      <p className="tracking-wide p-1 font-['baskerville-urw'] text-[16px] text-[#173d0a] subpixel-antialiased font-normal text-center">
+      <div className='hidden flex-col place-content-center w-[32%] tablet:flex'>
+      <p className="tracking-wide p-1 font-['baskerville-urw'] text-[20px] text-[#173d0a] subpixel-antialiased font-normal text-center">
                 Your one stop Plant Application
       </p>
       <div className="hidden p-1 uppercase font-['baskerville-urw'] tracking-wide flex-row font-md place-content-center place-items-center text-slate-800 tablet:flex">
           <Link to={'/my-plants'} class="text-sm mx-2 py-1 delay-150 hover:text-slate-400 hover:cursor-pointer">
               Home
-              {/* <div className={`${notification.length ? 'visible' : 'invisible'} font-['Open_Sans'] inline-flex absolute justify-center items-center w-[20px] h-[20px] text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white dark:border-gray-900 tabular-nums`}>{`${notification.length}`}</div> */}
           </Link >
 
         <Link to={'/explore'} class="text-sm mx-2 py-1 w-min delay-150 hover:text-slate-400 hover:cursor-pointer">
@@ -45,7 +44,7 @@ export default function Navbar({notification, loggedInUser}){
 
       </div>
 
-      <div className='flex place-content-end w-[32%] tablet:w-[30%]'>
+      <div className='flex place-content-center w-[32%] tablet:w-[32%]'>
       <div className="hidden flex-row gap-2 tablet:flex">
                 <a className='place-self-center'href="https://github.com/JC-MT/Plantasynch" target="_blank" rel="noreferrer">
                     <img

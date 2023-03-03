@@ -61,7 +61,7 @@ export default function ExploreIndex() {
     return results;
   };
 
-  const explorePlantsContainer = (<div className="p-1 laptop:grid-view">{currentDisplay(explore, search)}</div>)
+  const explorePlantsContainer = (<div className="p-1 laptop:grid-view tablet:px-[15%] tablet:py-8">{currentDisplay(explore, search)}</div>)
 
   const spinnerStructure = (
     <div id="spinner" className="flex flex-col items-center justify-center p-5">
@@ -70,7 +70,7 @@ export default function ExploreIndex() {
     </div>)
 
   return (
-    <div className="flex flex-col gap-2 tablet:p-8">
+    <div className="flex flex-col gap-2 tablet:p-8 tablet:pt-0">
     <div onMouseLeave={() => {setAnimation(false)}} className='bg-transparent flex flex-row p-5 rounded-full h-[94px] w-[94px] fixed bottom-8 right-2 hover:cursor-n-resize'>
       <div onClick={() => {
         setAnimation(true)
@@ -83,8 +83,9 @@ export default function ExploreIndex() {
         </svg>
       </div>
     </div>
+
       <input
-        className="focus:outline-none bg-slate-50 flex flex-center sticky top-28 tablet:top-40 items-center justify-center border-2 rounded-full px-4 p-2 mx-4 shadow-xl laptop:mx-24"
+        className="focus:outline-none bg-slate-50 flex place-self-center flex-center sticky top-28 tablet:top-40 items-center justify-center border-2 rounded-full w-[90%] px-4 p-2 shadow-xl tablet:m-0 tablet:w-[400px]"
         type="search"
         id="search"
         placeholder="Search plant by name"

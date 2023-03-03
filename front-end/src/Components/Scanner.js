@@ -227,8 +227,8 @@ export default function Scanner({loggedInUser}){
 
     return(
         <section>
-            <div className='p-3'>
-                    <p className="indent-2 p-1 text-left tablet:px-4"><strong>Note:</strong> You'll receive a few likely name results when you scan. Clear, Direct, and Focused pictures will yield the best results. Only one image at a time. Happy growing!  🌱 </p>
+            <div className='p-3 tablet:px-[15%]'>
+                <p className="indent-2 p-1 text-left tablet:px-4"><strong>Note:</strong> You'll receive a few likely name results when you scan. Clear, Direct, and Focused pictures will yield the best results. Only one image at a time. Happy growing!  🌱 </p>
                 <form onSubmit={handleSubmit}>
                     <div class={`flex items-center justify-center w-full tablet:px-[30%]`}>
                         <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">

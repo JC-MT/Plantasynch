@@ -78,7 +78,7 @@ export default function LogIn( {setLoggedInUser} ){
 
     return(
         <section>
-            <div className='flex flex-col h-screen'>
+            <div className='flex flex-col h-screen tablet:px-[15%]'>
             <h1 className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased p-2 tablet:pt-12 tablet:text-[40px] tablet:px-4">
                 Welcome Back
             </h1>

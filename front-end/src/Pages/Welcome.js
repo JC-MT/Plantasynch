@@ -69,14 +69,14 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
                 <img className={`scale-x-[1] pb-12 h-screen w-full tablet:hidden`} src={bgW}/>
                 <img className={`hidden py-12 pb-26 w-screen tablet:flex`} src={bgA}/>
                 <div className={`absolute flex flex-col top-[50px] tablet:top-[100px] place-items-center`}>
-                <p className="tracking-wide font-['baskerville-urw'] place-self-start origin-left text-[16px] italic text-[#173d0a] subpixel-antialiased font-normal text-center">
+                <p className="tracking-wide font-['baskerville-urw'] place-self-start origin-left text-[16px] tablet:text-[20px] italic text-[#173d0a] subpixel-antialiased font-normal text-center">
                 Welcome to your one stop Plant Application
                 </p>
                 <h1 className="text-[#173d0a] text-[32px] font-['brandon-grotesque'] font-bold antialiased tracking-wide tablet:tracking-wider tablet:text-[38px] uppercase mt-5">Plantasynch</h1>
                 <h3 className="text-[#64aa85] text-[18px] font-['brandon-grotesque'] font-bold antialiased tracking-wide tablet:text-[20px]">Keep your plants alive</h3>
                 </div>
             </header>
-            <div className={`z-30 pt-0 p-4 flex flex-col place-items-center bg-white tablet:px-[10%]`}>
+            <div className={`z-30 pt-0 p-4 flex flex-col place-items-center bg-white tablet:px-[15%]`}>
             <h1 className='z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2'>Using Plantasynch</h1>
             <div className='flex tablet:p-2 flex-col gap-1 place-items-center drop-shadow-sm'>
                 <Link onClick={handleClose} className='mt-2 button-style text-center w-42' to={`${ loggedInUser.id ? '/settings' : '/sign-up'}`}>{ loggedInUser.id ? 'Go to settings' : 'Sign in with email'}</Link>
@@ -100,21 +100,19 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
                     />
                 </a>
             </div>
-            
-            {/* <img alt='logo' className='place-self-center w-100px h-[100px] p-1 tablet:w-[100px] tablet:h-[100px] laptop:mt-20' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/> */}
+                <h1 className='tablet:p-2 z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased'> About Plantasynch</h1>                
+                <p className='tablet:p-2 text-left tablet:text-[20px]'><p className='inline antialiased tracking-wide italic text-lg'>Plantasynch </p> is a full-stack web-application that makes the life-long problem of keeping your plants alive, a thing of the past. Features Include: Scanning any unknown plant, Email Notifications for when your plant needs watering, Keeping track of when you watered your plants or skiped a day, Curated plant information and many more to come. Keep your plants alive with Plantasynch.</p>
                 <h1 className=' tablet:p-2 z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased'>Technologies</h1>
                 <img className='tablet:p-2 place-self-start p-1' src='https://skillicons.dev/icons?i=postgres,express,react,nodejs,tailwind'/>
-                <p className='tablet:p-2 text-left tablet:text-[20px] text-[#173d0a]'>Plantasynch is using a PERN stack: Postgres, Express, React, and Node. To send email reminders, our backend is using <a target="_blank" rel="noreferrer" href='https://nodemailer.com/about/' className='hover:text-[#D9F8B9]'>Nodemailer</a> and <a target="_blank" rel="noreferrer" href='https://render.com/' className='hover:text-[#D9F8B9]'>Render's</a> Cron job to dynamically send emails to users when plants need attention.</p>
-                <h1 className='tablet:p-2 z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased'> About Plantasynch</h1>                
-                <p className='tablet:p-2 text-left tablet:text-[20px] text-[#173d0a]'><p className='inline antialiased tracking-wide'>Plantasynch</p> is a full-stack web-application that makes watering plants easy and provides helpful curated plant information. Keep your plants alive with Plantasynch.</p>
+                <p className='tablet:p-2 text-left tablet:text-[20px]'>Plantasynch is using a PERN stack: Postgres, Express, React, Node, and TailwindCSS, as CSS framework. To send email reminders, our backend is using <a target="_blank" rel="noreferrer" href='https://nodemailer.com/about/' className='hover:text-[#D9F8B9]'>Nodemailer</a> and <a target="_blank" rel="noreferrer" href='https://render.com/' className='hover:text-[#D9F8B9]'>Render's</a> Cron job to dynamically send emails to users when plants need attention.</p>
                 <h1 className='tablet:p-2 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased'> About the Dev</h1>
                 <div className='flex tablet:p-4 flex-col place-content-center tablet:flex-row'>
                 <a className='inline tablet:p-2 place-self-center' href="https://www.linkedin.com/in/jan-matias/" target="_blank" rel="noreferrer" >
                 <img className='tablet:p-2 h-[325px] w-screen tablet:h-[250px] tablet:w-[250px]' src={headshot}/>
                 </a>
                 <div className='tablet:w-[35%]'>
-                    <p className='tablet:p-2 mt-4 tablet:text-[15px]'>Hi, I'm Jan</p>
-                    <p className='tablet:p-2 mt-4 tablet:mt-0 text-left tablet:text-[15px]'>I recently completed a year-long fellowship that allowed me to grow from zero code to building my own fully deployed websites. <p className='underline-offset-4 inline underline'>Currently, looking for a Entry Level Software Engineering role</p>. This application was made out of my wife's constant struggle to keep her plant children alive. Hope you find it usefull.</p>            
+                    <p className='tablet:p-2 mt-4 tablet:text-[15px]'>Hi there, I'm Jan 👋🏽</p>
+                    <p className='tablet:p-2 mt-4 tablet:mt-0 text-left tablet:text-[15px]'>I'm a Full-Stack Software Engineer with focus in Web Development and RESTfull API development using modern frameworks to scale applications quickly. <p className='inline'>Currently, I'm looking for a Software Engineering role in a company that is able to be intential with early career software engineers. </p>This application was made out of my wife's constant struggle to keep her plant children alive. Hope you find it usefull.</p>            
                 </div>
                 </div>
             </div>

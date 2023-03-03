@@ -64,7 +64,7 @@ export default function CreateAccount({setLoggedInUser}){
 
     return(
         <section>
-        <div className='flex flex-col h-screen'>
+        <div className='flex flex-col h-screen tablet:px-[15%]'>
             <h1 className="text-[32px] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start p-2 tablet:text-[40px] tablet:pt-10 tablet:px-4">
                 Create your account
             </h1>
