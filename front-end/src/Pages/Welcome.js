@@ -75,11 +75,11 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
             <div className='hidden tablet:flex laptop:hidden bg-transparent w-screen h-screen max-h-[700px]'
             style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: 'contain', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
             
-            <div className='hidden tablet:hidden laptop:flex desktop:hidden bg-transparent w-screen h-[600px]'
-            style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'cover', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
+            <div className='hidden tablet:hidden laptop:flex desktop:hidden bg-transparent w-screen h-[650px]'
+            style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'cover', backgroundPositionY: `${30 - scrollTop / 2}px`}}></div>
             
-            <div className='hidden desktop:flex bg-transparent w-screen h-[700px]'
-            style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'contain', backgroundPositionY: `${40 - scrollTop / 2}px`}}></div>
+            <div className='hidden laptop:hidden desktop:flex bg-transparent w-screen h-[800px]'
+            style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'cover', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
             
             <div className={`z-20 pt-0 p-4 flex flex-col place-items-center bg-white tablet:px-[15%]`}>
             <h1 className='z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2'>Using Plantasynch</h1>
