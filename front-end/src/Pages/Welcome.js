@@ -9,7 +9,8 @@ import Footer from "./Footer"
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Welcome({loggedInUser, setLoggedInUser}){
-    const [scrollTop, setScrollTop] = useState(50);
+    const [scrollTop, setScrollTop] = useState(0);    
+    console.log(scrollTop / 5)
     const notify = (result) => {
     
         return result ? toast.success(`You have been sucessfully logged out.🪴`, {
@@ -42,32 +43,24 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
         }
     }      
     const handleClose = () => {
-        
         document.body.scrollTop = document.documentElement.scrollTop = 0 
-
     };
-    
-    useEffect(() => {
-      const handleScroll = () => {
-        // if(window.scrollY > 250){
 
-        // } else {
-            setScrollTop(window.scrollY);
-        // }
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-  
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []);
+      useEffect(() => {
+        const handleScroll = (event) => {
+          setScrollTop(window.scrollY);
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
 
     return(
         <div className='flex absolute flex-col w-screen overflow-x-hidden'>
             <header className='flex z-20 top-0 w-screen justify-center place-items-center'>
-                <img className={`scale-x-[1] pb-12 h-screen w-full tablet:hidden`} src={bgW}/>
-                <img className={`hidden py-12 pb-26 w-screen tablet:flex`} src={bgA}/>
                 <div className={`absolute flex flex-col top-[50px] tablet:top-[100px] place-items-center`}>
                 <p className="tracking-wide font-['baskerville-urw'] place-self-start origin-left text-[16px] tablet:text-[20px] italic text-[#173d0a] subpixel-antialiased font-normal text-center">
                 Welcome to your one stop Plant Application
@@ -76,7 +69,19 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
                 <h3 className="text-[#64aa85] text-[18px] font-['brandon-grotesque'] font-bold antialiased tracking-wide tablet:text-[20px]">Keep your plants alive</h3>
                 </div>
             </header>
-            <div className={`z-30 pt-0 p-4 flex flex-col place-items-center bg-white tablet:px-[15%]`}>
+            <div className='bg-transparent flex w-screen h-screen tablet:hidden'
+            style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: '100% 100%', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
+            
+            <div className='hidden tablet:flex laptop:hidden bg-transparent w-screen h-screen max-h-[700px]'
+            style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: 'contain', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
+            
+            <div className='hidden tablet:hidden laptop:flex desktop:hidden bg-transparent w-screen h-[600px]'
+            style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'cover', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
+            
+            <div className='hidden desktop:flex bg-transparent w-screen h-[700px]'
+            style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'contain', backgroundPositionY: `${40 - scrollTop / 2}px`}}></div>
+            
+            <div className={`z-20 pt-0 p-4 flex flex-col place-items-center bg-white tablet:px-[15%]`}>
             <h1 className='z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2'>Using Plantasynch</h1>
             <div className='flex tablet:p-2 flex-col gap-1 place-items-center drop-shadow-sm'>
                 <Link onClick={handleClose} className='mt-2 button-style text-center w-42' to={`${ loggedInUser.id ? '/settings' : '/sign-up'}`}>{ loggedInUser.id ? 'Go to settings' : 'Sign in with email'}</Link>

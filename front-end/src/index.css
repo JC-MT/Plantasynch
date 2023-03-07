@@ -36,10 +36,6 @@
         @apply grid grid-cols-3 gap-2
     }
 
-    .plant-laptop {
-        @apply px-0 pb-2 pl-2
-    }
-
     @layer base {
         html
         {
@@ -47,7 +43,6 @@
             height: 100%;
             margin: 0%;
             scroll-behavior: smooth;
-            background-color: #ffff;
             overflow: contain;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
