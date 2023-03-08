@@ -69,8 +69,8 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
                 <h3 className="text-[#64aa85] text-[18px] font-['brandon-grotesque'] font-bold antialiased tracking-wide tablet:text-[20px]">Keep your plants alive</h3>
                 </div>
             </header>
-            <div className='bg-transparent w-screen h-[555px] tablet:hidden bg-fixed'
-            style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: '90vmax 100vmax'}}></div>
+            <div className='bg-transparent flex w-screen h-[555px] tablet:hidden'
+            style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: '90vmax 100vmax', backgroundPositionY: `0px`}}></div>
             
             <div className='hidden tablet:flex laptop:hidden bg-transparent w-screen h-screen max-h-[600px]'
             style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: '100vmax 100vmax', backgroundPositionY: `${-30 - scrollTop / 2}px`}}></div>
