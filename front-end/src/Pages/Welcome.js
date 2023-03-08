@@ -69,16 +69,16 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
                 <h3 className="text-[#64aa85] text-[18px] font-['brandon-grotesque'] font-bold antialiased tracking-wide tablet:text-[20px]">Keep your plants alive</h3>
                 </div>
             </header>
-            <div className='bg-transparent flex w-screen h-screen tablet:hidden bg-auto'
-            style={{background: `url(${bgW}) top center fixed`, backgroundSize: '90vmax 100vmax', backgroundPositionY: `${30 - scrollTop / 2}px`}}></div>
+            <div className='bg-transparent flex w-screen h-screen tablet:hidden'
+            style={{background: `url(${bgW}) top center no-repeat fixed`, backgroundSize: '90vmax 100vmax', backgroundPositionY: `${30 - scrollTop / 2}px`}}></div>
             
-            <div className='hidden tablet:flex laptop:hidden bg-transparent w-screen h-screen max-h-[700px]'
+            <div className='hidden tablet:flex laptop:hidden bg-transparent w-screen h-screen max-h-[600px]'
             style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: '100vmax 100vmax', backgroundPositionY: `${-30 - scrollTop / 2}px`}}></div>
             
-            <div className='hidden tablet:hidden laptop:flex desktop:hidden bg-transparent w-screen h-[750px]'
+            <div className='hidden tablet:hidden laptop:flex desktop:hidden bg-transparent w-screen h-[650px]'
             style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'cover', backgroundPositionY: `${30 - scrollTop / 2}px`}}></div>
             
-            <div className='hidden laptop:hidden desktop:flex bg-transparent w-screen h-[800px]'
+            <div className='hidden laptop:hidden desktop:flex bg-transparent w-screen h-[700px]'
             style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'cover', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
             
             <div className={`z-20 pt-8 p-4 flex flex-col place-items-center bg-white tablet:px-[15%]`}>
