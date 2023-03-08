@@ -75,21 +75,28 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
             <div className='hidden tablet:flex laptop:hidden bg-transparent w-screen h-screen max-h-[700px]'
             style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: 'contain', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
             
-            <div className='hidden tablet:hidden laptop:flex desktop:hidden bg-transparent w-screen h-[650px]'
+            <div className='hidden tablet:hidden laptop:flex desktop:hidden bg-transparent w-screen h-[750px]'
             style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'cover', backgroundPositionY: `${30 - scrollTop / 2}px`}}></div>
             
             <div className='hidden laptop:hidden desktop:flex bg-transparent w-screen h-[800px]'
             style={{background: `url(${bgA}) center no-repeat fixed`, backgroundSize: 'cover', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
             
-            <div className={`z-20 pt-0 p-4 flex flex-col place-items-center bg-white tablet:px-[15%]`}>
-            <h1 className='z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2'>Using Plantasynch</h1>
-            <div className='flex tablet:p-2 flex-col gap-1 place-items-center drop-shadow-sm'>
-                <Link onClick={handleClose} className='mt-2 button-style text-center w-42' to={`${ loggedInUser.id ? '/settings' : '/sign-up'}`}>{ loggedInUser.id ? 'Go to settings' : 'Sign in with email'}</Link>
-                <button className={`m-0 button-style text-center w-36 ${loggedInUser.id ? '' : 'hidden'}`} onClick={handleLogOut}>Log out</button>
-                <Link onClick={handleClose} className={`m-0 button-style text-center w-42 ${loggedInUser.id ? 'hidden' : ''}`} to={'/log-in'}>Log in with email</Link>
-                <Link onClick={handleClose} className='hover:underline' to='/my-plants'>{ loggedInUser.id ? 'Go to my garden' : 'Skip to demo site'}</Link>
-            </div>
-            <div className='flex flex-row gap-5 justify-center drop-shadow-sm p-5'>
+            <div className={`z-20 pt-8 p-4 flex flex-col place-items-center bg-white tablet:px-[15%]`}>
+            
+            <div className='flex flex-col px-2 place-items-center gap-2'>
+                <div className='bg-transparent  w-[350px] h-[250px] rounded-xl'            
+                style={{background: `url('https://getplanta.com/images/feature_3.webp') center no-repeat`, backgroundSize: '100% 100%'}}>
+
+                </div>
+                <div>
+                <h1 className='z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2'>Using Plantasynch</h1>
+                <div className=' flex tablet:p-2 flex-col gap-1 place-items-center drop-shadow-sm'>
+                    <Link onClick={handleClose} className='mt-2 button-style text-center w-42' to={`${ loggedInUser.id ? '/settings' : '/sign-up'}`}>{ loggedInUser.id ? 'Go to settings' : 'Sign in with email'}</Link>
+                    <button className={`m-0 button-style text-center w-36 ${loggedInUser.id ? '' : 'hidden'}`} onClick={handleLogOut}>Log out</button>
+                    <Link onClick={handleClose} className={`m-0 button-style text-center w-42 ${loggedInUser.id ? 'hidden' : ''}`} to={'/log-in'}>Log in with email</Link>
+                    <Link onClick={handleClose} className='hover:underline' to='/my-plants'>{ loggedInUser.id ? 'Go to my garden' : 'Skip to demo site'}</Link>
+                </div>
+                <div className='flex flex-row gap-5 justify-center drop-shadow-sm p-5'>
                 <a className='flex flex-col place-self-center'href="https://github.com/JC-MT/Plantasynch" target="_blank" rel="noreferrer">
                     <img
                     className="w-12 h-12 rounded-full place-self-center hover:bg-[#D9F8B9]"
@@ -105,19 +112,21 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
                     />
                 </a>
             </div>
+            </div>
+            </div>
                 <h1 className='tablet:p-2 z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased'> About Plantasynch</h1>                
                 <p className='tablet:p-2 text-left tablet:text-[20px]'><p className='inline antialiased tracking-wide italic text-lg'>Plantasynch </p> is a full-stack web-application that makes the life-long problem of keeping your plants alive, a thing of the past. Features Include: Scanning any unknown plant, Email Notifications for when your plant needs watering, Keeping track of when you watered your plants or skiped a day, Curated plant information and many more to come. Keep your plants alive with Plantasynch.</p>
                 <h1 className=' tablet:p-2 z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased'>Technologies</h1>
                 <img className='tablet:p-2 place-self-start p-1' src='https://skillicons.dev/icons?i=postgres,express,react,nodejs,tailwind'/>
                 <p className='tablet:p-2 text-left tablet:text-[20px]'>Plantasynch is using a PERN stack: Postgres, Express, React, Node, and TailwindCSS, as CSS framework. To send email reminders, our backend is using <a target="_blank" rel="noreferrer" href='https://nodemailer.com/about/' className='hover:text-[#D9F8B9]'>Nodemailer</a> and <a target="_blank" rel="noreferrer" href='https://render.com/' className='hover:text-[#D9F8B9]'>Render's</a> Cron job to dynamically send emails to users when plants need attention.</p>
-                <h1 className='tablet:p-2 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased tablet:px-[22%]'>About the Dev</h1>
+                <h1 className='tablet:p-2 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased tablet:px-[10%]'>About the Dev</h1>
                 <div className='flex pt-0 flex-col place-content-center tablet:flex-row'>
                 <a className='inline tablet:p-2 place-self-center' href="https://www.linkedin.com/in/jan-matias/" target="_blank" rel="noreferrer" >
-                <img className='tablet:p-2 h-[325px] w-screen tablet:h-[250px] tablet:w-[250px]' src={headshot}/>
+                <img className='tablet:p-2 h-[325px] w-screen max-w-[300px] tablet:h-[250px] tablet:w-[250px]' src={headshot}/>
                 </a>
-                <div className='tablet:w-[35%]'>
+                <div className='tablet:w-[40%]'>
                     <p className='tablet:p-2 mt-4 tablet:text-[15px]'>Hi there, I'm Jan 👋🏽</p>
-                    <p className='tablet:p-2 mt-4 tablet:mt-0 text-left tablet:text-[15px]'>I'm a Full-Stack Software Engineer with focus in Web Development and RESTfull API development using modern frameworks to scale applications quickly. <p className='inline'>Currently, I'm looking for a Software Engineering role in a company that is able to be intential with early career software engineers. </p>This application was made out of my wife's constant struggle to keep her plant children alive. Hope you find it usefull.</p>            
+                    <p className=' tablet:p-2 mt-4 tablet:mt-0 text-left tablet:text-[15px]'>I'm a Full-Stack Software Engineer with focus in Web Development and RESTfull API development using modern frameworks to scale applications quickly. <p className='inline'>Currently, I'm looking for a Software Engineering role in a company that is able to be intential with early career software engineers. </p>This application was made out of my wife's constant struggle to keep her plant children alive. Hope you find it usefull.</p>            
                 </div>
                 </div>
             </div>

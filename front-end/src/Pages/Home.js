@@ -10,7 +10,7 @@ export default function Home({loggedInUser, notification, reFetch}){
                     Your Garden
                 </h2>
             </div>
-            <p className="text-left p-2 pt-0 tablet:px-[15%]">Feel free to discover/add new plants from the <em>"Explore"</em> page or simple add your plants with the <em>"Add"</em> page.</p>
+            <p className="text-left text-lg p-2 pt-0 tablet:px-[15%]">Discover or add new plants from the <em>Explore</em> page or simple scan your plants on the <em>Add</em> page.</p>
             <HomeIndex loggedInUser={loggedInUser} notification={notification} reFetch={reFetch}/>
             <Footer/>
         </div>
