@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Welcome({loggedInUser, setLoggedInUser}){
     const [scrollTop, setScrollTop] = useState(0);    
-    console.log(scrollTop / 5)
+
     const notify = (result) => {
     
         return result ? toast.success(`You have been sucessfully logged out.🪴`, {
@@ -69,8 +69,8 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
                 <h3 className="text-[#64aa85] text-[18px] font-['brandon-grotesque'] font-bold antialiased tracking-wide tablet:text-[20px]">Keep your plants alive</h3>
                 </div>
             </header>
-            <div className='bg-transparent w-screen h-screen tablet:hidden'
-            style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: 'cover', backgroundPositionY: `${30 - scrollTop / 2}px`}}></div>
+            <div className='bg-transparent w-screen h-screen tablet:hidden bg-cover'
+            style={{background: `url(${bgW}) center no-repeat fixed`, backgroundPositionY: `${30 - scrollTop / 2}px`}}></div>
             
             {/* <div className='hidden tablet:flex laptop:hidden bg-transparent w-screen h-screen max-h-[700px]'
             style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: 'contain', backgroundPositionY: `${0 - scrollTop / 2}px`}}></div>
