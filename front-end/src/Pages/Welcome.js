@@ -70,7 +70,7 @@ export default function Welcome({loggedInUser, setLoggedInUser}){
                 </div>
             </header>
             <div className='bg-transparent flex w-screen h-screen tablet:hidden'
-            style={{background: `url(${bgW}) top center no-repeat fixed`, backgroundSize: '90vmax 100vmax', backgroundPositionY: `${30 - scrollTop / 2}px`}}></div>
+            style={{background: `url(${bgW}) top center no-repeat fixed`, backgroundSize: '90vmax 100vmax', backgroundPositionY: `${0 - scrollTop / 4}px`}}></div>
             
             <div className='hidden tablet:flex laptop:hidden bg-transparent w-screen h-screen max-h-[600px]'
             style={{background: `url(${bgW}) center no-repeat fixed`, backgroundSize: '100vmax 100vmax', backgroundPositionY: `${-30 - scrollTop / 2}px`}}></div>
