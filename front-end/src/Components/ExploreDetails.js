@@ -128,8 +128,10 @@ export default function ExploreDetails({loggedInUser}) {
           <img alt='plant' className='place-self-center w-[25px] h-[25px] tablet:w-[40px] tablet:h-[40px]' src='https://cdn-icons-png.flaticon.com/512/628/628324.png'/>
         </div>
         </div>
-        <h3 className={`p-1 pb-0 h-fit place-self-start text-left font-semibold antialiased tracking-wide uppercase tablet:ml-[400px]`} >Plant Details</h3>
-        <div className='flex flex-col text-left p-2 pt-0'>
+        <div className='flex flex-col text-left p-2 pt-0 tablet:text-[18px]'>
+        <h1 className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased">
+              Plant Details:
+            </h1>        
         <p><strong>Known as: </strong><em>{explore.common ? `${explore.common.join(' & ')}` : ''}</em></p>
         <p><strong>Latin name: </strong>{explore.latin}, from the {explore.family} Family</p>
         <p ><strong>Ideal Light: </strong>{explore.ideallight}</p>

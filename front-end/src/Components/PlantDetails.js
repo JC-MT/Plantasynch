@@ -97,8 +97,10 @@ export default function PlantDetails({notification}) {
         <Link to={`/my-plants`}>
             <button className='text-slate-500 hover:text-[#1E1F1D] text-lg w-fit mt-1 tablet:w-32'>⬅︎ Back</button>
         </Link>{' '}
-        <h3 className={`p-1 pb-0 h-fit place-self-start text-left font-semibold antialiased tracking-wide uppercase tablet:px-[35%] tablet:pt-12`} >Plant Details</h3>
-        <div className='flex flex-col text-left p-2 pt-0 tablet:px-[35%] tablet:pb-12'>
+        <div className='flex flex-col place-self-center text-left p-2 pt-0 tablet:pb-12 w-[80%] max-w-[550px]'>
+        <h1 className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased">
+              Plant Details:
+            </h1> 
           <p className={`${!plant.last_water || needsWater ? 'animate-[pulse_1s_ease-in-out_infinite] text-red-400' : ''}`}><strong>Last Watered:</strong>{ plant.last_water ? ` ${dayjs(plant.last_water).format('dddd, MMM D, YYYY')}` : ` Has never been watered. Please edit the date or press the water plant button to water today.`}</p>
           <p><strong>Category:</strong> {plant.category}</p>
           <p><strong>Origin:</strong> {plant.origin}</p>

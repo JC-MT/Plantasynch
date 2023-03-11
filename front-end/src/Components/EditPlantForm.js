@@ -106,7 +106,7 @@ export default function EditPlantForm() {
           <button className='button-style m-0 w-28 tablet:w-32'>Back</button>
         </Link>
         <button onClick={handleSubmit} className='m-0 button-style w-28 tablet:w-32'>
-          Update
+          Save
         </button>
         <button className='mt-0 button-style w-28 tablet:w-32' onClick={() => setModel(true)}>
           Delete
