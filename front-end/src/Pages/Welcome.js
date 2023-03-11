@@ -209,6 +209,26 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
             </div>
           </div>
         </div>
+        <div className="mb-10 tablet:mb-20 flex gap-2 flex-col items-center laptop:w-[80%] laptop:place-content-between tablet:flex-row-reverse px-2 laptop:px-0">
+          <div
+            className="opacity-90 bg-transparent w-[100%] tablet:w-[50%] h-[300px] laptop:w-[45%] laptop:h-[350px] rounded-full"
+            style={{
+              background: `url('https://getplanta.com/images/feature_1.webp') center no-repeat`,
+              backgroundSize: 'cover'
+            }}
+          ></div>
+          <div className="tablet:place-self-start tablet:w-[50%] tablet:max-w-[50%]">
+            <h1 className="text-center z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2">
+              Plant Identification
+            </h1>
+            <p className='tablet:text-[20px]'>
+              Maybe you are not sure which plant you have? You can just take a
+              picture of it and we will instantly let you know. With Plantasynch's 
+              plant scanner you can scan all your house plants to find out the
+              plants name. Go to the add page to start!
+            </p>
+          </div>
+        </div>
         <div className="mb-10 tablet:mb-20 flex gap-2 flex-col items-center laptop:w-[80%] laptop:place-content-between tablet:flex-row px-2 laptop:px-0">
           <div
             className="opacity-90 bg-transparent w-[350px] h-[350px] tablet:w-[50%] laptop:w-[400px] laptop:h-[400px] rounded-br-[60%]"
@@ -229,26 +249,6 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
             </p>
           </div>
         </div>
-        <div className="mb-10 tablet:mb-20 flex gap-2 flex-col items-center laptop:w-[80%] laptop:place-content-between tablet:flex-row px-2 laptop:px-0">
-          <div
-            className="opacity-90 bg-transparent w-[100%] tablet:w-[50%] h-[300px] laptop:w-[45%] laptop:h-[350px] rounded-full"
-            style={{
-              background: `url('https://getplanta.com/images/feature_1.webp') center no-repeat`,
-              backgroundSize: 'cover'
-            }}
-          ></div>
-          <div className="tablet:place-self-start tablet:w-[50%] tablet:max-w-[50%]">
-            <h1 className="text-center z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2">
-              Plant Identification
-            </h1>
-            <p className='tablet:text-[20px]'>
-              Maybe you are not sure which plant you have? You can just take a
-              picture of it and we will instantly let you know. With Plantasynch's 
-              plant scanner you can scan all your house plants to find out the
-              plants name. Go to the add page to start!
-            </p>
-          </div>
-        </div>
         <div className='mb-10 flex flex-col tablet:mb-20 px-2 laptop:w-[80%]'>
         <h1 className="text-center tablet:p-2 z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] tablet:place-self-start text-[32px] antialiased">
           Technologies
@@ -265,7 +265,7 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
             target="_blank"
             rel="noreferrer"
             href="https://nodemailer.com/about/"
-            className="hover:text-[#D9F8B9] hover:bg-[#173d0a] italic"
+            className="hover:underline italic"
           >
             Nodemailer
           </a>{' '}
@@ -274,7 +274,7 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
             target="_blank"
             rel="noreferrer"
             href="https://render.com/"
-            className="hover:text-[#D9F8B9] hover:bg-[#173d0a] italic"
+            className="hover:underline italic"
           >
             Render's
           </a>{' '}
@@ -322,16 +322,10 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
               Hi there, I'm Jan 👋🏽
             </p>
             <p className=" tablet:p-2 mt-4 tablet:mt-0 text-left tablet:text-[18px]">
-              I'm a Full-Stack Software Engineer with focus in Web Development
-              and RESTfull API development using modern frameworks to scale
-              applications quickly.{' '}
-              <p className="inline">
-                Currently, I'm looking for a Software Engineering role in a
-                company that is able to be intential with early career software
-                engineers.{' '}
-              </p>
-              This application was made out of my wife's constant struggle to
-              keep her plant children alive. Hope you find it usefull.
+              I'm a Full-Stack Software Engineer with a focus in Web Development
+              and RESTfull API development. Design inspiration comes from <a className='hover:underline italic' href='https://invinciblehouseplants.com/'>Invincible House Plants</a> blog 
+              and the <a className='hover:text-[#173d0a] hover:underline italic' href='https://getplanta.com/'>Planta</a> landing page. Plantasynch was made out of my wife's 
+              constant struggle to keep her plant children alive. Hope you find it usefull 🪴
             </p>
           </div>
         </div>
