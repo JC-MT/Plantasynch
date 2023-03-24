@@ -61,7 +61,7 @@ export default function ExploreIndex() {
     return results;
   };
 
-  const explorePlantsContainer = (<div className="laptop:grid-view tablet:px-[20%] laptop:px-[5%] desktop:px-[15%] tablet:py-6">{currentDisplay(explore, search)}</div>)
+  const explorePlantsContainer = (<div className="laptop:grid-view tablet:px-[10%] max-w-[1640px] tablet:py-6">{currentDisplay(explore, search)}</div>)
 
   const spinnerStructure = (
     <div id="spinner" className="flex flex-col items-center justify-center p-5">

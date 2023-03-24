@@ -6,7 +6,7 @@ import Skipped from "../icons/skip.png"
 export default function PlantHistory({actions}){  
 
     return(
-        <div className='flex flex-col place-self-center text-left p-2 pt-0 tablet:pb-12 w-[80%] max-w-[550px]'>
+        <div className='flex flex-col place-self-center text-left p-2 pt-0 tablet:pb-12 w-full tablet:w-[80%] max-w-[550px]'>
          <h1 className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased">
               Plant History:
             </h1>             
