@@ -32,8 +32,6 @@ export default function App() {
     document.body.scrollTop = document.documentElement.scrollTop = 0
 
   }, [location.pathname])
-
-  console.log(notification)
   
   return (
     <div>

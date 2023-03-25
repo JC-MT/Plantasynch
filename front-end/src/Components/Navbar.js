@@ -24,19 +24,19 @@ export default function Navbar({notification, loggedInUser}){
                 Your one stop Plant Application
       </p>
       <div className="hidden p-1 uppercase font-['baskerville-urw'] tracking-wide flex-row font-md place-content-center place-items-center text-slate-800 tablet:flex">
-          <Link to={'/my-plants'} class="text-sm mx-2 py-1 delay-150 hover:text-slate-400 hover:cursor-pointer">
+          <Link to={'/my-plants'} className="text-sm mx-2 py-1 delay-150 hover:text-slate-400 hover:cursor-pointer">
               Home
           </Link >
 
-        <Link to={'/explore'} class="text-sm mx-2 py-1 w-min delay-150 hover:text-slate-400 hover:cursor-pointer">
+        <Link to={'/explore'} className="text-sm mx-2 py-1 w-min delay-150 hover:text-slate-400 hover:cursor-pointer">
             Explore
         </Link>
 
-        <Link to={'/new'} class="text-sm py-1 w-min mx-2 delay-150 hover:text-slate-400 hover:cursor-pointer">
+        <Link to={'/new'} className="text-sm py-1 w-min mx-2 delay-150 hover:text-slate-400 hover:cursor-pointer">
             Add
         </Link>
 
-        <Link to={'/'} class="text-sm py-1 w-min mx-2 delay-150 hover:text-slate-400 hover:cursor-pointer">
+        <Link to={'/'} className="text-sm py-1 w-min mx-2 delay-150 hover:text-slate-400 hover:cursor-pointer">
             About
         </Link>
 

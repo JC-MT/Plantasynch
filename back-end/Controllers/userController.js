@@ -18,7 +18,7 @@ users.get('/', async (req, res) => {
       .status(404)
       .json({
         success: false,
-        payload: `User with id:'${id}' could not be found`
+        payload: `Users could not be found`
       });
   }
 });

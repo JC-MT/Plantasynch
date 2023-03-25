@@ -11,25 +11,25 @@ export default function Footer(){
         <div className="text-left flex flex-col place-content-between py-12 px-4 h-[450px] bg-[#9EC2AF]">
             <div>
             <Link to={'/'} onClick={handleClose}>
-                <h1 class="text-[rgb(23,61,10)] text-[32px] font-['brandon-grotesque'] pl-10 font-bold antialiased tracking-wide uppercase">Plantasynch</h1>
+                <h1 className="text-[rgb(23,61,10)] text-[32px] font-['brandon-grotesque'] pl-10 font-bold antialiased tracking-wide uppercase">Plantasynch</h1>
             </Link>
                 <p className="px-10">Keep your plants alive</p>
             </div>
 
         <div className="flex flex-col">
         <div className='flex flex-row place-content-evenly text-slate-800 p-4 tablet:place-content-center uppercase'>
-          <Link to={'/my-plants'} onClick={handleClose} class="text-xl delay-150 hover:text-slate-400 hover:cursor-pointer tablet:px-4">
+          <Link to={'/my-plants'} onClick={handleClose} className="text-xl delay-150 hover:text-slate-400 hover:cursor-pointer tablet:px-4">
               Home
         </Link >
-        <Link to={'/explore'} onClick={handleClose} class="text-xl w-min delay-150 hover:text-slate-400 hover:cursor-pointer tablet:px-4">
+        <Link to={'/explore'} onClick={handleClose} className="text-xl w-min delay-150 hover:text-slate-400 hover:cursor-pointer tablet:px-4">
             Explore
         </Link>
 
-        <Link to={'/new'} onClick={handleClose} class="text-xl w-min delay-150 hover:text-slate-400 hover:cursor-pointer tablet:px-4">
+        <Link to={'/new'} onClick={handleClose} className="text-xl w-min delay-150 hover:text-slate-400 hover:cursor-pointer tablet:px-4">
             Add
         </Link>
 
-        <Link to={'/'} onClick={handleClose} class="text-xl w-min delay-150 hover:text-slate-400 hover:cursor-pointer tablet:px-4">
+        <Link to={'/'} onClick={handleClose} className="text-xl w-min delay-150 hover:text-slate-400 hover:cursor-pointer tablet:px-4">
             About
         </Link>
         </div>

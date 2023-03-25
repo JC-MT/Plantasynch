@@ -1,19 +1,14 @@
 const db = require('../db/dbConfig');
+const dayjs = require('dayjs')
 
 //UPDATE
 const updateWater = async (id) => {
-  const newDay = new Date();
-  let month = newDay.getMonth();
-  let date = newDay.getDate();
-
-  const formatedDay = `${newDay.getFullYear()}/${
-    month >= 9 ? month + 1 : `0${month + 1}`
-  }/${date >= 9 ? date : `0${date}`}`;
+  const now = dayjs().format('YYYY-MM-DD')
 
   try {
     const updateWater = await db.one(
       'UPDATE garden SET last_water=$1 WHERE id=$2 RETURNING *',
-      [formatedDay, id]
+      [now, id]
     );
     return updateWater;
   } catch (error) {

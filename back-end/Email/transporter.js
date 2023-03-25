@@ -20,7 +20,7 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async () => {
   let now = dayjs().format('MMM D, YYYY');
   const plantsToWater = await getPlantsToWater();
-
+  console.log(Object.keys(plantsToWater))
   if (Object.keys(plantsToWater).length) {
     for (let [email, plants] of Object.entries(plantsToWater)) {
       let plantHtmlComponent = '';
@@ -113,7 +113,7 @@ const sendEmail = async () => {
 };
 
 //Render Cron Job USE
-sendEmail();
+// sendEmail();
 
 module.exports = {
   sendEmail

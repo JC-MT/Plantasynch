@@ -41,7 +41,7 @@ plants.get('/notification', async (req, res) => {
  const notification = await getPlantsToWater();
  const convertedNotifications = Object.values(notification) .flat() .map ((plant) => { return { id : plant.id, user_id: plant.user_id} })
 
-  if (convertedNotifications) {
+ if (convertedNotifications) {
     res.status(200).json({ payload: convertedNotifications });
   } else {
     res.status(404).json({ status: 404, error: 'Plants could not be found' });

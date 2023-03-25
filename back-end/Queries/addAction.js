@@ -2,7 +2,7 @@ const db = require('../db/dbConfig');
 const dayjs = require('dayjs')
 
 const addAction = async (action, id) => {
-    let now = dayjs().format('YYYY/MM/DD')
+    const now = dayjs().format('YYYY-MM-DD')
 
     try {
         const previousActions = await db.one(

@@ -288,9 +288,9 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
             About Plantasynch
             </h1>
             <p className="tablet:p-2 text-left tablet:text-[20px]">
-            <p className="inline antialiased tracking-wide italic text-lg">
+            <span className="inline antialiased tracking-wide italic text-lg">
                 Plantasynch{' '}
-            </p>{' '}
+            </span>{' '}
             is a full-stack web-application that makes the life-long problem of
             keeping your plants alive, a thing of the past. Features Include:
             Scanning any unknown plant, Email Notifications for when your plant

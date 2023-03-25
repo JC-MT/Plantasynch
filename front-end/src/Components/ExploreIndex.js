@@ -77,8 +77,8 @@ export default function ExploreIndex() {
         document.body.scrollTop = document.documentElement.scrollTop = 0
         setTimeout(() => setAnimation(false), 1000) 
         }} 
-        onMouseEnter={() => { setAnimation(true) }} class={`bg-[#224722] p-2 w-14 h-14 shadow-md rounded-full flex items-center justify-center hover:cursor-n-resize ${ animation ? 'animate-bounce' : ''}`}>
-        <svg class="rotate-180 w-8 h-8 text-[#D9F8B9]" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+        onMouseEnter={() => { setAnimation(true) }} className={`bg-[#224722] p-2 w-14 h-14 shadow-md rounded-full flex items-center justify-center hover:cursor-n-resize ${ animation ? 'animate-bounce' : ''}`}>
+        <svg class="rotate-180 w-8 h-8 text-[#D9F8B9]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
           <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
         </svg>
       </div>

@@ -17,7 +17,7 @@ export default function PlantHistory({actions}){
                     const title = { Watered: "Plant icons created by Freepik - Flaticon", Updated: "Refresh icons created by Freepik - Flaticon", Skipped: "Skip icons created by Gajah Mada - Flaticon" }
                     
                     return (
-                        <>
+                        < div key={id}>
                         <div key={id} className='flex flex-row place-content-between'>
                             <p className={`pb-1 px-1 text-left`}>{action.action} on {dayjs(action.date).format('MMM D, YYYY')} </p>
                             <a href={link[action.action] || '#'} rel="noreferrer" target="_blank" title={title[action.action]}>
@@ -25,7 +25,7 @@ export default function PlantHistory({actions}){
                             </a>
                         </div>
                         <hr className='pb-2'></hr>
-                        </>)
+                        </div>)
                     })}
             </div>
         </div>

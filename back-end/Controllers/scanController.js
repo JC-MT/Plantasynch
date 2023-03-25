@@ -1,6 +1,5 @@
 const express = require('express');
 const scan = express.Router();
-
 const { analyzeFile } = require('../Queries/scan');
 
 scan.post('/', async (req, res) => {
