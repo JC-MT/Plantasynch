@@ -18,6 +18,8 @@ export default function PlantDetails({ notification }) {
   const [needsWater, setNeedsWater] = useState(false);
   const navigate = useNavigate();
 
+  console.log(plant)
+
   function getNeedsWater(notification) {
     let foundInNotifications = notification.find(
       (plant) => plant.id === Number(id)
