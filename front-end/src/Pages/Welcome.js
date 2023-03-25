@@ -81,7 +81,7 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
         </div>
       </header>
       <div className={`-z-10 bg-transparent w-screen h-[600px] tablet:hidden`}>
-        <img className={`fixed w-screen h-[600px] tablet:hidden`} src={bgW} />
+        <img alt='background' className={`fixed w-screen h-[600px] tablet:hidden`} src={bgW} />
       </div>
 
       <div
@@ -254,6 +254,7 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
           Technologies
         </h1>
         <img
+          alt='skills'
           className="tablet:p-2 tablet:place-self-start p-1"
           src="https://skillicons.dev/icons?i=postgres,express,react,nodejs,tailwind"
         />
@@ -315,6 +316,7 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
             <img
               className="rounded-full tablet:p-2 h-[300px] w-screen max-h-[300px] max-w-[300px] tablet:h-[250px] tablet:w-[250px]"
               src={headshot}
+              alt='headshot'
             />
           </a>
           <div className="tablet:w-[40%]">

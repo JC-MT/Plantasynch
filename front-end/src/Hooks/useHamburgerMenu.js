@@ -21,6 +21,7 @@ export default function useHamburgerMenu({notification, loggedInUser}) {
               <div className={`${ !loggedInUser.id && notification.length ? '' : 'hidden' } font-['Open_Sans'] inline-flex absolute justify-center items-center w-[20px] h-[20px] text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white dark:border-gray-900 tabular-nums`}>{`${ loggedInUser.id ? notification.filter((plant) => plant.user_id === loggedInUser.id).length : notification.length}`}</div>
           </Link >
           <img
+              alt='close-Icon'
               src={closeIcon}
               width='30px' 
               height='30px'

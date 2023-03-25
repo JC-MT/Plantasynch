@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../Pages/Footer';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -219,7 +218,7 @@ export default function Scanner({ loggedInUser }) {
           {result.bestMatch
             ? result.results[0].images.map((image, idx) => {
                 return (
-                  <img key={idx} className="w-48 h-48" src={`${image.url.m}`} />
+                  <img alt='best-match images' key={idx} className="w-48 h-48" src={`${image.url.m}`} />
                 );
               })
             : 'Missing Data!'}
@@ -270,7 +269,7 @@ export default function Scanner({ loggedInUser }) {
                   {plant.images.length
                     ? plant.images.map((image) => {
                         return (
-                          <img className="w-48 h-48" src={`${image.url.m}`} />
+                          <img alt='other-result images' className="w-48 h-48" src={`${image.url.m}`} />
                         );
                       })
                     : 'Missing Data!'}
@@ -318,6 +317,7 @@ export default function Scanner({ loggedInUser }) {
                 </p>
               </div>
               <img
+                alt='scan-request'
                 className={`${
                   file.queryImage ? '' : 'hidden'
                 } place-self-center absolute w-[300px] h-[200px]`}

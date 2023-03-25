@@ -18,16 +18,6 @@ export default function PlantDetails({ notification }) {
   const [needsWater, setNeedsWater] = useState(false);
   const navigate = useNavigate();
 
-  function getNeedsWater(notification) {
-    let foundInNotifications = notification.find(
-      (plant) => plant.id === Number(id)
-    );
-
-    if (foundInNotifications) {
-      setNeedsWater(true);
-    }
-  }
-
   const notify = (result) => {
     return result
       ? toast.success(`${plant.name} has been successfully deleted today 👋`, {
@@ -54,6 +44,16 @@ export default function PlantDetails({ notification }) {
   };
 
   useEffect(() => {
+    function getNeedsWater(notification) {
+      let foundInNotifications = notification.find(
+        (plant) => plant.id === Number(id)
+      );
+  
+      if (foundInNotifications) {
+        setNeedsWater(true);
+      }
+    }
+
     axios
       .get(`${API}/plants/${id}`)
       .then((res) => {
