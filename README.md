@@ -153,9 +153,9 @@ _For Cron Syntax, please refer to the [Documentation](https://nodecron.com/docs/
 
 - [x] Adding dynamic pagination and filtering to Plant History for easy searching of previous actions.
 
-- [] Plant Swap: Allows users to trade plants and make request of desired plants. This feature will include use of the Google Maps API to provide a user friendly map and allow users to exchange information.
+- [ ] Plant Swap: Allows users to trade plants and make request of desired plants. This feature will include use of the Google Maps API to provide a user friendly map and allow users to exchange information.
 
-- [] Plant Care Bot: Allows users to ask any plant related questions. This feature will include use of the OpenAI to implement a ChatGPT powered bot.
+- [ ] Plant Care Bot: Allows users to ask any plant related questions. This feature will include use of the OpenAI to implement a ChatGPT powered bot.
 
 See the [open issues](https://github.com/JC-MT/Plantasynch/issues) for a full list of proposed features (and known issues).
 
