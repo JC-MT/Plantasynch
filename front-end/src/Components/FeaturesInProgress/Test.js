@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Widget, addResponseMessage } from 'react-chat-widget';
-import 'react-chat-widget/lib/styles.css';
-import './Chatbot.css';
+// import { useState } from 'react';
+// import { Widget, addResponseMessage } from 'react-chat-widget';
+// import 'react-chat-widget/lib/styles.css';
+// import './Chatbot.css';
 
 function Chatbot() {
   const [messages, setMessages] = useState([]);
