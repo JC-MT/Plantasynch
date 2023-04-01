@@ -1,0 +1,77 @@
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.24);
+    background-color: #fff;
+    z-index: 9999;
+    overflow: hidden;
+  }
+  
+  .rdw-message-input {
+    border-radius: 20px;
+    border: none;
+    background-color: #f2f2f2;
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+  }
+  
+  .rdw-message-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    padding: 12px 24px;
+    cursor: pointer;
+    margin-left: 8px;
+  }
+  
+  .rdw-close-button {
+    color: #999;
+  }
+  
+  .rdw-header {
+    background-color: #007bff;
+    color: #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
+  }
+  
+  .rdw-header-logo {
+    display: none;
+  }
+  
+  .rdw-conversation-container {
+    padding: 16px;
+  }
+  
+  .rdw-response {
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 12px;
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+  
+  .rdw-timestamp {
+    color: #999;
+    font-size: 12px;
+    margin-left: 8px;
+  }
+  
+  .rdw-new-message-alert {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  

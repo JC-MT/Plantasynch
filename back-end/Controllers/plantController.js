@@ -1,6 +1,7 @@
 const express = require('express');
 const plants = express.Router();
 const explorePlants = require('../Models/ExplorePlants')
+const { careData } = require('../Validations/careData')
 const { getPlantsToWater } = require('../Queries/lastWater')
 const { updateWater } = require('../Queries/updateWater')
 const { updateSkipHistory } = require('../Queries/updateSkipHistory')
@@ -106,7 +107,8 @@ plants.get('/explore/:id', async (req, res) => {
 
 //CREATE
 plants.post('/', async (req, res) => {
-  const newPlant = await createPlant(req.body);
+  const getCareData = careData(explorePlants, req.body)
+  const newPlant = await createPlant(getCareData);
 
   if (newPlant) {
     const addingAction = await addAction('Created', newPlant.id);

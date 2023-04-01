@@ -3437,7 +3437,7 @@ const explorePlants = [
       latin: "Ficus lyrata",
       family: "Moraceae",
       common: [
-        "Fidleleaf fig"
+        "Fiddle leaf fig"
       ],
       category: "Ficus",
       origin: "Ouest Africa",
