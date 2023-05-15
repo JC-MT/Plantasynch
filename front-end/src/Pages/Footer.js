@@ -8,12 +8,12 @@ export default function Footer(){
     };
 
     return(
-        <div className="text-left flex flex-col place-content-between py-12 px-4 h-[450px] bg-[#9EC2AF]">
+        <div className="text-left flex flex-col place-content-between py-12 px-4 h-[300px] bg-[#9EC2AF]">
             <div>
             <Link to={'/'} onClick={handleClose}>
-                <h1 className="text-[rgb(23,61,10)] text-[32px] font-['brandon-grotesque'] pl-10 font-bold antialiased tracking-wide uppercase">Plantasynch</h1>
+                <h1 className="text-[rgb(23,61,10)] text-[32px] font-['brandon-grotesque'] px-[12%] font-bold antialiased tracking-wide uppercase">Plantasynch</h1>
             </Link>
-                <p className="px-10">Keep your plants alive</p>
+                <p className="px-[12%]">Keep your plants alive</p>
             </div>
 
         <div className="flex flex-col">

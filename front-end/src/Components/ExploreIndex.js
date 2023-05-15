@@ -63,7 +63,7 @@ export default function ExploreIndex() {
   };
 
   const explorePlantsContainer = (
-    <div className="laptop:grid-view tablet:px-[10%] max-w-[1640px] tablet:py-6">
+    <div className="laptop:grid-view px-2 tablet:px-[12%] tablet:py-6">
       {currentDisplay(explore, search)}
     </div>
   );
@@ -79,12 +79,12 @@ export default function ExploreIndex() {
   );
 
   return (
-    <div className="flex flex-col gap-2 tablet:p-8 tablet:pt-0">
+    <div className="flex flex-col gap-2 tablet:pt-0">
       <div
         onMouseLeave={() => {
           setAnimation(false);
         }}
-        className="bg-transparent flex flex-row p-5 rounded-full h-[94px] w-[94px] fixed bottom-8 right-2 hover:cursor-n-resize"
+        className="bg-transparent flex flex-row p-5 rounded-full h-[94px] w-[94px] fixed bottom-8 right-2 tablet:bottom-12 tablet:right-24 laptop:right-[12%] hover:cursor-n-resize"
       >
         <div
           onClick={() => {

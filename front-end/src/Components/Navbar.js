@@ -8,7 +8,7 @@ export default function Navbar({notification, loggedInUser}){
   const [ hover, setHover] = useState({github: false, linkedin: false})                                 
 
   return (
-    <div className="fixed top-0 py-1 px-3 z-50 flex flex-row place-content-evenly justify-items-left bg-white antialiased w-screen h-[80px] shadow-sm tablet:h-[136px] tablet:px-[10%] tablet:place-content-between">
+    <div className="fixed top-0 py-1 px-3 z-50 flex flex-row place-content-evenly justify-items-left bg-white antialiased w-screen h-[80px] shadow-sm tablet:h-[136px] tablet:px-[8%] tablet:place-content-between">
 
       <div className={`flex flex-col place-content-center place-items-center w-[32%] tablet:hidden`} onClick={() => {setActive(true)}}>
         <img className='hover:cursor-pointer self-start ml-2' width='30px' height='30px' src={hamburgerMenuIcon} alt='hamburger-icon'/>

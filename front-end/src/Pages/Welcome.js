@@ -112,7 +112,7 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
       ></div>
 
       <div
-        className={`z-20 pt-8 p-4 pb-0 flex max-w-[1200px] self-center flex-col place-items-center bg-white`}
+        className={`z-20 pt-8 p-2 pb-0 px-[12%] flex self-center flex-col place-items-center bg-white`}
       >
         <div className="mb-10 tablet:mb-20 flex flex-col items-center laptop:w-[80%] laptop:place-content-between tablet:flex-row px-2 laptop:px-0 gap-2">
           <div
@@ -302,10 +302,10 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
         </div>
         <div className='flex flex-col mb-10 tablet:mb-20 px-2'>
         <hr></hr>
-        <h1 className="tablet:p-2 text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] tablet:place-self-start text-[32px] antialiased tablet:pl-[20%]">
+        <div className='flex flex-col place-self-center laptop:w-[80%]'>
+        <h1 className="tablet:p-2 text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased">
           About the developer
         </h1>
-
         <div className="flex pt-0 flex-col place-content-center tablet:flex-row">
           <a
             className="inline tablet:p-2 place-self-center"
@@ -330,6 +330,8 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
               constant struggle to keep her plant children alive. Hope you find it usefull 🪴
             </p>
           </div>
+
+        </div>
         </div>
         </div>
       </div>

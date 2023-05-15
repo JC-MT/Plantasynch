@@ -40,8 +40,8 @@ export default function HomeIndex({loggedInUser, notification, reFetch}) {
   </div>)
 
   const currentDisplay = (    
-    <div className='flex flex-col gap-2 p-4 pt-0 tablet:gap-4 laptop:grid-view tablet:p-12 tablet:px-[10%] max-w-[1440px]'>
-      <div className={`flex-col place-items-center p-3 ${filteredByLoggedInUser(garden, loggedInUser).length ? 'hidden' : 'flex'}`}>
+    <div className='flex flex-col gap-2 px-2 tablet:gap-4 laptop:grid-view tablet:p-12 tablet:px-[12%]'>
+      <div className={`flex-col place-items-center p-2 ${filteredByLoggedInUser(garden, loggedInUser).length ? 'hidden' : 'flex'}`}>
         <img width='100px' height='100px' className={`rounded-xl relative`} src={emptyPot} />
         <h3 className='text-xl p-2'>{`It's empty :(`}</h3>
       </div>
