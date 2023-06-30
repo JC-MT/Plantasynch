@@ -65,8 +65,25 @@ export default function NewPlantForm({loggedInUser}) {
         notify(false)
       })
   }
+
+  // const [file, setFile] = useState()
+  // const [caption, setCaption] = useState("")
+
+  // const submit = async (event) => {
+  //   event.preventDefault()
+
+  //   const formData = new FormData();
+  //   formData.append("image", file)
+  //   formData.append("caption", caption)
+  //   await axios.post(`${API}/images/posts`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
+  // }
   return (
     <div>
+      {/* <form onSubmit={submit}>
+        <input onChange={e => setFile(e.target.files[0])} type="file" accept="image/*"></input>
+        <input value={caption} onChange={e => setCaption(e.target.value)} type="text" placeholder='Caption'></input>
+        <button type="submit">Submit</button>
+      </form> */}
       <form onSubmit={handleSubmit} className='flex flex-col place-items-center tablet:pb-8'>
       <img alt='Need full link for preview' className='pt-3 rounded-md shadow-md place-self-center w-[250px] h-[150px] tablet:w-[600px] tablet:h-[350px]' src={ plant.image ? plant.image : `https://getplanta.com/images/feature_2.webp`}/>
       <p className='p-1 text-center text-[15px] tablet:text-[15px]'>*Plantasynch needs at least a name to add your new plant</p>
