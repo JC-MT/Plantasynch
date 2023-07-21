@@ -1,7 +1,6 @@
 const express = require('express')
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const multer = require('multer');
-
 const images = express.Router();
 require('dotenv').config();
 
@@ -30,14 +29,6 @@ images.post('/posts', upload.single('image'), async(req, res) => {
     }
     const command = new PutObjectCommand(params)
     await s3Client.send(command)
-    
-    res.send({})
 })
-
-images.delete('/delete', async(req, res) => {
-
-    res.send({})
-})
-
 
 module.exports = images;

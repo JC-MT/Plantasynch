@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+const URL = process.env.REACT_APP_AWS_URL
 
 export default function Plant({id, image, name, category, notification, last_water, email}) {
   const getNotify = () => notification.find((plant) => plant.id === id)
@@ -6,7 +7,7 @@ export default function Plant({id, image, name, category, notification, last_wat
   return (
     <div className='flex flex-row justify-between hover:bg-slate-200'>
       <Link onClick={() => {}}className='flex flex-row' to={`/my-plants/${id}`}>
-        <img className='rounded-full w-[150px] h-[150px]' src={`${image}`} alt='Plant' />
+        <img className='rounded-full w-[150px] h-[150px]' src={`${URL}${image}`} alt='Plant' />
         <p className={`flex flex-col p-2`}>Name: {name}
         <span>Type: {category}</span>
         </p>
