@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
+const URL = process.env.REACT_APP_AWS_URL
 
 export default function ExplorePlant({ id, name, knownAs, category}) {
-
   
   return (
     <div className='flex flex-row justify-between hover:bg-slate-200 laptop:plant-laptop'>
       <Link className='flex flex-row' to={`/explore/${id}`}>
-        <img className='rounded-full w-[150px] h-[150px]' src={`https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg`} alt='Plant' />
+        <img className='rounded-full w-[150px] h-[150px]' src={`${URL}15-20-2-28-3-14-30m.jpeg`} alt='Plant' />
         <p className='flex flex-col p-2'>Name: {name}
         <span>{ knownAs.length > 1 ? `Other Names: ${knownAs.slice(1).join(', ')}` : ''}</span>
         <span>Type: {category}</span>

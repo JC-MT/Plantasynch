@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const API = process.env.REACT_APP_API_URL;
+const URL = process.env.REACT_APP_AWS_URL
 
 export default function PlantDetails({ notification }) {
   const { id } = useParams();
@@ -81,7 +82,6 @@ export default function PlantDetails({ notification }) {
   };
 
   const [model, setModel, modelStructure] = useModel({ handleDelete });
-
   const spinnerStructure = (
     <div id="spinner" className="flex flex-col items-center justify-center p-5">
       <div className="w-20 h-20 border-b-2 border-gray-900 rounded-full animate-spin"></div>
@@ -96,9 +96,9 @@ export default function PlantDetails({ notification }) {
     <div className="flex flex-col gap-1">
       <header className="flex items-center justify-center tablet:pt-10">
         <div
-          className="grayscale-[50%] w-[400px] h-[380px] place-self-center place-items-center"
+          className="grayscale-[50%] w-[400px] h-[380px] place-self-center"
           style={{
-            background: `url('${plant.image}') no-repeat center`,
+            background: `url('${URL}${plant.image}') no-repeat center`,
             backgroundSize: '400px 380px'
           }}
         >

@@ -103,7 +103,7 @@ export default function NewPlantForm({loggedInUser}) {
       </div>
         <div className='flex flex-col input-container'>
         <label className='input-label' htmlFor='image'>Image:</label>
-        <input onChange={handleUploadChange} type="file" accept="image/*"></input>
+        <input onChange={handleUploadChange} name='image' type="file" accept="image/*"></input>
         </div>
         <div className='flex flex-col input-container'>
           <label className='input-label' htmlFor='category'>Category:</label>

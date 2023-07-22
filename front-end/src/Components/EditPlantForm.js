@@ -5,11 +5,12 @@ import useModel from '../Hooks/useModel'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL
+const URL = process.env.REACT_APP_AWS_URL
 
 export default function EditPlantForm() {
   const navigate = useNavigate()
   const { id } =  useParams()
-
+  const [file, setFile] = useState()
   const [plant, setPlant] = useState({
     name: "",
     image: "",
@@ -42,6 +43,13 @@ export default function EditPlantForm() {
     setPlant({ ...plant, [event.target.id]: event.target.value })
   }
 
+  const handleUploadChange = (event) => {
+    const fileData = event.target.files[0]
+
+    setFile(fileData)
+    setPlant({ ...plant, image: fileData.name })
+  }
+
   const notify = (result) => {
     
     return result ? toast.success(`Your plant was succesfully updated. Happy Growing 🪴`, {
@@ -62,8 +70,14 @@ export default function EditPlantForm() {
     progress: undefined
   })}
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
+
+    const formData = new FormData();
+    formData.append("image", file)
+
+    await axios.post(`${API}/images/posts`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
+
     axios
       .put(`${API}/plants/${id}`, plant)
       .then((res) => {
@@ -92,7 +106,7 @@ export default function EditPlantForm() {
   return (
     <div className='flex flex-col tablet:pt-8'>
         <header className='relative flex items-center justify-center'>
-          <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`${plant.image}`} alt='plant'>
+          <img className='grayscale-[50%] brightness-75 place-self-center static w-screen h-[275px] tablet:w-[400px] tablet:h-[400px]' src={`${URL}${plant.image}`} alt='plant'>
           </img>
           <h3 className="absolute text-white font-semibold text-[40px] text-center tablet:text-[40px]">
               {plant.name}
@@ -125,16 +139,8 @@ export default function EditPlantForm() {
         />
         </div>
         <div className='flex flex-col input-container'>
-        <label className='input-label' htmlFor='image'>Image url:</label>
-        <input
-          id='image'
-          type='text'
-          name='image'
-          placeholder='http://'
-          value={plant.image}
-          onChange={handleTextChange}
-          className='input-style'
-        />
+        <label className='input-label' htmlFor='image'>Image:</label>
+        <input onChange={handleUploadChange} name='image' type="file" accept="image/*"></input>
         </div>
         <div className='flex flex-col input-container'>
           <label className='input-label' htmlFor='category'>Category:</label>

@@ -11,12 +11,12 @@ export default function ExploreDetails({loggedInUser}) {
   const [explore, setExplore] = useState({});
   const [newplant, setNewPlant] = useState({
     name: "",
-    image: "",
+    image: "15-20-2-28-3-14-30m.jpeg",
     origin: "",
     category: "",
     ideal_light: "",
     ideal_watering: "",
-    last_water: 0,
+    last_water: '',
     is_healthy: false,
     email: "",
     user_id: 0,
@@ -41,20 +41,15 @@ export default function ExploreDetails({loggedInUser}) {
           demoUser = false
         }
         setNewPlant({
+          ...newplant,
           name: res.common[0],
-          image: "https://img.artpal.com/444151/15-20-2-28-3-14-30m.jpg",
           origin: res.origin,
           category: res.category,
           ideal_light: res.ideallight,
           ideal_watering: res.watering,
-          last_water: "",
-          is_healthy: false,
           email: loggedInUser.email || "",
           user_id: loggedInUser.id || 0,
           demo_plant: demoUser,
-          actions: [],
-          skip_count: 0,
-          skip_history: []
         })
       })
       .catch((err) => {

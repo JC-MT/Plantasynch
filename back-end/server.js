@@ -1,7 +1,5 @@
-const app = require('./app');
-const scheduler = require('./Email/schedule');
 require('dotenv').config();
-
+const app = require('./app');
 const { PORT } = process.env;
 
 app.listen(PORT, () => {

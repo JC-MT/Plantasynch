@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
+
 const API = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = process.env.REACT_APP_API_URL_PLANT;
@@ -20,7 +20,7 @@ export default function Scanner({ loggedInUser }) {
     category: '',
     ideal_light: '',
     ideal_watering: '',
-    last_water: 0,
+    last_water: '',
     is_healthy: false,
     email: '',
     user_id: 0,
@@ -31,13 +31,16 @@ export default function Scanner({ loggedInUser }) {
   });
 
   const handleUpload = (event) => {
-    let reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
+    const reader = new FileReader();
+    const fileData = event.target.files[0]
+
+    reader.readAsDataURL(fileData);
+    setNewPlant({...newplant, image: fileData.name})
 
     reader.onload = () => {
       setFile({
         queryImage: reader.result,
-        queryFile: event.target.files[0]
+        queryFile: fileData
       });
     };
   };
@@ -45,6 +48,12 @@ export default function Scanner({ loggedInUser }) {
   const handleAdd = (event) => {
     event.preventDefault();
     document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+    const formData = new FormData();
+    formData.append("image", file.queryFile)
+
+    axios.post(`${API}/images/posts`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
+
     axios
       .post(`${API}/plants`, newplant)
       .then((res) => {
@@ -89,20 +98,12 @@ export default function Scanner({ loggedInUser }) {
                 demoUser = false;
               }
               setNewPlant({
+                ...newplant,
                 name: res.results[0].species.commonNames[0],
-                image: res.results[0].images[0].url.m,
-                origin: '',
                 category: res.results[0].species.genus.scientificName,
-                ideal_light: '',
-                ideal_watering: '',
-                last_water: '',
-                is_healthy: false,
                 email: loggedInUser.email || '',
                 user_id: loggedInUser.id || 0,
                 demo_plant: demoUser,
-                actions: [],
-                skip_count: 0,
-                skip_history: []
               });
             })
             .catch((error) => {
@@ -307,10 +308,8 @@ export default function Scanner({ loggedInUser }) {
                   className="place-self-center mb-3 w-[40px] h-[40px] tablet:w-[40px] tablet:h-[40px]"
                   src="https://cdn-icons-png.flaticon.com/512/628/628324.png"
                 />
-                {/* <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg> */}
                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span class="font-semibold">Click to upload</span> or drag and
-                  drop
+                  <span class="font-semibold">Click to upload your image</span>
                 </p>
                 <p class="text-xs text-gray-500 dark:text-gray-400">
                   SVG, PNG, or JPG(recommended) (MAX. 800x1280px)
@@ -333,7 +332,6 @@ export default function Scanner({ loggedInUser }) {
                 id="dropzone-file"
                 accept="image/*"
                 type="file"
-                capture
                 class="hidden"
               />
             </label>
