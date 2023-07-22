@@ -309,7 +309,7 @@ export default function Scanner({ loggedInUser }) {
                   src="https://cdn-icons-png.flaticon.com/512/628/628324.png"
                 />
                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span class="font-semibold">Click to upload your image</span>
+                  <span class="font-semibold">Click to upload/capture an image</span>
                 </p>
                 <p class="text-xs text-gray-500 dark:text-gray-400">
                   SVG, PNG, or JPG(recommended) (MAX. 800x1280px)
