@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const API = process.env.REACT_APP_API_URL;
-const URL = process.env.REACT_APP_AWS_URL
+const AWS = process.env.REACT_APP_AWS_URL;
 
 export default function PlantDetails({ notification }) {
   const { id } = useParams();
@@ -49,7 +49,7 @@ export default function PlantDetails({ notification }) {
       let foundInNotifications = notification.find(
         (plant) => plant.id === Number(id)
       );
-  
+
       if (foundInNotifications) {
         setNeedsWater(true);
       }
@@ -98,7 +98,7 @@ export default function PlantDetails({ notification }) {
         <div
           className="grayscale-[50%] w-[400px] h-[380px] place-self-center"
           style={{
-            background: `url('${URL}${plant.image}') no-repeat center`,
+            background: `url('${AWS}${plant.image}') no-repeat center`,
             backgroundSize: '400px 380px'
           }}
         >
