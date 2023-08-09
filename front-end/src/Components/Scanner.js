@@ -32,10 +32,10 @@ export default function Scanner({ loggedInUser }) {
 
   const handleUpload = (event) => {
     const reader = new FileReader();
-    const fileData = event.target.files[0]
+    const fileData = event.target.files[0];
 
     reader.readAsDataURL(fileData);
-    setNewPlant({...newplant, image: fileData.name})
+    setNewPlant({ ...newplant, image: fileData.name });
 
     reader.onload = () => {
       setFile({
@@ -50,9 +50,11 @@ export default function Scanner({ loggedInUser }) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
     const formData = new FormData();
-    formData.append("image", file.queryFile)
+    formData.append('image', file.queryFile);
 
-    axios.post(`${API}/images/posts`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
+    axios.post(`${API}/images/posts`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    });
 
     axios
       .post(`${API}/plants`, newplant)
@@ -81,8 +83,7 @@ export default function Scanner({ loggedInUser }) {
       method: 'POST',
       body: form
     })
-      .then((response) => {
-        console.log(response);
+      .then(async (response) => {
         if (response.ok) {
           notify(true);
           setRequested(false);
@@ -103,24 +104,22 @@ export default function Scanner({ loggedInUser }) {
                 category: res.results[0].species.genus.scientificName,
                 email: loggedInUser.email || '',
                 user_id: loggedInUser.id || 0,
-                demo_plant: demoUser,
+                demo_plant: demoUser
               });
             })
-            .catch((error) => {
+            .catch(() => {
               setRequested(false);
               notify(false);
-              console.log(error);
             });
         } else {
+          const errorData = await response.json();
           setRequested(false);
-          notify(false, response);
-          console.log(response);
+          notify(false, errorData);
         }
       })
-      .catch((error) => {
+      .catch(() => {
         setRequested(false);
         notify(false);
-        console.error(error);
       });
   };
 
@@ -144,7 +143,7 @@ export default function Scanner({ loggedInUser }) {
       : toast.error(
           `${
             response
-              ? `Error code: ${response.status} Error Message: (${response.statusText})`
+              ? `Error code: ${response.statusCode} Error Message: ${response.message}`
               : `We were unable to scan your image 🥲 Please check your internet and try again in a few minutes.`
           }`,
           {
@@ -219,7 +218,12 @@ export default function Scanner({ loggedInUser }) {
           {result.bestMatch
             ? result.results[0].images.map((image, idx) => {
                 return (
-                  <img alt='best-match images' key={idx} className="w-48 h-48" src={`${image.url.m}`} />
+                  <img
+                    alt="best-match images"
+                    key={idx}
+                    className="w-48 h-48"
+                    src={`${image.url.m}`}
+                  />
                 );
               })
             : 'Missing Data!'}
@@ -270,7 +274,11 @@ export default function Scanner({ loggedInUser }) {
                   {plant.images.length
                     ? plant.images.map((image) => {
                         return (
-                          <img alt='other-result images' className="w-48 h-48" src={`${image.url.m}`} />
+                          <img
+                            alt="other-result images"
+                            className="w-48 h-48"
+                            src={`${image.url.m}`}
+                          />
                         );
                       })
                     : 'Missing Data!'}
@@ -309,14 +317,16 @@ export default function Scanner({ loggedInUser }) {
                   src="https://cdn-icons-png.flaticon.com/512/628/628324.png"
                 />
                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span class="font-semibold">Click to upload/capture an image</span>
+                  <span class="font-semibold">
+                    Click to upload/capture an image
+                  </span>
                 </p>
                 <p class="text-xs text-gray-500 dark:text-gray-400">
                   SVG, PNG, or JPG(recommended) (MAX. 800x1280px)
                 </p>
               </div>
               <img
-                alt='scan-request'
+                alt="scan-request"
                 className={`${
                   file.queryImage ? '' : 'hidden'
                 } place-self-center absolute w-[300px] h-[200px]`}
