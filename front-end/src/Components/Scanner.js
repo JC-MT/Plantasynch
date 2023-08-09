@@ -342,7 +342,7 @@ export default function Scanner({ loggedInUser }) {
                 id="dropzone-file"
                 accept="image/*"
                 type="file"
-                class="hidden"
+                className="opacity-0"
               />
             </label>
           </div>
