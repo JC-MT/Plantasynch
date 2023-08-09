@@ -50,7 +50,7 @@ export default function Scanner({ loggedInUser }) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
     const formData = new FormData();
-    formData.append('image', file.queryFile);
+    formData.append('image', file);
 
     axios.post(`${API}/images/posts`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
