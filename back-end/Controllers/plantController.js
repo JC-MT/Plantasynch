@@ -1,12 +1,12 @@
 const express = require('express');
 const plants = express.Router();
-const explorePlants = require('../Models/ExplorePlants')
-const { careData } = require('../Validations/careData')
-const { getPlantsToWater } = require('../Queries/lastWater')
-const { updateWater } = require('../Queries/updateWater')
-const { updateSkipHistory } = require('../Queries/updateSkipHistory')
-const { updateSkipCount } = require('../Queries/updateSkipCount')
-const { addAction } = require('../Queries/addAction') 
+const explorePlants = require('../Models/ExplorePlants');
+const { careData } = require('../Validations/careData');
+const { getPlantsToWater } = require('../Queries/lastWater');
+const { updateWater } = require('../Queries/updateWater');
+const { updateSkipHistory } = require('../Queries/updateSkipHistory');
+const { updateSkipCount } = require('../Queries/updateSkipCount');
+const { addAction } = require('../Queries/addAction');
 
 const {
   getAllPlants,
@@ -29,7 +29,6 @@ plants.get('/', async (req, res) => {
 
 //EXPLORE INDEX
 plants.get('/explore', (req, res) => {
-
   if (explorePlants) {
     res.status(200).json({ payload: explorePlants });
   } else {
@@ -39,10 +38,14 @@ plants.get('/explore', (req, res) => {
 
 //NAVBAR ICON
 plants.get('/notification', async (req, res) => {
- const notification = await getPlantsToWater();
- const convertedNotifications = Object.values(notification) .flat() .map ((plant) => { return { id : plant.id, user_id: plant.user_id} })
+  const notification = await getPlantsToWater();
+  const convertedNotifications = Object.values(notification)
+    .flat()
+    .map((plant) => {
+      return { id: plant.id, user_id: plant.user_id };
+    });
 
- if (convertedNotifications) {
+  if (convertedNotifications) {
     res.status(200).json({ payload: convertedNotifications });
   } else {
     res.status(404).json({ status: 404, error: 'Plants could not be found' });
@@ -53,29 +56,28 @@ plants.get('/notification', async (req, res) => {
 plants.put('/water/:id', async (req, res) => {
   const { id } = req.params;
   const newDay = await updateWater(id);
-  const newSkipInfo = await updateSkipHistory(id)
-  
-   if (newDay) {
+  const newSkipInfo = await updateSkipHistory(id);
+
+  if (newDay) {
     const addingAction = await addAction('Watered', id);
     res.status(200).json({ payload: newDay });
-   } else {
-     res.status(404).json({ status: 404, error: 'Date could not be updated' });
-   }
- });
+  } else {
+    res.status(404).json({ status: 404, error: 'Date could not be updated' });
+  }
+});
 
- //UPDATE SKIP
+//UPDATE SKIP
 plants.put('/skip/:id', async (req, res) => {
   const { id } = req.params;
-  const newSkipCount = await updateSkipCount(req.body, id)
-  
-   if (newSkipCount) {
-    const addingAction = await addAction('Skipped', id);
-     res.status(200).json({ payload: newSkipCount });
-   } else {
-     res.status(404).json({ status: 404, error: 'Date could not be updated' });
-   }
- });
+  const newSkipCount = await updateSkipCount(req.body, id);
 
+  if (newSkipCount) {
+    const addingAction = await addAction('Skipped', id);
+    res.status(200).json({ payload: newSkipCount });
+  } else {
+    res.status(404).json({ status: 404, error: 'Date could not be updated' });
+  }
+});
 
 // SHOW
 plants.get('/:id', async (req, res) => {
@@ -85,12 +87,10 @@ plants.get('/:id', async (req, res) => {
   if (plant.length) {
     res.status(200).json({ success: true, payload: plant[0] });
   } else {
-    res
-      .status(404)
-      .json({
-        success: false,
-        payload: `Plant with id:'${id}' could not be found`
-      });
+    res.status(404).json({
+      success: false,
+      payload: `Plant with id:'${id}' could not be found`
+    });
   }
 });
 
@@ -101,13 +101,15 @@ plants.get('/explore/:id', async (req, res) => {
   if (explorePlants[id]) {
     res.status(200).json({ payload: explorePlants[id] });
   } else {
-    res.status(404).json({ status: 404, error: `Plant with id:'${id}' could not be found` });
+    res
+      .status(404)
+      .json({ status: 404, error: `Plant with id:'${id}' could not be found` });
   }
 });
 
 //CREATE
 plants.post('/', async (req, res) => {
-  const getCareData = careData(explorePlants, req.body)
+  const getCareData = careData(explorePlants, req.body);
   const newPlant = await createPlant(getCareData);
 
   if (newPlant) {
@@ -129,12 +131,10 @@ plants.put('/:id', async (req, res) => {
     const addingAction = await addAction('Updated', id);
     res.status(200).json({ success: true, payload: updatedPlant });
   } else {
-    res
-      .status(404)
-      .json({
-        success: false,
-        payload: `Plant with id:'${id}' could not be updated`
-      });
+    res.status(404).json({
+      success: false,
+      payload: `Plant with id:'${id}' could not be updated`
+    });
   }
 });
 
@@ -146,12 +146,10 @@ plants.delete('/:id', async (req, res) => {
   if (deletedPlant.id) {
     res.status(200).json({ success: true, payload: deletedPlant });
   } else {
-    res
-      .status(404)
-      .json({
-        success: false,
-        payload: `Plant with id:'${id}' could not be deleted`
-      });
+    res.status(404).json({
+      success: false,
+      payload: `Plant with id:'${id}' could not be deleted`
+    });
   }
 });
 

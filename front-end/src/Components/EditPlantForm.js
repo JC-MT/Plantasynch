@@ -75,13 +75,13 @@ export default function EditPlantForm() {
         );
   };
 
-  const handleSubmit = async (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData();
     formData.append('image', file);
 
-    await axios.post(`${API}/images/posts`, formData, {
+    axios.post(`${API}/images/posts`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
 
@@ -95,7 +95,7 @@ export default function EditPlantForm() {
         console.warn(err);
         notify(false);
       });
-  };
+  }
 
   const handleDelete = () => {
     axios
