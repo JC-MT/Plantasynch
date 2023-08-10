@@ -67,7 +67,7 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
     <div className="flex absolute flex-col w-screen overflow-x-hidden">
       <header className="flex z-20 top-0 w-screen justify-center place-items-center">
         <div
-          className={`absolute flex flex-col top-[50px] tablet:top-[100px] place-items-center`}
+          className={`absolute flex flex-col top-[50px] tablet:top-[80px] place-items-center`}
         >
           <p className="tracking-wide font-['baskerville-urw'] place-self-start origin-left text-[16px] tablet:text-[20px] italic text-[#173d0a] subpixel-antialiased font-normal text-center">
             Welcome to your one stop Plant Application
@@ -81,7 +81,11 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
         </div>
       </header>
       <div className={`-z-10 bg-transparent w-screen h-[600px] tablet:hidden`}>
-        <img alt='background' className={`fixed w-screen h-[600px] tablet:hidden`} src={bgW} />
+        <img
+          alt="background"
+          className={`fixed w-screen h-[600px] tablet:hidden`}
+          src={bgW}
+        />
       </div>
 
       <div
@@ -122,15 +126,16 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
               backgroundSize: 'cover'
             }}
           ></div>
-          <div className='tablet:w-[50%]'>
+          <div className="tablet:w-[50%]">
             <h1 className="text-center z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2">
               Using Plantasynch
             </h1>
-            <p className='tablet:text-[20px]'>
+            <p className="tablet:text-[20px]">
               Plantasynch is a user-friendly tool to help plant parents keep
-              their plants alive. Feel free to browse through all the different features.
-              To ensure you get email reminders, click the edit button after pressing the 
-              top-right three dots on your plant detail page and then save. That's ALL!
+              their plants alive. Feel free to browse through all the different
+              features. To ensure you get email reminders, click the edit button
+              after pressing the top-right three dots on your plant detail page
+              and then save. That's ALL!
             </p>
             <div className="flex tablet:p-2 flex-col gap-1 place-items-center drop-shadow-sm">
               <Link
@@ -221,11 +226,11 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
             <h1 className="text-center z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2">
               Plant Identification
             </h1>
-            <p className='tablet:text-[20px]'>
+            <p className="tablet:text-[20px]">
               Maybe you are not sure which plant you have? You can just take a
-              picture of it and we will instantly let you know. With Plantasynch's 
-              plant scanner you can scan all your house plants to find out the
-              plants name. Go to the add page to start!
+              picture of it and we will instantly let you know. With
+              Plantasynch's plant scanner you can scan all your house plants to
+              find out the plants name. Go to the add page to start!
             </p>
           </div>
         </div>
@@ -241,56 +246,57 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
             <h1 className="text-center z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased tablet:p-2">
               Smart Schedule Reminders
             </h1>
-            <p className='tablet:text-[20px]'>
-              Are you not sure when it’s time to water your plants? Plantasynch knows
-              when! Just add them to the app and get notified when it’s time to
-              water your plant children. We are working on a custom schedule reminders, 
-              so you'll have all the power to reset schedules soon.
+            <p className="tablet:text-[20px]">
+              Are you not sure when it’s time to water your plants? Plantasynch
+              knows when! Just add them to the app and get notified when it’s
+              time to water your plant children. We are working on a custom
+              schedule reminders, so you'll have all the power to reset
+              schedules soon.
             </p>
           </div>
         </div>
-        <div className='mb-10 flex flex-col tablet:mb-20 px-2 laptop:w-[80%]'>
-        <h1 className="text-center tablet:p-2 z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] tablet:place-self-start text-[32px] antialiased">
-          Technologies
-        </h1>
-        <img
-          alt='skills'
-          className="tablet:p-2 tablet:place-self-start p-1"
-          src="https://skillicons.dev/icons?i=postgres,express,react,nodejs,tailwind"
-        />
-        <p className="tablet:p-2 text-left tablet:text-[20px]">
-          Plantasynch is using a PERN stack: Postgres, Express, React, Node, and
-          TailwindCSS, as CSS framework. To send email reminders, our backend is
-          using{' '}
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://nodemailer.com/about/"
-            className="hover:underline italic"
-          >
-            Nodemailer
-          </a>{' '}
-          and{' '}
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://render.com/"
-            className="hover:underline italic"
-          >
-            Render's
-          </a>{' '}
-          Cron job to dynamically send emails to users when plants need
-          attention.
-        </p>
+        <div className="mb-10 flex flex-col tablet:mb-20 px-2 laptop:w-[80%]">
+          <h1 className="text-center tablet:p-2 z-20 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] tablet:place-self-start text-[32px] antialiased">
+            Technologies
+          </h1>
+          <img
+            alt="skills"
+            className="tablet:p-2 tablet:place-self-start p-1"
+            src="https://skillicons.dev/icons?i=postgres,express,react,nodejs,tailwind"
+          />
+          <p className="tablet:p-2 text-left tablet:text-[20px]">
+            Plantasynch is using a PERN stack: Postgres, Express, React, Node,
+            and TailwindCSS, as CSS framework. To send email reminders, our
+            backend is using{' '}
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://nodemailer.com/about/"
+              className="hover:underline italic"
+            >
+              Nodemailer
+            </a>{' '}
+            and{' '}
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://render.com/"
+              className="hover:underline italic"
+            >
+              Render's
+            </a>{' '}
+            Cron job to dynamically send emails to users when plants need
+            attention.
+          </p>
         </div>
-        <div className='flex flex-col mb-10 tablet:mb-20 px-2 laptop:w-[80%]'>
-            <h1 className="tablet:p-2 z-20 text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] tablet:place-self-start text-[32px] antialiased">
+        <div className="flex flex-col mb-10 tablet:mb-20 px-2 laptop:w-[80%]">
+          <h1 className="tablet:p-2 z-20 text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] tablet:place-self-start text-[32px] antialiased">
             {' '}
             About Plantasynch
-            </h1>
-            <p className="tablet:p-2 text-left tablet:text-[20px]">
+          </h1>
+          <p className="tablet:p-2 text-left tablet:text-[20px]">
             <span className="inline antialiased tracking-wide italic text-lg">
-                Plantasynch{' '}
+              Plantasynch{' '}
             </span>{' '}
             is a full-stack web-application that makes the life-long problem of
             keeping your plants alive, a thing of the past. Features Include:
@@ -298,41 +304,55 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
             needs watering, Keeping track of when you watered your plants or
             skiped a day, Curated plant information and many more to come. Keep
             your plants alive with Plantasynch.
-            </p>
+          </p>
         </div>
-        <div className='flex flex-col mb-10 tablet:mb-20 px-2'>
-        <hr></hr>
-        <div className='flex flex-col place-self-center laptop:w-[80%]'>
-        <h1 className="tablet:p-2 text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased">
-          About the developer
-        </h1>
-        <div className="flex pt-0 flex-col place-content-center tablet:flex-row">
-          <a
-            className="inline tablet:p-2 place-self-center"
-            href="https://www.linkedin.com/in/jan-matias/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              className="rounded-full tablet:p-2 h-[300px] w-screen max-h-[300px] max-w-[300px] tablet:h-[250px] tablet:w-[250px]"
-              src={headshot}
-              alt='headshot'
-            />
-          </a>
-          <div className="tablet:w-[40%]">
-            <p className="tablet:p-2 mt-4 tablet:text-[18px]">
-              Hi there, I'm Jan 👋🏽
-            </p>
-            <p className=" tablet:p-2 mt-4 tablet:mt-0 text-left tablet:text-[18px]">
-              I'm a Full-Stack Software Engineer with a focus in Web Development
-              and RESTfull API development. Design inspiration comes from <a className='hover:underline italic' href='https://invinciblehouseplants.com/'>Invincible House Plants</a> blog 
-              and the <a className='hover:text-[#173d0a] hover:underline italic' href='https://getplanta.com/'>Planta</a> landing page. Plantasynch was made out of my wife's 
-              constant struggle to keep her plant children alive. Hope you find it usefull 🪴
-            </p>
+        <div className="flex flex-col mb-10 tablet:mb-20 px-2">
+          <hr></hr>
+          <div className="flex flex-col place-self-center laptop:w-[80%]">
+            <h1 className="tablet:p-2 text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased">
+              About the developer
+            </h1>
+            <div className="flex pt-0 flex-col place-content-center tablet:flex-row">
+              <a
+                className="inline tablet:p-2 place-self-center"
+                href="https://www.linkedin.com/in/jan-matias/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  className="rounded-full tablet:p-2 h-[300px] w-screen max-h-[300px] max-w-[300px] tablet:h-[250px] tablet:w-[250px]"
+                  src={headshot}
+                  alt="headshot"
+                />
+              </a>
+              <div className="tablet:w-[40%]">
+                <p className="tablet:p-2 mt-4 tablet:text-[18px]">
+                  Hi there, I'm Jan 👋🏽
+                </p>
+                <p className=" tablet:p-2 mt-4 tablet:mt-0 text-left tablet:text-[18px]">
+                  I'm a Full-Stack Software Engineer with a focus in Web
+                  Development and RESTfull API development. Design inspiration
+                  comes from{' '}
+                  <a
+                    className="hover:underline italic"
+                    href="https://invinciblehouseplants.com/"
+                  >
+                    Invincible House Plants
+                  </a>{' '}
+                  blog and the{' '}
+                  <a
+                    className="hover:text-[#173d0a] hover:underline italic"
+                    href="https://getplanta.com/"
+                  >
+                    Planta
+                  </a>{' '}
+                  landing page. Plantasynch was made out of my wife's constant
+                  struggle to keep her plant children alive. Hope you find it
+                  usefull 🪴
+                </p>
+              </div>
+            </div>
           </div>
-
-        </div>
-        </div>
         </div>
       </div>
 

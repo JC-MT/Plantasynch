@@ -293,7 +293,7 @@ export default function Scanner({ loggedInUser }) {
   return (
     <section>
       <div className="p-3 tablet:px-[15%]">
-        <p className="indent-2 p-1 text-left tablet:px-4">
+        <p className="p-1 text-left tablet:px-2">
           <strong>Note:</strong> You'll receive a few likely name results when
           you scan. Clear, Direct, and Focused pictures will yield the best
           results. Only one image at a time. Happy growing! 🌱{' '}
