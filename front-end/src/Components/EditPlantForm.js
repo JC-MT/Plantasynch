@@ -78,16 +78,18 @@ export default function EditPlantForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData();
-    formData.append('image', file);
+    if (file) {
+      const formData = new FormData();
+      formData.append('image', file);
 
-    axios.post(`${API}/images/posts`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    });
+      axios.post(`${API}/images/posts`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+    }
 
     axios
       .put(`${API}/plants/${id}`, plant)
-      .then((res) => {
+      .then(() => {
         notify(true);
         setTimeout(() => navigate('/my-plants'), 4000);
       })

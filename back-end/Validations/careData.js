@@ -1,13 +1,12 @@
 const careData = (explorePlants, newPlant) => {
   const { ideal_watering, ideal_light, name } = newPlant;
 
-  String.prototype.replaceAll = (replace, replacer) => {
+  String.prototype.replaceAll = function (replace, replacer) {
     for (let idx = 0; idx < this.length; idx++) {
       if (this[idx] === replace) {
         this[idx] = replacer;
       }
     }
-
     return this;
   };
 
