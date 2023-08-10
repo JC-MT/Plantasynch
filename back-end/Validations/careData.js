@@ -1,6 +1,16 @@
 const careData = (explorePlants, newPlant) => {
   const { ideal_watering, ideal_light, name } = newPlant;
 
+  String.prototype.replaceAll = (replace, replacer) => {
+    for (let idx = 0; idx < this.length; idx++) {
+      if (this[idx] === replace) {
+        this[idx] = replacer;
+      }
+    }
+
+    return this;
+  };
+
   const formatedName = name
     .replaceAll('-', ' ')
     .replaceAll('tree', '')
@@ -8,7 +18,8 @@ const careData = (explorePlants, newPlant) => {
     .replaceAll('leaf', '')
     .replaceAll('fig', '')
     .replaceAll('flower', '')
-    .split(' ').filter((char) => char !== ' ' && char !== '');
+    .split(' ')
+    .filter((char) => char !== ' ' && char !== '');
 
   function thatIsFoundInEplorePlants(plant, formatedName) {
     for (let incommingName of formatedName) {
@@ -32,16 +43,16 @@ const careData = (explorePlants, newPlant) => {
     thatIsFoundInEplorePlants(plant, formatedName)
   );
 
-  if(ideal_watering.length && ideal_light.length){
-    return newPlant
+  if (ideal_watering.length && ideal_light.length) {
+    return newPlant;
   } else {
-    if(!ideal_watering.length && plantMatch){
-        newPlant.ideal_watering = plantMatch.watering
-    } 
-    if(!ideal_light.length && plantMatch){
-        newPlant.ideal_light = plantMatch.ideallight
+    if (!ideal_watering.length && plantMatch) {
+      newPlant.ideal_watering = plantMatch.watering;
     }
-    return newPlant
+    if (!ideal_light.length && plantMatch) {
+      newPlant.ideal_light = plantMatch.ideallight;
+    }
+    return newPlant;
   }
 };
 
