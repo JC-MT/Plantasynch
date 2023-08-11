@@ -4,7 +4,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from './Footer';
 const API = process.env.REACT_APP_API_URL;
 
 export default function CreateAccount({ setLoggedInUser }) {
@@ -151,7 +150,6 @@ export default function CreateAccount({ setLoggedInUser }) {
           />
         </div>
       </div>
-      <Footer />
     </section>
   );
 }

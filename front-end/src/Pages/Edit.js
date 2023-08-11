@@ -1,12 +1,9 @@
-import EditPlantForm from '../Components/EditPlantForm'
-import Footer from './Footer'
+import EditPlantForm from '../Components/EditPlantForm';
 
-export default function Edit(){
-
-    return(
-        <div>   
-            <EditPlantForm />
-            <Footer/>
-        </div>
-    )
+export default function Edit() {
+  return (
+    <div>
+      <EditPlantForm />
+    </div>
+  );
 }

@@ -1,5 +1,4 @@
 import NewPlantForm from '../Components/NewPlantForm';
-import Footer from './Footer';
 import Scanner from '../Components/Scanner';
 import { useState } from 'react';
 
@@ -10,14 +9,9 @@ export default function New({ loggedInUser }) {
   });
 
   return (
-    <div>
-      <div className="flex flex-row p-2 pb-0 tablet:justify-center tablet:px-[15%]">
+    <div className="p-6 tablet:px-[8%]">
+      <div className="flex flex-row p-2 pb-0 tablet:justify-center">
         <div className="flex flex-col w-full">
-          <h2
-            className={`font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased tablet:text-[45px] tablet:pt-4`}
-          >
-            {toggleAdd.scanView ? 'Scan my Plant' : 'Add my Plant'}
-          </h2>
           <div className="flex w-full place-self-center flex-row max-w-[500px] max-h-fit">
             <div
               className={`max-w-[250px] w-[50%] absolute ease-in-out transition-transform duration-300 opacity-90 flex text-[#D9F8B9] ${
@@ -62,7 +56,6 @@ export default function New({ loggedInUser }) {
       ) : (
         <NewPlantForm loggedInUser={loggedInUser} />
       )}
-      <Footer />
     </div>
   );
 }

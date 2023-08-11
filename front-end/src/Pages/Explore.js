@@ -1,5 +1,4 @@
 import ExploreIndex from '../Components/ExploreIndex';
-import Footer from './Footer';
 
 export default function Explore() {
   return (
@@ -13,7 +12,6 @@ export default function Explore() {
         Click on plant for details or to add to your garden
       </p>
       <ExploreIndex />
-      <Footer />
     </div>
   );
 }

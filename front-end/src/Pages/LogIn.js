@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import useModel from '../Hooks/useModel';
-import Footer from './Footer';
 
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
@@ -150,7 +149,6 @@ export default function LogIn({ setLoggedInUser }) {
           />
         </div>
       </div>
-      <Footer />
     </section>
   );
 }

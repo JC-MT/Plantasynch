@@ -1,5 +1,4 @@
 import HomeIndex from '../Components/HomeIndex';
-import Footer from './Footer';
 
 export default function Home({ loggedInUser, notification, reFetch }) {
   return (
@@ -18,7 +17,6 @@ export default function Home({ loggedInUser, notification, reFetch }) {
         notification={notification}
         reFetch={reFetch}
       />
-      <Footer />
     </div>
   );
 }
