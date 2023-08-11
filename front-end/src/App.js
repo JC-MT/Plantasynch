@@ -21,7 +21,7 @@ import useNotifications from './Hooks/useNotifications';
 import Footer from './Pages/Footer';
 
 export default function App() {
-  let location = useLocation();
+  const { pathname } = useLocation();
   const [loader, setLoader] = useState(false);
   const [notification, reFetch] = useNotifications([]);
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -35,7 +35,7 @@ export default function App() {
     }, 1000);
 
     document.body.scrollTop = document.documentElement.scrollTop = 0;
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <div>
@@ -98,7 +98,9 @@ export default function App() {
             element={<Scanner loggedInUser={loggedInUser} />}
           />
         </Routes>
-        <Footer />
+        <footer className={`${pathname === '/' ? '-z-20' : ''} relative`}>
+          <Footer />
+        </footer>
       </main>
     </div>
   );

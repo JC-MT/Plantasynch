@@ -187,12 +187,12 @@ export default function Scanner({ loggedInUser }) {
   };
 
   let results = (
-    <div className="flex flex-col place-content-center tablet:px-[30%]">
+    <div className="flex flex-col place-self-center px-3 tablet:pr-[8%]">
       <h1 className="tracking-normal font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased tablet:text-[40px]">
         Best Match
       </h1>
       <div className="border-2 rounded-lg tablet:mb-4">
-        <div className="p-2 flex flex-row place-content-between bg-slate-300">
+        <div className="p-2 flex rounded-tl-md rounded-tr-md flex-row place-content-between bg-slate-300">
           <div>
             <h1 className="tracking-wide font-['baskerville-urw'] subpixel-antialiased font-normal text-[20px]">
               {result.bestMatch}
@@ -248,7 +248,7 @@ export default function Scanner({ loggedInUser }) {
         ? result.results.slice(1, 5).map((plant) => {
             return (
               <div className="mb-4 border-2 rounded-lg tablet:mb-4">
-                <div className="p-2 flex flex-row place-content-between bg-slate-300">
+                <div className="p-2 rounded-tl-md rounded-tr-md flex flex-row place-content-between bg-slate-300">
                   <div>
                     <h1 className="tracking-wide font-['baskerville-urw'] subpixel-antialiased font-normal text-[20px]">
                       {plant.species.scientificName}
@@ -292,15 +292,34 @@ export default function Scanner({ loggedInUser }) {
 
   return (
     <section>
-      <div className="p-3 tablet:px-[15%]">
-        <p className="p-1 text-left tablet:px-2">
-          <strong>Note:</strong> You'll receive a few likely name results when
-          you scan. Clear, Direct, and Focused pictures will yield the best
-          results. Only one image at a time. Happy growing! 🌱{' '}
-        </p>
-        <form onSubmit={handleSubmit}>
+      <div className="flex flex-col tablet:flex-row p-2 tablet:p-4 w-[100%] place-items-center tablet:gap-10 place-content-center">
+        <div className="tablet:w-[50%] pt-3">
           <div
-            class={`flex items-center justify-center w-full tablet:px-[30%]`}
+            className="opacity-90 bg-transparent h-[220px] tablet:h-[300px] laptop:h-[400px] rounded-tr-[200px] rounded-br-[200px]"
+            style={{
+              background: `url('https://getplanta.com/images/feature_1.webp') center no-repeat`,
+              backgroundSize: 'cover'
+            }}
+          ></div>
+          <p className="p-1 text-md text-left tablet:px-2">
+            With the Plantasynch scanner, you will be able to add your plants
+            that might be difficult to name. We will analyze your image and send
+            top matches your way. <strong>Note:</strong> Clear, Direct, and
+            Focused pictures will yield the best results. Happy growing! 🌱
+          </p>
+        </div>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col w-screen place-items-center p-2 tablet:w-[45%]"
+        >
+          <h2
+            className={`pb-1 tablet:pb-6 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-center text-[32px] antialiased tablet:text-[45px]`}
+          >
+            Scan my Plant
+          </h2>
+
+          <div
+            class={`flex items-center justify-center w-[100%] tablet:w-[400px]`}
           >
             <label
               htmlFor="dropzone-file"
@@ -318,7 +337,7 @@ export default function Scanner({ loggedInUser }) {
                 />
                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                   <span class="font-semibold">
-                    Click to upload/capture an image
+                    Click here upload or capture your image
                   </span>
                 </p>
                 <p class="text-xs text-gray-500 dark:text-gray-400">
@@ -336,23 +355,24 @@ export default function Scanner({ loggedInUser }) {
                 class={`${
                   requested ? 'before:animate-scanning' : 'hidden'
                 } relative w-[300px] h-[200px] before:scanner-clip before:absolute before:w-[2px] place-self-center before:top-0 before:left-0 before:bottom-0`}
-              ></div>
-              <input
-                onChange={handleUpload}
-                id="dropzone-file"
-                accept="image/*"
-                type="file"
-                className="opacity-0"
-              />
+              >
+                <input
+                  onChange={handleUpload}
+                  id="dropzone-file"
+                  accept="image/*"
+                  type="file"
+                  className="opacity-0"
+                />
+              </div>
             </label>
           </div>
-          <div className="flex flex-row place-content-center p-3">
+          <div className="flex flex-row place-content-center tablet:p-3">
             <div
               className={`${
                 file.queryImage
                   ? 'hover:cursor-pointer'
                   : 'hover:cursor-not-allowed'
-              } button-style m-0 w-48 flex tablet:p-1 flex-row gap-1 justify-center place-items-center shadow-xl p-[10px]`}
+              } button-style m-0 tablet:w-[400px] flex tablet:p-1 flex-row gap-1 justify-center place-items-center shadow-xl p-[10px]`}
             >
               <input
                 className={`${
@@ -360,7 +380,11 @@ export default function Scanner({ loggedInUser }) {
                     ? 'hover:cursor-pointer'
                     : 'hover:cursor-not-allowed pointer-events-none'
                 }`}
-                value="Scan my Plant"
+                value={`${
+                  file.queryImage
+                    ? 'Analyze my plant for a match'
+                    : 'Upload your plant for a match'
+                }`}
                 type="submit"
               ></input>
               <img
@@ -371,7 +395,6 @@ export default function Scanner({ loggedInUser }) {
             </div>
           </div>
         </form>
-        {result.bestMatch ? results : ''}
       </div>
       <div className="z-50">
         <ToastContainer
@@ -379,6 +402,7 @@ export default function Scanner({ loggedInUser }) {
           toastStyle={{ color: 'white', backgroundColor: 'black' }}
         />
       </div>
+      {result.bestMatch ? results : ''}
     </section>
   );
 }

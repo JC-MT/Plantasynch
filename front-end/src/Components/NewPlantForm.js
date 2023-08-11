@@ -90,27 +90,27 @@ export default function NewPlantForm({ loggedInUser }) {
   }
 
   return (
-    <div className="flex place-content-center w-[100%] gap-10 place-items-center p-4">
+    <div className="flex flex-col tablet:flex-row place-content-center tablet:w-[100%] gap-2 tablet:gap-10 place-items-center p-2 tablet:p-4">
       <div className="flex flex-col">
         <img
           alt="garden of house plants"
-          className="pt-3 rounded-br-[200px] shadow-md place-self-center w-[250px] h-[150px] tablet:w-[580px] tablet:h-[500px]"
+          className="pt-3 tablet:rounded-br-[200px] shadow-md place-self-center tablet:w-[580px] tablet:h-[500px]"
           src={`https://getplanta.com/images/feature_2.webp`}
         />
-        <p className="p-1 text-center text-[15px] tablet:text-[15px]">
-          Plantasynch needs at least a name to add your plant
+        <p className="p-1 tablet:text-center text-[15px] tablet:text-[15px]">
+          Plantasynch needs at least a name to add your plant. Happy growing! 🌱
         </p>
       </div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 place-items-center tablet:pb-8"
+        className="flex w-screen max-w-[500px] flex-col gap-2 tablet:gap-2 laptop:gap-3 place-items-center tablet:pb-8"
       >
         <h2
-          className={`pb-6 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-center text-[32px] antialiased tablet:text-[45px]`}
+          className={`pb-2 tablet:pb-6 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-center text-[32px] antialiased tablet:text-[45px]`}
         >
           Add my Plant
         </h2>
-        <div className="flex input-container w-full place-content-between">
+        <div className="flex flex-col gap-3 tablet:gap-0 tablet:flex-row input-container tablet:w-full place-content-between">
           <input
             id="name"
             placeholder="Name"
@@ -118,7 +118,7 @@ export default function NewPlantForm({ loggedInUser }) {
             type="text"
             onChange={handleTextChange}
             required
-            className="input-style w-[50%] mr-4"
+            className="input-style tablet:w-[50%] tablet:mr-4"
           />
           <input
             id="email"
@@ -127,11 +127,11 @@ export default function NewPlantForm({ loggedInUser }) {
             placeholder="Email"
             value={plant.email}
             onChange={handleTextChange}
-            className="input-style w-[50%]"
+            className="input-style tablet:w-[50%]"
           />
         </div>
-        <div className="flex input-container h-[41px]">
-          <label className="place-self-center w-[50%] mr-4 px-4 text-[15px]">
+        <div className="flex gap-3 tablet:gap-0 input-container">
+          <label className="place-self-center tablet:w-[50%] tablet:mr-4 tablet:px-4 text-[15px]">
             Plant was last watered on?
           </label>
           <input
@@ -140,11 +140,11 @@ export default function NewPlantForm({ loggedInUser }) {
             type="date"
             value={plant.last_water}
             onChange={handleTextChange}
-            className="input-style w-[50%]"
+            className="input-style tablet:w-[50%]"
           />
         </div>
-        <div className="flex input-container">
-          <label className="custom-file-upload">
+        <div className="flex flex-col gap-3 tablet:gap-0 tablet:flex-row input-container">
+          <label className="custom-file-upload w-full">
             <input
               onChange={handleUploadChange}
               name="image"
@@ -163,11 +163,11 @@ export default function NewPlantForm({ loggedInUser }) {
             placeholder="Origin"
             value={plant.origin}
             onChange={handleTextChange}
-            className="input-style w-[50%] h-[41px]"
+            className="input-style tablet:w-[50%]"
           />
         </div>
-        <div className="flex input-container w-full place-content-between h-[41px]">
-          <div className="flex flex-col w-[50%] mr-4">
+        <div className="flex flex-col gap-3 tablet:gap-0 tablet:flex-row input-container place-content-between">
+          <div className="flex flex-col tablet:w-[50%] tablet:mr-4">
             <select
               name="category"
               id="category"
@@ -201,7 +201,7 @@ export default function NewPlantForm({ loggedInUser }) {
               <option value="Other">Other</option>
             </select>
           </div>
-          <div className="flex flex-col w-[50%]">
+          <div className="flex flex-col tablet:w-[50%]">
             <select
               name="ideal_light"
               id="ideal_light"
@@ -222,7 +222,7 @@ export default function NewPlantForm({ loggedInUser }) {
             </select>
           </div>
         </div>
-        <div className="flex flex-col input-container h-[41px]">
+        <div className="flex flex-col input-container">
           <select
             name="ideal_watering"
             id="ideal_watering"
@@ -245,14 +245,14 @@ export default function NewPlantForm({ loggedInUser }) {
             <option value="Other">Other</option>
           </select>
         </div>
-        <div className="flex flex-row w-[100%] place-content-center px-4">
-          <Link to={`/my-plants`} className="w-[50%]">
+        <div className="flex py-4 flex-row w-screen tablet:w-[100%] place-content-center px-2 tablet:px-4">
+          <Link to={`/my-plants`} className="w-1/2 tablet:w-[50%]">
             <button className="button-style m-0 w-[100%]">Nevermind</button>
           </Link>
           <input
             value="Add Plant"
             type="submit"
-            className="m-0 button-style w-[50%]"
+            className="m-0 button-style w-1/2"
           />
         </div>
       </form>

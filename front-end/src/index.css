@@ -8,7 +8,7 @@
   }
 
   .input-style {
-    @apply border-b-black border-b-[1px] text-slate-500 focus:outline-none hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] py-2 px-4;
+    @apply border-b-black border-b-[1px] pl-3 h-[42px] text-slate-500 focus:outline-none hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] py-2 tablet:px-4;
   }
 
   .input-style::placeholder {
@@ -16,11 +16,11 @@
   }
 
   .custom-file-upload {
-    @apply flex gap-2 border-b-black border-b-[1px] text-slate-500 focus:outline-none hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] py-2 px-4 cursor-pointer w-[50%] mr-4 place-self-center h-[41px];
+    @apply flex gap-2 border-b-black border-b-[1px] text-slate-500 focus:outline-none hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] py-2 px-4 cursor-pointer w-[50%] tablet:mr-4 place-self-center h-[42px];
   }
 
   .input-container {
-    @apply w-11/12 tablet:w-[500px] tablet:place-self-center tablet:px-4;
+    @apply w-11/12 tablet:p-2 tablet:w-[500px] tablet:place-self-center tablet:px-4;
   }
 
   .button-style {
@@ -60,8 +60,8 @@
   @layer utilities {
     .scanner-clip {
       clip-path: inset(0);
-      box-shadow: 0 0 50px 10px #224722;
-      background-color: #224722;
+      box-shadow: 0 0 50px 10px #00ffa0;
+      background-color: #00ffa0;
     }
   }
 }
