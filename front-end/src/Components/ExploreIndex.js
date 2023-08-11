@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ExplorePlant from './ExplorePlant';
+import imageUploadIcon from '../icons/imageUploadIcon.png';
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -63,7 +64,7 @@ export default function ExploreIndex() {
   };
 
   const explorePlantsContainer = (
-    <div className="laptop:grid-view px-2 tablet:px-[12%] tablet:py-6">
+    <div className="laptop:grid-view px-2 gap-2 tablet:gap-4 tablet:py-6">
       {currentDisplay(explore, search)}
     </div>
   );
@@ -100,7 +101,7 @@ export default function ExploreIndex() {
           }`}
         >
           <svg
-            class="rotate-180 w-8 h-8 text-[#D9F8B9]"
+            className="rotate-180 w-8 h-8 text-[#D9F8B9]"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -114,10 +115,10 @@ export default function ExploreIndex() {
       </div>
 
       <input
-        className="focus:outline-none bg-slate-50 flex place-self-center flex-center sticky top-28 tablet:top-40 items-center justify-center border-2 rounded-full w-[90%] px-4 p-2 shadow-xl tablet:m-0 tablet:w-[400px]"
+        className="search-icon border-black border-[.5px] h-[42px] text-slate-500 hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] focus:outline-none bg-slate-50 flex place-self-center flex-center sticky top-24 tablet:top-36 items-center justify-center w-[90%] shadow-xl tablet:m-0 tablet:w-[400px]"
         type="search"
         id="search"
-        placeholder="Search plant by name"
+        placeholder="Search by name..."
         onChange={handleTextChange}
       />
       {explore.length ? explorePlantsContainer : spinnerStructure}

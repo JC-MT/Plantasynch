@@ -12,10 +12,10 @@ export default function Plant({
   const getNotify = () => notification.find((plant) => plant.id === id);
 
   return (
-    <div className="flex flex-row justify-between hover:bg-slate-200">
+    <div className="flex flex-row justify-between transition-all duration-200 rounded-lg hover:bg-slate-100 hover:shadow-2xl">
       <Link
         onClick={() => {}}
-        className="flex flex-row"
+        className="flex flex-row w-full"
         to={`/my-plants/${id}`}
       >
         <img

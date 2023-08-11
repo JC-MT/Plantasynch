@@ -45,7 +45,7 @@ export default function HomeIndex({ loggedInUser, notification, reFetch }) {
   );
 
   const currentDisplay = (
-    <div className="flex flex-col gap-2 px-2 tablet:gap-4 laptop:grid-view tablet:p-12 tablet:px-[12%]">
+    <div className="flex flex-col gap-4 px-2 laptop:grid-view tablet:gap-8 py-4 tablet:py-8">
       <div
         className={`flex-col place-items-center p-2 ${
           filteredByLoggedInUser(garden, loggedInUser).length
