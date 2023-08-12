@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ExplorePlant from './ExplorePlant';
-import imageUploadIcon from '../icons/imageUploadIcon.png';
 
 const API = process.env.REACT_APP_API_URL;
 
