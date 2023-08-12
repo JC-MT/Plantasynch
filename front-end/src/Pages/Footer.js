@@ -7,7 +7,6 @@ export default function Footer() {
     contact: false,
     followUs: false
   });
-  console.log(toggleFooterOptions);
 
   const handleClose = () => {
     document.body.scrollTop = document.documentElement.scrollTop = 0;

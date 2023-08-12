@@ -144,7 +144,7 @@ export default function NewPlantForm({ loggedInUser }) {
           />
         </div>
         <div className="flex flex-col gap-3 tablet:gap-0 tablet:flex-row input-container">
-          <label className="custom-file-upload w-full">
+          <label className="custom-file-upload w-full tablet:w-1/2">
             <input
               onChange={handleUploadChange}
               name="image"

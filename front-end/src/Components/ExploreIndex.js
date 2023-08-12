@@ -114,7 +114,7 @@ export default function ExploreIndex() {
       </div>
 
       <input
-        className="search-icon border-black border-[.5px] h-[42px] text-slate-500 hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] focus:outline-none bg-slate-50 flex place-self-center flex-center sticky top-24 tablet:top-36 items-center justify-center w-[90%] shadow-xl tablet:m-0 tablet:w-[400px]"
+        className={`search-icon border-black border-[.5px] h-[42px] text-slate-500 hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] focus:outline-none bg-slate-50 flex place-self-center flex-center sticky top-24 tablet:top-36 items-center justify-center w-[90%] shadow-xl tablet:m-0 tablet:w-[400px]`}
         type="search"
         id="search"
         placeholder="Search by name..."
