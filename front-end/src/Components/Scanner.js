@@ -35,7 +35,6 @@ export default function Scanner({ loggedInUser }) {
     const fileData = event.target.files[0];
 
     reader.readAsDataURL(fileData);
-    setNewPlant({ ...newplant, image: fileData.name });
 
     reader.onload = () => {
       setFile({
@@ -45,18 +44,26 @@ export default function Scanner({ loggedInUser }) {
     };
   };
 
-  const handleAdd = (event) => {
+  const handleAdd = async (event) => {
     event.preventDefault();
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
     const formData = new FormData();
     formData.append('image', file.queryFile);
 
-    axios.post(`${API}/images/posts`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    });
+    await axios
+      .post(`${API}/images/posts`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
+      .then((res) => {
+        if (res.data.success) newplant.image = res.data.imageKey;
+      })
+      .catch((err) => {
+        notifyAdd(false, err.data);
+        return;
+      });
 
-    axios
+    await axios
       .post(`${API}/plants`, newplant)
       .then((res) => {
         notifyAdd(true);
