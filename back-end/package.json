@@ -22,5 +22,8 @@
     "nodemailer": "^6.7.8",
     "nodemon": "^2.0.19",
     "pg-promise": "^10.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0"
   }
 }
