@@ -1,7 +1,7 @@
 const express = require('express');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const multer = require('multer');
-const { randomBytes } = require('node:crypto');
+const { randomBytes } = require('crypto');
 const images = express.Router();
 require('dotenv').config();
 
