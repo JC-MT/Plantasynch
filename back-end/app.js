@@ -3,7 +3,6 @@ const cors = require('cors');
 const plantController = require('./Controllers/plantController');
 const userController = require('./Controllers/userController');
 const s3Controller = require('./Controllers/s3Controller');
-
 const app = express();
 
 app.use(cors());
@@ -16,7 +15,9 @@ app.get('/', (req, res) => {
   res.status(200).send('Grow your garden with Plantasynch API 🌿 🪴 🌻');
 });
 
-app.use(('*', (req, res) => {
+app.use(
+  ('*',
+  (req, res) => {
     res.status(404).send('Looks like you got lost in the garden 🥲');
   })
 );
