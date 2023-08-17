@@ -299,10 +299,10 @@ export default function Scanner({ loggedInUser }) {
 
   return (
     <section>
-      <div className="flex flex-col tablet:flex-row p-2 tablet:p-4 w-[100%] place-items-center tablet:gap-10 place-content-center">
-        <div className="tablet:w-[50%] pt-3">
+      <div className="flex flex-col tablet:flex-row p-2 tablet:p-4 w-[100%] place-items-center place-content-center">
+        <div className="tablet:w-[50%] max-w-[600px] pt-3">
           <div
-            className="opacity-90 bg-transparent h-[220px] tablet:h-[300px] laptop:h-[400px] rounded-tr-[200px] rounded-br-[200px]"
+            className="opacity-90 bg-transparent tablet:mt-10 tablet:w-[600px] h-[220px] tablet:h-[300px] laptop:h-[400px] rounded-tr-[200px] rounded-br-[200px]"
             style={{
               background: `url('https://getplanta.com/images/feature_1.webp') center no-repeat`,
               backgroundSize: 'cover'
@@ -317,7 +317,7 @@ export default function Scanner({ loggedInUser }) {
         </div>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col w-screen place-items-center p-2 tablet:w-[45%]"
+          className="flex flex-col w-screen place-items-center p-2 tablet:w-[45%] tablet:max-w-[600px]"
         >
           <h2
             className={`pb-1 tablet:pb-6 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-center text-[32px] antialiased tablet:text-[45px]`}
