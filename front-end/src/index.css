@@ -8,7 +8,7 @@
   }
 
   .input-style {
-    @apply border-b-black border-b-[1px] pl-3 h-[42px] text-slate-500 focus:outline-none hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] py-2 tablet:px-4;
+    @apply border-b-black border-b-[1px] pl-3 h-[48px] focus:outline-none hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] py-2 tablet:px-4;
   }
 
   .input-style::placeholder {
@@ -16,7 +16,7 @@
   }
 
   .custom-file-upload {
-    @apply flex gap-2 border-b-black border-b-[1px] text-slate-500 focus:outline-none hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] py-2 px-4 cursor-pointer w-[50%] tablet:mr-4 place-self-center h-[42px];
+    @apply flex gap-2 border-b-black border-b-[1px] focus:outline-none hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] py-2 px-4 cursor-pointer w-[50%] tablet:mr-4 place-self-center h-[48px];
   }
 
   .input-container {
@@ -24,7 +24,7 @@
   }
 
   .button-style {
-    @apply border font-medium transition-all hover:opacity-70 duration-[250ms] bg-[#224722] text-[#D9F8B9] text-base py-2 px-6 mt-5 shadow-xl cursor-pointer;
+    @apply border h-[48px] font-medium transition-all hover:opacity-70 duration-[250ms] bg-[#224722] text-[#D9F8B9] text-base py-2 px-6 mt-5 shadow-xl cursor-pointer;
   }
 
   .laptop-display {
@@ -38,8 +38,8 @@
   .search-icon {
     width: 100%;
     font-size: 16px;
-    background-image: url('/opt/build/repo/front-end/src/icons/searchIcon.png');
-    /* background-image: url('/Users/janmatias/Documents/dev/web-apps/Plantasynch/front-end/src/icons/searchIcon.png'); */
+    /* background-image: url('/opt/build/repo/front-end/src/icons/searchIcon.png'); */
+    background-image: url('/Users/janmatias/Documents/dev/web-apps/Plantasynch/front-end/src/icons/searchIcon.png');
     background-position: 7px 7px;
     background-size: 25px 25px;
     background-repeat: no-repeat;

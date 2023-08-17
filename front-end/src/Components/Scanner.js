@@ -373,13 +373,13 @@ export default function Scanner({ loggedInUser }) {
               </div>
             </label>
           </div>
-          <div className="flex flex-row place-content-center tablet:p-3">
+          <div className="w-full flex flex-row place-content-center tablet:p-3">
             <div
               className={`${
                 file.queryImage
                   ? 'hover:cursor-pointer'
                   : 'hover:cursor-not-allowed'
-              } button-style m-0 tablet:w-[400px] flex tablet:p-1 flex-row gap-1 justify-center place-items-center shadow-xl p-[10px]`}
+              } button-style w-full mt-2 m-0 tablet:w-[400px] flex tablet:p-1 flex-row gap-1 justify-center place-items-center shadow-xl p-[10px]`}
             >
               <input
                 className={`${

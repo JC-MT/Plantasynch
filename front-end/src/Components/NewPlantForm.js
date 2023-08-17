@@ -37,7 +37,6 @@ export default function NewPlantForm({ loggedInUser }) {
     const fileData = event.target.files[0];
 
     setFile(fileData);
-    setPlant({ ...plant, image: fileData.name });
   };
 
   const notify = (result) => {
@@ -65,19 +64,27 @@ export default function NewPlantForm({ loggedInUser }) {
         );
   };
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     if (file) {
       const formData = new FormData();
       formData.append('image', file);
 
-      axios.post(`${API}/images/posts`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
+      await axios
+        .post(`${API}/images/posts`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        })
+        .then((res) => {
+          if (res.data.success) plant.image = res.data.imageKey;
+        })
+        .catch(() => {
+          notify(false);
+          return;
+        });
     }
 
-    axios
+    await axios
       .post(`${API}/plants`, plant)
       .then(() => {
         notify(true);
@@ -152,7 +159,12 @@ export default function NewPlantForm({ loggedInUser }) {
               accept="image/*"
               className="hidden"
             />
-            <img src={imageUploadIcon} height={20} width={20} />
+            <img
+              src={imageUploadIcon}
+              height={20}
+              width={20}
+              alt="upload icon"
+            />
             {plant.image ? `${plant.image.slice(0, 18)}` : 'Upload plant image'}
             {plant.image.length > 18 ? '...' : ''}
           </label>
