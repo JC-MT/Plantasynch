@@ -1,6 +1,6 @@
-import ExploreIndex from '../Components/ExploreIndex';
+import Index from '../../Components/List/Explore/Index';
 
-export default function Explore() {
+export default function ExplorePage() {
   return (
     <div className="tablet:px-[10%]">
       <div className="flex flex-row p-2 justify-left tablet:pt-6">
@@ -12,7 +12,7 @@ export default function Explore() {
         Browse through a wide variety of plants that can be added directly to
         your garden. Happy growing! 🌱
       </p>
-      <ExploreIndex />
+      <Index />
     </div>
   );
 }

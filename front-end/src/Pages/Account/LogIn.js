@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import useModel from '../Hooks/useModel';
+import { toast } from 'react-toastify';
+import useModel from '../../Hooks/useModel';
 
-import 'react-toastify/dist/ReactToastify.css';
+import Toast from '../../Components/UI/Toast';
 const API = process.env.REACT_APP_API_URL;
 
 export default function LogIn({ setLoggedInUser }) {
@@ -142,12 +142,7 @@ export default function LogIn({ setLoggedInUser }) {
             </Link>
           </div>
         </form>
-        <div className="z-50">
-          <ToastContainer
-            limit={1}
-            toastStyle={{ color: 'white', backgroundColor: 'black' }}
-          />
-        </div>
+        <Toast />
       </div>
     </section>
   );

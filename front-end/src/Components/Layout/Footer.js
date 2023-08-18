@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function Footer() {
+export default function Footer({ pathname }) {
   const [toggleFooterOptions, setToggleFooterOptions] = useState({
     navigation: false,
     contact: false,
@@ -306,7 +306,12 @@ export default function Footer() {
   );
 
   return (
-    <div className="w-screen text-left flex flex-col tablet:flex-row tablet:place-content-between p-4 py-12 tablet:px-[10%] h-[560px] tablet:h-[400px] bg-[#9EC2AF]">
+    <div
+      className={`
+    ${
+      pathname === '/' ? 'hidden' : ''
+    } transition-all delay-200 relative w-screen text-left flex flex-col tablet:flex-row tablet:place-content-between p-4 py-12 tablet:px-[10%] h-[560px] tablet:h-[400px] bg-[#9EC2AF]`}
+    >
       <div className="flex flex-col mb-10 tablet:mb-0 place-content-between tablet:w-1/2">
         <Link to={'/'} onClick={handleClose}>
           <h1 className="text-[rgb(23,61,10)] text-[32px] font-['brandon-grotesque'] font-bold antialiased tracking-wide uppercase">

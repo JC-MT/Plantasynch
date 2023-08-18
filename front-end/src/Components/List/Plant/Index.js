@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Plant from './Plant';
-import emptyPot from '../icons/emptyPot.png';
+import emptyPot from '../../../icons/emptyPot.png';
 
 const API = process.env.REACT_APP_API_URL;
 const AWS = process.env.REACT_APP_AWS_URL;
 
-export default function HomeIndex({ loggedInUser, notification, reFetch }) {
+export default function Index({ loggedInUser, notification, reFetch }) {
   const [garden, setGarden] = useState([]);
 
   function filteredByLoggedInUser(garden, loggedInUser) {
@@ -47,10 +47,10 @@ export default function HomeIndex({ loggedInUser, notification, reFetch }) {
   const currentDisplay = (
     <div className="flex flex-col gap-4 px-2 laptop:grid-view tablet:gap-8 py-4 tablet:py-8">
       <div
-        className={`flex-col place-items-center p-2 ${
+        className={`flex-col place-items-center h-[200px] p-5 ${
           filteredByLoggedInUser(garden, loggedInUser).length
             ? 'hidden'
-            : 'flex'
+            : 'flex col-span-3'
         }`}
       >
         <img
@@ -60,7 +60,7 @@ export default function HomeIndex({ loggedInUser, notification, reFetch }) {
           className={`rounded-xl relative`}
           src={emptyPot}
         />
-        <h3 className="text-xl p-2">{`It's empty :(`}</h3>
+        <h3 className="text-xl p-2">{`It's empty 😭`}</h3>
       </div>
       {filteredByLoggedInUser(garden, loggedInUser).map((plant, idx) => {
         return (

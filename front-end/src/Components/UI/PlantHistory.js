@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import * as dayjs from 'dayjs';
-import Watered from '../icons/watering.png';
-import Updated from '../icons/refresh.png';
-import Skipped from '../icons/skip.png';
+import Watered from '../../icons/watering.png';
+import Updated from '../../icons/refresh.png';
+import Skipped from '../../icons/skip.png';
 import Pagination from './Pagination';
 
 export default function PlantHistory({ actions }) {

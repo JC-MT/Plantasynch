@@ -1,5 +1,6 @@
-import NewPlantForm from '../Components/NewPlantForm';
-import Scanner from '../Components/Scanner';
+import NewPlantForm from '../../Components/Forms/NewPlantForm';
+import Scanner from '../../Components/Forms/Scanner';
+import Toast from '../../Components/UI/Toast';
 import { useState } from 'react';
 
 export default function New({ loggedInUser }) {
@@ -56,6 +57,7 @@ export default function New({ loggedInUser }) {
       ) : (
         <NewPlantForm loggedInUser={loggedInUser} />
       )}
+      <Toast />
     </div>
   );
 }

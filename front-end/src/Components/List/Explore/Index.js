@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import ExplorePlant from './ExplorePlant';
+import Plant from './Plant';
 
 const API = process.env.REACT_APP_API_URL;
 
-export default function ExploreIndex() {
+export default function Index() {
   const [explore, setExplore] = useState([]);
   const [search, setSearch] = useState('');
   const [animation, setAnimation] = useState(false);
@@ -49,7 +49,7 @@ export default function ExploreIndex() {
       .filter((plant) => handleFiltering(plant, search))
       .map((plant, idx) => {
         return (
-          <ExplorePlant
+          <Plant
             key={idx}
             id={plant.id}
             name={plant.common[0]}

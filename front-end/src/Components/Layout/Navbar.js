@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import hamburgerMenuIcon from '../icons/hamburgerMenuIcon.png';
-import useHamburgerMenu from '../Hooks/useHamburgerMenu';
+import hamburgerMenuIcon from '../../icons/hamburgerMenuIcon.png';
+import useHamburgerMenu from '../../Hooks/useHamburgerMenu';
 
 export default function Navbar({ notification, loggedInUser }) {
   const [setActive, hamburgerMenuStructure] = useHamburgerMenu({
@@ -51,28 +51,28 @@ export default function Navbar({ notification, loggedInUser }) {
         <div className="hidden p-1 uppercase font-['baskerville-urw'] tracking-wide flex-row font-md place-content-center place-items-center text-slate-800 tablet:flex">
           <Link
             to={'/my-plants'}
-            className="text-[13px] mx-2 py-1 delay-150 hover:text-slate-400 hover:cursor-pointer"
+            className="text-[13px] mx-2 py-1 transition-all hover:text-slate-400 hover:cursor-pointer"
           >
             Home
           </Link>
 
           <Link
             to={'/explore'}
-            className="text-[13px] mx-2 py-1 w-min delay-150 hover:text-slate-400 hover:cursor-pointer"
+            className="text-[13px] mx-2 py-1 w-min transition-all hover:text-slate-400 hover:cursor-pointer"
           >
             Explore
           </Link>
 
           <Link
             to={'/new'}
-            className="text-[13px] py-1 w-min mx-2 delay-150 hover:text-slate-400 hover:cursor-pointer"
+            className="text-[13px] py-1 w-min mx-2 transition-all hover:text-slate-400 hover:cursor-pointer"
           >
             Add
           </Link>
 
           <Link
             to={'/'}
-            className="text-[13px] py-1 w-min mx-2 delay-150 hover:text-slate-400 hover:cursor-pointer"
+            className="text-[13px] py-1 w-min mx-2 transition-all hover:text-slate-400 hover:cursor-pointer"
           >
             About
           </Link>
@@ -94,7 +94,7 @@ export default function Navbar({ notification, loggedInUser }) {
               onMouseLeave={() => {
                 setHover({ github: false, linkedin: false });
               }}
-              className={`w-[18px] h-[18px] rounded-full delay-100 ${
+              className={`w-[18px] h-[18px] transition-opacity duration-300 rounded-full ${
                 hover.github ? 'opacity-50' : ''
               }`}
               alt="GitHub"
@@ -114,7 +114,7 @@ export default function Navbar({ notification, loggedInUser }) {
               onMouseLeave={() => {
                 setHover({ github: false, linkedin: false });
               }}
-              className={`w-[24px] h-[24px] place-self-center delay-100 ${
+              className={`w-[24px] h-[24px] place-self-center transition-opacity duration-300 ${
                 hover.linkedin ? 'opacity-50' : ''
               }`}
               alt="LinkedIn"
@@ -123,7 +123,6 @@ export default function Navbar({ notification, loggedInUser }) {
           </a>
         </div>
       </div>
-
       {hamburgerMenuStructure}
     </div>
   );

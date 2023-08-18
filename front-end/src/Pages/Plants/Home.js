@@ -1,4 +1,4 @@
-import HomeIndex from '../Components/HomeIndex';
+import Index from '../../Components/List/Plant/Index';
 
 export default function Home({ loggedInUser, notification, reFetch }) {
   return (
@@ -12,7 +12,7 @@ export default function Home({ loggedInUser, notification, reFetch }) {
         Discover or add new plants from the <em>Explore</em> page or simple scan
         your plants on the <em>Add</em> page.
       </p>
-      <HomeIndex
+      <Index
         loggedInUser={loggedInUser}
         notification={notification}
         reFetch={reFetch}

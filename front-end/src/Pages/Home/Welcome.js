@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import bgW from '../icons/bgW.png';
-import bgA from '../icons/bgA.jpeg';
-import headshot from '../icons/headshot.jpeg';
-import Footer from './Footer';
+import { toast } from 'react-toastify';
+import bgW from '../../icons/bgW.png';
+import bgA from '../../icons/bgA.jpeg';
+import headshot from '../../icons/headshot.jpeg';
+import Footer from '../../Components/Layout/Footer';
 
 import 'react-toastify/dist/ReactToastify.css';
+import Toast from '../../Components/UI/Toast';
 
 export default function Welcome({ loggedInUser, setLoggedInUser }) {
   const [scrollTop, setScrollTop] = useState(0);
@@ -355,13 +356,7 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
           </div>
         </div>
       </div>
-
-      <div className="z-50">
-        <ToastContainer
-          limit={1}
-          toastStyle={{ color: 'white', backgroundColor: 'black' }}
-        />
-      </div>
+      <Toast />
       <Footer />
     </div>
   );

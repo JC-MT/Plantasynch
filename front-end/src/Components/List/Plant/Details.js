@@ -2,22 +2,23 @@ import axios from 'axios';
 import * as dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import useModel from '../Hooks/useModel';
-import SkipButton from './SkipButton';
-import PlantHistory from './PlantHistory';
-import OptionsButton from './OptionsButton';
-import WaterButton from './WaterButton';
+import useModel from '../../../Hooks/useModel';
+import SkipButton from '../../UI/SkipButton';
+import PlantHistory from '../../UI/PlantHistory';
+import OptionsButton from '../../UI/OptionsButton';
+import WaterButton from '../../UI/WaterButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const API = process.env.REACT_APP_API_URL;
 const AWS = process.env.REACT_APP_AWS_URL;
 
-export default function PlantDetails({ notification }) {
+export default function Details({ notification }) {
   const { id } = useParams();
   const [plant, setPlant] = useState([]);
   const [needsWater, setNeedsWater] = useState(false);
   const navigate = useNavigate();
+  const [model, setModel, modelStructure] = useModel({ handleDelete });
 
   const notify = (result) => {
     return result
@@ -68,7 +69,7 @@ export default function PlantDetails({ notification }) {
       });
   }, [id, navigate, notification]);
 
-  const handleDelete = () => {
+  function handleDelete() {
     axios
       .delete(`${API}/plants/${id}`)
       .then(() => {
@@ -79,9 +80,8 @@ export default function PlantDetails({ notification }) {
         console.warn(err);
         notify(false);
       });
-  };
+  }
 
-  const [model, setModel, modelStructure] = useModel({ handleDelete });
   const spinnerStructure = (
     <div id="spinner" className="flex flex-col items-center justify-center p-5">
       <div className="w-20 h-20 border-b-2 border-gray-900 rounded-full animate-spin"></div>

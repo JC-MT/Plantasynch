@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
 
-export default function ExploreDetails({ loggedInUser }) {
+export default function Info({ loggedInUser }) {
   const [explore, setExplore] = useState({});
   const [newplant, setNewPlant] = useState({
     name: '',
@@ -75,7 +75,7 @@ export default function ExploreDetails({ loggedInUser }) {
   };
 
   const spinnerStructure = (
-    <div id="spinner" className="flex flex-col items-center justify-center p-5">
+    <div className="flex flex-col items-center justify-center p-5 h-screen">
       <div className="w-20 h-20 border-b-2 border-gray-900 rounded-full animate-spin"></div>
       <p className="w-96 italic text-center p-5">
         Plantasync data is hosted on a free cloud web-service. This may cause a
@@ -170,12 +170,6 @@ export default function ExploreDetails({ loggedInUser }) {
               />
             </div>
           </div>
-        </div>
-        <div className="z-50">
-          <ToastContainer
-            limit={1}
-            toastStyle={{ color: 'white', backgroundColor: 'black' }}
-          />
         </div>
       </div>
     </section>

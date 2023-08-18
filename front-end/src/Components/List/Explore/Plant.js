@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 const AWS = process.env.REACT_APP_AWS_URL;
 
-export default function ExplorePlant({ id, name, knownAs, category }) {
+export default function Plant({ id, name, knownAs, category }) {
   return (
     <div className="flex flex-row transition-all duration-200 justify-between rounded-lg hover:bg-slate-100 hover:shadow-2xl laptop:plant-laptop">
       <Link className="flex w-full flex-row" to={`/explore/${id}`}>

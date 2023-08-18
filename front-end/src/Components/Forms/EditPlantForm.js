@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import useModel from '../Hooks/useModel';
+import useModel from '../../Hooks/useModel';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import imageUploadIcon from '../icons/imageUploadIcon.png';
+import imageUploadIcon from '../../icons/imageUploadIcon.png';
 
 const API = process.env.REACT_APP_API_URL;
 const AWS = process.env.REACT_APP_AWS_URL;
@@ -29,6 +29,7 @@ export default function EditPlantForm() {
     skip_count: 0,
     skip_history: []
   });
+  console.log(plant);
 
   useEffect(() => {
     axios
