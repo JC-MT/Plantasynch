@@ -1,11 +1,10 @@
 import axios from 'axios';
 import * as dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import useToast from '../../Hooks/useToast';
 import useSkipConfirmation from '../../Hooks/useSkipConfirmation';
 
-import 'react-toastify/dist/ReactToastify.css';
 const API = process.env.REACT_APP_API_URL;
 
 export default function SkipButton({ skip_count, name }) {
@@ -14,6 +13,7 @@ export default function SkipButton({ skip_count, name }) {
   const [skippedClicked, setSkippedClicked] = useState(false);
   const [confirmation, setConfirmation, modelConfirmation] =
     useSkipConfirmation({ handleUpdate, name });
+  const [sendToast] = useToast('skip');
 
   function hasSkippedToday(actions) {
     const now = dayjs().format('YYYY-MM-DD');
@@ -40,42 +40,17 @@ export default function SkipButton({ skip_count, name }) {
       });
   }, [id, skippedClicked]);
 
-  const notify = (result) => {
-    return result
-      ? toast.success(`${name} has been successfully skipped today 🪴`, {
-          position: 'bottom-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined
-        })
-      : toast.error(
-          `We were unable to skip ${name} today 🥲 Please check your internet and try again in a few minutes.`,
-          {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        );
-  };
-
   function handleUpdate() {
     axios
       .put(`${API}/plants/skip/${id}`, { skip_count: skip_count })
       .then(() => {
         setSkippedClicked(true);
         setConfirmation(false);
-        notify(true);
+        sendToast(true, name);
       })
       .catch((err) => {
         console.log(err);
-        notify(false);
+        sendToast(false, name);
       });
   }
 

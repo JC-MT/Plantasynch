@@ -1,59 +1,32 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+import useToast from '../../Hooks/useToast';
 import bgW from '../../icons/bgW.png';
 import bgA from '../../icons/bgA.jpeg';
 import headshot from '../../icons/headshot.jpeg';
 import Footer from '../../Components/Layout/Footer';
 
-import 'react-toastify/dist/ReactToastify.css';
-import Toast from '../../Components/UI/Toast';
-
 export default function Welcome({ loggedInUser, setLoggedInUser }) {
   const [scrollTop, setScrollTop] = useState(0);
   const [hover, setHover] = useState({ github: false, linkedin: false });
+  const [sendToast] = useToast('welcome');
 
-  const notify = (result) => {
-    return result
-      ? toast.success(`You have been sucessfully logged out.🪴`, {
-          position: 'bottom-center',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined
-        })
-      : toast.error(
-          `We were unable to log you out 🥲 Please check your internet and try again in a few minutes.`,
-          {
-            position: 'bottom-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        );
-  };
-
-  const handleLogOut = () => {
+  function handleLogOut() {
     setLoggedInUser({});
 
     if (loggedInUser.id) {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
-      notify(true);
+      sendToast(true);
     } else {
-      notify(false);
+      sendToast(false);
     }
-  };
+  }
   const handleClose = () => {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   };
 
   useEffect(() => {
-    const handleScroll = (event) => {
+    const handleScroll = () => {
       setScrollTop(window.scrollY);
     };
 
@@ -356,7 +329,7 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
           </div>
         </div>
       </div>
-      <Toast />
+      {/* <Toast /> */}
       <Footer />
     </div>
   );

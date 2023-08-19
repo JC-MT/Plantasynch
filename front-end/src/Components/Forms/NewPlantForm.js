@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import imageUploadIcon from '../../icons/imageUploadIcon.png';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import useToast from '../../Hooks/useToast';
 const API = process.env.REACT_APP_API_URL;
 
 export default function NewPlantForm({ loggedInUser }) {
   const navigate = useNavigate();
   const [file, setFile] = useState();
+  const [sendToast] = useToast('new');
   const [plant, setPlant] = useState({
     name: '',
     image: '',
@@ -39,31 +39,6 @@ export default function NewPlantForm({ loggedInUser }) {
     setFile(fileData);
   };
 
-  const notify = (result) => {
-    return result
-      ? toast.success(`Your plant was succesfully added. Happy Growing 🪴`, {
-          position: 'bottom-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined
-        })
-      : toast.error(
-          `We were unable to add your new plant 🥲 Please check your internet and try again in a few minutes.`,
-          {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        );
-  };
-
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -79,7 +54,7 @@ export default function NewPlantForm({ loggedInUser }) {
           if (res.data.success) plant.image = res.data.imageKey;
         })
         .catch(() => {
-          notify(false);
+          sendToast(false);
           return;
         });
     }
@@ -87,12 +62,12 @@ export default function NewPlantForm({ loggedInUser }) {
     await axios
       .post(`${API}/plants`, plant)
       .then(() => {
-        notify(true);
+        sendToast(true);
         setTimeout(() => navigate('/my-plants'), 4000);
       })
       .catch((err) => {
         console.warn(err);
-        notify(false);
+        sendToast(false);
       });
   }
 
@@ -268,12 +243,6 @@ export default function NewPlantForm({ loggedInUser }) {
           />
         </div>
       </form>
-      <div className="z-50">
-        <ToastContainer
-          limit={1}
-          toastStyle={{ color: 'white', backgroundColor: 'black' }}
-        />
-      </div>
     </div>
   );
 }

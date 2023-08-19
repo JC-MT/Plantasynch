@@ -25,19 +25,19 @@ export default function OptionsButton({ setModel, name }) {
         {name}
       </h3>
       <div
-        className={`px-5 z-40 h-full tablet:pt-20 w-full tablet:w-[400px] transition-transform duration-700 delay-200 opacity-90 flex flex-col justify-center text-center text-[#D9F8B9] translate-x-full place-items-center ${
-          openOptions ? 'translate-x-0' : ''
+        className={`gap-1 px-5 h-full tablet:pt-20 w-full tablet:w-[400px] transition-transform duration-700 flex flex-col justify-center text-center text-[#D9F8B9] place-items-center ${
+          openOptions ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <Link
-          className={'w-full p-2 mb-[2px] bg-[#224722] rounded-full'}
+          className={'w-full text-lg h-[48px] p-2 bg-[#224722]'}
           to={`/my-plants/${id}/edit`}
         >
           Edit
         </Link>
         <button
           onClick={() => setModel(true)}
-          className="w-full p-2 bg-[#224722] border-black rounded-full text-center"
+          className="w-full text-lg h-[48px] p-2 bg-[#224722] border-black text-center"
         >
           Delete
         </button>

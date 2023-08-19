@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import useModel from '../../Hooks/useModel';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import useToast from '../../Hooks/useToast';
 import imageUploadIcon from '../../icons/imageUploadIcon.png';
 
 const API = process.env.REACT_APP_API_URL;
@@ -13,6 +12,7 @@ export default function EditPlantForm() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [file, setFile] = useState();
+  const [sendToast] = useToast('edit');
   const [plant, setPlant] = useState({
     name: '',
     image: '',
@@ -29,7 +29,6 @@ export default function EditPlantForm() {
     skip_count: 0,
     skip_history: []
   });
-  console.log(plant);
 
   useEffect(() => {
     axios
@@ -52,31 +51,6 @@ export default function EditPlantForm() {
     setFile(fileData);
   };
 
-  const notify = (result) => {
-    return result
-      ? toast.success(`Your plant was succesfully updated. Happy Growing 🪴`, {
-          position: 'bottom-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined
-        })
-      : toast.error(
-          `We were unable to edit your plant 🥲 Please check your internet and try again in a few minutes.`,
-          {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        );
-  };
-
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -92,7 +66,7 @@ export default function EditPlantForm() {
           if (res.data.success) plant.image = res.data.imageKey;
         })
         .catch(() => {
-          notify(false);
+          sendToast(false);
           return;
         });
     }
@@ -100,12 +74,12 @@ export default function EditPlantForm() {
     axios
       .put(`${API}/plants/${id}`, plant)
       .then(() => {
-        notify(true);
+        sendToast(true);
         setTimeout(() => navigate('/my-plants'), 4000);
       })
       .catch((err) => {
         console.warn(err);
-        notify(false);
+        sendToast(false);
       });
   }
 
@@ -321,13 +295,7 @@ export default function EditPlantForm() {
           </div>
         </form>
       </div>
-      <div>{model ? modelStructure : ''}</div>
-      <div className="z-50">
-        <ToastContainer
-          limit={1}
-          toastStyle={{ color: 'white', backgroundColor: 'black' }}
-        />
-      </div>
+      {model ? modelStructure : ''}
     </div>
   );
 }

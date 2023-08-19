@@ -3,11 +3,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Toast() {
   return (
-    <div className="z-50">
-      <ToastContainer
-        limit={1}
-        toastStyle={{ color: 'white', backgroundColor: 'black' }}
-      />
-    </div>
+    <ToastContainer
+      className="z-50"
+      limit={1}
+      toastStyle={{ color: 'white', backgroundColor: 'black' }}
+    />
   );
 }

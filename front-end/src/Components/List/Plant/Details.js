@@ -7,7 +7,7 @@ import SkipButton from '../../UI/SkipButton';
 import PlantHistory from '../../UI/PlantHistory';
 import OptionsButton from '../../UI/OptionsButton';
 import WaterButton from '../../UI/WaterButton';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const API = process.env.REACT_APP_API_URL;
@@ -94,7 +94,7 @@ export default function Details({ notification }) {
 
   const showStructure = (
     <div className="flex flex-col gap-1">
-      <header className="flex items-center justify-center tablet:pt-10">
+      <header className="flex items-center justify-center tablet:pt-4">
         <div
           className="grayscale-[50%] w-[400px] h-[380px] place-self-center"
           style={{
@@ -149,12 +149,6 @@ export default function Details({ notification }) {
       </div>
       {model ? modelStructure : ''}
       <PlantHistory actions={plant.actions} />
-      <div className="z-50">
-        <ToastContainer
-          limit={1}
-          toastStyle={{ color: 'white', backgroundColor: 'black' }}
-        />
-      </div>
     </div>
   );
 

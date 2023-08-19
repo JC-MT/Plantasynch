@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Navbar from './Components/Layout/Navbar';
 import Footer from './Components/Layout/Footer';
 import Loader from './Components/Layout/Loader';
+import Toast from './Components/UI/Toast';
 
 // PAGES
 import Welcome from './Pages/Home/Welcome';
@@ -74,6 +75,7 @@ export default function App() {
         </Routes>
         <Footer pathname={pathname} />
       </main>
+      <Toast />
     </div>
   );
 }

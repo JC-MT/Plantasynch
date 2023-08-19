@@ -1,51 +1,23 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import { useParams, useNavigate } from 'react-router-dom';
 import useWaterConfirmation from '../../Hooks/useWaterConfirmation';
-import 'react-toastify/dist/ReactToastify.css';
+import useToast from '../../Hooks/useToast';
 const API = process.env.REACT_APP_API_URL;
 
 export default function WaterButton({ needsWater, last_water, plant }) {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  const notify = (result) => {
-    return result
-      ? toast.success(
-          `Great job watering your ${plant.name}. We'll send an email to remind you when it's time to water your plant again. 🪴`,
-          {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        )
-      : toast.error(
-          `We were unable to water ${plant.name} 🥲 Please check your internet and try again in a few minutes.`,
-          {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        );
-  };
+  const [sendToast] = useToast('waterButton');
 
   const handleUpdate = () => {
     axios
       .put(`${API}/plants/water/${id}`)
       .then(() => {
-        notify(true);
+        sendToast(true, plant.name);
         setTimeout(() => navigate('/my-plants'), 4000);
       })
       .catch((err) => {
-        notify(false);
+        sendToast(false, plant.name);
         console.warn(err);
       });
   };

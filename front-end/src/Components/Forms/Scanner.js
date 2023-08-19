@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const API = process.env.REACT_APP_API_URL;
@@ -402,12 +402,6 @@ export default function Scanner({ loggedInUser }) {
             </div>
           </div>
         </form>
-      </div>
-      <div className="z-50">
-        <ToastContainer
-          limit={1}
-          toastStyle={{ color: 'white', backgroundColor: 'black' }}
-        />
       </div>
       {result.bestMatch ? results : ''}
     </section>
