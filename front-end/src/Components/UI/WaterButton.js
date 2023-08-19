@@ -13,11 +13,11 @@ export default function WaterButton({ needsWater, last_water, plant }) {
     axios
       .put(`${API}/plants/water/${id}`)
       .then(() => {
-        sendToast(true, plant.name);
+        sendToast('success', plant.name);
         setTimeout(() => navigate('/my-plants'), 4000);
       })
       .catch((err) => {
-        sendToast(false, plant.name);
+        sendToast('error', plant.name);
         console.warn(err);
       });
   };

@@ -46,11 +46,11 @@ export default function SkipButton({ skip_count, name }) {
       .then(() => {
         setSkippedClicked(true);
         setConfirmation(false);
-        sendToast(true, name);
+        sendToast('success', name);
       })
       .catch((err) => {
         console.log(err);
-        sendToast(false, name);
+        sendToast('error', name);
       });
   }
 
