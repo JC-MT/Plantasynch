@@ -30,7 +30,6 @@ export default function LogIn({ setLoggedInUser }) {
       .catch((err) => {
         console.warn(err);
       });
-    // eslint-disable-next-line
   }, []);
 
   const handleSubmit = (event) => {
@@ -45,7 +44,7 @@ export default function LogIn({ setLoggedInUser }) {
       axios
         .get(`${API}/user/${foundUser[0].id}`)
         .then((res) => {
-          sendToast(true, res.data.payload.name);
+          sendToast('success', res.data.payload.name);
           setTimeout(() => {
             navigate('/my-plants');
           }, 4000);
@@ -57,10 +56,10 @@ export default function LogIn({ setLoggedInUser }) {
         })
         .catch((err) => {
           console.warn(err);
-          sendToast(false);
+          sendToast('error');
         });
     } else {
-      sendToast(false);
+      sendToast('error');
     }
   };
 

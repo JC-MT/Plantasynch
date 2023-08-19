@@ -16,9 +16,9 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
 
     if (loggedInUser.id) {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
-      sendToast(true);
+      sendToast('success');
     } else {
-      sendToast(false);
+      sendToast('error');
     }
   }
   const handleClose = () => {

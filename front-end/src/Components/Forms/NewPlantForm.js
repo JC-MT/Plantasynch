@@ -54,7 +54,7 @@ export default function NewPlantForm({ loggedInUser }) {
           if (res.data.success) plant.image = res.data.imageKey;
         })
         .catch(() => {
-          sendToast(false);
+          sendToast('error');
           return;
         });
     }
@@ -62,12 +62,12 @@ export default function NewPlantForm({ loggedInUser }) {
     await axios
       .post(`${API}/plants`, plant)
       .then(() => {
-        sendToast(true);
+        sendToast('success');
         setTimeout(() => navigate('/my-plants'), 4000);
       })
       .catch((err) => {
         console.warn(err);
-        sendToast(false);
+        sendToast('error');
       });
   }
 

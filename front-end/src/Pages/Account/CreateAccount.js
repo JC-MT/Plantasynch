@@ -22,7 +22,7 @@ export default function CreateAccount({ setLoggedInUser }) {
     axios
       .post(`${API}/user`, user)
       .then((res) => {
-        sendToast(true, user.name);
+        sendToast('success', user.name);
         setTimeout(() => {
           navigate('/my-plants');
         }, 4000);
@@ -33,7 +33,7 @@ export default function CreateAccount({ setLoggedInUser }) {
       })
       .catch((err) => {
         console.warn(err);
-        sendToast(false);
+        sendToast('error');
       });
   };
 

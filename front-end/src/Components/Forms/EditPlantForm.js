@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import useModel from '../../Hooks/useModel';
+import useDeleteModel from '../../Hooks/useDeleteModel';
 import useToast from '../../Hooks/useToast';
 import imageUploadIcon from '../../icons/imageUploadIcon.png';
 
@@ -28,6 +28,10 @@ export default function EditPlantForm() {
     actions: [],
     skip_count: 0,
     skip_history: []
+  });
+  const [deleteModel, setDeleteModel, modelStructure] = useDeleteModel({
+    id,
+    plant
   });
 
   useEffect(() => {
@@ -66,7 +70,7 @@ export default function EditPlantForm() {
           if (res.data.success) plant.image = res.data.imageKey;
         })
         .catch(() => {
-          sendToast(false);
+          sendToast('error');
           return;
         });
     }
@@ -74,27 +78,14 @@ export default function EditPlantForm() {
     axios
       .put(`${API}/plants/${id}`, plant)
       .then(() => {
-        sendToast(true);
+        sendToast('success');
         setTimeout(() => navigate('/my-plants'), 4000);
       })
       .catch((err) => {
         console.warn(err);
-        sendToast(false);
+        sendToast('error');
       });
   }
-
-  const handleDelete = () => {
-    axios
-      .delete(`${API}/plants/${id}`)
-      .then(() => {
-        navigate('/my-plants');
-      })
-      .catch((err) => {
-        console.warn(err);
-      });
-  };
-
-  const [model, setModel, modelStructure] = useModel({ handleDelete });
 
   return (
     <div className="flex flex-col tablet:pt-8 h-[100%]">
@@ -281,21 +272,24 @@ export default function EditPlantForm() {
               <button>Nevermind</button>
             </Link>
             <button
-              onClick={handleSubmit}
+              onClick={() => handleSubmit()}
               className="m-0 button-style w-full tablet:w-[100%]"
             >
               Update
             </button>
             <button
               className="mt-0 button-style w-full tablet:w-[100%]"
-              onClick={() => setModel(true)}
+              onClick={(event) => {
+                event.preventDefault();
+                setDeleteModel(true);
+              }}
             >
               Delete
             </button>
           </div>
         </form>
       </div>
-      {model ? modelStructure : ''}
+      {deleteModel ? modelStructure : ''}
     </div>
   );
 }

@@ -2,13 +2,11 @@ import axios from 'axios';
 import * as dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import useModel from '../../../Hooks/useModel';
 import SkipButton from '../../UI/SkipButton';
 import PlantHistory from '../../UI/PlantHistory';
 import OptionsButton from '../../UI/OptionsButton';
 import WaterButton from '../../UI/WaterButton';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import useDeleteModel from '../../../Hooks/useDeleteModel';
 
 const API = process.env.REACT_APP_API_URL;
 const AWS = process.env.REACT_APP_AWS_URL;
@@ -18,32 +16,10 @@ export default function Details({ notification }) {
   const [plant, setPlant] = useState([]);
   const [needsWater, setNeedsWater] = useState(false);
   const navigate = useNavigate();
-  const [model, setModel, modelStructure] = useModel({ handleDelete });
-
-  const notify = (result) => {
-    return result
-      ? toast.success(`${plant.name} has been successfully deleted today 👋`, {
-          position: 'bottom-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined
-        })
-      : toast.error(
-          `We were unable to delete ${plant.name} 🥲 Please check your internet and try again in a few minutes.`,
-          {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        );
-  };
+  const [deleteModel, setDeleteModel, modelStructure] = useDeleteModel({
+    id,
+    plant
+  });
 
   useEffect(() => {
     function getNeedsWater(notification) {
@@ -64,23 +40,10 @@ export default function Details({ notification }) {
       .then(() => {
         getNeedsWater(notification);
       })
-      .catch((err) => {
+      .catch(() => {
         navigate('/not-found');
       });
   }, [id, navigate, notification]);
-
-  function handleDelete() {
-    axios
-      .delete(`${API}/plants/${id}`)
-      .then(() => {
-        notify(true);
-        setTimeout(() => navigate('/my-plants'), 4000);
-      })
-      .catch((err) => {
-        console.warn(err);
-        notify(false);
-      });
-  }
 
   const spinnerStructure = (
     <div id="spinner" className="flex flex-col items-center justify-center p-5">
@@ -102,7 +65,11 @@ export default function Details({ notification }) {
             backgroundSize: '400px 380px'
           }}
         >
-          <OptionsButton setModel={setModel} name={plant.name} />
+          <OptionsButton
+            id={id}
+            setDeleteModel={setDeleteModel}
+            name={plant.name}
+          />
         </div>
       </header>
       <div className="flex mt-2 flex-row h-12 justify-center">
@@ -147,8 +114,8 @@ export default function Details({ notification }) {
           <strong>Water Tips:</strong> {plant.ideal_watering}
         </p>
       </div>
-      {model ? modelStructure : ''}
       <PlantHistory actions={plant.actions} />
+      {deleteModel ? modelStructure : ''}
     </div>
   );
 

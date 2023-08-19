@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import moreOptions from '../../icons/moreOptions.png';
 
-export default function OptionsButton({ setModel, name }) {
-  const { id } = useParams();
+export default function OptionsButton({ id, setDeleteModel, name }) {
   const [openOptions, setOpenOptions] = useState(false);
 
   return (
@@ -36,7 +35,7 @@ export default function OptionsButton({ setModel, name }) {
           Edit
         </Link>
         <button
-          onClick={() => setModel(true)}
+          onClick={() => setDeleteModel(true)}
           className="w-full text-lg h-[48px] p-2 bg-[#224722] border-black text-center"
         >
           Delete

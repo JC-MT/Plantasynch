@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import useToast from '../../Hooks/useToast';
 
 const API = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -29,6 +28,7 @@ export default function Scanner({ loggedInUser }) {
     skip_count: 0,
     skip_history: []
   });
+  const [sendToast] = useToast('scanner');
 
   const handleUpload = (event) => {
     const reader = new FileReader();
@@ -59,30 +59,24 @@ export default function Scanner({ loggedInUser }) {
         if (res.data.success) newplant.image = res.data.imageKey;
       })
       .catch((err) => {
-        notifyAdd(false, err.data);
+        sendToast('responseError', false, err.data);
         return;
       });
 
     await axios
       .post(`${API}/plants`, newplant)
       .then((res) => {
-        notifyAdd(true);
+        sendToast('add', newplant.name, 'success');
         setNewPlant(res.data);
         setTimeout(() => navigate('/my-plants'), 4000);
       })
       .catch((err) => {
-        notifyAdd(false);
+        sendToast('add', newplant.name, 'error');
         console.warn(err);
       });
   };
 
   const identify = async () => {
-    if (file.queryFile.length === 0) {
-      setRequested(false);
-      notify(false);
-      return false;
-    }
-
     const form = new FormData();
     form.append('images', file.queryFile);
 
@@ -92,7 +86,7 @@ export default function Scanner({ loggedInUser }) {
     })
       .then(async (response) => {
         if (response.ok) {
-          notify(true);
+          sendToast('success', '');
           setRequested(false);
           return response
             .json()
@@ -116,17 +110,17 @@ export default function Scanner({ loggedInUser }) {
             })
             .catch(() => {
               setRequested(false);
-              notify(false);
+              sendToast('error', '');
             });
         } else {
           const errorData = await response.json();
           setRequested(false);
-          notify(false, errorData);
+          sendToast('responseError', '', errorData);
         }
       })
       .catch(() => {
         setRequested(false);
-        notify(false);
+        sendToast('error', '');
       });
   };
 
@@ -134,63 +128,6 @@ export default function Scanner({ loggedInUser }) {
     event.preventDefault();
     setRequested(true);
     identify();
-  };
-
-  const notify = (result, response) => {
-    return result
-      ? toast.success(`Scanning was successful. Results are in! 🥳`, {
-          position: 'bottom-center',
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined
-        })
-      : toast.error(
-          `${
-            response
-              ? `Error code: ${response.statusCode} Error Message: ${response.message}`
-              : `We were unable to scan your image 🥲 Please check your internet and try again in a few minutes.`
-          }`,
-          {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        );
-  };
-
-  const notifyAdd = (result) => {
-    return result
-      ? toast.success(
-          `We just added ${newplant.name} to your garden. Congrats! 🪴.`,
-          {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        )
-      : toast.error(
-          `We were unable to add ${newplant.name} to your garden 🥲 Please check your internet and try again in a few minutes.`,
-          {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined
-          }
-        );
   };
 
   let results = (

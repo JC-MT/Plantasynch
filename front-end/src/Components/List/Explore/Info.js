@@ -63,12 +63,12 @@ export default function Info({ loggedInUser }) {
     axios
       .post(`${API}/plants`, newplant)
       .then((res) => {
-        sendToast(true, newplant.name);
+        sendToast('success', newplant.name);
         setNewPlant(res.data);
         setTimeout(() => navigate('/my-plants'), 4000);
       })
       .catch((err) => {
-        sendToast(false, newplant.name);
+        sendToast('error', newplant.name);
         console.warn(err);
       });
   };
