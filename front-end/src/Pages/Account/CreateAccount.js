@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import useToast from '../../Hooks/useToast';
+
 const API = process.env.REACT_APP_API_URL;
 
 export default function CreateAccount({ setLoggedInUser }) {

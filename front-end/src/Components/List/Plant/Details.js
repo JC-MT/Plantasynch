@@ -56,7 +56,7 @@ export default function Details({ notification }) {
   );
 
   const showStructure = (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 text-center">
       <header className="flex items-center justify-center tablet:pt-4">
         <div
           className="grayscale-[50%] w-[400px] h-[380px] place-self-center"

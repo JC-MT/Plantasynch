@@ -329,7 +329,6 @@ export default function Welcome({ loggedInUser, setLoggedInUser }) {
           </div>
         </div>
       </div>
-      {/* <Toast /> */}
       <Footer />
     </div>
   );
