@@ -56,12 +56,12 @@ export default function SkipButton({ skip_count, name }) {
 
   return (
     <div
-      className={`flex ${
+      className={`flex w-1/2 ${
         allowedToSkip && !skippedClicked ? `` : `cursor-not-allowed`
       }`}
     >
       <button
-        className={`button-style mt-0 w-44 text-lg ${
+        className={`button-style mt-0 w-full text-lg ${
           allowedToSkip && !skippedClicked ? `` : `pointer-events-none`
         }`}
         onClick={() => {

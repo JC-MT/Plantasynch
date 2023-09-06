@@ -13,11 +13,9 @@ export default function OptionsButton({ id, setDeleteModel, name }) {
         <img
           src={moreOptions}
           className={`${
-            openOptions ? 'opacity-20' : 'opacity-90'
+            openOptions ? 'opacity-70' : 'opacity-90'
           } right-0 rotate-90 hover:border-[#D9F8B9] cursor-pointer align-self-center place-self-center border-slate-800 border-2 m-0 w-[40px] h-[40px] rounded-full text-lg`}
-          onClick={() =>
-            setOpenOptions((openOptions) => setOpenOptions(!openOptions))
-          }
+          onClick={() => setOpenOptions((state) => !state)}
         />
       </div>
       <h3 className="absolute w-full mt-10 place-self-center text-white font-semibold text-[40px] text-center">

@@ -56,10 +56,10 @@ export default function Details({ notification }) {
   );
 
   const showStructure = (
-    <div className="flex flex-col gap-1 text-center">
-      <header className="flex items-center justify-center tablet:pt-4">
+    <div className="p-2 tablet:pt-12 flex flex-col tablet:flex-row tablet:gap-10 place-items-center place-content-center gap-1 text-center">
+      <header className="flex items-center justify-center tablet:place-self-start">
         <div
-          className="grayscale-[50%] w-[400px] h-[380px] place-self-center"
+          className="w-screen tablet:w-[400px] h-[380px] place-self-center"
           style={{
             background: `url('${AWS}${plant.image}') no-repeat center`,
             backgroundSize: '400px 380px'
@@ -72,20 +72,7 @@ export default function Details({ notification }) {
           />
         </div>
       </header>
-      <div className="flex mt-2 flex-row h-12 justify-center">
-        <SkipButton name={plant.name} skip_count={plant.skip_count} />
-        <WaterButton
-          needsWater={needsWater}
-          last_water={plant.last_water}
-          plant={plant}
-        />
-      </div>
-      <Link to={`/my-plants`}>
-        <button className="text-slate-500 hover:text-[#1E1F1D] text-lg w-fit mt-1 tablet:w-32">
-          ⬅︎ Back
-        </button>
-      </Link>{' '}
-      <div className="flex flex-col place-self-center text-left p-2 pt-0 tablet:pb-12 w-full tablet:w-[80%] max-w-[550px]">
+      <div className="flex flex-col place-self-center text-left p-2 tablet:pt-6 w-screen max-w-[500px]">
         <h1 className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] text-[32px] antialiased">
           Plant Details:
         </h1>
@@ -113,8 +100,21 @@ export default function Details({ notification }) {
         <p>
           <strong>Water Tips:</strong> {plant.ideal_watering}
         </p>
+        <div className="flex mt-2 flex-row h-12 w-full justify-center">
+          <SkipButton name={plant.name} skip_count={plant.skip_count} />
+          <WaterButton
+            needsWater={needsWater}
+            last_water={plant.last_water}
+            plant={plant}
+          />
+        </div>
+        <Link to={`/my-plants`} className="flex place-self-center">
+          <button className="text-slate-500 place-self-center text-center hover:text-[#1E1F1D] text-lg w-min mt-1 tablet:w-32">
+            ⬅︎ Back
+          </button>
+        </Link>{' '}
+        <PlantHistory actions={plant.actions} />
       </div>
-      <PlantHistory actions={plant.actions} />
       {deleteModel ? modelStructure : ''}
     </div>
   );

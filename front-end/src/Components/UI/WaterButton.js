@@ -32,7 +32,7 @@ export default function WaterButton({ needsWater, last_water, plant }) {
     <>
       <div
         onClick={() => handleWatering()}
-        className="flex flex-row place-self-center place-items-center place-content-center button-style mt-0 w-44 h-12"
+        className="flex flex-row place-self-center place-items-center place-content-center button-style mt-0 w-1/2 h-12"
       >
         <span className="text-lg whitespace-nowrap">Water Plant</span>
         <img
