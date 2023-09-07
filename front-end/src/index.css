@@ -32,7 +32,7 @@
   }
 
   .grid-view {
-    @apply grid grid-cols-3;
+    @apply grid grid-cols-3 place-self-center max-w-[1200px];
   }
 
   .search-icon {

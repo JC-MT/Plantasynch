@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 export default function Plant({
+  plantInfo,
   id,
   image,
   name,
@@ -9,14 +10,18 @@ export default function Plant({
   last_water,
   email
 }) {
-  const getNotify = () => notification.find((plant) => plant.id === id);
-
+  if (notification.length) {
+    plantInfo.needsWater = notification.find((plant) => plant.id === id);
+  }
   return (
     <div className="flex flex-row justify-between transition-all duration-200 rounded-lg hover:bg-slate-100 hover:shadow-2xl">
       <Link
-        onClick={() => {}}
+        onClick={() => {
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }}
         className="flex flex-row w-full"
         to={`/my-plants/${id}`}
+        state={plantInfo}
       >
         <img
           className="rounded-full w-[150px] h-[150px]"
@@ -34,10 +39,11 @@ export default function Plant({
         }}
         className="flex flex-row"
         to={`/my-plants/${id}`}
+        state={plantInfo}
       >
         <svg
           className={`${
-            getNotify()
+            plantInfo.needsWater
               ? 'text-red-400 animate-[pulse_1s_ease-in-out_infinite]'
               : !last_water || !email
               ? 'text-orange-400'

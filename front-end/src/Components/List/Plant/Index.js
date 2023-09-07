@@ -45,7 +45,7 @@ export default function Index({ loggedInUser, notification, reFetch }) {
   );
 
   const currentDisplay = (
-    <div className="flex flex-col gap-4 px-2 laptop:grid-view tablet:gap-8 py-4 tablet:py-8">
+    <div className="flex flex-col gap-4 px-2 place-self-center w-full tablet:max-w-[650px] laptop:grid-view tablet:gap-8 py-4 tablet:py-8">
       <div
         className={`flex-col place-items-center h-[200px] p-5 ${
           filteredByLoggedInUser(garden, loggedInUser).length
@@ -65,6 +65,7 @@ export default function Index({ loggedInUser, notification, reFetch }) {
       {filteredByLoggedInUser(garden, loggedInUser).map((plant, idx) => {
         return (
           <Plant
+            plantInfo={plant}
             id={plant.id}
             name={plant.name}
             image={`${AWS}${plant.image}`}

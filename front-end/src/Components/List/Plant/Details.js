@@ -1,7 +1,7 @@
-import axios from 'axios';
 import * as dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import SkipButton from '../../UI/SkipButton';
 import PlantHistory from '../../UI/PlantHistory';
 import OptionsButton from '../../UI/OptionsButton';
@@ -13,37 +13,30 @@ const AWS = process.env.REACT_APP_AWS_URL;
 
 export default function Details({ notification }) {
   const { id } = useParams();
-  const [plant, setPlant] = useState([]);
-  const [needsWater, setNeedsWater] = useState(false);
-  const navigate = useNavigate();
+  let { state } = useLocation();
+  const [plant, setPlant] = useState({});
   const [deleteModel, setDeleteModel, modelStructure] = useDeleteModel({
     id,
     plant
   });
 
   useEffect(() => {
-    function getNeedsWater(notification) {
-      let foundInNotifications = notification.find(
-        (plant) => plant.id === Number(id)
-      );
-
-      if (foundInNotifications) {
-        setNeedsWater(true);
-      }
+    if (!state) {
+      axios
+        .get(`${API}/plants/${id}`)
+        .then((res) => {
+          const needsWater = notification.find(
+            (plant) => Number(id) === plant.id
+          );
+          setPlant({ ...res.data.payload, needsWater: needsWater });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setPlant(state);
     }
-
-    axios
-      .get(`${API}/plants/${id}`)
-      .then((res) => {
-        setPlant(res.data.payload);
-      })
-      .then(() => {
-        getNeedsWater(notification);
-      })
-      .catch(() => {
-        navigate('/not-found');
-      });
-  }, [id, navigate, notification]);
+  }, [id, notification, state]);
 
   const spinnerStructure = (
     <div id="spinner" className="flex flex-col items-center justify-center p-5">
@@ -78,7 +71,7 @@ export default function Details({ notification }) {
         </h1>
         <p
           className={`${
-            !plant.last_water || needsWater
+            !plant.last_water || plant.needsWater
               ? 'animate-[pulse_1s_ease-in-out_infinite] text-red-400'
               : ''
           }`}
@@ -103,7 +96,7 @@ export default function Details({ notification }) {
         <div className="flex mt-2 flex-row h-12 w-full justify-center">
           <SkipButton name={plant.name} skip_count={plant.skip_count} />
           <WaterButton
-            needsWater={needsWater}
+            needsWater={plant.needsWater}
             last_water={plant.last_water}
             plant={plant}
           />
@@ -119,5 +112,5 @@ export default function Details({ notification }) {
     </div>
   );
 
-  return plant.name ? showStructure : spinnerStructure;
+  return Object.keys(plant).length ? showStructure : spinnerStructure;
 }

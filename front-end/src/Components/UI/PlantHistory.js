@@ -123,42 +123,44 @@ export default function PlantHistory({ actions }) {
           handlePagination={handlePagination}
         />
         <div className="flex h-fit">
-          <div class={`w-fit bg-white divide-y divide-gray-100 rounded-lg`}>
-            <ul class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 gap-2 p-3 text-sm text-gray-700">
+          <div className={`w-fit bg-white divide-y divide-gray-100 rounded-lg`}>
+            <ul className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 gap-2 p-3 text-sm text-gray-700">
               <li>
-                <div class="flex items-center">
+                <div className="flex items-center">
                   <input
                     onChange={() => handlePagination(0, 1, 1)}
                     value={showAmount}
                     name="amount"
                     type="radio"
-                    class="w-4 h-4 bg-gray-100 border-gray-300 rounded"
+                    className="w-4 h-4 bg-gray-100 border-gray-300 rounded"
                   />
-                  <label class="ml-2 text-sm font-medium">All</label>
+                  <label className="ml-2 text-sm font-medium">All</label>
                 </div>
               </li>
               <li>
-                <div class="flex items-center">
+                <div className="flex items-center">
                   <input
                     onChange={() => handlePagination(5, 1, 1)}
                     name="amount"
                     type="radio"
                     value={showAmount}
-                    class="w-4 h-4 bg-gray-100 border-gray-300 rounded"
+                    className="w-4 h-4 bg-gray-100 border-gray-300 rounded"
                   />
-                  <label class="ml-2 text-sm font-medium">5 per page</label>
+                  <label className="ml-2 text-sm font-medium">5 per page</label>
                 </div>
               </li>
               <li>
-                <div class="flex items-center">
+                <div className="flex items-center">
                   <input
                     onChange={() => handlePagination(10, 1, 1)}
                     name="amount"
                     type="radio"
                     value={showAmount}
-                    class="w-4 h-4 bg-gray-100 border-gray-300 rounded"
+                    className="w-4 h-4 bg-gray-100 border-gray-300 rounded"
                   />
-                  <label class="ml-2 text-sm font-medium">10 per page</label>
+                  <label className="ml-2 text-sm font-medium">
+                    10 per page
+                  </label>
                 </div>
               </li>
             </ul>
