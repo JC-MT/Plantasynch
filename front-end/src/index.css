@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-  .navbar-full {
-    @apply;
-  }
-
   .input-style {
     @apply border-b-black border-b-[1px] pl-3 h-[48px] focus:outline-none hover:border-black hover:border-[1px] focus:border-black focus:border-[1px] py-2 tablet:px-4;
   }

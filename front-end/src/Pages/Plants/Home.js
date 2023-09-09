@@ -7,7 +7,7 @@ export default function Home({ loggedInUser, notification, reFetch }) {
         <h1 className="w-fit font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-start text-[32px] antialiased tablet:text-[40px]">
           {loggedInUser.id ? 'Your' : 'Demo'} Garden
         </h1>
-        <p className="text-left px-2 text-md tablet:text-md">
+        <p className="text-left px-1 text-md tablet:text-md">
           Discover or add new plants from the <em>Explore</em> page or simple
           scan your plants on the <em>Add</em> page.
         </p>

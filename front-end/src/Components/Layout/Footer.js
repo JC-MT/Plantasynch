@@ -310,9 +310,9 @@ export default function Footer({ pathname }) {
       className={`
     ${
       pathname === '/' ? 'hidden' : ''
-    } transition-all delay-200 relative w-screen text-left flex flex-col tablet:flex-row tablet:place-content-between p-4 py-12 tablet:px-[10%] h-[560px] tablet:h-[400px] bg-[#9EC2AF]`}
+    } transition-all delay-200 relative w-screen text-left flex flex-col tablet:flex-row tablet:place-content-center px-12 py-12 h-[560px] tablet:h-[400px] bg-[#9EC2AF]`}
     >
-      <div className="flex flex-col mb-10 tablet:mb-0 place-content-between tablet:w-1/2">
+      <div className="flex flex-col mb-10 tablet:mb-0 place-content-between tablet:w-1/2 max-w-[575px]">
         <Link to={'/'} onClick={handleClose}>
           <h1 className="text-[rgb(23,61,10)] text-[32px] font-['brandon-grotesque'] font-bold antialiased tracking-wide uppercase">
             Plantasynch
@@ -321,7 +321,7 @@ export default function Footer({ pathname }) {
         </Link>
         {icons}
       </div>
-      <div className="flex flex-col h-full place-content-between tablet:w-1/2">
+      <div className="flex flex-col h-full place-content-between tablet:w-1/2 max-w-[575px]">
         {laptopViewLinks}
         {mobileViewLinks}
         <div className="flex flex-col place-content-between tablet:place-content-end h-[60px] tablet:h-full">

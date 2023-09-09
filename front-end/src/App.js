@@ -27,7 +27,7 @@ export default function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
 
   return (
-    <div>
+    <>
       <nav>
         <Navbar notification={notification} loggedInUser={loggedInUser} />
       </nav>
@@ -76,6 +76,6 @@ export default function App() {
         <Footer pathname={pathname} />
       </main>
       <Toast />
-    </div>
+    </>
   );
 }

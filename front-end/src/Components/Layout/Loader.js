@@ -15,7 +15,7 @@ export default function Loader({ pathname }) {
 
   return (
     <div
-      className={`z-50 fixed flex bg-white top-0 left-0 right-0 h-screen p-4 place-content-center w-screen ${
+      className={`z-50 fixed flex bg-white top-0 left-0 right-0 min-h-screen p-4 place-content-center min-w-screen ${
         loader ? '' : 'hidden'
       }`}
     >
