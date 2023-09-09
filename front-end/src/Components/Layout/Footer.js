@@ -310,7 +310,7 @@ export default function Footer({ pathname }) {
       className={`
     ${
       pathname === '/' ? 'hidden' : ''
-    } transition-all delay-200 relative w-screen text-left flex flex-col tablet:flex-row tablet:place-content-center px-12 py-12 h-[560px] tablet:h-[400px] bg-[#9EC2AF]`}
+    } transition-all delay-200 relative w-screen text-left flex flex-col tablet:flex-row tablet:place-content-center px-6 py-8 tablet:py-12 h-[560px] tablet:h-[400px] bg-[#9EC2AF]`}
     >
       <div className="flex flex-col mb-10 tablet:mb-0 place-content-between tablet:w-1/2 max-w-[575px]">
         <Link to={'/'} onClick={handleClose}>

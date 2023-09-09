@@ -32,7 +32,7 @@ export default function Navbar({ notification, loggedInUser }) {
         onClick={() => {
           document.body.scrollTop = document.documentElement.scrollTop = 0;
         }}
-        className="flex flex-col place-content-center place-items-start min-w-[120px] w-[32%] max-w-[300px]"
+        className="flex flex-col place-content-center tablet:place-items-start min-w-[120px] w-[32%] max-w-[300px]"
       >
         <div className="flex flex-col place-content-center">
           <img
