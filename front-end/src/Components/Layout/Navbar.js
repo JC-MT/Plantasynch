@@ -11,9 +11,9 @@ export default function Navbar({ notification, loggedInUser }) {
   const [hover, setHover] = useState({ github: false, linkedin: false });
 
   return (
-    <div className="fixed min-w-[350px] top-0 z-50 flex flex-row place-content-evenly bg-white antialiased w-screen h-[80px] shadow-sm tablet:h-[110px] tablet:place-content-center">
+    <div className="fixed min-w-[280px] tablet:px-5 laptop:px-0 top-0 z-50 flex flex-row place-content-evenly bg-white antialiased w-screen h-[80px] shadow-sm tablet:h-[110px] tablet:place-content-center">
       <div
-        className={`flex flex-col place-content-center place-items-center min-w-[120px] w-[32%] tablet:hidden`}
+        className={`flex flex-col place-content-center place-items-center min-w-[93px] w-[32%] tablet:hidden`}
         onClick={() => {
           setActive(true);
         }}
@@ -32,7 +32,7 @@ export default function Navbar({ notification, loggedInUser }) {
         onClick={() => {
           document.body.scrollTop = document.documentElement.scrollTop = 0;
         }}
-        className="flex flex-col place-content-center tablet:place-items-start min-w-[120px] w-[32%] max-w-[300px]"
+        className="flex flex-col place-content-center tablet:place-items-start min-w-[93px] w-[32%] max-w-[325px]"
       >
         <div className="flex flex-col place-content-center">
           <img
@@ -40,7 +40,7 @@ export default function Navbar({ notification, loggedInUser }) {
             className="place-self-center w-[30px] h-[30px] hover:animate-[wiggle_2s_ease-in-out_infinite] tablet:h-[35px] tablet:w-[35px]"
             src="https://cdn-icons-png.flaticon.com/512/628/628324.png"
           />
-          <p className="text-[15px] font-['brandon-grotesque'] text-center tracking-wide uppercase tablet:text-[20px]">
+          <p className="text-[12px] font-['brandon-grotesque'] text-center tracking-wide uppercase tablet:text-[20px]">
             Plantasynch
           </p>
         </div>
@@ -81,7 +81,7 @@ export default function Navbar({ notification, loggedInUser }) {
         </div>
       </div>
 
-      <div className="flex place-content-end w-[32%] tablet:w-[34%] max-w-[300px]">
+      <div className="flex place-content-end min-w-[93px] w-[32%] tablet:w-[34%] max-w-[325px]">
         <div className="hidden flex-row gap-2 tablet:flex">
           <a
             className="place-self-center"
