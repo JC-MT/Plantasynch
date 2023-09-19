@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams, Link, useLocation } from 'react-router-dom';
 import useToast from '../../../Hooks/useToast';
 
 const API = process.env.REACT_APP_API_URL;
 
 export default function Info({ loggedInUser }) {
   const [explore, setExplore] = useState({});
+  let { state } = useLocation();
   const [sendToast] = useToast('explore');
   const { id } = useParams();
   const navigate = useNavigate();
@@ -28,34 +29,39 @@ export default function Info({ loggedInUser }) {
   });
 
   useEffect(() => {
-    axios
-      .get(`${API}/plants/explore/${id}`)
-      .then((res) => {
-        setExplore(res.data.payload);
-        return res.data.payload;
-      })
-      .then((res) => {
-        let demoUser = true;
-        if (loggedInUser.id) {
-          demoUser = false;
-        }
-        setNewPlant({
-          ...newplant,
-          name: res.common[0],
-          origin: res.origin,
-          category: res.category,
-          ideal_light: res.ideallight,
-          ideal_watering: res.watering,
-          email: loggedInUser.email || '',
-          user_id: loggedInUser.id || 0,
-          demo_plant: demoUser
+    if (!state) {
+      axios
+        .get(`${API}/plants/explore/${id}`)
+        .then((res) => {
+          setExplore(res.data.payload);
+          return res.data.payload;
+        })
+        .then((res) => {
+          let demoUser = true;
+          if (loggedInUser.id) {
+            demoUser = false;
+          }
+          setNewPlant({
+            ...newplant,
+            name: res.common[0],
+            origin: res.origin,
+            category: res.category,
+            ideal_light: res.ideallight,
+            ideal_watering: res.watering,
+            email: loggedInUser.email || '',
+            user_id: loggedInUser.id || 0,
+            demo_plant: demoUser
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          navigate('/not-found');
         });
-      })
-      .catch((err) => {
-        console.log(err);
-        navigate('/not-found');
-      });
-  }, [id, navigate]);
+    } else {
+      setExplore(state);
+      setNewPlant({ ...newplant, state });
+    }
+  }, [id, state]);
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -89,11 +89,11 @@ export default function EditPlantForm() {
 
   return (
     <div className="flex flex-col tablet:pt-8 h-[100%]">
-      <div className="flex flex-col tablet:flex-row place-content-center tablet:w-[100%] gap-2 tablet:gap-10 place-items-center p-2 tablet:p-4">
+      <div className="flex flex-col tablet:flex-row place-content-center tablet:w-[100%] gap-2 tablet:gap-10 place-items-center tablet:p-4">
         <div className="flex flex-col">
           <header className="relative flex items-center justify-center">
             <img
-              className="pt-3 tablet:rounded-br-[200px] shadow-md place-self-center tablet:w-[580px] tablet:h-[500px] brightness-75 static w-screen h-[275px]"
+              className="tablet:rounded-br-[200px] place-self-center tablet:w-[580px] tablet:h-[500px] static w-screen h-[275px]"
               src={`${AWS}${plant.image}`}
               alt="plant"
             ></img>
@@ -101,13 +101,13 @@ export default function EditPlantForm() {
               {plant.name}
             </h3>
           </header>
-          <p className="p-1 tablet:text-center text-[15px] tablet:text-[15px]">
+          <p className="p-2 tablet:text-center text-[15px] tablet:text-[15px]">
             Any changes cannot be reverced once updated. Happy growing! 🌱
           </p>
         </div>
         <form
           onSubmit={handleSubmit}
-          className="flex w-full max-w-[500px] flex-col gap-2 tablet:gap-2 laptop:gap-3 place-items-center tablet:pb-8"
+          className="flex w-full max-w-[500px] flex-col p-2 gap-2 tablet:gap-2 laptop:gap-3 place-items-center tablet:pb-8"
         >
           <h2
             className={`pb-2 tablet:pb-6 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#173d0a] to-[#64aa85] place-self-center text-[32px] antialiased tablet:text-[45px]`}

@@ -51,6 +51,7 @@ export default function Index() {
         return (
           <Plant
             key={idx}
+            plantInfo={plant}
             id={plant.id}
             name={plant.common[0]}
             knownAs={plant.common}
@@ -63,7 +64,7 @@ export default function Index() {
   };
 
   const explorePlantsContainer = (
-    <div className="laptop:grid-view px-2 gap-2 tablet:gap-4 tablet:py-6">
+    <div className="flex flex-col gap-4 px-2 place-self-center w-full tablet:max-w-[650px] laptop:grid-view tablet:gap-8 py-4 tablet:py-8">
       {currentDisplay(explore, search)}
     </div>
   );
